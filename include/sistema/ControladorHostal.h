@@ -48,7 +48,7 @@ class ControladorHostal:public IHostal {
 		DataEstadia SeleccionarEstadia(DTIdEstadia);
 		DTCalificacion MostrarCalificacion();
 		DTReserva MostrarInfoReserva();
-		Set(DTEmpleado) SeleccionarHostal(std::string);
+		set<DTEmpleado> ControladorHostal::ObtenerDtEmpleado(std::string nombreHostal);
 		void SeleccionarEmpleado(CargoEmpleado, std::string);
 		void ConfirmarAsignacionAUsuario();
 		void CancelarAsignacionAUsuario();

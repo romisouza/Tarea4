@@ -60,7 +60,21 @@ DTReserva ControladorHostal::MostrarInfoReserva(){}
 
 void ControladorHostal::LiberarMemoria(){}
 
-Set(DTEmpleado) ControladorHostal::SeleccionarHostal(string nombreHostal){}
+set<DTEmpleado> ControladorHostal::ObtenerDtEmpleado(std::string nombreHostal){
+	set<DTEmpleado> dtemps;
+	Hostal* h = ColHostales.find(nombreHostal)->second;
+	if(h->getNombre()==nombreHostal){
+		ControladorUsuario* cu = ControladorUsuario::getInstance();
+		auto iter = cu->getColEmpleados().begin();
+		while(iter!=cu->getColEmpleados().end()){
+			Empleado* emp= h->getColEmpleados().find(iter->second->getEmail())->second;
+			if(iter->second->getEmail()==emp->getEmail()){
+					
+			}
+			
+		}
+	}
+}
 
 void ControladorHostal::SeleccionarEmpleado(TipoCargo cargoEmp, string emailEmp){}
 
