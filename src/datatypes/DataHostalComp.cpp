@@ -1,10 +1,13 @@
 #include "../../include/datatypes/DataHostalComp.h"
 
-DataHostalComp::DataHostalComp(string nom,string dir,int tel,float prom){
+DataHostalComp::DataHostalComp(string nom,string dir,int tel,float prom, Habitacion** hab,Reserva** res,Calificacion** cal){
     nombre = nom;
     direccion = dir;
     telefono = tel;
     promedio = prom;
+    ColHabit = hab;
+    ColRes = res;
+    ColCalif = cal;
 }
 
 DataHostalComp::~DataHostalComp(){
@@ -23,11 +26,11 @@ int DataHostalComp::getTelefono(){
     return telefono;
 }
 
-map<int, Habitacion*> DataHostalComp::getHabitaciones(){
+Set(DTHabitacion) DataHostalComp::getHabitaciones(){
     return ColHabit;
 }
 
-map<int,Reserva*> DataHostalComp::getReservas(){
+Set(DTReserva) DataHostalComp::getReservas(){
     return ColRes;
 }
 
@@ -35,7 +38,7 @@ float DataHostalComp::getPromedio(){
     return promedio;
 }
 
-Set<DTCalificacion> DataHostalComp::getComentarios(){
+Set(DTCalificacion) DataHostalComp::getComentarios(){
     return ColCalif;
 }
 
