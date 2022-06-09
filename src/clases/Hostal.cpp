@@ -12,6 +12,10 @@ Hostal :: Hostal(string nom,string direc,int tel,int prom, !!!!, !!!!) { //falta
 
 Hostal :: ~Hostal() {}
 
+map<std::string,Empleado*> Hostal::getColEmpleados(){
+	return ColEmpleados;
+}
+
 string Hostal::getNombre(){
 	return nombre;
 }

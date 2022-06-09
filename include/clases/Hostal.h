@@ -12,6 +12,7 @@
 #include "../../include/datatypes/DTReserva.h"
 #include "../../include/datatypes/DTCalificacion.h"
 #include "Reserva.h"
+#include "Empleado.h"
 
 using namespace std;
 
@@ -24,10 +25,12 @@ class Hostal{
 		int promedio;
 		map<int,Reserva*> ColReservas; // clave codigo
 		map<int, Habitacion*> ColHabitaciones; //clave numero 
+		map<std::string,Empleado*> ColEmpleados;
 	public:
 		Hostal();
 		Hostal(string,string,int,int); //faltan las colecciones de reservas y habitaciones
 		~Hostal();
+		map<std::string,Empleado*> getColEmpleados();
 		string getNombre();
 		string getDireccion();
 		int getTelefono();

@@ -12,10 +12,19 @@ class ControladorUsuario {
 		static ControladorUsuario* instancia;
 		map<string, Empleado *> ColEmpleados; //clave email
 		map<string, Huesped *> ColHuesped; //clave email
+		
+		//Para ingresar huesped y empleado
+		string nombreIngresado
+		string emailIngresado;
+		string passIngresada;
+		bool esFingIngresado;
+		CargoEmpleado cargoIngresado;
+		
 		ControladorUsuario();
 		~ControladorUsuario();
 	public:
 		static ControladorUsuario* getInstance();
+		map<string,Empleado*> getColEmpleados();
 		Set(DTCal) obtenerComentariosAResponder(string mail);
 		Set(string) obtenerHuespedes();
 		void seleccionar(string mailHuesped);

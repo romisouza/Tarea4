@@ -31,7 +31,7 @@ map<int, Habitacion*> DataHostalComp::getHabitaciones(){
     return ColHabit;
 }
 
-map<int,Reserva*> DataHostalComp::getReservas(){
+map<int, Reserva*> DataHostalComp::getReservas(){
     return ColRes;
 }
 
