@@ -1,7 +1,7 @@
 #include "../../include/clases/Calificacion.h"
 
 Calificacion::Calificacion(){//Implementar
-
+Puto
 }
 
 Calificacion::Calificacion(DTFecha Fecha, int Puntaje,string ComenHuesp,string ComenEmp, Estadia* est){
