@@ -6,14 +6,14 @@ using namespace std;
 
 class DTEmpleado {
     private:
-        string nombre;
-        string email;
+        std::string nombre;
+        std::string email;
         CargoEmpleado cargo;
     public:
-        DTEmpleado(string,string,CargoEmpleado);
+        DTEmpleado(std::string,std::string,CargoEmpleado);
         ~DTEmpleado();
-        string getNombre();
-        string getEmail();
+        std::string getNombre();
+        std::string getEmail();
         CargoEmpleado getCargo();
 };
 

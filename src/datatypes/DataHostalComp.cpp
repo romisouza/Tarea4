@@ -1,6 +1,6 @@
 #include "../../include/datatypes/DataHostalComp.h"
 
-DataHostalComp::DataHostalComp(string nom,string dir,int tel,float prom){
+DataHostalComp::DataHostalComp(std::string nom,std::string dir,int tel,float prom){
     nombre = nom;
     direccion = dir;
     telefono = tel;
@@ -11,11 +11,11 @@ DataHostalComp::~DataHostalComp(){
 
 }
 
-string DataHostalComp::getNombre(){
+std::string DataHostalComp::getNombre(){
     return nombre;
 }
 
-string DataHostalComp::getDireccion(){
+std::string DataHostalComp::getDireccion(){
     return direccion;
 }
 
@@ -35,14 +35,14 @@ float DataHostalComp::getPromedio(){
     return promedio;
 }
 
-Set<DTCalificacion> DataHostalComp::getComentarios(){
+set<DTCalificacion> DataHostalComp::getComentarios(){
     return ColCalif;
 }
 
-void Hostal::agregarReserva(int cod, Reserva* Res){
+void DataHostalComp::agregarReserva(int cod, Reserva* Res){
 	ColReservas[cod]=Res;
 }
 
-void Hostal::agregarHabitacion(int num, Habitacion* Hab){
+void DataHostalComp::agregarHabitacion(int num, Habitacion* Hab){
 	ColHabitaciones[num]=Hab;
 }

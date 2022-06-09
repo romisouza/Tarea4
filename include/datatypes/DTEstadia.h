@@ -1,7 +1,6 @@
 #ifndef DTESTADIA
 #define DTESTADIA
 #include <iostream>
-#include <string>
 #include "../../include/datatypes/DTFecha.h"
 
 class DTEstadia {

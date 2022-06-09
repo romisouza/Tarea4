@@ -1,31 +1,31 @@
 #include "../../include/clases/Usuario.h"
 
-Usuario::Usuario(string nom, string mail, string pass){
+Usuario::Usuario(std::string nom, std::string mail, std::string pass){
 	nombre = nom;
 	email = mail;
 	password = pass;
 }
-string Usuario::getNombre(){
+std::string Usuario::getNombre(){
 	return nombre;
 }
 
-string Usuario::getEmail(){
+std::string Usuario::getEmail(){
 	return email;
 }
 
-string Usuario::getPassword(){
+std::string Usuario::getPassword(){
 	return password;
 }
 
-void Usuario::setNombre(string nom){
+void Usuario::setNombre(std::string nom){
 	nombre=nom;
 }
 
-void Usuario::setEmail(string mail){
+void Usuario::setEmail(std::string mail){
 	email=mail;
 }
 
-void Usuario::setPassword(string pass){
+void Usuario::setPassword(std::string pass){
 	password=pass;
 }
 

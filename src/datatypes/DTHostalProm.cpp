@@ -1,17 +1,17 @@
 
 #include "../../include/datatypes/DTHostalProm.h"
 
-DTHostalProm::DTHostalProm(string Nomb,string Dir, int Prom){
+DTHostalProm::DTHostalProm(std::string Nomb,std::string Dir, int Prom){
     nombre=Nomb;
     direccion=Dir;
     calificacionesPromedio=Prom;    
 }
 
-string DTHostalProm::getNombre(){
+std::string DTHostalProm::getNombre(){
     return nombre;
 }
         
-string DTHostalProm::getDireccion(){
+std::string DTHostalProm::getDireccion(){
     return direccion;
 }
 

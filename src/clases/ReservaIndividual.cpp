@@ -1,3 +1,2 @@
-#include "../include/ReservaIndividual.h"
-#include "../include/Reserva.h"
-
+#include "../../include/clases/Reserva.h"
+#include "../../include/clases/ReservaIndividual.h"

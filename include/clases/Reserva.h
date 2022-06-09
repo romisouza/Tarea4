@@ -2,6 +2,7 @@
 #define RESERVA
 #include <string>
 #include <iostream>
+#include <set>
 #include "Habitacion.h"
 #include "Huesped.h"
 #include "Estadia.h"
@@ -40,7 +41,7 @@ class Reserva{
         void BuscarEstadia();
         DTIdEstadia accederaEstadias();
         void hallarEstadia(string,string);
-        virtual Set<DTReserva> validarHuespedRegistrado(string)=0;
+        virtual set<DTReserva> validarHuespedRegistrado(string)=0;
         virtual void validarHuesped(string)=0;
         bool compararFecha(DTFecha,DTFecha);
         void setCodigo(int);

@@ -3,6 +3,7 @@
 #include "Usuario.h"
 #include "Hostal.h"
 #include "Calificacion.h"
+#include <set>
 #include "../../include/sistema/IObserver.h"
 #include "../../include/datatypes/DTCal.h"
 #include "../../include/datatypes/DataEmpleado.h"
@@ -15,11 +16,11 @@ class Empleado: public Usuario, IObserver {
 	private:
 		CargoEmpleado cargo;
 	public:
-		Empleado(string nombre, string email, string password, CargoEmpleado cargo);
+		Empleado(std::string nombre, std::string email, std::string password, CargoEmpleado cargo);
 		~Empleado();
 		CargoEmpleado getCargoEmpleado();
 		void setCargoEmpleado(CargoEmpleado cargo);
-		Set(DTCal) obtenerComentarios();
+		set<DTCal> obtenerComentarios();
 		DataEmpleado getDataEmpleado();
 		bool TrabajaEnHostal(Hostal);
 		void AsignarEmpleadoAHostal();

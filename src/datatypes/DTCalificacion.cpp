@@ -1,6 +1,6 @@
 #include "../../include/datatypes/DTCalificacion.h"
 
-DTCalificacion :: DTCalificacion(int punt,string comentarioH,string comentarioE){
+DTCalificacion :: DTCalificacion(int punt,std::string comentarioH,std::string comentarioE){
 	puntaje = punt;
 	comentarioHuesp = comentarioH;
 	comentarioEmp = comentarioE;
@@ -10,11 +10,11 @@ int DTCalificacion::getPuntaje() {
 	return puntaje;
 }
 
-string DTCalificacion::getComentarioHuesp(){
+std::string DTCalificacion::getComentarioHuesp(){
 	return comentarioHuesp;
 }
 
-string DTCalificacion::getComentarioEmp() {
+std::string DTCalificacion::getComentarioEmp() {
 	return comentarioEmp;
 }
 

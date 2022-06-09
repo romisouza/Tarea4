@@ -4,7 +4,7 @@ DataEstadia::DataEstadia(){
 
 }
 
-DataEstadia::DataEstadia(DTFecha in,DTFecha out,string host,string huesp,int habit,int prom,int codigo){
+DataEstadia::DataEstadia(DTFecha in,DTFecha out,std::string host,std::string huesp,int habit,int prom,int codigo){
     checkin= in;
     checkout = out;
     hostal = host;
@@ -23,11 +23,11 @@ DTFecha DataEstadia::getCheckOut(){
     return checkout;
 }
 
-string DataEstadia::getHostal(){
+std::string DataEstadia::getHostal(){
     return hostal;
  }
 
-string DataEstadia::getHuesped(){
+std::string DataEstadia::getHuesped(){
     return huesped;
  }
 

@@ -18,7 +18,7 @@ void Empleado::setCargoEmpleado(CargoEmpleado car){
 	cargo = car;
 }
 
-Set(DTCal) Empleado::obtenerComentarios(){
+set<DTCal> Empleado::obtenerComentarios(){
 }
 
 DataEmpleado Empleado::getDataEmpleado(){
@@ -30,7 +30,7 @@ bool Empleado::TrabajaEnHostal(Hostal){
 void Empleado::AsignarEmpleadoAHostal(){
 }
 
-Empleado::DTEmpleado getDTEmpleado(){
+DTEmpleado Empleado::getDTEmpleado(){
 }
 
 void Empleado::notificar(Calificacion cal){

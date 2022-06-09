@@ -1,19 +1,18 @@
 #ifndef DTCALIFICACION
 #define DTCALIFICACION
-#include <string>
 #include <iostream>
 using namespace std;
 
 class DTCalificacion {
 	private:
 		int puntaje;
-		string comentarioHuesp;
-		string comentarioEmp;
+		std::string comentarioHuesp;
+		std::string comentarioEmp;
 	public:
-		DTCalificacion(int,string,string);
+		DTCalificacion(int,std::string,std::string);
 		int getPuntaje();
-		string getComentarioHuesp();
-		string getComentarioEmp();
+		std::string getComentarioHuesp();
+		std::string getComentarioEmp();
 		~DTCalificacion();
 };
 #endif

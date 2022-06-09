@@ -1,7 +1,6 @@
 #ifndef DATAESTADIA
 #define DATAESTADIA
 #include <iostream>
-#include <string>
 #include "../../include/datatypes/DTFecha.h"
 using namespace std;
 
@@ -9,18 +8,18 @@ class DataEstadia{
     private:
         DTFecha checkin;
         DTFecha checkout;
-        string hostal;
-        string huesped;
+        std::string hostal;
+        std::string huesped;
         int hab;
         int promo;
         int cod;
     public:
         DataEstadia();
-        DataEstadia(DTFecha,DTFecha,string,string,int,int,int);
+        DataEstadia(DTFecha,DTFecha,std::string,std::string,int,int,int);
         DTFecha getCheckIn();
         DTFecha getCheckOut();
-        string getHostal();
-        string getHuesped();
+        std::string getHostal();
+        std::string getHuesped();
         int getHabitacion();
         int getPromo();
         int getCod();

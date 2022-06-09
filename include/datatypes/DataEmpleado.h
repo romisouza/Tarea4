@@ -1,23 +1,22 @@
 #ifndef DATAEMPLEADO
 #define DATAEMPLEADO
 #include <iostream>
-#include <string>
 #include "../../include/clases/Empleado.h"
 using namespace std;
 
 class DataEmpleado{
     private:
-        string nombreEmp;
-        string emailEmp;
+        std::string nombreEmp;
+        std::string emailEmp;
         CargoEmpleado cargo;
-        string hostal;
+        std::string hostal;
     public:
         DataEmpleado();
-        DataEmpleado(string,string,CargoEmpleado,string);
-        string getNombre();
-        string getEmail();
+        DataEmpleado(std::string,std::string,CargoEmpleado,std::string);
+        std::string getNombre();
+        std::string getEmail();
         CargoEmpleado getCargo();
-        string getHostal();
+        std::string getHostal();
         ~DataEmpleado();
 
 };

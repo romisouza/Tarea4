@@ -4,18 +4,18 @@ DataEmpleado::DataEmpleado(){
 
 }
 
-DataEmpleado::DataEmpleado(string nombre,string email,CargoEmpleado carg,string host){
+DataEmpleado::DataEmpleado(std::string nombre,std::string email,CargoEmpleado carg,std::string host){
     nombreEmp= nombre;
     emailEmp = email;
     cargo = carg;
     hostal = host;
 }
 
-string DataEmpleado::getNombre(){
+std::string DataEmpleado::getNombre(){
     return nombreEmp;
 }
 
-string DataEmpleado::getEmail(){
+std::string DataEmpleado::getEmail(){
     return emailEmp;
 }
 
@@ -23,7 +23,7 @@ CargoEmpleado DataEmpleado::getCargo(){
     return cargo;
 }
 
-string DataEmpleado::getHostal(){
+std::string DataEmpleado::getHostal(){
     return hostal;
 }
 

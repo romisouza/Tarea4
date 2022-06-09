@@ -1,20 +1,19 @@
 #ifndef DTHUESPED
 #define DTHUESPED
 #include <iostream>
-#include <string>
 using namespace std;
 
 
 class DTHuesped{
     private:
-        string nombre;
-        string email;
+        std::string nombre;
+        std::string email;
         bool esFinger;
     public:
         DTHuesped();
-        DTHuesped(string, string, bool);
-        string getNombre();
-        string getMail();
+        DTHuesped(std::string, std::string, bool);
+        std::string getNombre();
+        std::string getMail();
         bool getEsFinger();
         ~DTHuesped();
 };

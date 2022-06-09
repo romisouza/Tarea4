@@ -6,7 +6,7 @@ ReservaGrupal::ReservaGrupal(int codigo, DTFecha checkin, DTFecha checkout, Esta
     TotalHuesp = totalHuespedes;
 };
 
-Huesped** ReservaGrupal::getHuespedes(){
+set<Huesped> ReservaGrupal::getHuespedes(){
     return huespedes;
 }
 

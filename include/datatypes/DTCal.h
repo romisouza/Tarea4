@@ -1,19 +1,18 @@
 #ifndef DTCAL
 #define DTCAL
 #include <iostream>
-#include <string>
 using namespace std;
 
 class DTCal{
     private:
-        string comentarioEmp;
-        string comentarioHuesp;
+        std::string comentarioEmp;
+        std::string comentarioHuesp;
         int codigoRes;
     public:
         DTCal();
-        DTCal(string,string,int);
-        string getComentarioEmp();
-        string getComentarioHuesp();
+        DTCal(std::string,std::string,int);
+        std::string getComentarioEmp();
+        std::string getComentarioHuesp();
         int getCodigoRes();
         ~DTCal();
         

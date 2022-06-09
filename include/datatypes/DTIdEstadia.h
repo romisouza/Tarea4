@@ -1,17 +1,16 @@
 #ifndef DTIDESTADIA
 #define DTIDESTADIA
-#include <string>
 #include <iostream>
 
 class DTIdEstadia
 {
 private:
     int codigo;
-    string email;
+    std::string email;
 public:
-    DTIdEstadia(int, string);
+    DTIdEstadia(int, std::string);
     int getCodigo();
-    string getEmail();
+    std::string getEmail();
     ~DTIdEstadia();
 };
 

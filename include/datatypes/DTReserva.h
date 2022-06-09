@@ -1,7 +1,6 @@
 #ifndef DTRESERVA
 #define DTRESERVA
 #include <iostream>
-#include <string>
 #include "../../include/datatypes/DTFecha.h"
 class DTReserva {
     private:

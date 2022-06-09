@@ -1,6 +1,6 @@
 #include "../../include/datatypes/DTHostal.h"
 
-DTHostal::DTHostal(string name, string dir, int tel){
+DTHostal::DTHostal(std::string name, std::string dir, int tel){
     nombre = name;
     direccion = dir;
     telefono = tel;
@@ -8,11 +8,11 @@ DTHostal::DTHostal(string name, string dir, int tel){
 
 DTHostal::~DTHostal(){}
 
-string DTHostal::getNombre(){
+std::string DTHostal::getNombre(){
     return nombre;
 }
 
-string DTHostal::getDireccion(){
+std::string DTHostal::getDireccion(){
     return direccion;
 }
 

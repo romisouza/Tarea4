@@ -10,26 +10,27 @@ using namespace std;
 
 class DataHostalComp {
     private:
-        string nombre;
-        string direccion;
+        std::string nombre;
+        std::string direccion;
         int telefono;
         float promedio;
         map<int, Habitacion*> ColHabit;
         map<int,Reserva*>  ColRes;
         set<Calificacion> ColCalif;
     public:
-        DataHostalComp(string,string,int);
+        DataHostalComp(std::string,std::string,int,float);
         ~DataHostalComp();
-        string getNombre();
-        string getDireccion();
+        std::string getNombre();
+        std::string getDireccion();
         int getTelefono();
-        Set(DTHabitacion) getHabitaciones();
-        Set(DTReserva) getReservas();
         float getPromedio();
-        Set(DTCalificacion) getComentarios();
-        agregarReserva(int, Reserva*);
-        agregarHabitacion(int,Habitacion*);
+        map<int, Habitacion*> getHabitaciones();
+        map<int, Reserva*> getReservas();
+        float getPromedio();
+        set<DTCalificacion> getComentarios();
+        void agregarReserva(int, Reserva*);
+        void agregarHabitacion(int,Habitacion*);
         
-}:
+};
 
 #endif

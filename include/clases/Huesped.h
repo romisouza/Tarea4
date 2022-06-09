@@ -9,11 +9,11 @@ class Huesped: public Usuario {
 	private:
 		bool esFinger;
 	public:
-		Huesped(string nom, string mail, string pass, bool finger);
+		Huesped(std::string nom, std::string mail, std::string pass, bool finger);
 		~Huesped();
 		bool getEsFinger();
 		void setEsFinger(bool finger);
-		void BuscarEstadias(string email);
+		void BuscarEstadias(std::string email);
 		DTHuesped getDTHuesped();
 };
 

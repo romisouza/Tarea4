@@ -1,6 +1,5 @@
 #ifndef DTFECHA
 #define DTFECHA
-#include <string>
 #include <iostream>
 
 class DTFecha {
