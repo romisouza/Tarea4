@@ -13,6 +13,10 @@ ControladorUsuario* ControladorUsuario::getInstance(){
 	return instancia;
 }
 
+map<string,Empleado*> ControladorUsuario::getColEmpleados(){
+	return ColEmpleados;
+}
+
 Set(DTCal) ControladorUsuario::obtenerComentariosAResponder(string mail){
 }
 

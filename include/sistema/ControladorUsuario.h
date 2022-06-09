@@ -16,6 +16,7 @@ class ControladorUsuario {
 		~ControladorUsuario();
 	public:
 		static ControladorUsuario* getInstance();
+		map<string,Empleado*> getColEmpleados();
 		Set(DTCal) obtenerComentariosAResponder(string mail);
 		Set(string) obtenerHuespedes();
 		void seleccionar(string mailHuesped);
