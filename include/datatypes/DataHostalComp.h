@@ -18,7 +18,7 @@ class DataHostalComp {
         map<int,Reserva*>  ColRes;
         set<Calificacion> ColCalif;
     public:
-        DataHostalComp(string,string,int);
+        DataHostalComp(string,string,int,float);
         ~DataHostalComp();
         string getNombre();
         string getDireccion();
