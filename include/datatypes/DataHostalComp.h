@@ -28,8 +28,6 @@ class DataHostalComp {
         map<int, Reserva*> getReservas();
         float getPromedio();
         set<DTCalificacion> getComentarios();
-        void agregarReserva(int, Reserva*);
-        void agregarHabitacion(int,Habitacion*);
         
 };
 

@@ -39,10 +39,3 @@ set<DTCalificacion> DataHostalComp::getComentarios(){
     return ColCalif;
 }
 
-void DataHostalComp::agregarReserva(int cod, Reserva* Res){
-	ColReservas[cod]=Res;
-}
-
-void DataHostalComp::agregarHabitacion(int num, Habitacion* Hab){
-	ColHabitaciones[num]=Hab;
-}
