@@ -23,6 +23,8 @@ class DataHostalComp {
         string getNombre();
         string getDireccion();
         int getTelefono();
+        float getPromedio();
+        
         Set(DTHabitacion) getHabitaciones();
         Set(DTReserva) getReservas();
         float getPromedio();
