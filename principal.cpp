@@ -1,7 +1,6 @@
 //#include "include/clases/Huesped.h"
 //#include "include/sistema/ControladorUsuario.h"
 #include "include/sistema/ControladorHostal.h"
-//#include "include/clases/Reserva.h"
 //#include "include/datatypes/DTCal.h"
 //#include "include/clases/Empleado.h"
 
