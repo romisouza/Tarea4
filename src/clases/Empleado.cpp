@@ -4,6 +4,7 @@ Empleado::Empleado(string nom,string mail,string pass, CargoEmpleado car):Usuari
 	nombre = nom;
 	email = mail;
 	password = pass;
+	hostalAsociado = NULL;
 	cargo = car;
 }
 
