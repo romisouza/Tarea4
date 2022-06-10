@@ -4,7 +4,7 @@
 #include "../../include/clases/Reserva.h"
 #include "../../include/clases/Calificacion.h"
 #include <iostream>
-#include <set>
+#include <list>
 #include <map>
 using namespace std;
 
@@ -20,7 +20,7 @@ class DataHostalComp {
         float promedio;
         map<int, Habitacion*> ColHabit;
         map<int,Reserva*>  ColRes;
-        set<DTCalificacion> ColCalif;
+        list<DTCalificacion> ColCalif;
     public:
         DataHostalComp();
         DataHostalComp(std::string,std::string,int,float);
@@ -31,7 +31,7 @@ class DataHostalComp {
         float getPromedio();
         map<int, Habitacion*> getHabitaciones();
         map<int, Reserva*> getReservas();
-        set<DTCalificacion> getComentarios();
+        list<DTCalificacion> getComentarios();
         
 };
 

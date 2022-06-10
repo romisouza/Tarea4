@@ -96,11 +96,11 @@ void ControladorHostal::ConfirmarAsignacionDeEmpleado(){
 }
 
 void ControladorHostal::CancelarAsignacionDeEmpleado(){
-	ControladorUsuario* cu = ControladorUsuario::getInstance();
+	/*ControladorUsuario* cu = ControladorUsuario::getInstance();
 	ingresarHostal(NULL);
 	ingresarEmpleado(NULL);
 	cu->ingresarEmpleadoPunt(NULL);
-	cu->ingresarCargo(NULL);
+	cu->ingresarCargo(NULL);*/
 }
 
 set<DTHostalProm> ControladorHostal::ObtenerHostalesProm(){}
@@ -154,12 +154,12 @@ void ControladorHostal::ResponderComentarios (std::string emailHuesp, int codigo
 set<DTCal> ControladorHostal::ObtenerComentariosAResponder(std::string email) {}
 
 DataHostalComp ControladorHostal::ObtenerHostalComp(std::string nombreHostal){
-	/*Hostal* Hst=ColHostales.find(nombreHostal)->second;
+	Hostal* Hst=ColHostales.find(nombreHostal)->second;
 	DataHostalComp HstSel;
 	if (Hst->getNombre()== nombreHostal){
 		HstSel= Hst->getDTHostal();
 	}
-	return HstSel;*/
+	return HstSel;
 }
 
 set<DTReservaComp> ControladorHostal::ObtenerReservasComp(std::string nombreHostal){}
