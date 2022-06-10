@@ -39,7 +39,7 @@ map<int, Reserva*> DataHostalComp::getReservas(){
     return ColRes;
 }
 
-set<DTCalificacion> DataHostalComp::getComentarios(){
+list<DTCalificacion> DataHostalComp::getComentarios(){
     return ColCalif;
 }
 
