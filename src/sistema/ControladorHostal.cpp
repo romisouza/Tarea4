@@ -100,7 +100,7 @@ void ControladorHostal::CancelarAsignacionDeEmpleado(){
 	ingresarHostal(NULL);
 	ingresarEmpleado(NULL);
 	cu->ingresarEmpleadoPunt(NULL);
-	cu->ingresarCargo(NULL);
+	//cu->ingresarCargo(NULL);
 }
 
 set<DTHostalProm> ControladorHostal::ObtenerHostalesProm(){}
