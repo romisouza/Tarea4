@@ -47,7 +47,7 @@ void ControladorUsuario::IngresarEmpleado(string nombre,string email,string pass
 
 void ControladorUsuario::ConfirmarAltaUsuario(){
 	/*bool esta;
-	if (cargoIngresadonombreIngresado) {//Si cargoIngresado es Nul, entonces se ingreso un huesp
+	if (cargoIngresado != "") {//Si cargoIngresado es Nul, entonces se ingreso un huesp
 		if (ColHuespedes.find(emailIngresado) == ColHuespedes.end())
 			esta = false;
 		else 
