@@ -33,20 +33,20 @@ set<std::string> ControladorHostal::ObtenerNombreHostales() {
 }
 
 void ControladorHostal::asignarHab(std::string nombreHostal, int num, float precio, int capacidad){
-	numero = num;
+	/*numero = num;
 	precioNoche = precio;
 	capacidad = capacidad;
-	hostalIngresado = ColHostales.find(nombreHostal)->second;
+	hostalIngresado = ColHostales.find(nombreHostal)->second;*/
 }
 
 void ControladorHostal::registrarHab(){
-	//se anade una nueva habitacion al hostal seleccionado con los datos de la habi recordada ant
+/*	//se anade una nueva habitacion al hostal seleccionado con los datos de la habi recordada ant
 	//se crea una instancia de hab con los datos ing, se cea un link de la instancia hab y hostal, y se 
 	//libera la mem asociada a hab hostal elegido
 	Habitacion* hab = new Habitacion(numero, precioNoche, capacidad);
 	
     //res?? = Reserva*;
-
+*/
 
 }
 
@@ -55,49 +55,49 @@ void ControladorHostal::cancelarAltaHabitacion(){
 }
 
 list<DTEmpleado> ControladorHostal::ObtenerDtEmpleado(std::string nombreHostal){
-	/*list<DTEmpleado> dtemps;
+	list<DTEmpleado> dtemps;
 	Hostal* h = ColHostales.find(nombreHostal)->second;
 	ingresarHostal(h);
 	if(h->getNombre()==nombreHostal){
 		ControladorUsuario* cu = ControladorUsuario::getInstance();
 		auto iter = cu->getColEmpleados().begin();
 		while(iter!=cu->getColEmpleados().end()){
-			Empleado* emp= h->getColEmpleados().find(iter->second->getEmail())->second;
-			if(iter->second->getEmail()==emp->getEmail()){
+			Empleado* emp= iter->second;
+			if(iter->second->getHostalAsociado()==NULL){
 				DTEmpleado dtemp = DTEmpleado(emp->getNombre(),emp->getEmail(),emp->getCargoEmpleado());
 				dtemps.push_back(dtemp);			
 				++iter;			
 			}
 		}
 	}
-	return dtemps;*/
+	return dtemps;
 }
 
 void ControladorHostal::SeleccionarEmpleado(CargoEmpleado cargoEmp, std::string emailEmp){
-	/*ControladorUsuario* cu = ControladorUsuario::getInstance();
-	Empleado* emp = cu->getColEmpleados().find(emailEmp);
+	ControladorUsuario* cu = ControladorUsuario::getInstance();
+	Empleado* emp = cu->getColEmpleados().find(emailEmp)->second;
 	if(emp->getEmail()==emailEmp){
 		ingresarEmpleado(emp);
 		cu->ingresarEmpleadoPunt(emp);
 		cu->ingresarCargo(cargoEmp);
-	}*/
+	}
 }
 
 void ControladorHostal::ConfirmarAsignacionDeEmpleado(){
-	/*ControladorUsuario* cu = ControladorUsuario::getInstance();
+	ControladorUsuario* cu = ControladorUsuario::getInstance();
 	Empleado* emp = cu->getEmpleadoIngresado();
 	emp->setCargoEmpleado(cu->getCargoIngresado());
 	emp->setHostalAsociado(hostalIngresado);
 	hostalIngresado->getColEmpleados().emplace(emp->getEmail(),emp);
 	ingresarHostal(NULL);
-	cu->ingresarEmpleadoPunt(NULL);*/
+	cu->ingresarEmpleadoPunt(NULL);
 	
 }
 
 void ControladorHostal::CancelarAsignacionDeEmpleado(){
-	/*ControladorUsuario* cu = ControladorUsuario::getInstance();
+	ControladorUsuario* cu = ControladorUsuario::getInstance();
 	ingresarHostal(NULL);
-	cu->ingresarEmpleadoPunt(NULL);*/
+	cu->ingresarEmpleadoPunt(NULL);
 }
 
 set<DTHostalProm> ControladorHostal::ObtenerHostalesProm(){}
