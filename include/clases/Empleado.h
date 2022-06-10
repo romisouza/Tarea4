@@ -10,9 +10,9 @@
 #include "../../include/datatypes/DTEmpleado.h"
 #include <iostream>
 using namespace std;
-enum CargoEmpleado {Administracion, Limpieza, Recepcion, Infraestructura};
+class Hostal;
 
-class Empleado: public Usuario, IObserver {
+class Empleado: public Usuario{//, IObserver {
 	private:
 		CargoEmpleado cargo;
 	public:

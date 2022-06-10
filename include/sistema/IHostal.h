@@ -15,7 +15,7 @@
 using namespace std;
 
 class IHostal{
-    public:
+    public:/*
         virtual void agregarHostal(string, string)=0;
         virtual set<DTCal> ObtenerComentariosAResponder(string)=0;
         virtual void ResponderComentario(string, int, string)=0;
@@ -30,33 +30,33 @@ class IHostal{
         virtual void cancelarReserva()=0;
         virtual set<DTReserva> DatosHuesped(string, string)=0;
         virtual void ReservaNCElegida(int)=0;
-        virtual void DatosHuesped(string, string)=0;
+        //virtual void DatosHuesped(string, string)=0;
         virtual void registarHab()=0;
         virtual void cancelarAlta()=0;
         virtual void asginarHab(string, int, float, int)=0;
-        virtual set<string> ObtenerHostales()=0;
+        //virtual set<string> ObtenerHostales()=0;
         virtual set<DTIdEstadia> SeleccionarHostal(string)=0;
         virtual DataEstadia SeleccionarEstadia(DTIdEstadia)=0;
         virtual DTCalificacion MostrarCalificacion()=0;
         virtual DTReserva MostrarInfoReserva()=0;
-        virtual set<DTEmpleado> SeleccionarHostal(string)=0;
+        //virtual set<DTEmpleado> SeleccionarHostal(string)=0;
         virtual void SeleccionarEmpleado(CargoEmpleado,string)=0;
         virtual void ConfirmarAsignacionAUusario()=0;
         virtual void CancelarAsignacionAUusario()=0;
-        virtual set<DTReservaComp> SeleccionarHostal(string)=0;
+        //virtual set<DTReservaComp> SeleccionarHostal(string)=0;
         virtual set<string> ConsultarTop3Hostal(string)=0;
-        virtual set<DTCalificacion> SeleccionarHostal(string)=0;
-        virtual Empleado SeleccionarEmpleado(CargoEmpleado, string)=0;
-        virtual set<DTReserva> SeleccionarHostal(string)=0;
+        virtual set<DTCalificacion> ObtenerCalificaciones(string)=0;
+        //virtual Empleado SeleccionarEmpleado(CargoEmpleado, string)=0;
+        //virtual set<DTReserva> SeleccionarHostal(string)=0;
         virtual void SeleccionarReserva(int)=0;
         virtual void ConfirmarEliminarReserva()=0;
-        virtual void SeleccionarHostal(string)=0;
+        //virtual void SeleccionarHostal(string)=0;
         virtual set<DTIdEstadia> ListaEstadiasFInalizada(string)=0;
-        virtual void SeleccionarEstadia(DTIdEstadia)=0;
+       // virtual void SeleccionarEstadia(DTIdEstadia)=0;
         virtual void ConfirmarCalificacion(string, int)=0;
-        virtual DTHostalComp SeleccionarHostal(string)=0;
+        virtual DataHostalComp ObtenerHostalComp(string)=0;
         virtual void CancelarBajaReserva()=0;
-        virtual ~IHostal(){}; //vacio
+        virtual ~IHostal(){}; //vacio*/
 };
 
 #endif

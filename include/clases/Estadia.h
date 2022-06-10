@@ -7,8 +7,13 @@
 #include "../../include/datatypes/DataEstadia.h"
 #include "../../include/datatypes/DTCalificacion.h"
 #include "../../include/clases/Huesped.h"
-#include "../../include/clases/Reserva.h"
+#include "Reserva.h"
 #include "../../include/clases/Calificacion.h"
+
+class Reserva;
+class Huesped;
+class Calificacion;
+class DTFecha;
 
 class Estadia{
     private:

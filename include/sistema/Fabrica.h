@@ -10,7 +10,7 @@ class Fabrica{
     public:
         static Fabrica * getInstancia();
         static IUsuario * getIUsuario();
-        static IHostal * getIHostal;
+        static IHostal * getIHostal();
 
 };
 

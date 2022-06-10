@@ -12,7 +12,7 @@ class ReservaGrupal:public Reserva{
         set<Huesped> huespedes;
         int TotalHuesp;
     public:
-        ReservaGrupal(int codigo, DTFecha checkin, DTFecha checkout, EstadoReserva estado, Habitacion* hab,Huesped* huesp, set<Huesped*> huespedes,int TotalHuespedes);
+        //ReservaGrupal(int codigo, DTFecha checkin, DTFecha checkout, EstadoReserva estado, Habitacion* hab,Huesped* huesp, set<Huesped*> huespedes,int TotalHuespedes);
         set<Huesped> getHuespedes();
         int getTotalHuesp();
         void setTotalHuesp();

@@ -1,4 +1,5 @@
-#include Fabrica.h
+#include "../../include/sistema/Fabrica.h"
+
 
 Fabrica * Fabrica::instancia=NULL;
 
@@ -8,14 +9,14 @@ Fabrica * Fabrica::getInstancia(){
     return instancia;
 }
 
-IUsuario Fabrica::getIUsuario(){
-    if(this->usuario==NULL)
+IUsuario* Fabrica::getIUsuario(){
+   /* if(this->usuario==NULL)
         this->usuario = new ControladorUsuario();
-    return this->usuario;
+    return this->usuario;*/
 }
 
-IHostal Fabrica::getIHostal(){
-    if(this->hostal==NULL)
+IHostal* Fabrica::getIHostal(){
+   /* if(this->hostal==NULL)
         this->hostal = new ControladorHostal();
-    return this->hostal;
+    return this->hostal;*/
 }

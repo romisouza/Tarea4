@@ -1,5 +1,7 @@
 #include "../../include/datatypes/DTHabitacion.h"
 
+DTHabitacion::DTHabitacion(){}
+
 DTHabitacion::DTHabitacion(int num, float precio, int cap) {
 	numero = num;
 	precioNoche = precio;

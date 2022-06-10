@@ -12,7 +12,7 @@ class ControladorUsuario {
 	private:
 		static ControladorUsuario* instancia;
 		map<std::string, Empleado *> ColEmpleados; //clave email
-		map<std::string, Huesped *> ColHuesped; //clave email
+		map<std::string, Huesped *> ColHuespedes; //clave email
 		
 		//Para ingresar huesped y empleado
 		std::string nombreIngresado;
@@ -20,7 +20,7 @@ class ControladorUsuario {
 		std::string passIngresada;
 		bool esFingIngresado;
 		CargoEmpleado cargoIngresado;
-		
+		Empleado* empleadoIngresado;
 		ControladorUsuario();
 		~ControladorUsuario();
 	public:
@@ -31,6 +31,8 @@ class ControladorUsuario {
 		void seleccionar(std::string mailHuesped);
 		void IngresarHuesped(std::string nombre,std::string email,std::string password,bool esFinger);
 		void IngresarEmpleado(std::string nombre,std::string email,std::string password,CargoEmpleado cargo);
+		void ingresarEmpleadoPunt(Empleado*);
+		void ingresarCargo(CargoEmpleado);
 		void ConfirmarAltaUsuario();
 		void CancelarAltaUsuario();
 		set<std::string> ObtenerUsuarios();

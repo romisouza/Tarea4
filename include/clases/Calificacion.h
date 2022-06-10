@@ -2,10 +2,11 @@
 #define CALIFICACION
 #include <string>
 #include <iostream>
-#include "../../include/datatypes/DTFecha.h"
-#include "../../include/datatypes/DTCalificacion.h"
 #include "../../include/clases/Estadia.h"
 using namespace std;
+
+class DTFecha;
+class Estadia;
 
 class Calificacion{
     private:
@@ -13,7 +14,7 @@ class Calificacion{
         int puntaje;
         string comentarioHuesp;
         string comentarioEmp;
-        Estadia* estadia;
+        Estadia *est;
     public:
         Calificacion();
         Calificacion(DTFecha, int, string, string, Estadia*);

@@ -1,8 +1,8 @@
 #ifndef DATAEMPLEADO
 #define DATAEMPLEADO
 #include <iostream>
-#include "../../include/clases/Empleado.h"
 using namespace std;
+enum CargoEmpleado {Administracion, Limpieza, Recepcion, Infraestructura};
 
 class DataEmpleado{
     private:

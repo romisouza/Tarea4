@@ -6,8 +6,7 @@
 #include "../../include/clases/Huesped.h"
 #include "../../include/clases/Reserva.h"
 
-class DTReservaComp
-{
+class DTReservaComp {
 private:
     int codigo;
     DTFecha checkIn;

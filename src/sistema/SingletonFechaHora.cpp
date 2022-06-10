@@ -1,4 +1,4 @@
-#include SingletonFechaHora.h
+#include "../../include/sistema/SingletonFechaHora.h"
 
 SingletonFechaHora *SingletonFechaHora::instancia =NULL;
 

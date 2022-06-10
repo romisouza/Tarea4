@@ -8,6 +8,10 @@
 #include <map>
 using namespace std;
 
+class Habitacion;
+class Reserva;
+class DTCalificacion;
+
 class DataHostalComp {
     private:
         std::string nombre;
@@ -16,8 +20,9 @@ class DataHostalComp {
         float promedio;
         map<int, Habitacion*> ColHabit;
         map<int,Reserva*>  ColRes;
-        set<Calificacion> ColCalif;
+        set<DTCalificacion> ColCalif;
     public:
+        DataHostalComp();
         DataHostalComp(std::string,std::string,int,float);
         ~DataHostalComp();
         std::string getNombre();
@@ -26,7 +31,6 @@ class DataHostalComp {
         float getPromedio();
         map<int, Habitacion*> getHabitaciones();
         map<int, Reserva*> getReservas();
-        float getPromedio();
         set<DTCalificacion> getComentarios();
         
 };

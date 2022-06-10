@@ -2,7 +2,7 @@
 #define DTEMPLEADO
 #include <iostream>
 using namespace std;
-#include "../../include/clases/Empleado.h"
+#include "../../include/datatypes/DataEmpleado.h"
 
 class DTEmpleado {
     private:

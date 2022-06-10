@@ -14,6 +14,15 @@ ControladorUsuario* ControladorUsuario::getInstance(){
 map<string,Empleado*> ControladorUsuario::getColEmpleados(){
 	return ColEmpleados;
 }
+
+void ControladorUsuario::ingresarEmpleadoPunt(Empleado* emp){
+	empleadoIngresado = emp;
+}
+
+void ControladorUsuario::ingresarCargo(CargoEmpleado cargo){
+	cargoIngresado = cargo;
+}
+
 void ControladorUsuario::IngresarHuesped(string nombre,string email,string password,bool esFinger){
 	nombreIngresado = nombre;	
 	emailIngresado = email;
@@ -29,15 +38,15 @@ void ControladorUsuario::IngresarEmpleado(string nombre,string email,string pass
 }
 
 void ControladorUsuario::ConfirmarAltaUsuario(){
-	bool esta;
-	if (cargoIngresado == "") {//Si cargoIngresado es Nul, entonces se ingreso un huesp
-		if (ColHuesped.find(emailIngresado) == ColHuesped.end())
+	/*bool esta;
+	if (cargoIngresadonombreIngresado) {//Si cargoIngresado es Nul, entonces se ingreso un huesp
+		if (ColHuespedes.find(emailIngresado) == ColHuespedes.end())
 			esta = false;
 		else 
 			esta = true;
 		if (!esta){
-			Huesped huesp = new Huesped(nombreIngresado,emailIngresado,passIngresada,esFingIngresado);
-			ColHuesped.insert({emailIngresado,huesp});
+			Huesped *huesp = new Huesped(nombreIngresado,emailIngresado,passIngresada,esFingIngresado);
+			ColHuespedes.insert({emailIngresado,huesp});
 		}
 		else
 			throw std::invalid_argument("Ya existe un huesped con el mismo email.");   
@@ -48,23 +57,23 @@ void ControladorUsuario::ConfirmarAltaUsuario(){
 		else 
 			esta = true;
 		if (!esta){
-			Empleado emp = new Empleado(nombreIngresado,emailIngresado,passIngresada,cargoIngresado);
+			Empleado *emp = new Empleado(nombreIngresado,emailIngresado,passIngresada,cargoIngresado);
 			ColEmpleados.insert({emailIngresado,emp});
 		}
 		else 
 			throw std::invalid_argument("Ya existe un empleado con el mismo email.");   
 		
-	}
+	}*/
 }
 
 void ControladorUsuario::CancelarAltaUsuario(){
-	nombreIngresado = "";
+	/*nombreIngresado = "";
 	emailIngresado = "";
 	passIngresada = "";
-	if (cargoIngresado == "") //Si cargoIngresado es Null, entonces se ingreso un huesp
+	if (cargoIngresado.compare("")==0) //Si cargoIngresado es Null, entonces se ingreso un huesp
 		esFingIngresado = "";
 	else // sino se ingreso un emp
-		cargoIngresado = "";
+		cargoIngresado = ;*/
 }
 set<DTCal> ControladorUsuario::obtenerComentariosAResponder(string mail){
 }
@@ -76,6 +85,16 @@ void ControladorUsuario::seleccionar(string mailHuesped){
 }
 
 set<string> ControladorUsuario::ObtenerUsuarios(){
+		set<string> users;
+		for( map<std::string, Huesped*>::iterator i= ColHuespedes.begin(); i != ColHuespedes.end(); i++){
+			users.insert((*i).first);
+			//cout << (*i).first << ": " << (*i).second << endl;
+		} 
+		for( map<std::string, Empleado*>::iterator i= ColEmpleados.begin(); i != ColEmpleados.end(); i++){
+			users.insert((*i).first);
+			//cout << (*i).first << ": " << (*i).second << endl;
+		} 
+		
 }
 
 DTHuesped ControladorUsuario::SeleccionarHuesped(string email){

@@ -12,7 +12,9 @@
 #include "../../include/datatypes/DTIdEstadia.h"
 
 enum EstadoReserva {Abierta, Cerrada, Cancelada};
-
+class Habitacion;
+class Huesped;
+class Estadia;
 using namespace std;
 
 class Reserva{
@@ -27,7 +29,7 @@ class Reserva{
         Estadia *est;
     public:
         Reserva();
-        Reserva::Reserva(int,DTFecha,DTFecha,DTFecha,Habitacion*,Huesped*,Estadia*);
+        Reserva(int,DTFecha,DTFecha,DTFecha,Habitacion*,Huesped*,Estadia*);
         int getCodigo();
         DTFecha getCheckIn();
         DTFecha getCheckOut();

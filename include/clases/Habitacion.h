@@ -8,6 +8,9 @@
 #include "../../include/clases/Hostal.h"
 using namespace std;
 
+class Hostal;
+class Reserva;
+
 class Habitacion{
 private:
     int numero; 
@@ -26,6 +29,7 @@ public:
     DTHabitacion getHabitacion();
     void consultarReservas(DTFecha, DTFecha);
     void reservar(int, DTFecha, DTFecha, Huesped);
+    ~Habitacion();
 };
 
 #endif

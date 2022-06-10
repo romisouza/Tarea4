@@ -4,12 +4,12 @@ Calificacion::Calificacion(){//Implementar
 
 }
 
-Calificacion::Calificacion(DTFecha Fecha, int Puntaje,std::string ComenHuesp,std::string ComenEmp, Estadia* est){
+Calificacion::Calificacion(DTFecha Fecha, int Puntaje,std::string ComenHuesp,std::string ComenEmp, Estadia* estt){
     fecha=Fecha;
     puntaje=Puntaje;
     comentarioHuesp=ComenHuesp;
     comentarioEmp= ComenEmp;
-    estadia=est;
+    est=estt;
 }
 
 DTFecha Calificacion::getFecha(){
@@ -29,7 +29,7 @@ std::string Calificacion::getComentarioEmp(){
 }
 
 Estadia* Calificacion::getEstadia(){
-    return estadia;
+    return est;
 }
 
 void Calificacion::setFecha(DTFecha FechaNueva){
@@ -48,8 +48,8 @@ void Calificacion::setComentarioEmp(std::string ComenNuevo){
     comentarioEmp=ComenNuevo;
 }
 
-void Calificacion::setEstadia(Estadia* est){
-    estadia=est;
+void Calificacion::setEstadia(Estadia* estt){
+    est=estt;
 }
 
 DTCalificacion Calificacion::getDTCalificacion(){

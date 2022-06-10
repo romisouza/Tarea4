@@ -2,6 +2,8 @@
 #define HOSTAL 
 #include <iostream>
 #include <set>
+#include <map>
+#include <list>
 #include "../../include/datatypes/DTCal.h"
 #include "../../include/datatypes/DataHostalComp.h"
 #include "../../include/datatypes/DTIdEstadia.h"
@@ -14,6 +16,12 @@
 #include "Empleado.h"
 #include "Calificacion.h"
 
+class Empleado;
+class Reserva;
+class Habitacion;
+class Calificacion;
+class DataHostalComp;
+
 using namespace std;
 
 
@@ -25,11 +33,11 @@ class Hostal{
 		int promedio;
 		map<int,Reserva*> ColReservas; // clave codigo
 		map<int, Habitacion*> ColHabitaciones; //clave numero 
-		set<Calificacion> ColCal;
+		list<Calificacion*> ColCal;
 		map<std::string,Empleado*> ColEmpleados;
 	public:
 		Hostal();
-		Hostal(std::string,std::string,int,int); //faltan las colecciones de reservas y habitaciones
+		Hostal(std::string,std::string,int,int); 
 		~Hostal();
 		map<std::string,Empleado*> getColEmpleados();
 		std::string getNombre();
@@ -38,13 +46,11 @@ class Hostal{
 		int getPromedio();
 		map<int,Reserva*> getColReservas();
 		map<int, Habitacion*> getColHabitaciones();
-		set<Calificacion> getColCal();
+		list<Calificacion*> getColCal();
 		void setNombre(std::string);
 		void setDireccion(std::string);
 		void setTelefono(int);
 		void setPromedio(int);
-		void agregarReserva(int, Reserva*);//nueva
-		void agregarHabitacion(int, Habitacion*);//nueva
 		set<DTCal> obtenerHostal();
 		void BuscarReservas();
 		void EliminarRes(Reserva*);

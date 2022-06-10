@@ -7,7 +7,10 @@ Hostal::Hostal(std::string nom,std::string direc,int tel,int prom) {
 	direccion = direc;
 	telefono = tel;
 	promedio = prom; 
-
+	map<int,Reserva*> ColReservas;
+	map<int, Habitacion*> ColHabitaciones;
+	list<Calificacion*> ColCal;
+	map<std::string,Empleado*> ColEmpleados;
 }
 
 Hostal :: ~Hostal() {}
@@ -56,7 +59,7 @@ map<int, Habitacion*> Hostal::getColHabitaciones(){
 	return ColHabitaciones;
 }
 
-set<Calificacion> Hostal::getColCal(){
+list<Calificacion*> Hostal::getColCal(){
 	return ColCal;
 }
 
@@ -70,17 +73,30 @@ void Hostal::EliminarRes(Reserva* res){}
 void Hostal::AgregarComentarios(std::string comentario, int puntaje){}
 
 DataHostalComp Hostal::getDTHostal(){
-DataHostalComp Hst=DataHostalComp(getNombre(),getDireccion(),getTelefono(),getPromedio());
+/*DataHostalComp Hst=DataHostalComp(getNombre(),getDireccion(),getTelefono(),getPromedio());
+	map<int,Reserva*> ResHst=Hst.getReservas();
 	map<int,Reserva*> Res=getColReservas();
 	for(auto it=Res.begin();it!=Res.end();it++){
-		Hst.agregarReserva(it->first,it->second);	
+		ResHst.emplace(it->first,it->second);	
 	}
+	map<int, Habitacion*> HabHst= Hst.getHabitaciones();
 	map<int, Habitacion*> Hab=getColHabitaciones();
-	for(auto itH=Hab.begin();itH!=Hab.end();it++){
-		Hst.agregarHabitacion(itH->first,itH->second);
+	for(auto itH=Hab.begin();itH!=Hab.end();itH++){
+		HabHst.emplace(itH->first,itH->second);
 	}
-	//Falta lo de calificacion
+	ColHabitaciones=Hab;
+	list<Calificacion*> Cal=getColCal();
+	list<DTCalificacion> Cali=Hst.getComentarios();
+	list<Calificacion*>:: iterator it=Cal.begin();
+	while(it!=Cal.end()){
+		Calificacion* CalAux= *it;
+		DTCalificacion aux= DTCalificacion(CalAux->getPuntaje(),CalAux->getComentarioHuesp(),CalAux->getComentarioEmp());
+		Cali.push_back(aux);
+		it++;
+	}
+	return Hst;*/
 }
+
 
 DTIdEstadia Hostal::accesoaReservas(){}
 

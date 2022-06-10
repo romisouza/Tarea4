@@ -1,5 +1,9 @@
 #include "../../include/datatypes/DataHostalComp.h"
 
+DataHostalComp::DataHostalComp(){
+
+}
+
 DataHostalComp::DataHostalComp(std::string nom,std::string dir,int tel,float prom){
     nombre = nom;
     direccion = dir;
