@@ -90,6 +90,7 @@ void ControladorHostal::ConfirmarAsignacionDeEmpleado(){
 	emp->setHostalAsociado(hostalIngresado);
 	hostalIngresado->getColEmpleados().emplace(emp->getEmail(),emp);
 	ingresarHostal(NULL);
+	ingresarEmpleado(NULL);
 	cu->ingresarEmpleadoPunt(NULL);
 	
 }
@@ -97,7 +98,9 @@ void ControladorHostal::ConfirmarAsignacionDeEmpleado(){
 void ControladorHostal::CancelarAsignacionDeEmpleado(){
 	ControladorUsuario* cu = ControladorUsuario::getInstance();
 	ingresarHostal(NULL);
+	ingresarEmpleado(NULL);
 	cu->ingresarEmpleadoPunt(NULL);
+	cu->ingresarCargo(NULL);
 }
 
 set<DTHostalProm> ControladorHostal::ObtenerHostalesProm(){}
