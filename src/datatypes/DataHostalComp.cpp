@@ -27,6 +27,10 @@ int DataHostalComp::getTelefono(){
     return telefono;
 }
 
+float DataHostalComp::getPromedio(){
+        return promedio;
+}
+
 map<int, Habitacion*> DataHostalComp::getHabitaciones(){
     return ColHabit;
 }
