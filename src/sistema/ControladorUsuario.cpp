@@ -15,6 +15,14 @@ map<string,Empleado*> ControladorUsuario::getColEmpleados(){
 	return ColEmpleados;
 }
 
+Empleado* ControladorUsuario::getEmpleadoIngresado(){
+	return empleadoIngresado;
+}
+
+CargoEmpleado ControladorUsuario::getCargoIngresado(){
+	return cargoIngresado;
+}
+
 void ControladorUsuario::ingresarEmpleadoPunt(Empleado* emp){
 	empleadoIngresado = emp;
 }
@@ -113,6 +121,7 @@ void ControladorUsuario::AsignarCargoAEmpleado(){
 }
 
 void ControladorUsuario::BuscarHuesped(string email){
+	Huesped* Hsp= ColHuespedes.find(email)->second;
 }
 
 void ControladorUsuario::SuscribirEmpleado(string emp){

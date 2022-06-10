@@ -10,8 +10,16 @@ Empleado::Empleado(string nom,string mail,string pass, CargoEmpleado car):Usuari
 Empleado::~Empleado(){
 }
 
+Hostal* Empleado::getHostalAsociado(){
+	return hostalAsociado;
+}
+
 CargoEmpleado Empleado::getCargoEmpleado(){
 	return cargo;
+}
+
+void Empleado::setHostalAsociado(Hostal* host){
+	hostalAsociado = host;
 }
 
 void Empleado::setCargoEmpleado(CargoEmpleado car){

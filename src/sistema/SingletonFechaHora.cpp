@@ -2,7 +2,7 @@
 
 SingletonFechaHora *SingletonFechaHora::instancia =NULL;
 
-SingletonFechaHora *SingletonFechaHora::getInstancia(){
+SingletonFechaHora *SingletonFechaHora::getInstance(){
     if(instancia==NULL)
         instancia = new SingletonFechaHora;
     return instancia

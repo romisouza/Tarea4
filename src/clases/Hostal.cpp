@@ -74,24 +74,30 @@ void Hostal::AgregarComentarios(std::string comentario, int puntaje){}
 
 DataHostalComp Hostal::getDTHostal(){
 /*	DataHostalComp Hst=DataHostalComp(getNombre(),getDireccion(),getTelefono(),getPromedio());
+	cout<< Hst.getNombre()<< "," << Hst.getDireccion() <<","<< Hst.getTelefono() << "," << Hst.getPromedio()<< endl;
 	map<int,Reserva*> ResHst=Hst.getReservas();
 	map<int,Reserva*> Res=getColReservas();
+	cout<< "Las reservas asociadas son:"<< endl;
 	for(auto it=Res.begin();it!=Res.end();it++){
-		ResHst.emplace(it->first,it->second->getDTReserva());	
+		ResHst.emplace(it->first,it->second->getDTReserva());
+		cout<< it->second->getCodigo(), it->second->getCheckIn(), it->second->getCheckOut();
 	}
 	map<int, Habitacion*> HabHst= Hst.getHabitaciones();
 	map<int, Habitacion*> Hab=getColHabitaciones();
+	cout<< "Las habitaciones son:"<< endl;
 	for(auto itH=Hab.begin();itH!=Hab.end();itH++){
 		HabHst.emplace(itH->first,itH->second->getHabitacion());
+		cout<< itH->second->getNumero(), itH->second->getPrecioNoche(), itH->second->getPrecioNoche();
 	}
 	ColHabitaciones=Hab;
 	list<Calificacion*> Cal=getColCal();
 	set<DTCalificacion> Cali=Hst.getComentarios();
 	list<Calificacion*>:: iterator it=Cal.begin();
+	cout<< "Las comentarios son:"<< endl;
 	while(it!=Cal.end()){
-		Calificacion* CalAux= *it;
-		DTCalificacion aux= CalAux->getDTCalificacion();
+		DTCalificacion aux=(*it)->getDTCalificacion();
 		Cali.emplace(aux);
+		cout<< (*it)->getPuntaje(), (*it)->getComentarioEmp(), (*it)->getComentarioHuesp();
 		it++;
 	}
 	return Hst;*/

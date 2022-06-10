@@ -17,6 +17,7 @@
 #include "../../include/datatypes/DTCalificacion.h"
 #include "../../include/datatypes/DTReservaComp.h"
 #include "../../include/sistema/ControladorUsuario.h"
+#include "../../include/sistema/SingletonFechaHora.h"
 using namespace std;
 
 class ControladorHostal:public IHostal {
@@ -25,6 +26,12 @@ class ControladorHostal:public IHostal {
 		map<std::string,Hostal*> ColHostales; // clave nombre
 		Hostal* hostalIngresado;
 		Empleado* empleadoIngresado; 
+		
+		//para la habitacion
+		int numero; 
+    	float precioNoche;
+    	int capacidad;
+		
 		ControladorHostal();
 		~ControladorHostal();
 	public: 

@@ -16,14 +16,14 @@ using namespace std;
 
 class IHostal{
     public:
-    	virtual void ingresarHostal(Hostal*)=0;
+    	/*virtual void ingresarHostal(Hostal*)=0;
 		virtual void ingresarEmpleado(Empleado*)=0;
 		virtual void agregarHostal(std::string, std::string, int)=0;//Alta Hostal
 		virtual set<std::string> ObtenerNombreHostales()=0; //Alta habitacion (ObtenerHostales)
 		virtual void asignarHab(std::string, int, float, int);//Alta habitacion; 
 		virtual void registrarHab()=0; //Alta habitacion ; 
 		virtual void cancelarAltaHabitacion()=0; //Alta habitacion (cancelarAlta)
-		virtual list<DTEmpleado> ObtenerDtEmpleado(std::string nombreHostal)=0; //Asignar Empleado a Hostal (SelecccionarHostal)
+		virtual list<DTEmpleado> ObtenerDtEmpleado(std::string)=0; //Asignar Empleado a Hostal (SelecccionarHostal)
 		virtual void SeleccionarEmpleado(CargoEmpleado, std::string)=0;//Asignar emp a hostal
 		virtual void ConfirmarAsignacionDeEmpleado()=0;//asignar emp a host (confirmarAsignacionAUsuario)
 		virtual void CancelarAsignacionDeEmpleado()=0;//asignar emp a host (cancelarAsignacionAUsuario)
@@ -58,7 +58,7 @@ class IHostal{
 		virtual void SeleccionarReserva(int)=0;//baja reserva 
 		virtual void ConfirmarEliminarReserva()=0;//baja reserva
 		virtual void CancelarBajaReserva()=0;//baja reserva	
-        virtual ~IHostal(){}; //vacio
+        virtual ~IHostal(){}; //vacio*/
 };
 
 #endif

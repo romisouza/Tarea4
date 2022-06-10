@@ -28,6 +28,8 @@ class ControladorUsuario {
 		map<std::string,Empleado*> getColEmpleados();
 		set<DTCal> obtenerComentariosAResponder(std::string mail);
 		set<std::string> obtenerHuespedes();
+		Empleado* getEmpleadoIngresado();
+		CargoEmpleado getCargoIngresado();
 		void seleccionar(std::string mailHuesped);
 		void IngresarHuesped(std::string nombre,std::string email,std::string password,bool esFinger);
 		void IngresarEmpleado(std::string nombre,std::string email,std::string password,CargoEmpleado cargo);

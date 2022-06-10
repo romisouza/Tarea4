@@ -9,7 +9,7 @@ class SingletonFechaHora{
         SingletonFechaHora();
     public:
         void SingletonFechaHora();
-        static SingletonFechaHora *getInstancia();
+        static SingletonFechaHora *getInstance();
         DTFecha FechaHoraSitema();
         void actualizarFechaSistema(int,int,int,int,int);
 

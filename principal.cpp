@@ -1,7 +1,7 @@
 //#include "include/clases/Huesped.h"
 //#include "include/sistema/ControladorUsuario.h"
 #include "include/sistema/ControladorHostal.h"
-//#include "include/sistema/IHostal.h"
+//#include "include/clases/Reserva.h"
 //#include "include/datatypes/DTCal.h"
 //#include "include/clases/Empleado.h"
 
@@ -29,5 +29,6 @@ int main(){
     cont->IngresarEmpleado(nombre,email,pass,cargo);*/
     ControladorHostal *crtl = ControladorHostal::getInstance();
     crtl->agregarHostal("hola","holi",29156480);
+
 return 0;
 }
