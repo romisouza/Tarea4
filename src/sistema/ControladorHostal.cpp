@@ -25,11 +25,11 @@ void ControladorHostal::agregarHostal(std::string nombre, std::string direccion,
 	ControladorHostal::ColHostales.insert(pair<string,Hostal*>(nombre,host)); 
 }
 set<std::string> ControladorHostal::ObtenerNombreHostales() {
-	set<string> hostales;
+	/*set<string> hostales;
 	for( map<std::string,Hostal*>:iterador i= ColHostales.begin(); i != ColHostales.end(); i++){
 		hostales.insert((*i).first);
 		//cout << (*i).first << endl;
-	}
+	}*/
 }
 
 void ControladorHostal::asignarHab(std::string nombreHostal, int num, float precio, int capacidad){
@@ -131,8 +131,8 @@ void ControladorHostal::ReservaNCElegida(int codigoRes){}
 void ControladorHostal::DatosHuesped(std::string nombreHostal,std::string email){}
 
 void ControladorHostal::SeleccionarHostal(std::string nomHostal){
-	Hostal* Hst=ColHostales.find(nomHostal)->second;
-	ingresarHostal(Hst);
+	/*Hostal* Hst=ColHostales.find(nomHostal)->second;
+	ingresarHostal(Hst);*/
 }
 
 set<DTIdEstadia> ControladorHostal::ListaEstadiasFinalizadas(std::string email){
