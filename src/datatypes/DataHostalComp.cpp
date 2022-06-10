@@ -28,7 +28,7 @@ int DataHostalComp::getTelefono(){
 }
 
 float DataHostalComp::getPromedio(){
-        return promedio;
+    return promedio;
 }
 
 map<int, Habitacion*> DataHostalComp::getHabitaciones(){
@@ -37,10 +37,6 @@ map<int, Habitacion*> DataHostalComp::getHabitaciones(){
 
 map<int, Reserva*> DataHostalComp::getReservas(){
     return ColRes;
-}
-
-float DataHostalComp::getPromedio(){
-    return promedio;
 }
 
 set<DTCalificacion> DataHostalComp::getComentarios(){

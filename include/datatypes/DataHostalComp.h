@@ -29,9 +29,6 @@ class DataHostalComp {
         std::string getDireccion();
         int getTelefono();
         float getPromedio();
-        set<DTHabitacion> getHabitaciones();
-        set<DTReserva> getReservas();
-        float getPromedio();
         map<int, Habitacion*> getHabitaciones();
         map<int, Reserva*> getReservas();
         set<DTCalificacion> getComentarios();

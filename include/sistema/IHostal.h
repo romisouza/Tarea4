@@ -15,48 +15,50 @@
 using namespace std;
 
 class IHostal{
-    public:/*
-        virtual void agregarHostal(string, string)=0;
-        virtual set<DTCal> ObtenerComentariosAResponder(string)=0;
-        virtual void ResponderComentario(string, int, string)=0;
-        virtual set<DTHostalProm> ObtenerHostales()=0;
-        virtual void ingresarDatosReserva(string, DTFecha, DTFecha, bool, int)=0;
-        virtual set<int> obtenerHabitacionesDisponibles(DTFecha, DTFecha)=0;
-        virtual void seleccionarHabitacion(int)=0;
-        virtual set<string> obtenerhuespedesRegistrados()=0;
-        virtual void seleccionarHuesped(string)=0;
-        virtual void confirmarAltaReserva()=0;
-        virtual int generarCodigoReserva()=0;
-        virtual void cancelarReserva()=0;
-        virtual set<DTReserva> DatosHuesped(string, string)=0;
-        virtual void ReservaNCElegida(int)=0;
-        //virtual void DatosHuesped(string, string)=0;
-        virtual void registarHab()=0;
-        virtual void cancelarAlta()=0;
-        virtual void asginarHab(string, int, float, int)=0;
-        //virtual set<string> ObtenerHostales()=0;
-        virtual set<DTIdEstadia> SeleccionarHostal(string)=0;
-        virtual DataEstadia SeleccionarEstadia(DTIdEstadia)=0;
-        virtual DTCalificacion MostrarCalificacion()=0;
-        virtual DTReserva MostrarInfoReserva()=0;
-        //virtual set<DTEmpleado> SeleccionarHostal(string)=0;
-        virtual void SeleccionarEmpleado(CargoEmpleado,string)=0;
-        virtual void ConfirmarAsignacionAUusario()=0;
-        virtual void CancelarAsignacionAUusario()=0;
-        //virtual set<DTReservaComp> SeleccionarHostal(string)=0;
-        virtual set<string> ConsultarTop3Hostal(string)=0;
-        virtual set<DTCalificacion> ObtenerCalificaciones(string)=0;
-        //virtual Empleado SeleccionarEmpleado(CargoEmpleado, string)=0;
-        //virtual set<DTReserva> SeleccionarHostal(string)=0;
-        virtual void SeleccionarReserva(int)=0;
-        virtual void ConfirmarEliminarReserva()=0;
-        //virtual void SeleccionarHostal(string)=0;
-        virtual set<DTIdEstadia> ListaEstadiasFInalizada(string)=0;
-       // virtual void SeleccionarEstadia(DTIdEstadia)=0;
-        virtual void ConfirmarCalificacion(string, int)=0;
-        virtual DataHostalComp ObtenerHostalComp(string)=0;
-        virtual void CancelarBajaReserva()=0;
-        virtual ~IHostal(){}; //vacio*/
+    public:
+    	virtual void ingresarHostal(Hostal*)=0;
+		virtual void ingresarEmpleado(Empleado*)=0;
+		virtual void agregarHostal(std::string, std::string, int)=0;//Alta Hostal
+		virtual set<std::string> ObtenerNombreHostales()=0; //Alta habitacion (ObtenerHostales)
+		virtual void asignarHab(std::string, int, float, int);//Alta habitacion; 
+		virtual void registrarHab()=0; //Alta habitacion ; 
+		virtual void cancelarAltaHabitacion()=0; //Alta habitacion (cancelarAlta)
+		virtual list<DTEmpleado> ObtenerDtEmpleado(std::string nombreHostal)=0; //Asignar Empleado a Hostal (SelecccionarHostal)
+		virtual void SeleccionarEmpleado(CargoEmpleado, std::string)=0;//Asignar emp a hostal
+		virtual void ConfirmarAsignacionDeEmpleado()=0;//asignar emp a host (confirmarAsignacionAUsuario)
+		virtual void CancelarAsignacionDeEmpleado()=0;//asignar emp a host (cancelarAsignacionAUsuario)
+		virtual set<DTHostalProm> ObtenerHostalesProm()=0; //Realizar reserva (ObtenerHostales)
+		virtual void ingresarDatosReserva(std::string, DTFecha, DTFecha, bool, int)=0;//realizar reserva
+		virtual set<int> obtenerHabitacionesDisponibles(DTFecha, DTFecha)=0;//realizar reserva
+		virtual void seleccionarHabitacion(int)=0; //realizar res
+		virtual set<std::string> obtenerHuespedesRegistrados()=0;//realizar res
+		virtual void seleccionarHuesped(std::string)=0;//realizar res
+		virtual void confirmarAltaReserva()=0;//realizar res
+		virtual int generarCodigoReserva()=0;//realizar res
+		virtual void cancelarAltaReserva()=0;//realizar res (cancelarReserva)
+		virtual set<std::string> ConsultarTop3Hostal();//Consultartop3
+		virtual set<DTCalificacion> ObtenerCalificaciones(std::string)=0;//Consultartop3 (ObtenerHostal)
+		virtual set<DTReserva> ObtenerReservasNC(std::string, std::string,int)=0;//registrar estadia (DatosHuesped)
+		virtual void ReservaNCElegida(int)=0;//registrar estadia
+		virtual void DatosHuesped(std::string,std::string)=0;//finalizar estadia NO SE QUE HACE LA FUNCION XD
+		virtual void SeleccionarHostal(std::string)=0;//calificar estadia
+		virtual set<DTIdEstadia> ListaEstadiasFinalizadas(std::string)=0;//calificar estadia
+		virtual void SeleccionarEstadia(DTIdEstadia)=0;//calificar estadia 
+		virtual void ConfirmarCalificacion (std::string, int)=0;//calificar estadiaDatoet
+		virtual set<DTCal> ObtenerComentariosAResponder(std::string)=0;//comentar calificacion
+		virtual void ResponderComentarios (std::string, int, std::string)=0;//comentarcalificacion
+		virtual DataHostalComp ObtenerHostalComp(std::string)=0;//Consulta Hostal (SeleccionarHostal)
+		virtual set<DTReservaComp> ObtenerReservasComp(std::string)=0;//consulta reserva (SeleccionarHostal)
+		virtual set<DTIdEstadia> ObtenerDTIdEstadia(std::string)=0;//consulta estadia (SeleccionarHostal)
+		virtual DataEstadia ObtenerinfoEstadia(DTIdEstadia)=0;//consulta estadia  (SeleccionarEstadia)
+		virtual DTCalificacion MostrarCalificacion()=0;//consulta estadia
+		virtual DTReserva MostrarInfoReserva()=0;//consulta estadia
+		virtual void LiberarMemoria()=0; //consulta estadia		
+		virtual set<DTReserva> ObtenerReservas(std::string)=0;//baja reserva (Selecccionar Hostal)
+		virtual void SeleccionarReserva(int)=0;//baja reserva 
+		virtual void ConfirmarEliminarReserva()=0;//baja reserva
+		virtual void CancelarBajaReserva()=0;//baja reserva	
+        virtual ~IHostal(){}; //vacio
 };
 
 #endif
