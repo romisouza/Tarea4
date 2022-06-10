@@ -54,7 +54,7 @@ void ControladorHostal::cancelarAltaHabitacion(){
 //el sistema libera la memoria asocida a los daos de habitacion y hostal elegido
 }
 
-list<DTEmpleado> ControladorHostal::ObtenerDtEmpleado(std::string nombreHostal){
+void ControladorHostal::ObtenerEmpleados(std::string nombreHostal){
 	list<DTEmpleado> dtemps;
 	Hostal* h = ColHostales.find(nombreHostal)->second;
 	ingresarHostal(h);
@@ -64,13 +64,12 @@ list<DTEmpleado> ControladorHostal::ObtenerDtEmpleado(std::string nombreHostal){
 		while(iter!=cu->getColEmpleados().end()){
 			Empleado* emp= iter->second;
 			if(iter->second->getHostalAsociado()==NULL){
-				DTEmpleado dtemp = DTEmpleado(emp->getNombre(),emp->getEmail(),emp->getCargoEmpleado());
-				dtemps.push_back(dtemp);			
-				++iter;			
+				printf("Nombre: %s ",iter->second->getNombre(),"Email: %s", iter->second->getEmail());	
 			}
+			++iter;	
 		}
 	}
-	return dtemps;
+
 }
 
 void ControladorHostal::SeleccionarEmpleado(CargoEmpleado cargoEmp, std::string emailEmp){

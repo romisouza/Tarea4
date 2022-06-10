@@ -43,7 +43,7 @@ class ControladorHostal:public IHostal {
 		void asignarHab(std::string, int, float, int);//Alta habitacion; 
 		void registrarHab(); //Alta habitacion ; 
 		void cancelarAltaHabitacion(); //Alta habitacion (cancelarAlta)
-		list<DTEmpleado> ObtenerDtEmpleado(std::string nombreHostal); //Asignar Empleado a Hostal (SelecccionarHostal)
+		void ObtenerEmpleados(std::string nombreHostal); //Asignar Empleado a Hostal (SelecccionarHostal)
 		void SeleccionarEmpleado(CargoEmpleado, std::string);//Asignar emp a hostal
 		void ConfirmarAsignacionDeEmpleado();//asignar emp a host (confirmarAsignacionAUsuario)
 		void CancelarAsignacionDeEmpleado();//asignar emp a host (cancelarAsignacionAUsuario)
