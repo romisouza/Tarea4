@@ -74,8 +74,7 @@ void ControladorHostal::SeleccionarEmpleado(CargoEmpleado *cargoEmp, std::string
 void ControladorHostal::ConfirmarAsignacionDeEmpleado(){
 	ControladorUsuario* cu = ControladorUsuario::getInstance();
 	cu->AsignarCargoAEmpleado();
-	Empleado* emp = cu->getEmpleadoIngresado();
-	hostalIngresado->getColEmpleados().emplace(emp->getEmail(),emp);
+	hostalIngresado->getColEmpleados().emplace(empleadoIngresado->getEmail(),empleadoIngresado);
 	ingresarHostal(NULL);
 	ingresarEmpleado(NULL);
 	
