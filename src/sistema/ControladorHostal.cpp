@@ -81,11 +81,12 @@ void ControladorHostal::ConfirmarAsignacionDeEmpleado(){
 }
 
 void ControladorHostal::CancelarAsignacionDeEmpleado(){
-	/*ControladorUsuario* cu = ControladorUsuario::getInstance();
+	ControladorUsuario* cu = ControladorUsuario::getInstance();
 	ingresarHostal(NULL);
 	ingresarEmpleado(NULL);
 	cu->ingresarEmpleadoPunt(NULL);
-	//cu->ingresarCargo(NULL);*/
+	cu->ingresarCargo(NULL);
+	cu->ingresarHostal(NULL);
 }
 
 set<DTHostalProm> ControladorHostal::ObtenerHostalesProm(){}
