@@ -46,21 +46,22 @@ void ControladorUsuario::ingresarCargo(CargoEmpleado* cargo){
 	cargoIngresado = cargo;
 }
 
-void ControladorUsuario::IngresarHuesped(std::string nombre,std::string email,std::string password,bool esFinger){
+void ControladorUsuario::IngresarHuesped(std::string nombre,std::string email,std::string password,bool esFinger){//BIEN
 	nombreIngresado = nombre;	
 	emailIngresado = email;
 	passIngresada = password;
 	esFingIngresado = esFinger;
 }
 
-void ControladorUsuario::IngresarEmpleado(std::string nombre,std::string email,std::string password,CargoEmpleado *cargo){
+void ControladorUsuario::IngresarEmpleado(std::string nombre,std::string email,std::string password,CargoEmpleado *cargo){//BIEN
 	nombreIngresado = nombre;
 	emailIngresado = email;
 	passIngresada = password;
-	cargoIngresado = cargo; 
+	cargoIngresado = cargo;
+	hostalIngresado = NULL; 
 }
 
-void ControladorUsuario::ConfirmarAltaUsuario(){
+void ControladorUsuario::ConfirmarAltaUsuario(){//BIEN
 	bool esta;
 	if (cargoIngresado == NULL) {//Si cargoIngresado es Null, entonces se ingreso un huesp
 		if (ColHuespedes.find(emailIngresado) == ColHuespedes.end())
@@ -91,7 +92,7 @@ void ControladorUsuario::ConfirmarAltaUsuario(){
 	}
 } 
  
-void ControladorUsuario::CancelarAltaUsuario(){
+void ControladorUsuario::CancelarAltaUsuario(){//BIEN
 	nombreIngresado = "";
 	emailIngresado = "";
 	passIngresada = "";
@@ -109,23 +110,41 @@ set<string> ControladorUsuario::obtenerHuespedes(){
 void ControladorUsuario::seleccionar(string mailHuesped){
 }
 
-set<string> ControladorUsuario::ObtenerUsuarios(){
-		set<string> users;
-		for( map<std::string, Huesped*>::iterator i= ColHuespedes.begin(); i != ColHuespedes.end(); i++){
-			users.insert((*i).first);
-			//cout << (*i).first << ": " << (*i).second << endl;
-		} 
-		for( map<std::string, Empleado*>::iterator i= ColEmpleados.begin(); i != ColEmpleados.end(); i++){
-			users.insert((*i).first);
-			//cout << (*i).first << ": " << (*i).second << endl;
-		} 
-		
+set<string> ControladorUsuario::ObtenerUsuarios(){ //BIEN
+	set<string> users;
+	for( map<std::string, Huesped*>::iterator i= ColHuespedes.begin(); i != ColHuespedes.end(); i++){
+		std::string email = (*i).first;
+		std::string nombre = (*i).second->getNombre();
+		std::string user = "huesped: nombre: "+nombre+" ->email: " + email;
+		users.insert(user);
+	} 
+	for( map<std::string, Empleado*>::iterator i= ColEmpleados.begin(); i != ColEmpleados.end(); i++){
+		std::string email = (*i).first;
+		std::string nombre = (*i).second->getNombre();
+		std::string user = "empleado:nombre: "+nombre+" ->email: " + email;
+		users.insert(user);
+	} 
+	return users;		
 }
 
-DTHuesped ControladorUsuario::SeleccionarHuesped(string email){
+DTHuesped* ControladorUsuario::SeleccionarHuesped(string email){ //BIEN 
+	Huesped* h = ColHuespedes.find(email)->second;
+	std::string nom = h->getNombre();
+	std::string mail = email;
+	bool esFinger = h->getEsFinger();
+	DTHuesped *huesped = new DTHuesped(nom,mail,esFinger);
+	return huesped;
 }
 
-DataEmpleado ControladorUsuario::SeleccionarEmpleado2(string email){//cambie el nombre daba error sobrecarga 
+DataEmpleado* ControladorUsuario::SeleccionarEmpleado2(string email){//cambie el nombre daba error sobrecarga 
+	Empleado* e = ColEmpleados.find(email)->second;
+	std::string nom = e->getNombre();
+	std::string mail = email;
+	CargoEmpleado* cargo = e->getCargoEmpleado();
+	//Hostal* h = e->getHostalAsociado(); //me falta saber devolver el nombre del hostal
+	//std::string hostal = h->getNombre();
+	DataEmpleado *empleado = new DataEmpleado(nom,mail,cargo,"hola");
+	return empleado;
 }
 
 list<DTEmpleado> ControladorUsuario::getEmpleados(Hostal* h){
