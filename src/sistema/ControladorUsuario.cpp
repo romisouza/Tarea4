@@ -155,6 +155,7 @@ DataEmpleado* ControladorUsuario::SeleccionarEmpleado2(string email){//cambie el
 
 list<DTEmpleado> ControladorUsuario::getEmpleados(Hostal* h){
 		list<DTEmpleado> dtemps;
+		ingresarHostal(h);
 		auto iter = ColEmpleados.begin();
 		while(iter!=ColEmpleados.end()){
 			Empleado* emp= iter->second;
@@ -173,6 +174,7 @@ Empleado* ControladorUsuario::SeleccionarEmpleado(CargoEmpleado* cargoEmp,string
 		ingresarEmpleadoPunt(emp);
 		ingresarCargo(cargoEmp);
 	}
+	return emp;
 }
 
 void ControladorUsuario::AsignarCargoAEmpleado(){

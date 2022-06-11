@@ -2,7 +2,7 @@
 #include "include/sistema/ControladorUsuario.h"
 //#include "include/datatypes/DTHuesped.h"
 #include "include/datatypes/DataEmpleado.h"
-//#include "include/sistema/ControladorHostal.h"
+#include "include/sistema/ControladorHostal.h"
 //#include "include/datatypes/DTCal.h"
 //#include "include/clases/Empleado.h"
 
@@ -15,8 +15,9 @@ int main(){
     //try{
         ControladorUsuario *cont = ControladorUsuario::getInstance();
         
-        /*std::string n1,n2,n3,n4,e1,e2,e3,e4,p1,p2,p3,p4;
-        bool esfing1,esfing2; 
+        std::string n1,n2,n3,n4,e1,e2,e3,e4,p1,p2,p3,p4;
+        int tel;
+        /*bool esfing1,esfing2; 
         CargoEmpleado carg1 = Administracion;
         CargoEmpleado carg2 = Limpieza;
         CargoEmpleado *cargo1 = &carg1;
