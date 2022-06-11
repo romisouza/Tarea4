@@ -49,8 +49,8 @@ class ControladorUsuario {
 		void ConfirmarAltaUsuario();
 		void CancelarAltaUsuario();
 		set<std::string> ObtenerUsuarios();
-		DTHuesped SeleccionarHuesped(std::string email);
-		DataEmpleado SeleccionarEmpleado2(std::string email);//cambie el nombre daba error
+		DTHuesped* SeleccionarHuesped(std::string email);
+		DataEmpleado* SeleccionarEmpleado2(std::string email);//cambie el nombre daba error
 		list<DTEmpleado> getEmpleados(Hostal* h);
 		Empleado* SeleccionarEmpleado(CargoEmpleado* cargoEmp,std::string mailEmp,Hostal*);
 		void AsignarCargoAEmpleado();

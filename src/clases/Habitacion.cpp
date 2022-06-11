@@ -42,7 +42,7 @@ DTHabitacion Habitacion::getHabitacion(){
     return Hab;
 }
 
-bool Habitacion::consultarReservas(DTFecha desde, DTFecha hasta){ //ADE - REVISAR Q FUNCIONE BIBEN
+bool Habitacion::consultarReservas(DTFecha desde, DTFecha hasta){ //ADE - REVISAR Q FUNCIONE BIBEN.
     bool estaOcupada = false; 
 	auto it=ColReservas.begin();
       while (it!=ColReservas.end() && !estaOcupada) {
