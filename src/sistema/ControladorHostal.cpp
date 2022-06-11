@@ -54,43 +54,30 @@ void ControladorHostal::cancelarAltaHabitacion(){
 //el sistema libera la memoria asocida a los daos de habitacion y hostal elegido
 }
 
-void ControladorHostal::ObtenerEmpleados(std::string nombreHostal){
+list<DTEmpleado> ControladorHostal::ObtenerEmpleados(std::string nombreHostal){
 	list<DTEmpleado> dtemps;
 	Hostal* h = ColHostales.find(nombreHostal)->second;
 	ingresarHostal(h);
 	if(h->getNombre()==nombreHostal){
 		ControladorUsuario* cu = ControladorUsuario::getInstance();
-		auto iter = cu->getColEmpleados().begin();
-		while(iter!=cu->getColEmpleados().end()){
-			Empleado* emp= iter->second;
-			if(iter->second->getHostalAsociado()==NULL){
-				printf("Nombre: %s ",iter->second->getNombre(),"Email: %s", iter->second->getEmail());	
-			}
-			++iter;	
-		}
+		dtemps = cu->getEmpleados(h);
 	}
-
+	return dtemps;
 }
 
 void ControladorHostal::SeleccionarEmpleado(CargoEmpleado *cargoEmp, std::string emailEmp){
 	ControladorUsuario* cu = ControladorUsuario::getInstance();
-	Empleado* emp = cu->getColEmpleados().find(emailEmp)->second;
-	if(emp->getEmail()==emailEmp){
-		ingresarEmpleado(emp);
-		cu->ingresarEmpleadoPunt(emp);
-		cu->ingresarCargo(cargoEmp);
-	}
+	Empleado* emp = cu->SeleccionarEmpleado(cargoEmp,emailEmp,hostalIngresado);
+	ingresarEmpleado(emp);
 }
 
 void ControladorHostal::ConfirmarAsignacionDeEmpleado(){
 	ControladorUsuario* cu = ControladorUsuario::getInstance();
+	cu->AsignarCargoAEmpleado();
 	Empleado* emp = cu->getEmpleadoIngresado();
-	emp->setCargoEmpleado(cu->getCargoIngresado());
-	emp->setHostalAsociado(hostalIngresado);
 	hostalIngresado->getColEmpleados().emplace(emp->getEmail(),emp);
 	ingresarHostal(NULL);
 	ingresarEmpleado(NULL);
-	cu->ingresarEmpleadoPunt(NULL);
 	
 }
 

@@ -25,8 +25,8 @@ class Empleado: public Usuario{//, IObserver {
 		void setCargoEmpleado(CargoEmpleado* cargo);
 		set<DTCal> obtenerComentarios();
 		DataEmpleado getDataEmpleado();
-		bool TrabajaEnHostal(Hostal);
-		void AsignarEmpleadoAHostal();
+		bool TrabajaEnHostal();
+		void AsignarEmpleadoAHostal(CargoEmpleado*,Hostal*);
 		DTEmpleado getDTEmpleado();
 		void notificar(Calificacion cal);
 };

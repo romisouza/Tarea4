@@ -21,6 +21,7 @@ class ControladorUsuario {
 		bool esFingIngresado;
 		CargoEmpleado* cargoIngresado; 
 		Empleado* empleadoIngresado;
+		Hostal* hostalIngresado;
 
 		//NO VA
 		int cantHuespedes,cantEmpleados =0; //(COTI)
@@ -39,6 +40,7 @@ class ControladorUsuario {
 		set<std::string> obtenerHuespedes();
 		Empleado* getEmpleadoIngresado();
 		CargoEmpleado* getCargoIngresado();
+		void ingresarHostal(Hostal*);
 		void seleccionar(std::string mailHuesped);
 		void IngresarHuesped(std::string nombre,std::string email,std::string password,bool esFinger);
 		void IngresarEmpleado(std::string nombre,std::string email,std::string password,CargoEmpleado* cargo);
@@ -48,9 +50,9 @@ class ControladorUsuario {
 		void CancelarAltaUsuario();
 		set<std::string> ObtenerUsuarios();
 		DTHuesped SeleccionarHuesped(std::string email);
-		DataEmpleado SeleccionarEmpleado(std::string email);
-		set<DTEmpleado> getEmpleados(Hostal h);
-		Empleado SeleccionarEmpleado(CargoEmpleado* cargoEmp,std::string mailEmp);
+		DataEmpleado SeleccionarEmpleado2(std::string email);//cambie el nombre daba error
+		list<DTEmpleado> getEmpleados(Hostal* h);
+		Empleado* SeleccionarEmpleado(CargoEmpleado* cargoEmp,std::string mailEmp,Hostal*);
 		void AsignarCargoAEmpleado();
 		void BuscarHuesped(std::string email);
 		void SuscribirEmpleado(std::string emp);

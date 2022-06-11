@@ -33,13 +33,17 @@ set<DTCal> Empleado::obtenerComentarios(){
 DataEmpleado Empleado::getDataEmpleado(){
 }
 
-bool Empleado::TrabajaEnHostal(Hostal){
+bool Empleado::TrabajaEnHostal(){//cambio respecto a dcd
+	return hostalAsociado==NULL;
 }
 
-void Empleado::AsignarEmpleadoAHostal(){
+void Empleado::AsignarEmpleadoAHostal(CargoEmpleado* cargoEmp,Hostal* host){
+	setCargoEmpleado(cargoEmp);
+	setHostalAsociado(host);
 }
 
 DTEmpleado Empleado::getDTEmpleado(){
+	return DTEmpleado(nombre,email,cargo);
 }
 
 void Empleado::notificar(Calificacion cal){

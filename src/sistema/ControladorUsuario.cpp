@@ -34,6 +34,10 @@ CargoEmpleado* ControladorUsuario::getCargoIngresado(){
 	return cargoIngresado;
 }
 
+void ControladorUsuario::ingresarHostal(Hostal* h){
+	hostalIngresado = h;
+}
+
 void ControladorUsuario::ingresarEmpleadoPunt(Empleado* emp){
 	empleadoIngresado = emp;
 }
@@ -121,16 +125,36 @@ set<string> ControladorUsuario::ObtenerUsuarios(){
 DTHuesped ControladorUsuario::SeleccionarHuesped(string email){
 }
 
-DataEmpleado ControladorUsuario::SeleccionarEmpleado(string email){
+DataEmpleado ControladorUsuario::SeleccionarEmpleado2(string email){//cambie el nombre daba error sobrecarga 
 }
 
-set<DTEmpleado> ControladorUsuario::getEmpleados(Hostal h){
+list<DTEmpleado> ControladorUsuario::getEmpleados(Hostal* h){
+		list<DTEmpleado> dtemps;
+		auto iter = ColEmpleados.begin();
+		while(iter!=ColEmpleados.end()){
+			Empleado* emp= iter->second;
+			if(emp->TrabajaEnHostal()){
+				DTEmpleado dtemp = emp->getDTEmpleado();
+				dtemps.push_back(dtemp);
+			}
+			++iter;	
+		}
+	return dtemps;
 }
 
-Empleado ControladorUsuario::SeleccionarEmpleado(CargoEmpleado* cargoEmp,string mailEmp){
+Empleado* ControladorUsuario::SeleccionarEmpleado(CargoEmpleado* cargoEmp,string mailEmp,Hostal*  host){
+	Empleado* emp = ColEmpleados.find(mailEmp)->second;
+	if(emp->getEmail()==mailEmp){
+		ingresarEmpleadoPunt(emp);
+		ingresarCargo(cargoEmp);
+	}
 }
 
 void ControladorUsuario::AsignarCargoAEmpleado(){
+	empleadoIngresado->AsignarEmpleadoAHostal(cargoIngresado,hostalIngresado);
+	ingresarCargo(NULL);
+	ingresarHostal(NULL);
+	ingresarEmpleadoPunt(NULL);
 }
 
 void ControladorUsuario::BuscarHuesped(string email){
