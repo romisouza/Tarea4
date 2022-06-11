@@ -29,7 +29,7 @@ class Reserva{
         Estadia *est;
     public:
         Reserva();
-        Reserva(int,DTFecha,DTFecha,DTFecha,Habitacion*,Huesped*,Estadia*);
+        Reserva(int,DTFecha,DTFecha,DTFecha);
         int getCodigo();
         DTFecha getCheckIn();
         DTFecha getCheckOut();

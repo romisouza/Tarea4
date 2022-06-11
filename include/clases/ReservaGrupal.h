@@ -9,11 +9,11 @@
 using namespace std;
 class ReservaGrupal:public Reserva{
     private:
-        set<Huesped> huespedes;
+        set<Huesped*> huespedes;
         int TotalHuesp;
     public:
-        //ReservaGrupal(int codigo, DTFecha checkin, DTFecha checkout, EstadoReserva estado, Habitacion* hab,Huesped* huesp, set<Huesped*> huespedes,int TotalHuespedes);
-        set<Huesped> getHuespedes();
+        ReservaGrupal(int codigo, DTFecha checkin, DTFecha checkout,DTFecha realiza, int totalHuespedes);
+        set<Huesped*> getHuespedes();
         int getTotalHuesp();
         void setTotalHuesp();
         ~ReservaGrupal();

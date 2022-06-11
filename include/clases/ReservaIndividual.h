@@ -9,7 +9,7 @@ using namespace std;
 class ReservaIndividual:public Reserva{
     private:
     public:
-        ReservaIndividual();
+        ReservaIndividual(int codigo, DTFecha checkin, DTFecha checkout,DTFecha realiza);
         set<DTReserva> validarHuespedRegistrado(string);
         void validarHuesped(string);
         ~ReservaIndividual();

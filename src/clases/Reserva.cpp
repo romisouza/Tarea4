@@ -1,15 +1,15 @@
 #include "../../include/clases/Reserva.h"
 
 
-Reserva::Reserva(int cod,DTFecha entrada,DTFecha salida,DTFecha realiza,Habitacion* hab,Huesped* huesp,Estadia* est){
+Reserva::Reserva(int cod,DTFecha entrada,DTFecha salida,DTFecha realiza){
     codigo=cod;
     checkIn = entrada;
     checkOut = salida;
     fechaRealizada = realiza;
     estado= Abierta;
-    this->hab = hab;
-    hues = huesp;
-    this->est = est;
+    this->hab = NULL;
+    hues = NULL;
+    this->est = NULL;
 }
 
 int Reserva::getCodigo(){
