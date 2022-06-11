@@ -2,7 +2,7 @@
 #include "include/sistema/ControladorUsuario.h"
 //#include "include/datatypes/DTHuesped.h"
 #include "include/datatypes/DataEmpleado.h"
-//#include "include/sistema/ControladorHostal.h"
+#include "include/sistema/ControladorHostal.h"
 //#include "include/datatypes/DTCal.h"
 //#include "include/clases/Empleado.h"
 
@@ -15,8 +15,9 @@ int main(){
     //try{
         ControladorUsuario *cont = ControladorUsuario::getInstance();
         
-        /*std::string n1,n2,n3,n4,e1,e2,e3,e4,p1,p2,p3,p4;
-        bool esfing1,esfing2; 
+        std::string n1,n2,n3,n4,e1,e2,e3,e4,p1,p2,p3,p4;
+        int tel;
+        /*bool esfing1,esfing2; 
         CargoEmpleado carg1 = Administracion;
         CargoEmpleado carg2 = Limpieza;
         CargoEmpleado *cargo1 = &carg1;
@@ -68,7 +69,21 @@ int main(){
         //}catch (const std::invalid_argument& e) {
           //  std::cout<<"Error: "<<e.what()<<std::endl;
     	//}*/
-
+    cout << "nombre emp 1";cin >> n3;
+    cout << "email emp 1";cin >> e3;
+    cout << "pass emp 1";cin >> p3;
+    cont->IngresarEmpleado(n3,e3,p3,NULL);
+    cont->ConfirmarAltaUsuario();
+    ControladorHostal *ctrl = ControladorHostal::getInstance();
+    cout<<"ingrese nombre hostal: ";cin>>n1;
+    cout<<"ingrese direccion hostal ";cin>>n2;
+    cout<<"ingrese numero de telefono: "; cin>>tel;
+    ctrl->agregarHostal(n1,n2,tel);
+    list<DTEmpleado> empleados = ctrl->ObtenerEmpleados(n1);
+    CargoEmpleado carg1 = Administracion;
+    CargoEmpleado *cargo1 = &carg1;
+    ctrl->SeleccionarEmpleado(cargo1,e3);
+    ctrl->ConfirmarAsignacionDeEmpleado();
     return 0; 
     //CONSULTA DE USUARIO
 
@@ -81,4 +96,5 @@ int main(){
     cout << prueba;*/
 
 
+    
 }
