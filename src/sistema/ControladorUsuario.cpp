@@ -141,9 +141,9 @@ DataEmpleado* ControladorUsuario::SeleccionarEmpleado2(string email){//cambie el
 	std::string nom = e->getNombre();
 	std::string mail = email;
 	CargoEmpleado* cargo = e->getCargoEmpleado();
-	//Hostal* h = e->getHostalAsociado(); //me falta saber devolver el nombre del hostal
-	//std::string hostal = h->getNombre();
-	DataEmpleado *empleado = new DataEmpleado(nom,mail,cargo,"hola");
+	Hostal* h = e->getHostalAsociado();
+	std::string hostal = h->getNombre();
+	DataEmpleado *empleado = new DataEmpleado(nom,mail,cargo,hostal);
 	return empleado;
 }
 
