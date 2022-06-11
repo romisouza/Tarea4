@@ -10,13 +10,14 @@ using namespace std;
 
 class Hostal;
 class Reserva;
+class Huesped;
 
 class Habitacion{
 private:
     int numero; 
     float precioNoche;
     int capacidad;
-    Reserva* res;
+    map<int,Reserva*> ColReservas;
     Hostal* host;
 public:
     Habitacion(int, float, int);
@@ -27,7 +28,7 @@ public:
     void setNumero(int);
     void setPrecioNoche(float);
     DTHabitacion getHabitacion();
-    void consultarReservas(DTFecha, DTFecha);
+    bool consultarReservas(DTFecha, DTFecha);
     void reservar(int, DTFecha, DTFecha, Huesped);
     ~Habitacion();
 };

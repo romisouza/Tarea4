@@ -15,14 +15,14 @@ class Hostal;
 class Empleado: public Usuario{//, IObserver {
 	private:
 		Hostal* hostalAsociado;
-		CargoEmpleado cargo;
+		CargoEmpleado* cargo;
 	public:
-		Empleado(std::string nombre, std::string email, std::string password, CargoEmpleado cargo);
+		Empleado(std::string nombre, std::string email, std::string password, CargoEmpleado* cargo);
 		~Empleado();
 		Hostal* getHostalAsociado();
-		CargoEmpleado getCargoEmpleado();
+		CargoEmpleado* getCargoEmpleado();
 		void setHostalAsociado(Hostal*);
-		void setCargoEmpleado(CargoEmpleado cargo);
+		void setCargoEmpleado(CargoEmpleado* cargo);
 		set<DTCal> obtenerComentarios();
 		DataEmpleado getDataEmpleado();
 		bool TrabajaEnHostal(Hostal);

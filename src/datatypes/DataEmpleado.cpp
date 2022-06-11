@@ -4,7 +4,7 @@ DataEmpleado::DataEmpleado(){
 
 }
 
-DataEmpleado::DataEmpleado(std::string nombre,std::string email,CargoEmpleado carg,std::string host){
+DataEmpleado::DataEmpleado(std::string nombre,std::string email,CargoEmpleado* carg,std::string host){
     nombreEmp= nombre;
     emailEmp = email;
     cargo = carg;
@@ -19,7 +19,7 @@ std::string DataEmpleado::getEmail(){
     return emailEmp;
 }
 
-CargoEmpleado DataEmpleado::getCargo(){
+CargoEmpleado* DataEmpleado::getCargo(){
     return cargo;
 }
 

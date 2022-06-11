@@ -72,7 +72,7 @@ void ControladorHostal::ObtenerEmpleados(std::string nombreHostal){
 
 }
 
-void ControladorHostal::SeleccionarEmpleado(CargoEmpleado cargoEmp, std::string emailEmp){
+void ControladorHostal::SeleccionarEmpleado(CargoEmpleado *cargoEmp, std::string emailEmp){
 	ControladorUsuario* cu = ControladorUsuario::getInstance();
 	Empleado* emp = cu->getColEmpleados().find(emailEmp)->second;
 	if(emp->getEmail()==emailEmp){
@@ -104,9 +104,18 @@ void ControladorHostal::CancelarAsignacionDeEmpleado(){
 
 set<DTHostalProm> ControladorHostal::ObtenerHostalesProm(){}
 
-void ControladorHostal::ingresarDatosReserva(std::string nombreHostal, DTFecha in, DTFecha out, bool grupOind, int totalHuesp){}
+void ControladorHostal::ingresarDatosReserva(std::string nombreHostal, DTFecha in, DTFecha out, bool grupOind, int totalHuesp){ //LISTA
+	std::string nombreHostalIngresado = nombreHostal;
+	DTFecha fechaInIngresada = in;
+	DTFecha fechaOutIngresada = out;
+	bool gruppOindIngresado = grupOind;
+	int totalHuespIngresado = totalHuesp;
+}
 
-set<int> ControladorHostal::obtenerHabitacionesDisponibles(DTFecha in, DTFecha out){}
+set<int> ControladorHostal::obtenerHabitacionesDisponibles(DTFecha in, DTFecha out){
+	Hostal* Host=ColHostales.find(nombreHostalIngresado)->second;
+	set<int> ColHabDisp = Host->obtenerHabitaciones(in,out);
+}
 
 void ControladorHostal::seleccionarHabitacion(int numHab){}
 

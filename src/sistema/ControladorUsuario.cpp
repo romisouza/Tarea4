@@ -5,6 +5,17 @@ ControladorUsuario* ControladorUsuario::instancia = NULL;
 ControladorUsuario::ControladorUsuario(){
 }
 
+//NO VA
+int ControladorUsuario::getCantHuesped() {
+	return cantHuespedes;
+}
+int ControladorUsuario::getCantEmpleado(){
+	return cantEmpleados;
+}
+std::string ControladorUsuario::getNombreIngresado(){
+	return nombreIngresado;
+}
+
 ControladorUsuario* ControladorUsuario::getInstance(){
 	if (instancia == NULL)
 		instancia = new ControladorUsuario();
@@ -19,7 +30,7 @@ Empleado* ControladorUsuario::getEmpleadoIngresado(){
 	return empleadoIngresado;
 }
 
-CargoEmpleado ControladorUsuario::getCargoIngresado(){
+CargoEmpleado* ControladorUsuario::getCargoIngresado(){
 	return cargoIngresado;
 }
 
@@ -27,27 +38,27 @@ void ControladorUsuario::ingresarEmpleadoPunt(Empleado* emp){
 	empleadoIngresado = emp;
 }
 
-void ControladorUsuario::ingresarCargo(CargoEmpleado cargo){
+void ControladorUsuario::ingresarCargo(CargoEmpleado* cargo){
 	cargoIngresado = cargo;
 }
 
-void ControladorUsuario::IngresarHuesped(string nombre,string email,string password,bool esFinger){
+void ControladorUsuario::IngresarHuesped(std::string nombre,std::string email,std::string password,bool esFinger){
 	nombreIngresado = nombre;	
 	emailIngresado = email;
 	passIngresada = password;
 	esFingIngresado = esFinger;
 }
 
-void ControladorUsuario::IngresarEmpleado(string nombre,string email,string password,CargoEmpleado cargo){
+void ControladorUsuario::IngresarEmpleado(std::string nombre,std::string email,std::string password,CargoEmpleado *cargo){
 	nombreIngresado = nombre;
 	emailIngresado = email;
 	passIngresada = password;
-	cargoIngresado = cargo;
+	cargoIngresado = cargo; 
 }
 
 void ControladorUsuario::ConfirmarAltaUsuario(){
-	/*bool esta;
-	if (cargoIngresado != "") {//Si cargoIngresado es Nul, entonces se ingreso un huesp
+	bool esta;
+	if (cargoIngresado == NULL) {//Si cargoIngresado es Null, entonces se ingreso un huesp
 		if (ColHuespedes.find(emailIngresado) == ColHuespedes.end())
 			esta = false;
 		else 
@@ -55,6 +66,7 @@ void ControladorUsuario::ConfirmarAltaUsuario(){
 		if (!esta){
 			Huesped *huesp = new Huesped(nombreIngresado,emailIngresado,passIngresada,esFingIngresado);
 			ColHuespedes.insert({emailIngresado,huesp});
+			cantHuespedes++; 
 		}
 		else
 			throw std::invalid_argument("Ya existe un huesped con el mismo email.");   
@@ -67,21 +79,22 @@ void ControladorUsuario::ConfirmarAltaUsuario(){
 		if (!esta){
 			Empleado *emp = new Empleado(nombreIngresado,emailIngresado,passIngresada,cargoIngresado);
 			ColEmpleados.insert({emailIngresado,emp});
+			cantEmpleados++;
 		}
 		else 
 			throw std::invalid_argument("Ya existe un empleado con el mismo email.");   
 		
-	}*/
-}
-
+	}
+} 
+ 
 void ControladorUsuario::CancelarAltaUsuario(){
-	/*nombreIngresado = "";
+	nombreIngresado = "";
 	emailIngresado = "";
 	passIngresada = "";
-	if (cargoIngresado.compare("")==0) //Si cargoIngresado es Null, entonces se ingreso un huesp
-		esFingIngresado = "";
+	if (cargoIngresado == NULL) //Si cargoIngresado es Null, entonces se ingreso un huesp
+		esFingIngresado = false; //
 	else // sino se ingreso un emp
-		cargoIngresado = ;*/
+		cargoIngresado = NULL;
 }
 set<DTCal> ControladorUsuario::obtenerComentariosAResponder(string mail){
 }
@@ -114,7 +127,7 @@ DataEmpleado ControladorUsuario::SeleccionarEmpleado(string email){
 set<DTEmpleado> ControladorUsuario::getEmpleados(Hostal h){
 }
 
-Empleado ControladorUsuario::SeleccionarEmpleado(CargoEmpleado cargoEmp,string mailEmp){
+Empleado ControladorUsuario::SeleccionarEmpleado(CargoEmpleado* cargoEmp,string mailEmp){
 }
 
 void ControladorUsuario::AsignarCargoAEmpleado(){

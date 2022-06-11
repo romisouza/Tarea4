@@ -19,29 +19,38 @@ class ControladorUsuario {
 		std::string emailIngresado;
 		std::string passIngresada;
 		bool esFingIngresado;
-		CargoEmpleado cargoIngresado;
+		CargoEmpleado* cargoIngresado; 
 		Empleado* empleadoIngresado;
+
+		//NO VA
+		int cantHuespedes,cantEmpleados =0; //(COTI)
+
 		ControladorUsuario();
 		~ControladorUsuario();
 	public:
+		//NO VA
+		int getCantHuesped(); //es para ver si me ingreso correctamente los huespedes (COTI)
+		int getCantEmpleado(); //es para ver si me ingreso correctamente los emp
+		std::string getNombreIngresado(); // (COTI) tmp va
+
 		static ControladorUsuario* getInstance();
 		map<std::string,Empleado*> getColEmpleados();
 		set<DTCal> obtenerComentariosAResponder(std::string mail);
 		set<std::string> obtenerHuespedes();
 		Empleado* getEmpleadoIngresado();
-		CargoEmpleado getCargoIngresado();
+		CargoEmpleado* getCargoIngresado();
 		void seleccionar(std::string mailHuesped);
 		void IngresarHuesped(std::string nombre,std::string email,std::string password,bool esFinger);
-		void IngresarEmpleado(std::string nombre,std::string email,std::string password,CargoEmpleado cargo);
+		void IngresarEmpleado(std::string nombre,std::string email,std::string password,CargoEmpleado* cargo);
 		void ingresarEmpleadoPunt(Empleado*);
-		void ingresarCargo(CargoEmpleado);
+		void ingresarCargo(CargoEmpleado*);
 		void ConfirmarAltaUsuario();
 		void CancelarAltaUsuario();
 		set<std::string> ObtenerUsuarios();
 		DTHuesped SeleccionarHuesped(std::string email);
 		DataEmpleado SeleccionarEmpleado(std::string email);
 		set<DTEmpleado> getEmpleados(Hostal h);
-		Empleado SeleccionarEmpleado(CargoEmpleado cargoEmp,std::string mailEmp);
+		Empleado SeleccionarEmpleado(CargoEmpleado* cargoEmp,std::string mailEmp);
 		void AsignarCargoAEmpleado();
 		void BuscarHuesped(std::string email);
 		void SuscribirEmpleado(std::string emp);

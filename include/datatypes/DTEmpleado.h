@@ -8,13 +8,13 @@ class DTEmpleado {
     private:
         std::string nombre;
         std::string email;
-        CargoEmpleado cargo;
+        CargoEmpleado* cargo;
     public:
-        DTEmpleado(std::string,std::string,CargoEmpleado);
+        DTEmpleado(std::string,std::string,CargoEmpleado*);
         ~DTEmpleado();
         std::string getNombre();
         std::string getEmail();
-        CargoEmpleado getCargo();
+        CargoEmpleado* getCargo();
 };
 
 #endif

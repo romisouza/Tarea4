@@ -5,9 +5,15 @@ Huesped::Huesped(std::string nom,std::string mail,std::string pass, bool finger)
 	email = mail;
 	password = pass;
 	esFinger = finger;
+	map<int,Reserva*> ColReservasHuesp; 
 }
 
 Huesped::~Huesped(){
+}
+
+
+map<int,Reserva*> Huesped::getColReservasHuesp(){
+	return ColReservasHuesp;
 }
 
 bool Huesped::getEsFinger(){

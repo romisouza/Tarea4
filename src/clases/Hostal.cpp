@@ -113,7 +113,14 @@ void Hostal::hallarReserva(std::string mailHuesp, int codigoRes, std::string res
 
 DTHostalProm Hostal::getDTHostalProm(){}
 
-set<int> Hostal::obtenerHabitaciones( DTFecha in, DTFecha out){}
+set<int> Hostal::obtenerHabitaciones( DTFecha in, DTFecha out){ //ADE - PROBARLA Y VER Q ANDE BIEN
+	set<int> res;
+	for(auto it=ColHabitaciones.begin();it!=ColHabitaciones.end();it++){
+		if (it->second->consultarReservas(in, out))
+			res.insert(it->second->getNumero());
+	}
+return res;
+}
 
 void Hostal::seleccionarHab(int numHab){}
 

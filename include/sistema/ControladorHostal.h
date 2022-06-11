@@ -24,14 +24,19 @@ class ControladorHostal:public IHostal {
 	private: 
 		static ControladorHostal* instancia;
 		map<std::string,Hostal*> ColHostales; // clave nombre
+		//para asignar empleado a hostal
 		Hostal* hostalIngresado;
 		Empleado* empleadoIngresado; 
-		
-		//para la habitacion
+		//para alta de habitacion
 		int numero; 
     	float precioNoche;
     	int capacidad;
-		
+		//Para ingresardatosreserva
+		std::string nombreHostalIngresado;
+		DTFecha fechaInIngresada;
+		DTFecha fechaOutIngresada;
+		bool gruppOindIngresado;
+		int totalHuespIngresado;
 		ControladorHostal();
 		~ControladorHostal();
 	public: 
@@ -44,7 +49,7 @@ class ControladorHostal:public IHostal {
 		void registrarHab(); //Alta habitacion ; 
 		void cancelarAltaHabitacion(); //Alta habitacion (cancelarAlta)
 		void ObtenerEmpleados(std::string nombreHostal); //Asignar Empleado a Hostal (SelecccionarHostal)
-		void SeleccionarEmpleado(CargoEmpleado, std::string);//Asignar emp a hostal
+		void SeleccionarEmpleado(CargoEmpleado*, std::string);//Asignar emp a hostal
 		void ConfirmarAsignacionDeEmpleado();//asignar emp a host (confirmarAsignacionAUsuario)
 		void CancelarAsignacionDeEmpleado();//asignar emp a host (cancelarAsignacionAUsuario)
 		set<DTHostalProm> ObtenerHostalesProm(); //Realizar reserva (ObtenerHostales)

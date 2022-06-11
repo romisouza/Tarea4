@@ -1,6 +1,6 @@
 #include "../../include/clases/Empleado.h"
 
-Empleado::Empleado(string nom,string mail,string pass, CargoEmpleado car):Usuario(nom,mail,pass) {
+Empleado::Empleado(string nom,string mail,string pass, CargoEmpleado* car):Usuario(nom,mail,pass) {
 	nombre = nom;
 	email = mail;
 	password = pass;
@@ -15,7 +15,7 @@ Hostal* Empleado::getHostalAsociado(){
 	return hostalAsociado;
 }
 
-CargoEmpleado Empleado::getCargoEmpleado(){
+CargoEmpleado* Empleado::getCargoEmpleado(){
 	return cargo;
 }
 
@@ -23,7 +23,7 @@ void Empleado::setHostalAsociado(Hostal* host){
 	hostalAsociado = host;
 }
 
-void Empleado::setCargoEmpleado(CargoEmpleado car){
+void Empleado::setCargoEmpleado(CargoEmpleado* car){
 	cargo = car;
 }
 

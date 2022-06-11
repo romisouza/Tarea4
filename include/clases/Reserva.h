@@ -45,7 +45,7 @@ class Reserva{
         void hallarEstadia(string,string);
         virtual set<DTReserva> validarHuespedRegistrado(string)=0;
         virtual void validarHuesped(string)=0;
-        bool compararFecha(DTFecha,DTFecha);
+       // bool compararFecha(DTFecha,DTFecha); AHORA VA A ESTAR EN DTFECHA X LO Q DIJO EL PROFE EN LA CORRECION
         void setCodigo(int);
         void setCheckIn(DTFecha);
         void setCheckOut(DTFecha);

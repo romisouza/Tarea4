@@ -1,6 +1,6 @@
 #include "../../include/datatypes/DTEmpleado.h"
 
-DTEmpleado::DTEmpleado(std::string nom,std::string mail,CargoEmpleado car){
+DTEmpleado::DTEmpleado(std::string nom,std::string mail,CargoEmpleado* car){
     nombre = nom;
     email = mail;
     cargo = car;
@@ -17,6 +17,6 @@ std::string DTEmpleado::getEmail(){
     return email;
 }
 
-CargoEmpleado DTEmpleado::getCargo(){
+CargoEmpleado* DTEmpleado::getCargo(){
     return cargo;
 }
