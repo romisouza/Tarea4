@@ -105,6 +105,12 @@ set<DTCal> ControladorUsuario::obtenerComentariosAResponder(string mail){
 }
 
 set<string> ControladorUsuario::obtenerHuespedes(){
+	set<string> emailHuespedes;
+	for( map<std::string, Huesped*>::iterator i= ColHuespedes.begin(); i != ColHuespedes.end(); i++){
+		std::string email = (*i).first;
+		emailHuespedes.insert(email);
+	}
+	return emailHuespedes;
 }
 
 void ControladorUsuario::seleccionar(string mailHuesped){

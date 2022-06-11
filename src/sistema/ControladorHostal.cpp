@@ -101,11 +101,19 @@ void ControladorHostal::ingresarDatosReserva(std::string nombreHostal, DTFecha i
 set<int> ControladorHostal::obtenerHabitacionesDisponibles(DTFecha in, DTFecha out){
 	Hostal* Host=ColHostales.find(nombreHostalIngresado)->second;
 	set<int> ColHabDisp = Host->obtenerHabitaciones(in,out);
+	return ColHabDisp;
 }
 
-void ControladorHostal::seleccionarHabitacion(int numHab){}
+void ControladorHostal::seleccionarHabitacion(int numHab){ //ADE - VERIFICAR Q FUNCIONE
+	hostalIngresado = ColHostales.find(nombreHostalIngresado)->second;
+	habRecordada = hostalIngresado->seleccionarHab(numHab);
+}
 
-set<std::string> ControladorHostal::obtenerHuespedesRegistrados(){}
+set<std::string> ControladorHostal::obtenerHuespedesRegistrados(){//ADE - VERIFICAR Q FUNCIONE
+	ControladorUsuario *ctrl = ControladorUsuario::getInstance();
+	set<std::string> res = ctrl->obtenerHuespedes();
+	return res;
+}
 
 void ControladorHostal::seleccionarHuesped(std::string emailHuesp){}
 

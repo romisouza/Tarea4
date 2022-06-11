@@ -37,6 +37,7 @@ class ControladorHostal:public IHostal {
 		DTFecha fechaOutIngresada;
 		bool gruppOindIngresado;
 		int totalHuespIngresado;
+		Habitacion* habRecordada;
 		ControladorHostal();
 		~ControladorHostal();
 	public: 

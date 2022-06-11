@@ -69,16 +69,5 @@ int main(){
           //  std::cout<<"Error: "<<e.what()<<std::endl;
     	//}*/
 
-    return 0; 
-    //CONSULTA DE USUARIO
-
-    /*
-    //ControladorHostal *crtl = ControladorHostal::getInstance();
-    //crtl->agregarHostal("hola","holi",29156480);
-    DTFecha A = DTFecha(1,5,2001,15,23);
-    DTFecha B = DTFecha(1,5,2001,15,24);
-    bool prueba = A.compararFecha(A,B);
-    cout << prueba;*/
-
-
+    return 0;
 }

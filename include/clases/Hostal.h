@@ -61,7 +61,7 @@ class Hostal{
 		void hallarReserva(std::string,int,std::string);
 		DTHostalProm getDTHostalProm();
 		set<int> obtenerHabitaciones(DTFecha, DTFecha);
-		void seleccionarHab(int);
+		Habitacion* seleccionarHab(int);
 		void AgregarEmpleadoAHostal();
 		set<DTReserva> ObtenerReservas();
 		set<DTCalificacion> obtenerCalificaciones();

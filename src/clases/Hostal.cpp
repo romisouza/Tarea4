@@ -122,7 +122,9 @@ set<int> Hostal::obtenerHabitaciones(DTFecha in, DTFecha out){ //ADE - PROBARLA 
 return res;
 }
 
-void Hostal::seleccionarHab(int numHab){}
+Habitacion* Hostal::seleccionarHab(int numHab){ //ADE - VERIFICAR Q FUNCION
+	return ColHabitaciones.find(numHab)->second;
+}
 
 void Hostal::AgregarEmpleadoAHostal() {}
 
