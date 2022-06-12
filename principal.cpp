@@ -87,5 +87,13 @@ int main(){
     ctrl->SeleccionarEmpleado(cargo1,e3);
     ctrl->ConfirmarAsignacionDeEmpleado();
 */
+std::string n1, n2;
+int tel;
+ControladorHostal *ctrl = ControladorHostal::getInstance();
+    cout<<"ingrese nombre hostal: ";cin>>n1;
+    cout<<"ingrese direccion hostal ";cin>>n2;
+    cout<<"ingrese numero de telefono: "; cin>>tel;
+    ctrl->agregarHostal(n1,n2,tel);
+ctrl->ObtenerNombreHostales();
     return 0;
 }
