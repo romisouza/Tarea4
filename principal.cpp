@@ -65,7 +65,9 @@ int main(){
         //}catch (const std::invalid_argument& e) {
           //  std::cout<<"Error: "<<e.what()<<std::endl;
     	//}*/
-    ControladorUsuario *cont = ControladorUsuario::getInstance();   
+
+//ASIGNAR EMPLEADO A HOSTAL   
+   /* ControladorUsuario *cont = ControladorUsuario::getInstance();   
     std::string n1,n2,n3,n4,e1,e2,e3,e4,p1,p2,p3,p4;
     int tel;
     cout << "nombre emp 1";cin >> n3;
@@ -84,6 +86,6 @@ int main(){
     list<DTEmpleado> lista = ctrl->ObtenerEmpleados(n1);
     ctrl->SeleccionarEmpleado(cargo1,e3);
     ctrl->ConfirmarAsignacionDeEmpleado();
-
+*/
     return 0;
 }
