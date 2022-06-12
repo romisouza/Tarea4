@@ -94,6 +94,6 @@ ControladorHostal *ctrl = ControladorHostal::getInstance();
     cout<<"ingrese direccion hostal ";cin>>n2;
     cout<<"ingrese numero de telefono: "; cin>>tel;
     ctrl->agregarHostal(n1,n2,tel);
-//ctrl->ObtenerNombreHostales();
+    ctrl->ObtenerNombreHostales();
     return 0;
 }
