@@ -1,11 +1,11 @@
 #include "../../include/clases/Empleado.h"
 
-Empleado::Empleado(string nom,string mail,string pass, CargoEmpleado* car):Usuario(nom,mail,pass) {
+Empleado::Empleado(string nom,string mail,string pass):Usuario(nom,mail,pass) {
 	nombre = nom;
 	email = mail;
 	password = pass;
 	hostalAsociado = NULL;
-	cargo = car;
+	cargo = NULL;
 }
 
 Empleado::~Empleado(){

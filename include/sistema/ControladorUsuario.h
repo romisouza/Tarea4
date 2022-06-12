@@ -15,6 +15,7 @@ class ControladorUsuario {
 		map<std::string, Huesped *> ColHuespedes; //clave email
 		
 		//Para ingresar huesped y empleado
+		bool tipoUsuario;
 		std::string nombreIngresado;
 		std::string emailIngresado;
 		std::string passIngresada;
@@ -33,7 +34,8 @@ class ControladorUsuario {
 		int getCantHuesped(); //es para ver si me ingreso correctamente los huespedes (COTI)
 		int getCantEmpleado(); //es para ver si me ingreso correctamente los emp
 		std::string getNombreIngresado(); // (COTI) tmp va
-
+		bool getTipoUsuario();
+		void setTipoUsuario(bool);
 		static ControladorUsuario* getInstance();
 		map<std::string,Empleado*> getColEmpleados();
 		set<DTCal> obtenerComentariosAResponder(std::string mail);
@@ -43,7 +45,7 @@ class ControladorUsuario {
 		void ingresarHostal(Hostal*);
 		void seleccionar(std::string mailHuesped);
 		void IngresarHuesped(std::string nombre,std::string email,std::string password,bool esFinger);
-		void IngresarEmpleado(std::string nombre,std::string email,std::string password,CargoEmpleado* cargo);
+		void IngresarEmpleado(std::string nombre,std::string email,std::string password);
 		void ingresarEmpleadoPunt(Empleado*);
 		void ingresarCargo(CargoEmpleado*);
 		void ConfirmarAltaUsuario();

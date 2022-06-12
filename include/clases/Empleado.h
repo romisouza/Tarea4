@@ -17,7 +17,7 @@ class Empleado: public Usuario{//, IObserver {
 		Hostal* hostalAsociado;
 		CargoEmpleado* cargo;
 	public:
-		Empleado(std::string nombre, std::string email, std::string password, CargoEmpleado* cargo);
+		Empleado(std::string nombre, std::string email, std::string password);
 		~Empleado();
 		Hostal* getHostalAsociado();
 		CargoEmpleado* getCargoEmpleado();

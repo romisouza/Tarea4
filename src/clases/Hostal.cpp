@@ -10,13 +10,13 @@ Hostal::Hostal(std::string nom,std::string direc,int tel,int prom) {
 	map<int,Reserva*> ColReservas;
 	map<int, Habitacion*> ColHabitaciones;
 	list<Calificacion*> ColCal;
-	map<std::string,Empleado*> ColEmpleados;
+	map<std::string,Empleado*> ColEmpleadosHost;
 }
 
 Hostal :: ~Hostal() {}
 
 map<std::string,Empleado*> Hostal::getColEmpleados(){
-	return ColEmpleados;
+	return ColEmpleadosHost;
 }
 
 std::string Hostal::getNombre(){
@@ -126,7 +126,16 @@ Habitacion* Hostal::seleccionarHab(int numHab){ //ADE - VERIFICAR Q FUNCION
 	return ColHabitaciones.find(numHab)->second;
 }
 
-void Hostal::AgregarEmpleadoAHostal() {}
+void Hostal::AgregarEmpleadoAHostal(Empleado* emp) {
+	ColEmpleadosHost.insert({emp->getEmail(),emp});
+	//cout<<emp->getEmail();
+	//ColEmpleados.insert(pair<string,Empleado*>(emp->getEmail(),emp));
+   // bool x = ColEmpleadosHost.empty();//getColEmpleados();
+       /* for( map<std::string, Empleado*>::iterator i= x.begin(); i != x.end(); i++){
+       		std::string email = (*i).first;
+			cout << email;
+    	}*/
+}
 
 set<DTReserva> Hostal::ObtenerReservas(){}
 

@@ -34,7 +34,7 @@ class Hostal{
 		map<int,Reserva*> ColReservas; // clave codigo
 		map<int, Habitacion*> ColHabitaciones; //clave numero 
 		list<Calificacion*> ColCal;
-		map<std::string,Empleado*> ColEmpleados;
+		map<std::string,Empleado*> ColEmpleadosHost;
 	public:
 		Hostal();
 		Hostal(std::string,std::string,int,int); 
@@ -62,7 +62,7 @@ class Hostal{
 		DTHostalProm getDTHostalProm();
 		set<int> obtenerHabitaciones(DTFecha, DTFecha);
 		Habitacion* seleccionarHab(int);
-		void AgregarEmpleadoAHostal();
+		void AgregarEmpleadoAHostal(Empleado*);
 		set<DTReserva> ObtenerReservas();
 		set<DTCalificacion> obtenerCalificaciones();
 		int getPromCal();

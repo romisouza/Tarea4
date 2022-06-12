@@ -12,6 +12,16 @@ int ControladorUsuario::getCantHuesped() {
 int ControladorUsuario::getCantEmpleado(){
 	return cantEmpleados;
 }
+
+bool ControladorUsuario::getTipoUsuario(){
+	return tipoUsuario;
+}
+
+void ControladorUsuario::setTipoUsuario(bool nuevoTipo){
+	tipoUsuario = nuevoTipo;
+}
+
+
 std::string ControladorUsuario::getNombreIngresado(){
 	return nombreIngresado;
 }
@@ -53,17 +63,16 @@ void ControladorUsuario::IngresarHuesped(std::string nombre,std::string email,st
 	esFingIngresado = esFinger;
 }
 
-void ControladorUsuario::IngresarEmpleado(std::string nombre,std::string email,std::string password,CargoEmpleado *cargo){//BIEN
+void ControladorUsuario::IngresarEmpleado(std::string nombre,std::string email,std::string password){//BIEN
 	nombreIngresado = nombre;
 	emailIngresado = email;
 	passIngresada = password;
-	cargoIngresado = cargo;
 	hostalIngresado = NULL; 
 }
 
 void ControladorUsuario::ConfirmarAltaUsuario(){//BIEN
 	bool esta;
-	if (cargoIngresado == NULL) {//Si cargoIngresado es Null, entonces se ingreso un huesp
+	if (tipoUsuario == 0) {//Si tipoUsuario es 0, entonces se ingreso un huesp
 		if (ColHuespedes.find(emailIngresado) == ColHuespedes.end())
 			esta = false;
 		else 
@@ -82,7 +91,7 @@ void ControladorUsuario::ConfirmarAltaUsuario(){//BIEN
 		else 
 			esta = true;
 		if (!esta){
-			Empleado *emp = new Empleado(nombreIngresado,emailIngresado,passIngresada,cargoIngresado);
+			Empleado *emp = new Empleado(nombreIngresado,emailIngresado,passIngresada);
 			ColEmpleados.insert({emailIngresado,emp});
 			cantEmpleados++;
 		}
@@ -96,7 +105,7 @@ void ControladorUsuario::CancelarAltaUsuario(){//BIEN
 	nombreIngresado = "";
 	emailIngresado = "";
 	passIngresada = "";
-	if (cargoIngresado == NULL) //Si cargoIngresado es Null, entonces se ingreso un huesp
+	if (tipoUsuario == 0) //Si tipoUsuario es 0, entonces se ingreso un huesp
 		esFingIngresado = false; //
 	else // sino se ingreso un emp
 		cargoIngresado = NULL;
@@ -170,6 +179,8 @@ list<DTEmpleado> ControladorUsuario::getEmpleados(Hostal* h){
 
 Empleado* ControladorUsuario::SeleccionarEmpleado(CargoEmpleado* cargoEmp,string mailEmp,Hostal*  host){
 	Empleado* emp = ColEmpleados.find(mailEmp)->second;
+	//cout << getCantEmpleado();
+	//cout << emp->getEmail();
 	if(emp->getEmail()==mailEmp){
 		ingresarEmpleadoPunt(emp);
 		ingresarCargo(cargoEmp);

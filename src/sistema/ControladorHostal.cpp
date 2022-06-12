@@ -74,10 +74,10 @@ void ControladorHostal::SeleccionarEmpleado(CargoEmpleado *cargoEmp, std::string
 void ControladorHostal::ConfirmarAsignacionDeEmpleado(){
 	ControladorUsuario* cu = ControladorUsuario::getInstance();
 	cu->AsignarCargoAEmpleado();
-	hostalIngresado->getColEmpleados().emplace(empleadoIngresado->getEmail(),empleadoIngresado);
+	hostalIngresado->AgregarEmpleadoAHostal(empleadoIngresado);
+	cout << hostalIngresado->getColEmpleados().size();
 	ingresarHostal(NULL);
 	ingresarEmpleado(NULL);
-	
 }
 
 void ControladorHostal::CancelarAsignacionDeEmpleado(){
