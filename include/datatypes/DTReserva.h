@@ -2,6 +2,8 @@
 #define DTRESERVA
 #include <iostream>
 #include "../../include/datatypes/DTFecha.h"
+enum EstadoReserva {Abierta, Cerrada, Cancelada};
+
 class DTReserva {
     private:
         int codigo;

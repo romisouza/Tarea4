@@ -10,8 +10,8 @@
 #include "../../include/datatypes/DTReserva.h"
 #include "../../include/datatypes/DataEstadia.h"
 #include "../../include/datatypes/DTIdEstadia.h"
+#include "../../include/datatypes/DTReservaComp.h"
 
-enum EstadoReserva {Abierta, Cerrada, Cancelada};
 class Habitacion;
 class Huesped;
 class Estadia;
@@ -39,7 +39,7 @@ class Reserva{
         Huesped* getHues();
         Estadia* getEstadia();
         DTReserva getDTReserva();
-       // virtual DTReservaComp getDTReservaComp()=0;
+        //virtual DTReservaComp getDTReservaComp()=0;
         DataEstadia BuscarRes(DTIdEstadia);
         void BuscarEstadia();
         DTIdEstadia accederaEstadias();
