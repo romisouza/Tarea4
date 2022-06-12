@@ -26,10 +26,13 @@ void ControladorHostal::agregarHostal(std::string nombre, std::string direccion,
 }
 set<std::string> ControladorHostal::ObtenerNombreHostales() {
 	set<string> hostales;
-	for( map<std::string,Hostal*>::iterator i= ColHostales.begin(); i != ColHostales.end(); i++){
+	map<std::string,Hostal*>::iterator i= ColHostales.begin();
+	std::string nombre = (*i).first;
+		hostales.insert(nombre);
+	return hostales;
+	/*for( map<std::string,Hostal*>::iterator i= ColHostales.begin(); i != ColHostales.end(); i++){
 		std::string nombre = (*i).first;
 		hostales.insert(nombre);
-		
 	}
 }
 
