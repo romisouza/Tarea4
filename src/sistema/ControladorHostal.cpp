@@ -116,7 +116,10 @@ set<std::string> ControladorHostal::obtenerHuespedesRegistrados(){//ADE - VERIFI
 	return res;
 }
 
-void ControladorHostal::seleccionarHuesped(std::string emailHuesp){}
+void ControladorHostal::seleccionarHuesped(std::string emailHuesp){
+	ControladorUsuario *ctrl = ControladorUsuario::getInstance();
+	huespRecordado = ctrl->getColHuespedes().find(emailHuesp)->second;
+}
 
 void ControladorHostal::confirmarAltaReserva(){}
 

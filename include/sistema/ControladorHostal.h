@@ -32,6 +32,7 @@ class ControladorHostal:public IHostal {
     	float precioNoche;
     	int capacidad;
 		//Para ingresardatosreserva
+		Huesped* huespRecordado;
 		std::string nombreHostalIngresado;
 		DTFecha fechaInIngresada;
 		DTFecha fechaOutIngresada;

@@ -32,9 +32,6 @@ ControladorUsuario* ControladorUsuario::getInstance(){
 	return instancia;
 }
 
-map<string,Empleado*> ControladorUsuario::getColEmpleados(){
-	return ColEmpleados;
-}
 
 Empleado* ControladorUsuario::getEmpleadoIngresado(){
 	return empleadoIngresado;
@@ -122,7 +119,12 @@ set<string> ControladorUsuario::obtenerHuespedes(){
 	return emailHuespedes;
 }
 
-void ControladorUsuario::seleccionar(string mailHuesped){
+map<std::string,Empleado*> ControladorUsuario::getColEmpleados(){
+	return ColEmpleados;
+}
+
+map<std::string,Huesped*> ControladorUsuario::getColHuespedes(){
+	return ColHuespedes;
 }
 
 set<string> ControladorUsuario::ObtenerUsuarios(){ //BIEN
@@ -179,8 +181,6 @@ list<DTEmpleado> ControladorUsuario::getEmpleados(Hostal* h){
 
 Empleado* ControladorUsuario::SeleccionarEmpleado(CargoEmpleado* cargoEmp,string mailEmp,Hostal*  host){
 	Empleado* emp = ColEmpleados.find(mailEmp)->second;
-	//cout << getCantEmpleado();
-	//cout << emp->getEmail();
 	if(emp->getEmail()==mailEmp){
 		ingresarEmpleadoPunt(emp);
 		ingresarCargo(cargoEmp);

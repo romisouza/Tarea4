@@ -38,12 +38,12 @@ class ControladorUsuario {
 		void setTipoUsuario(bool);
 		static ControladorUsuario* getInstance();
 		map<std::string,Empleado*> getColEmpleados();
+		map<std::string,Huesped*> getColHuespedes();
 		set<DTCal> obtenerComentariosAResponder(std::string mail);
 		set<std::string> obtenerHuespedes();
 		Empleado* getEmpleadoIngresado();
 		CargoEmpleado* getCargoIngresado();
 		void ingresarHostal(Hostal*);
-		void seleccionar(std::string mailHuesped);
 		void IngresarHuesped(std::string nombre,std::string email,std::string password,bool esFinger);
 		void IngresarEmpleado(std::string nombre,std::string email,std::string password);
 		void ingresarEmpleadoPunt(Empleado*);
