@@ -87,8 +87,9 @@ int main(){
     ctrl->SeleccionarEmpleado(cargo1,e3);
     ctrl->ConfirmarAsignacionDeEmpleado();
 */
-std::string n1, n2;
-int tel;
+std::string n1, n2, nombre;
+int tel, numero, capacidad;
+float precio;
 ControladorHostal *ctrl = ControladorHostal::getInstance();
     cout<<"ingrese nombre hostal: ";cin>>n1;
     cout<<"ingrese direccion hostal ";cin>>n2;
@@ -98,5 +99,10 @@ ControladorHostal *ctrl = ControladorHostal::getInstance();
         for( set<std::string>::iterator i= x.begin(); i != x.end(); i++){
        		cout << *i <<"\n";
     	}
+    cout<<"ingrese hostal elegido: ";cin>>nombre;
+    cout<<"ingrese numero de hab ";cin>>numero;
+    cout<<"ingrese precio hab: "; cin>>precio;
+    cout<<"ingrese capacidad hab: "; cin>>capacidad;
+    ctrl->asignarHab(nombre, numero, precio, capacidad);  
     return 0;
 }
