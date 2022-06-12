@@ -25,33 +25,42 @@ void ControladorHostal::agregarHostal(std::string nombre, std::string direccion,
 	ControladorHostal::ColHostales.insert(pair<string,Hostal*>(nombre,host)); 
 }
 set<std::string> ControladorHostal::ObtenerNombreHostales() {
-	/*set<string> hostales;
-	for( map<std::string,Hostal*>:iterador i= ColHostales.begin(); i != ColHostales.end(); i++){
-		hostales.insert((*i).first);
-		//cout << (*i).first << endl;
-	}*/
+	set<string> hostales;
+	for( map<std::string,Hostal*>::iterator i= ColHostales.begin(); i != ColHostales.end(); i++){
+		std::string nombre = (*i).first;
+		std::string todo = "Hostal: Hostal: "+nombre+"";
+		hostales.insert(todo);
+		
+	}
 }
 
 void ControladorHostal::asignarHab(std::string nombreHostal, int num, float precio, int capacidad){
-	/*numero = num;
+	numero = num;
 	precioNoche = precio;
 	capacidad = capacidad;
-	hostalIngresado = ColHostales.find(nombreHostal)->second;*/
+	hostalIngresado = ColHostales.find(nombreHostal)->second;
 }
 
 void ControladorHostal::registrarHab(){
-/*	//se anade una nueva habitacion al hostal seleccionado con los datos de la habi recordada ant
+//se anade una nueva habitacion al hostal seleccionado con los datos de la habi recordada ant
 	//se crea una instancia de hab con los datos ing, se cea un link de la instancia hab y hostal, y se 
 	//libera la mem asociada a hab hostal elegido
-	Habitacion* hab = new Habitacion(numero, precioNoche, capacidad);
-	
-    //res?? = Reserva*;
-*/
+
+	Habitacion *hab = new Habitacion(numero, precioNoche, capacidad);
+	hostalIngresado->agregarHabAlHost(hab);
+	hostalIngresado = NULL;
+	numero = -1;
+	precioNoche = -1;
+	capacidad = -1;
 
 }
 
 void ControladorHostal::cancelarAltaHabitacion(){
 //el sistema libera la memoria asocida a los daos de habitacion y hostal elegido
+numero = -1;
+precioNoche = -1;
+capacidad = -1;
+hostalIngresado = NULL;
 }
 
 list<DTEmpleado> ControladorHostal::ObtenerEmpleados(std::string nombreHostal){
