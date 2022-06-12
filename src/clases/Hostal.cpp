@@ -151,7 +151,10 @@ void Hostal::buscarR(std::string email ){}
 
 set<DTReserva> Hostal::BuscarRes(std::string email){}
 
-void Hostal::agregarHabAlHost(){}
+void Hostal::agregarHabAlHost(Habitacion* hab){
+	ColHabitaciones.insert(pair<int, Habitacion*>(hab->getNumero(),hab));
+}
+
 
 void Hostal::recordarHostal(){}
 
