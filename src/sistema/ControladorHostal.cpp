@@ -37,7 +37,7 @@ return hostales;
 void ControladorHostal::asignarHab(std::string nombreHostal, int num, float precio, int capacidad){
 	numero = num;
 	precioNoche = precio;
-	capacidad = capacidad;
+	this->capacidad = capacidad;
 	hostalIngresado = ColHostales.find(nombreHostal)->second;
 }
 
@@ -148,8 +148,8 @@ void ControladorHostal::ReservaNCElegida(int codigoRes){}
 void ControladorHostal::DatosHuesped(std::string nombreHostal,std::string email){}
 
 void ControladorHostal::SeleccionarHostal(std::string nomHostal){
-	/*Hostal* Hst=ColHostales.find(nomHostal)->second;
-	ingresarHostal(Hst);*/
+	Hostal* Hst=ColHostales.find(nomHostal)->second;
+	ingresarHostal(Hst);
 }
 
 set<DTIdEstadia> ControladorHostal::ListaEstadiasFinalizadas(std::string email){

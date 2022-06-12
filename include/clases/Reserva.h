@@ -26,7 +26,7 @@ class Reserva{
         EstadoReserva estado;
         Habitacion *hab;
         Huesped *hues;
-        Estadia *est;
+        set<Estadia*> est;
     public:
         Reserva();
         Reserva(int,DTFecha,DTFecha,DTFecha);
@@ -37,11 +37,11 @@ class Reserva{
         EstadoReserva getEstado();
         Habitacion* getHab();
         Huesped* getHues();
-        Estadia* getEstadia();
+        set<Estadia*> getEstadia();
         DTReserva getDTReserva();
         //virtual DTReservaComp getDTReservaComp()=0;
         DataEstadia BuscarRes(DTIdEstadia);
-        void BuscarEstadia();
+        void BuscarEstadia(string, DTFecha);//cambiada
         DTIdEstadia accederaEstadias();
         void hallarEstadia(string,string);
         virtual set<DTReserva> validarHuespedRegistrado(string)=0;
@@ -54,7 +54,7 @@ class Reserva{
         void setEstado(EstadoReserva);
         void setHab(Habitacion*);
         void setHues(Huesped*);
-        void setEstadia(Estadia*);
+        void setEstadia(set<Estadia*>);
         ~Reserva();
 };
 

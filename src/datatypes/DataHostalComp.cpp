@@ -43,3 +43,14 @@ list<DTCalificacion> DataHostalComp::getComentarios(){
     return ColCalif;
 }
 
+void DataHostalComp::setHabitaciones(map<int, Habitacion*> habs) {
+    ColHabit=habs;
+}
+
+void DataHostalComp::setReservas(map<int, Reserva*> Res){
+    ColRes=Res;
+}
+
+void DataHostalComp::setComentarios(list<DTCalificacion> Com){
+    ColCalif=Com;
+}

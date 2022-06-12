@@ -9,7 +9,7 @@ Reserva::Reserva(int cod,DTFecha entrada,DTFecha salida,DTFecha realiza){
     estado= Abierta;
     this->hab = NULL;
     hues = NULL;
-    this->est = NULL;
+    //this->est = NULL;
 }
 
 int Reserva::getCodigo(){
@@ -40,7 +40,7 @@ Huesped* Reserva::getHues(){
     return hues;
 }
 
-Estadia* Reserva::getEstadia(){
+set<Estadia*> Reserva::getEstadia(){
     return est;
 }
 
@@ -73,7 +73,7 @@ void Reserva::setHues(Huesped* huesped){
     hues=huesped;
 }
 
-void Reserva::setEstadia(Estadia* estadia){
+void Reserva::setEstadia(set<Estadia*> estadia){
     est = estadia;
 }
 
@@ -82,10 +82,16 @@ DTReserva Reserva::getDTReserva(){
     return Res;
 }
 
-
+void Reserva::BuscarEstadia(string email, DTFecha hrs){
+    /*Estadia* Est= est.find(email);
+    bool EsFin= compararFecha(Est.getCheckOut(),hrs);
+    if(EsFin==true){
+        DTIdEstadia EstSe;=getDTIdEstadia();    
+    }*/
+}
 
 Reserva ::~Reserva() {
     delete hab;
     delete hues;
-    delete est;
+   //delete est;
 }
