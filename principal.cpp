@@ -95,7 +95,7 @@ ControladorHostal *ctrl = ControladorHostal::getInstance();
     cout<<"ingrese direccion hostal ";cin>>n2;
     cout<<"ingrese numero de telefono: "; cin>>tel;
     ctrl->agregarHostal(n1,n2,tel);
-    set<string> x = ctrl->ObtenerNombreHostales();
+    /*set<string> x = ctrl->ObtenerNombreHostales();
         for( set<std::string>::iterator i= x.begin(); i != x.end(); i++){
        		cout << *i <<"\n";
     	}
@@ -104,6 +104,6 @@ ControladorHostal *ctrl = ControladorHostal::getInstance();
     cout<<"ingrese precio hab: "; cin>>precio;
     cout<<"ingrese capacidad hab: "; cin>>capacidad;
     ctrl->asignarHab(nombre, numero, precio, capacidad);
-    ctrl->registrarHab();  
+    ctrl->registrarHab(); */
     return 0;
 }
