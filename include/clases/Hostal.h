@@ -6,6 +6,7 @@
 #include <list>
 #include "../../include/datatypes/DTCal.h"
 #include "../../include/datatypes/DataHostalComp.h"
+#include "../../include/datatypes/DTReservaComp.h"
 #include "../../include/datatypes/DTIdEstadia.h"
 #include "../../include/datatypes/DataEstadia.h"
 #include "../../include/datatypes/DTHostalProm.h"
@@ -15,6 +16,7 @@
 #include "Reserva.h"
 #include "Empleado.h"
 #include "Calificacion.h"
+
 
 class Empleado;
 class Reserva;
@@ -63,7 +65,7 @@ class Hostal{
 		set<int> obtenerHabitaciones(DTFecha, DTFecha);
 		Habitacion* seleccionarHab(int);
 		void AgregarEmpleadoAHostal(Empleado*);
-		set<DTReserva> ObtenerReservas();
+		//list<DTReservaComp> ObtenerReservas();
 		set<DTCalificacion> obtenerCalificaciones();
 		int getPromCal();
 		bool TrabajaEnHostal();
