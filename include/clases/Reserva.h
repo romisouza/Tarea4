@@ -39,6 +39,7 @@ class Reserva{
         Huesped* getHues();
         Estadia* getEstadia();
         DTReserva getDTReserva();
+       // virtual DTReservaComp getDTReservaComp()=0;
         DataEstadia BuscarRes(DTIdEstadia);
         void BuscarEstadia();
         DTIdEstadia accederaEstadias();

@@ -137,7 +137,16 @@ void Hostal::AgregarEmpleadoAHostal(Empleado* emp) {
     	}*/
 }
 
-set<DTReserva> Hostal::ObtenerReservas(){}
+/*list<DTReservaComp> Hostal::ObtenerReservas(){
+	list<DTReservaComp> dtreservas;
+	auto iter = ColReservas.begin();
+	while(iter!=ColReservas.end()){
+		Reserva* res = iter->second;
+		DTReservaComp dtres=res->getDTReservaComp();
+
+	}
+
+}*/
 
 set<DTCalificacion> Hostal::obtenerCalificaciones(){}
 

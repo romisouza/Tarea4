@@ -66,14 +66,21 @@ int main(){
           //  std::cout<<"Error: "<<e.what()<<std::endl;
     	//}*/
 
-//ASIGNAR EMPLEADO A HOSTAL   
-   /* ControladorUsuario *cont = ControladorUsuario::getInstance();   
+//ASIGNAR EMPLEADO A HOSTAL
+/*   
+   ControladorUsuario *cont = ControladorUsuario::getInstance();   
     std::string n1,n2,n3,n4,e1,e2,e3,e4,p1,p2,p3,p4;
     int tel;
     cout << "nombre emp 1";cin >> n3;
     cout << "email emp 1";cin >> e3;
     cout << "pass emp 1";cin >> p3;
     cont->IngresarEmpleado(n3,e3,p3);
+    cont->setTipoUsuario(1);
+    cont->ConfirmarAltaUsuario();
+    cout << "nombre emp 2";cin >> p1;
+    cout << "email emp 2";cin >> p2;
+    cout << "pass emp 2";cin >> p4;
+    cont->IngresarEmpleado(p1,p2,p4);
     cont->setTipoUsuario(1);
     cont->ConfirmarAltaUsuario();
     ControladorHostal *ctrl = ControladorHostal::getInstance();
@@ -83,8 +90,13 @@ int main(){
     ctrl->agregarHostal(n1,n2,tel);
     CargoEmpleado carg1 = Administracion;
     CargoEmpleado *cargo1 = &carg1;
+    CargoEmpleado carg2 = Recepcion;
+    CargoEmpleado *cargo2 = &carg2;
     list<DTEmpleado> lista = ctrl->ObtenerEmpleados(n1);
     ctrl->SeleccionarEmpleado(cargo1,e3);
+    ctrl->ConfirmarAsignacionDeEmpleado();
+    lista = ctrl->ObtenerEmpleados(n1);
+    ctrl->SeleccionarEmpleado(cargo2,p2);
     ctrl->ConfirmarAsignacionDeEmpleado();
 */
 std::string n1, n2, nombre;

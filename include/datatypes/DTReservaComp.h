@@ -11,15 +11,15 @@ private:
     int codigo;
     DTFecha checkIn;
     DTFecha checkOut;
-    EstadoReserva estado;
+   //EstadoReserva estado;
     int numHab;
     map<std::string,Huesped*> huespedes;
 public:
-    DTReservaComp(int, DTFecha, DTFecha, EstadoReserva, int, map<std::string,Huesped*>);
+    DTReservaComp(int, DTFecha, DTFecha,int, map<std::string,Huesped*>);
     int getCodigo();
     DTFecha getCheckIn();
     DTFecha getCheckOut();
-    EstadoReserva getEstado();
+  // EstadoReserva getEstado();
     int getNumHab();
     map<std::string,Huesped*> getHuesp();
     ~DTReservaComp();

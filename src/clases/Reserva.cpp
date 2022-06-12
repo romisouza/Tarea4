@@ -82,6 +82,8 @@ DTReserva Reserva::getDTReserva(){
     return Res;
 }
 
+
+
 Reserva ::~Reserva() {
     delete hab;
     delete hues;
