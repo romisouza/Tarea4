@@ -103,6 +103,7 @@ ControladorHostal *ctrl = ControladorHostal::getInstance();
     cout<<"ingrese numero de hab ";cin>>numero;
     cout<<"ingrese precio hab: "; cin>>precio;
     cout<<"ingrese capacidad hab: "; cin>>capacidad;
-    ctrl->asignarHab(nombre, numero, precio, capacidad);  
+    ctrl->asignarHab(nombre, numero, precio, capacidad);
+    ctrl->registrarHab();  
     return 0;
 }

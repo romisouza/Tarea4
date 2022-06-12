@@ -45,7 +45,6 @@ void ControladorHostal::registrarHab(){
 //se anade una nueva habitacion al hostal seleccionado con los datos de la habi recordada ant
 	//se crea una instancia de hab con los datos ing, se cea un link de la instancia hab y hostal, y se 
 	//libera la mem asociada a hab hostal elegido
-
 	Habitacion *hab = new Habitacion(numero, precioNoche, capacidad);
 	hostalIngresado->agregarHabAlHost(hab);
 	hostalIngresado = NULL;
