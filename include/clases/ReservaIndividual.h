@@ -14,7 +14,6 @@ class ReservaIndividual:public Reserva{
         virtual DTReservaComp* getDTReservaComp();
         virtual void validarHuesped(string);
         ~ReservaIndividual();
-
 };
 
 #endif

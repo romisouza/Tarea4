@@ -11,7 +11,7 @@ class DTReserva {
         DTFecha checkOut;
         EstadoReserva estado;
     public:
-        DTReserva(int, DTFecha, DTFecha);
+        DTReserva(int, DTFecha, DTFecha, EstadoReserva);
         ~DTReserva();
         int getCodigo();
         DTFecha getCheckIn();

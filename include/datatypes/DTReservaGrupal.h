@@ -13,7 +13,7 @@ class DTReservaGrupal: public DTReserva {
         set<Huesped*> huespedes;
         int TotalHuesp;
     public:
-        DTReservaGrupal(set<Huesped*>,int);
+        DTReservaGrupal(int, DTFecha, DTFecha, EstadoReserva,set<Huesped*>,int);
         set<Huesped*> getHuespedes();
         int getTotalHuesp();
         virtual ~DTReservaGrupal();

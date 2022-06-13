@@ -1,9 +1,10 @@
 #include "../../include/datatypes/DTReserva.h"
 
-DTReserva::DTReserva(int cod, DTFecha ent, DTFecha sal){
+DTReserva::DTReserva(int cod, DTFecha ent, DTFecha sal, EstadoReserva est){
     codigo = cod;
     checkIn = ent;
     checkOut = sal;
+    estado = est;
 }
 DTReserva::~DTReserva(){}
 
