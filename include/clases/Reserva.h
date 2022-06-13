@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 #include <list>
+#include <set>
 #include "Habitacion.h"
 #include "Huesped.h"
 #include "Estadia.h"
