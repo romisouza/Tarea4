@@ -20,6 +20,9 @@ int ReservaGrupal::getTotalHuesp(){
 /*ReservaGrupal::~ReservaGrupal() {
 }*/
 
+DTReservaComp* ReservaGrupal::getDTReservaComp(){
+
+}
 
 set<DTReserva> ReservaGrupal::validarHuespedRegistrado(string email){}
 
