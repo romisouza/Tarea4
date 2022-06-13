@@ -32,6 +32,9 @@ class DataHostalComp {
         map<int, Habitacion*> getHabitaciones();
         map<int, Reserva*> getReservas();
         list<DTCalificacion> getComentarios();
+        void setHabitaciones(map<int, Habitacion*>);
+        void setReservas(map<int, Reserva*>);
+        void setComentarios(list<DTCalificacion>);
         
 };
 

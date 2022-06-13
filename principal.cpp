@@ -9,6 +9,7 @@
 #include <list>
 #include <string>
 #include <iostream>
+#include <map>
 using namespace std;
 
 int main(){
@@ -104,11 +105,15 @@ std::string n1, n2, nombre;
 int tel, numero, capacidad;
 float precio;
 ControladorHostal *ctrl = ControladorHostal::getInstance();
-    cout<<"ingrese nombre hostal: "; getline(cin, n1, '\n');;
-    cout<<"ingrese direccion hostal "; getline(cin, n2, '\n');
+    cout<<"ingrese nombre hostal: ";getline(cin,n1,'\n');
+    cout<<"ingrese direccion hostal ";getline(cin,n2,'\n');
     cout<<"ingrese numero de telefono: "; cin>>tel;
     ctrl->agregarHostal(n1,n2,tel);
-    set<string> x = ctrl->ObtenerNombreHostales();
+    ctrl->SeleccionarHostal(n1);
+    
+    
+    
+    /*set<string> x = ctrl->ObtenerNombreHostales();
         for( set<std::string>::iterator i= x.begin(); i != x.end(); i++){
        		cout << *i <<"\n";
     	}

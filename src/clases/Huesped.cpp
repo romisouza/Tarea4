@@ -25,6 +25,10 @@ void Huesped::setEsFinger(bool finger){
 }
 
 void Huesped::BuscarEstadias(std::string email){
+	/*map<int,Reserva*> Res=getColReservasHuesp();
+	for(auto it=Res.begin();it!=Res.end();it++){
+		it->second->BuscarEstadia();
+	}*/
 }
 
 DTHuesped Huesped::getDTHuesped(){

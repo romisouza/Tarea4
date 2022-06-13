@@ -38,7 +38,6 @@ class Estadia{
         void setHuesp(Huesped*);
         void setReserva(Reserva*);
         void setCalificacion(Calificacion*);
-        bool compararFecha(DTFecha, DTFecha);
         DTIdEstadia getDTIdEstadia();
         DataEstadia getDataEstadia();
         void hallarHuesped(string, string);
