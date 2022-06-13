@@ -13,7 +13,7 @@ private:
 public:
     DTReservaCompGrup(int, DTFecha, DTFecha,EstadoReserva,int, map<std::string,Huesped*>);
     map<std::string,Huesped*> getHuesp();
-    virtual ~DTReservaCompGrup();
+    ~DTReservaCompGrup();
 };
 
 #endif

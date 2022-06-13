@@ -21,7 +21,7 @@ public:
     DTFecha getCheckOut();
     EstadoReserva getEstado();
     int getNumHab();
-    virtual ~DTReservaComp()=0;
+    ~DTReservaComp();
 };
 
 #endif
