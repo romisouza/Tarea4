@@ -8,6 +8,13 @@ ReservaIndividual::ReservaIndividual(int codigo, DTFecha checkin, DTFecha checko
     DTReservaComp(getCodigo(),getCheckIn(),getCheckOut(),getEstado(),getHab()->getNumero(),NULL);
 }*/
 
+set<DTReserva> ReservaIndividual::validarHuespedRegistrado(string){
+
+}
+
+void ReservaIndividual::validarHuesped(string){
+
+}
 
 /*ReservaIndividual::~ReservaIndividual() {
 }*/

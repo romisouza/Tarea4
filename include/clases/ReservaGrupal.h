@@ -19,9 +19,9 @@ class ReservaGrupal:public Reserva{
         int getTotalHuesp();
         void setTotalHuesp();
         //virtual DTReservaComp getDTReservaComp();
-       // set<DTReserva> validarHuespedRegistrado(string);
-       // void validarHuesped(string);
-        //~ReservaGrupal();
+        virtual set<DTReserva> validarHuespedRegistrado(string);
+        virtual void validarHuesped(string);
+        ~ReservaGrupal();
 };
 
 
