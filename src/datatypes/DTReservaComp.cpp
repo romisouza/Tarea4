@@ -1,12 +1,11 @@
 #include "../../include/datatypes/DTReservaComp.h"
 
-DTReservaComp::DTReservaComp(int codi, DTFecha CheckIn, DTFecha CheckOut, EstadoReserva est,int Num,map<std::string,Huesped*> Huespedes){
+DTReservaComp::DTReservaComp(int codi, DTFecha CheckIn, DTFecha CheckOut, EstadoReserva est,int Num){
     codigo=codi;
     checkIn=CheckIn;
     checkOut=CheckOut;
     estado=est;
     numHab=Num;
-    huespedes=Huespedes;
 }
 
 int DTReservaComp::getCodigo(){
@@ -29,9 +28,7 @@ int DTReservaComp::getNumHab(){
     return numHab;
 }
 
-map<std::string,Huesped*> DTReservaComp::getHuesp(){
-    return huespedes;
-}
+
 
 
 DTReservaComp::~DTReservaComp(){
