@@ -3,8 +3,10 @@
 #include "Usuario.h"
 #include "Reserva.h"
 #include "../../include/datatypes/DTHuesped.h"
+#include "../../include/datatypes/DTIdEstadia.h"
 #include <iostream>
 #include <map>
+#include <list>
 using namespace std;
 class Reserva;
 
@@ -18,7 +20,7 @@ class Huesped: public Usuario {
 		map<int,Reserva*> getColReservasHuesp();
 		bool getEsFinger();
 		void setEsFinger(bool finger);
-		void BuscarEstadias(std::string email);
+		list<DTIdEstadia> BuscarEstadias(std::string email, DTFecha);//cambie el nombre
 		DTHuesped getDTHuesped();
 };
 

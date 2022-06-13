@@ -40,7 +40,7 @@ Huesped* Reserva::getHues(){
     return hues;
 }
 
-set<Estadia*> Reserva::getEstadia(){
+list<Estadia*> Reserva::getEstadia(){
     return est;
 }
 
@@ -73,7 +73,7 @@ void Reserva::setHues(Huesped* huesped){
     hues=huesped;
 }
 
-void Reserva::setEstadia(set<Estadia*> estadia){
+void Reserva::setEstadia(list<Estadia*> estadia){
     est = estadia;
 }
 
@@ -82,12 +82,16 @@ DTReserva Reserva::getDTReserva(){
     return Res;
 }
 
-void Reserva::BuscarEstadia(string email, DTFecha hrs){
-    /*Estadia* Est= est.find(email);
-    bool EsFin= compararFecha(Est.getCheckOut(),hrs);
+void Reserva::BuscarEstadia(string email, DTFecha hrs, DTIdEstadia & est){
+    list<Estadia*>::iterator it;
+    while((*it)->getHuesp()->getEmail()!=email){
+        ++it;
+    }
+    bool EsFin= hrs.compararFecha((*it)->getCheckOut(),hrs);
     if(EsFin==true){
-        DTIdEstadia EstSe;=getDTIdEstadia();    
-    }*/
+        DTIdEstadia EstSel=(*it)->getDTIdEstadia();    
+        est=EstSel;
+    }
 }
 
 Reserva ::~Reserva() {

@@ -2,7 +2,7 @@
 #define RESERVA
 #include <string>
 #include <iostream>
-#include <set>
+#include <list>
 #include "Habitacion.h"
 #include "Huesped.h"
 #include "Estadia.h"
@@ -26,7 +26,7 @@ class Reserva{
         EstadoReserva estado;
         Habitacion *hab;
         Huesped *hues;
-        set<Estadia*> est;
+        list<Estadia*> est;
     public:
         Reserva();
         Reserva(int,DTFecha,DTFecha,DTFecha);
@@ -37,11 +37,11 @@ class Reserva{
         EstadoReserva getEstado();
         Habitacion* getHab();
         Huesped* getHues();
-        set<Estadia*> getEstadia();
+        list<Estadia*> getEstadia();
         DTReserva getDTReserva();
         //virtual DTReservaComp getDTReservaComp()=0;
         DataEstadia BuscarRes(DTIdEstadia);
-        void BuscarEstadia(string, DTFecha);//cambiada
+        void BuscarEstadia(string, DTFecha, DTIdEstadia &);//cambie el nombre
         DTIdEstadia accederaEstadias();
         void hallarEstadia(string,string);
         //virtual set<DTReserva> validarHuespedRegistrado(string)=0;
@@ -53,7 +53,7 @@ class Reserva{
         void setEstado(EstadoReserva);
         void setHab(Habitacion*);
         void setHues(Huesped*);
-        void setEstadia(set<Estadia*>);
+        void setEstadia(list<Estadia*>);
         ~Reserva();
 };
 
