@@ -19,3 +19,7 @@ DTFecha DTReserva::getCheckOut(){
     return checkOut;
 }
 
+EstadoReserva DTReserva::getEstado(){
+    return estado;
+}
+
