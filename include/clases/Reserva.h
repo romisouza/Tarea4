@@ -40,7 +40,7 @@ class Reserva{
         Huesped* getHues();
         list<Estadia*> getEstadia();
         DTReserva getDTReserva();
-        virtual DTReservaComp* getDTReservaComp()=0;
+        //virtual DTReservaComp* getDTReservaComp()=0;
         DataEstadia BuscarRes(DTIdEstadia);
         void BuscarEstadia(string, DTFecha, DTIdEstadia &);//cambie el nombre
         DTIdEstadia accederaEstadias();

@@ -16,9 +16,9 @@ void ReservaIndividual::validarHuesped(string){
 
 }
 
-DTReservaComp* ReservaIndividual::getDTReservaComp(){
+/*DTReservaComp* ReservaIndividual::getDTReservaComp(){
 
-}
+}*/
 
 /*ReservaIndividual::~ReservaIndividual() {
 }*/

@@ -21,11 +21,16 @@ int ReservaGrupal::getTotalHuesp(){
 /*ReservaGrupal::~ReservaGrupal() {
 }*/
 
-DTReservaComp* ReservaGrupal::getDTReservaComp(){
-   /* DTReservaCompGrup* dtres = new DTReservaCompGrup(getCodigo(),getCheckIn(),getCheckOut(),getEstado(),getHab()->getNumero(),huespedes);
-    return dtres;*/
-}
+/*DTReservaComp* ReservaGrupal::getDTReservaComp(){
+    DTReservaCompGrup* dtres = new DTReservaCompGrup(getCodigo(),getCheckIn(),getCheckOut(),getEstado(),getHab()->getNumero(),huespedes);
+    return dtres;
+}*/
+
 
 set<DTReserva> ReservaGrupal::validarHuespedRegistrado(string email){}
 
 void ReservaGrupal::validarHuesped(string email){}
+
+void ReservaGrupal::agregarAcompaniante(Huesped*){
+    
+}

@@ -11,7 +11,7 @@ class ReservaIndividual:public Reserva{
     public:
         ReservaIndividual(int codigo, DTFecha checkin, DTFecha checkout,DTFecha realiza);
         virtual set<DTReserva> validarHuespedRegistrado(string);
-        virtual DTReservaComp* getDTReservaComp();
+        //virtual DTReservaComp* getDTReservaComp();
         virtual void validarHuesped(string);
         ~ReservaIndividual();
 };
