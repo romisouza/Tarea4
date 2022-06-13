@@ -9,7 +9,7 @@ using namespace std;
 class DTReservaIndividual:public DTReserva{
     private:
     public:
-        DTReservaIndividual();
+        DTReservaIndividual(int, DTFecha, DTFecha,EstadoReserva);
         ~DTReservaIndividual();
 };
 
