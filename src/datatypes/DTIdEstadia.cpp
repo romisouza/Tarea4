@@ -1,5 +1,9 @@
 #include "../../include/datatypes/DTIdEstadia.h"
 
+DTIdEstadia::DTIdEstadia(){
+    
+}
+
 DTIdEstadia::DTIdEstadia(int cod, std::string mail){
     codigo=cod;
     email=mail;

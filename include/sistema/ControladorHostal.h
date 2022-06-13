@@ -42,6 +42,10 @@ class ControladorHostal:public IHostal {
 		Habitacion* habRecordada;
 		//para generar el codigo de las reservas
 		int codigoRes;
+		//para calificar estadia
+		list<DTIdEstadia> EstadiasFinalizadas;
+		string nombreHuesped;
+		string emailHuesped;
 		ControladorHostal();
 		~ControladorHostal();
 	public: 
@@ -72,7 +76,10 @@ class ControladorHostal:public IHostal {
 		void ReservaNCElegida(int);//registrar estadia
 		void DatosHuesped(std::string,std::string);//finalizar estadia NO SE QUE HACE LA FUNCION XD
 		void SeleccionarHostal(std::string);//calificar estadia
-		set<DTIdEstadia> ListaEstadiasFinalizadas(std::string);//calificar estadia
+		void ingresarEstadiasFinalizadas(list<DTIdEstadia>);//Nueva, recuerda una lista de estadias finalizadas
+		void ingresarEmailHuesped(string); // Nueva, recuerda el email de un huesped
+		void ingresarNombreHuesped(string); //Nueva, recuerda el nombre de un huesped
+		list<DTIdEstadia> ListaEstadiasFinalizadas(std::string);//calificar estadia
 		void SeleccionarEstadia(DTIdEstadia);//calificar estadia 
 		void ConfirmarCalificacion (std::string, int);//calificar estadiaDatoet
 		set<DTCal> ObtenerComentariosAResponder(std::string);//comentar calificacion

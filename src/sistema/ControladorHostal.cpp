@@ -186,11 +186,25 @@ void ControladorHostal::SeleccionarHostal(std::string nomHostal){
 	ingresarHostal(Hst);
 }
 
-set<DTIdEstadia> ControladorHostal::ListaEstadiasFinalizadas(std::string email){
-	/*ControladorUsuario* cu = ControladorUsuario::getInstance();
+void ControladorHostal::ingresarEstadiasFinalizadas(list<DTIdEstadia> Est){
+	EstadiasFinalizadas=Est;
+}
+
+void ControladorHostal::ingresarEmailHuesped(string email){
+	emailHuesped=email;
+}
+
+void ControladorHostal::ingresarNombreHuesped(string nom){
+	nombreHuesped=nom;
+}
+
+
+list<DTIdEstadia> ControladorHostal::ListaEstadiasFinalizadas(std::string email){
+	ControladorUsuario* cu = ControladorUsuario::getInstance();
 	SingletonFechaHora* FH = SingletonFechaHora::getInstance();
-	DTFecha hrs= FH->FechaHoraSitema();
-	cu->BuscarHuesped(email);*/
+	DTFecha hrs= FH->FechaHoraSistema();
+	list<DTIdEstadia> estadias=cu->BuscarHuesped(email, hrs);
+	return estadias;
 }
 
 void ControladorHostal::SeleccionarEstadia(DTIdEstadia estadia){}

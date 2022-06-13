@@ -56,7 +56,7 @@ class ControladorUsuario {
 		list<DTEmpleado> getEmpleados(Hostal* h);
 		Empleado* SeleccionarEmpleado(CargoEmpleado* cargoEmp,std::string mailEmp,Hostal*);
 		void AsignarCargoAEmpleado();
-		void BuscarHuesped(std::string email);
+		list<DTIdEstadia> BuscarHuesped(std::string email, DTFecha);//cambie el nombre
 		void SuscribirEmpleado(std::string emp);
 		set<DTCalificacion> ObtenerNotificaciones(std::string email);
 		void EliminarNotificaciones();

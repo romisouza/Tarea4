@@ -8,6 +8,7 @@ private:
     int codigo;
     std::string email;
 public:
+    DTIdEstadia();
     DTIdEstadia(int, std::string);
     int getCodigo();
     std::string getEmail();
