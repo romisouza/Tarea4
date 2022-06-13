@@ -78,7 +78,7 @@ void Reserva::setEstadia(list<Estadia*> estadia){
 }
 
 DTReserva Reserva::getDTReserva(){
-    DTReserva Res=DTReserva(getCodigo(),getCheckIn(),getCheckOut());
+    DTReserva Res=DTReserva(getCodigo(),getCheckIn(),getCheckOut(),getEstado());
     return Res;
 }
 
