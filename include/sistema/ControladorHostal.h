@@ -31,7 +31,8 @@ class ControladorHostal:public IHostal {
 		int numero; 
     	float precioNoche;
     	int capacidad;
-		//Para ingresardatosreserva
+		//Para realizar reserva
+		set<Huesped*> acompaniantesIngresados;
 		Huesped* huespRecordado;
 		std::string nombreHostalIngresado;
 		DTFecha fechaInIngresada;
@@ -39,6 +40,8 @@ class ControladorHostal:public IHostal {
 		bool gruppOindIngresado;
 		int totalHuespIngresado;
 		Habitacion* habRecordada;
+		//para generar el codigo de las reservas
+		int codigoRes;
 		ControladorHostal();
 		~ControladorHostal();
 	public: 
@@ -54,7 +57,7 @@ class ControladorHostal:public IHostal {
 		void SeleccionarEmpleado(CargoEmpleado*, std::string);//Asignar emp a hostal
 		void ConfirmarAsignacionDeEmpleado();//asignar emp a host (confirmarAsignacionAUsuario)
 		void CancelarAsignacionDeEmpleado();//asignar emp a host (cancelarAsignacionAUsuario)
-		set<DTHostalProm> ObtenerHostalesProm(); //Realizar reserva (ObtenerHostales)
+		list<DTHostalProm> ObtenerHostalesProm(); //Realizar reserva (ObtenerHostales)
 		void ingresarDatosReserva(std::string, DTFecha, DTFecha, bool, int);//realizar reserva
 		set<int> obtenerHabitacionesDisponibles(DTFecha, DTFecha);//realizar reserva
 		void seleccionarHabitacion(int); //realizar res

@@ -2,7 +2,7 @@
 #define CALIFICACION
 #include <string>
 #include <iostream>
-#include "../../include/clases/Estadia.h"
+#include "Estadia.h"
 using namespace std;
 
 class DTFecha;

@@ -3,7 +3,7 @@
 ControladorHostal* ControladorHostal::instancia = NULL;
 
 ControladorHostal::ControladorHostal(){
-
+	codigoRes = 1000; //inicializo el codigo de las reservas, luego se incrementa uno en cada reserva q se haga
 }
 
 void ControladorHostal::ingresarHostal(Hostal* host){
@@ -22,7 +22,7 @@ ControladorHostal* ControladorHostal:: getInstance(){
 
 void ControladorHostal::agregarHostal(std::string nombre, std::string direccion, int telefono){ //LISTA
 	Hostal *host = new Hostal(nombre,direccion,telefono,0);
-	ControladorHostal::ColHostales.insert(pair<string,Hostal*>(nombre,host)); 
+	ControladorHostal::ColHostales.insert(pair<string,Hostal*>(nombre,host));
 }
 set<std::string> ControladorHostal::ObtenerNombreHostales() {
 	set<string> hostales;
@@ -97,7 +97,14 @@ void ControladorHostal::CancelarAsignacionDeEmpleado(){
 	cu->ingresarHostal(NULL);
 }
 
-set<DTHostalProm> ControladorHostal::ObtenerHostalesProm(){}
+list<DTHostalProm> ControladorHostal::ObtenerHostalesProm(){
+	list<DTHostalProm> res;
+	for(map<std::string,Hostal*>::iterator i= ColHostales.begin(); i != ColHostales.end(); i++){
+		DTHostalProm infoHostal = (*i).second->getDTHostalProm((*i).second);
+		res.push_back(infoHostal);
+	}
+	return res;
+}
 
 void ControladorHostal::ingresarDatosReserva(std::string nombreHostal, DTFecha in, DTFecha out, bool grupOind, int totalHuesp){ //LISTA
 	std::string nombreHostalIngresado = nombreHostal;
@@ -129,11 +136,38 @@ void ControladorHostal::seleccionarHuesped(std::string emailHuesp){
 	huespRecordado = ctrl->getColHuespedes().find(emailHuesp)->second;
 }
 
-void ControladorHostal::confirmarAltaReserva(){}
+void ControladorHostal::confirmarAltaReserva(){
+	SingletonFechaHora *horario = SingletonFechaHora::getInstance();
+	DTFecha horaactual = horario->FechaHoraSistema();
+	int codigo = generarCodigoReserva();
+	Reserva* res = hostalIngresado->reservar(horaactual,codigo,fechaInIngresada,fechaOutIngresada,huespRecordado,gruppOindIngresado,totalHuespIngresado,acompaniantesIngresados); //si la reserva es individual  lepaso acompañantes vacio
+	res->setHab(habRecordada);
+	habRecordada->asociarResAHab(res);
+	acompaniantesIngresados.clear();
+	huespRecordado = NULL;
+	nombreHostalIngresado = "";
+	//DTFecha fechaInIngresada;
+	//DTFecha fechaOutIngresada;
+	//bool gruppOindIngresado;
+	//int totalHuespIngresado;
+	habRecordada = NULL;
+}
 
-int ControladorHostal::generarCodigoReserva(){}
+int ControladorHostal::generarCodigoReserva(){
+	codigoRes++;
+	return codigoRes;
+}
 
-void ControladorHostal::cancelarAltaReserva(){}
+void ControladorHostal::cancelarAltaReserva(){
+	acompaniantesIngresados.clear();
+	huespRecordado = NULL;
+	nombreHostalIngresado = "";
+	//DTFecha fechaInIngresada;
+	//DTFecha fechaOutIngresada;
+	//bool gruppOindIngresado;
+	//int totalHuespIngresado;
+	habRecordada = NULL;
+}
 
 set<std::string> ControladorHostal::ConsultarTop3Hostal(){}
 

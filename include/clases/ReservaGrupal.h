@@ -3,10 +3,11 @@
 
 #include <string>
 #include <iostream>
+#include "Reserva.h"
 #include "Huesped.h"
 #include "../../include/datatypes/DTFecha.h"
-#include "Reserva.h"
 using namespace std;
+
 class ReservaGrupal:public Reserva{
     private:
         set<Huesped*> huespedes;
@@ -14,10 +15,13 @@ class ReservaGrupal:public Reserva{
     public:
         ReservaGrupal(int codigo, DTFecha checkin, DTFecha checkout,DTFecha realiza, int totalHuespedes);
         set<Huesped*> getHuespedes();
+        void setHuespedes(set<Huesped*>);
         int getTotalHuesp();
         void setTotalHuesp();
         //virtual DTReservaComp getDTReservaComp();
-        ~ReservaGrupal();
+       // set<DTReserva> validarHuespedRegistrado(string);
+       // void validarHuesped(string);
+        //~ReservaGrupal();
 };
 
 

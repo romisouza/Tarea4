@@ -1,4 +1,6 @@
 #include "../../include/clases/Hostal.h"
+#include "../../include/clases/ReservaGrupal.h"
+#include "../../include/clases/ReservaIndividual.h"
 
 Hostal::Hostal(){}
 
@@ -111,7 +113,10 @@ DataEstadia Hostal::accederaReservas(DTIdEstadia est){}
 
 void Hostal::hallarReserva(std::string mailHuesp, int codigoRes, std::string respuesta){}
 
-DTHostalProm Hostal::getDTHostalProm(){}
+DTHostalProm Hostal::getDTHostalProm(Hostal* host){
+	DTHostalProm infoHostal = DTHostalProm(host->getNombre(),host->getDireccion(),host->getPromedio());
+	return infoHostal;
+}
 
 set<int> Hostal::obtenerHabitaciones(DTFecha in, DTFecha out){ //ADE - PROBARLA Y VER Q ANDE BIEN
 	set<int> res;
@@ -167,7 +172,22 @@ void Hostal::agregarHabAlHost(Habitacion* hab){
 
 void Hostal::recordarHostal(){}
 
+Reserva* Hostal::reservar(DTFecha horaactual, int cod, DTFecha desde, DTFecha hasta, Huesped* huesp,bool grupOind,int totalHuesp,set<Huesped*> acompaniantes){
+	Reserva* res;
+	if (grupOind == 1) {//es grupal
+		ReservaGrupal *res = new ReservaGrupal(cod,desde,hasta,horaactual,totalHuesp);
+		res->setHues(huesp);
+		ColReservas.insert({cod,res});
+		res->setHuespedes(acompaniantes);
+	} else {
+		ReservaIndividual *res = new ReservaIndividual(cod,desde,hasta,horaactual);
+		res->setHues(huesp);
+		ColReservas.insert({cod,res});
+	}
+	return res;
+}
 
 
+       
 
 

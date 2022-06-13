@@ -29,7 +29,7 @@ public:
     void setPrecioNoche(float);
     DTHabitacion getHabitacion();
     bool consultarReservas(DTFecha, DTFecha);
-    void reservar(int, DTFecha, DTFecha, Huesped);
+    void asociarResAHab(Reserva*);
     ~Habitacion();
 };
 

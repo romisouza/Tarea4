@@ -6,6 +6,7 @@
 //#include "include/datatypes/DTCal.h"
 //#include "include/clases/Empleado.h"
 
+#include <list>
 #include <string>
 #include <iostream>
 using namespace std;
@@ -98,16 +99,16 @@ int main(){
     lista = ctrl->ObtenerEmpleados(n1);
     ctrl->SeleccionarEmpleado(cargo2,p2);
     ctrl->ConfirmarAsignacionDeEmpleado();
-*/
+
 std::string n1, n2, nombre;
 int tel, numero, capacidad;
 float precio;
 ControladorHostal *ctrl = ControladorHostal::getInstance();
-    cout<<"ingrese nombre hostal: ";cin>>n1;
-    cout<<"ingrese direccion hostal ";cin>>n2;
+    cout<<"ingrese nombre hostal: "; getline(cin, n1, '\n');;
+    cout<<"ingrese direccion hostal "; getline(cin, n2, '\n');
     cout<<"ingrese numero de telefono: "; cin>>tel;
     ctrl->agregarHostal(n1,n2,tel);
-    /*set<string> x = ctrl->ObtenerNombreHostales();
+    set<string> x = ctrl->ObtenerNombreHostales();
         for( set<std::string>::iterator i= x.begin(); i != x.end(); i++){
        		cout << *i <<"\n";
     	}

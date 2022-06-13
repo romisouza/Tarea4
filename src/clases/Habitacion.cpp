@@ -55,5 +55,6 @@ bool Habitacion::consultarReservas(DTFecha desde, DTFecha hasta){ //ADE - REVISA
 return estaOcupada;
 }
 
-void Habitacion::reservar(int a, DTFecha desde, DTFecha hasta, Huesped x){
+void Habitacion::asociarResAHab(Reserva* res){
+    ColReservas.insert({res->getCodigo(),res});
 }

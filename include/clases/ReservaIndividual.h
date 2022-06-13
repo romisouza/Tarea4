@@ -10,10 +10,10 @@ class ReservaIndividual:public Reserva{
     private:
     public:
         ReservaIndividual(int codigo, DTFecha checkin, DTFecha checkout,DTFecha realiza);
-        set<DTReserva> validarHuespedRegistrado(string);
+       // set<DTReserva> validarHuespedRegistrado(string);
         //virtual DTReservaComp getDTReservaComp();
-        void validarHuesped(string);
-        ~ReservaIndividual();
+        //void validarHuesped(string);
+        //~ReservaIndividual();
 
 };
 

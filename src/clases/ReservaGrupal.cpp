@@ -10,7 +10,17 @@ set<Huesped*> ReservaGrupal::getHuespedes(){
     return huespedes;
 }
 
+void ReservaGrupal::setHuespedes(set<Huesped*> nuevosHuesp){
+    huespedes = nuevosHuesp;
+}
 int ReservaGrupal::getTotalHuesp(){
     return TotalHuesp;
 }
 
+/*ReservaGrupal::~ReservaGrupal() {
+}*/
+
+/*
+set<DTReserva> validarHuespedRegistrado(string email){}
+
+void validarHuesped(string email){}*/

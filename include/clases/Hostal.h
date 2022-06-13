@@ -14,6 +14,8 @@
 #include "../../include/datatypes/DTReserva.h"
 #include "../../include/datatypes/DTCalificacion.h"
 #include "Reserva.h"
+//#include "ReservaGrupal.h"
+//#include "ReservaIndividual.h"
 #include "Empleado.h"
 #include "Calificacion.h"
 
@@ -61,10 +63,11 @@ class Hostal{
 		DTIdEstadia accesoaReservas();
 		DataEstadia accederaReservas(DTIdEstadia);
 		void hallarReserva(std::string,int,std::string);
-		DTHostalProm getDTHostalProm();
+		DTHostalProm getDTHostalProm(Hostal* host);
 		set<int> obtenerHabitaciones(DTFecha, DTFecha);
 		Habitacion* seleccionarHab(int);
 		void AgregarEmpleadoAHostal(Empleado*);
+    	Reserva* reservar(DTFecha,int, DTFecha, DTFecha, Huesped*,bool,int,set<Huesped*>);
 		//list<DTReservaComp> ObtenerReservas();
 		set<DTCalificacion> obtenerCalificaciones();
 		int getPromCal();
