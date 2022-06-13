@@ -224,9 +224,10 @@ DataHostalComp ControladorHostal::ObtenerHostalComp(std::string nombreHostal){
 	return HstSel;
 }
 
-set<DTReservaComp*> ControladorHostal::ObtenerReservasComp(std::string nombreHostal){
+list<DTReservaComp*> ControladorHostal::ObtenerReservasComp(std::string nombreHostal){
 	Hostal* h= ColHostales.find(nombreHostal)->second;
 	list<DTReservaComp*> dtreservas = h->ObtenerReservas();
+	return dtreservas;
 }
 
 set<DTIdEstadia> ControladorHostal::ObtenerDTIdEstadia(std::string nombreHostal){}

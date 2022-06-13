@@ -25,6 +25,7 @@ class Reserva;
 class Habitacion;
 class Calificacion;
 class DataHostalComp;
+//class DTReservaComp;
 
 using namespace std;
 

@@ -85,7 +85,7 @@ class ControladorHostal:public IHostal {
 		set<DTCal> ObtenerComentariosAResponder(std::string);//comentar calificacion
 		void ResponderComentarios (std::string, int, std::string);//comentarcalificacion
 		DataHostalComp ObtenerHostalComp(std::string);//Consulta Hostal (SeleccionarHostal)
-		set<DTReservaComp*> ObtenerReservasComp(std::string);//consulta reserva (SeleccionarHostal)
+		list<DTReservaComp*> ObtenerReservasComp(std::string);//consulta reserva (SeleccionarHostal)
 		set<DTIdEstadia> ObtenerDTIdEstadia(std::string);//consulta estadia (SeleccionarHostal)
 		DataEstadia ObtenerinfoEstadia(DTIdEstadia);//consulta estadia  (SeleccionarEstadia)
 		DTCalificacion MostrarCalificacion();//consulta estadia

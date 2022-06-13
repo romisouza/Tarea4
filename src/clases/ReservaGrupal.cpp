@@ -1,4 +1,5 @@
 #include "../../include/clases/ReservaGrupal.h"
+#include "../../include/datatypes/DTReservaCompGrup.h"
 
 
 ReservaGrupal::ReservaGrupal(int codigo, DTFecha checkin, DTFecha checkout,DTFecha realiza,int totalHuespedes):Reserva(codigo, checkin, checkout, realiza){
@@ -21,7 +22,8 @@ int ReservaGrupal::getTotalHuesp(){
 }*/
 
 DTReservaComp* ReservaGrupal::getDTReservaComp(){
-
+   /* DTReservaCompGrup* dtres = new DTReservaCompGrup(getCodigo(),getCheckIn(),getCheckOut(),getEstado(),getHab()->getNumero(),huespedes);
+    return dtres;*/
 }
 
 set<DTReserva> ReservaGrupal::validarHuespedRegistrado(string email){}
