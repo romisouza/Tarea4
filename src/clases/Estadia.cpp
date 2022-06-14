@@ -5,13 +5,12 @@ Estadia::Estadia(){//(Implementar)
 
 }
 
-Estadia::Estadia(DTFecha CheckIn,DTFecha CheckOut,int Promo,Huesped* Huespp,Reserva* Ress,Calificacion* Calif){
+Estadia::Estadia(DTFecha CheckIn,DTFecha CheckOut,int Promo,Huesped* Huespp,Reserva* Ress){
     checkIn=CheckIn;
     checkOut=CheckOut;
     promo=Promo;
     huesp=Huespp;
     res=Ress;
-    cal=Calif;
 }
 
 DTFecha Estadia:: getCheckIn(){
@@ -63,7 +62,7 @@ void Estadia::setCalificacion(Calificacion* cal){
 }
 
 Estadia* Estadia::getEstadia(){
-    Estadia* est= new Estadia(checkOut,checkIn, promo, huesp, res, cal);
+    Estadia* est= new Estadia(checkOut,checkIn, promo, huesp, res);
     return est;
 }
 
