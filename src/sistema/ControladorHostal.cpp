@@ -184,7 +184,7 @@ set<DTReserva*> ControladorHostal::ObtenerReservasNC(std::string nombreHostal, s
 }
 
 void ControladorHostal::ReservaNCElegida(int codigoRes){
-	bool resp = hostalIngresado->ingresoAlHostal(codigoRes); //para mi devuelvo un bool xq tengo que saber si el codigo que puso es correcto o puso cualqueir cosa
+	hostalIngresado->ingresoAlHostal(codigoRes); //para mi devuelvo un bool xq tengo que saber si el codigo que puso es correcto o puso cualqueir cosa
 	SingletonFechaHora *FH = SingletonFechaHora::getInstance();
 	DTFecha hs = FH->FechaHoraSistema();
 	hostalIngresado->CreateAddEstadia(hs,promo, codigoRes);
