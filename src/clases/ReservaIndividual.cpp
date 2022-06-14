@@ -27,14 +27,6 @@ set<DTReserva*> ReservaIndividual::validarHuespedRegistrado(string email){
     return resultado;
 }
 
-
-
-
-
-
-
-}
-
 void ReservaIndividual::validarHuesped(string){
 
 }
