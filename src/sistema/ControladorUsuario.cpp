@@ -195,10 +195,12 @@ void ControladorUsuario::AsignarCargoAEmpleado(){
 	ingresarEmpleadoPunt(NULL);
 }
 
-list<DTIdEstadia> ControladorUsuario::BuscarHuesped(string email, DTFecha hrs){
+list<Estadia*> ControladorUsuario::BuscarHuesped(string email, DTFecha hrs, string & nombre){
 	Huesped* Hsp= ColHuespedes.find(email)->second;
 	string HspNom= Hsp->getNombre();
-	Hsp->BuscarEstadias(email, hrs);
+	nombre=HspNom;
+	list<Estadia*> Est=Hsp->BuscarEstadias(email, hrs);
+	return Est;
 }
 
 void ControladorUsuario::SuscribirEmpleado(string emp){

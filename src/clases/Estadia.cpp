@@ -62,6 +62,11 @@ void Estadia::setCalificacion(Calificacion* cal){
     this->cal=cal;
 }
 
+Estadia* Estadia::getEstadia(){
+    Estadia* est= new Estadia(checkOut,checkIn, promo, huesp, res, cal);
+    return est;
+}
+
 DTIdEstadia Estadia::getDTIdEstadia(){
     DTIdEstadia Est= DTIdEstadia(res->getCodigo(),huesp->getEmail());
     return Est;

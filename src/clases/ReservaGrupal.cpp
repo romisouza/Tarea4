@@ -26,8 +26,8 @@ DTReservaComp* ReservaGrupal::getDTReservaComp(){
 
 }
 DTReserva* ReservaGrupal::getDTReserva(){
-    DTReserva* Res= new DTReservaGrupal(getCodigo(),getCheckIn(),getCheckOut(),getEstado(), getHuespedes(), getTotalHuesp());
-    return Res;
+  //  DTReserva* Res= new DTReservaGrupal(getCodigo(),getCheckIn(),getCheckOut(),getEstado(), getHuespedes(), getTotalHuesp());
+   // return Res;
 }
 
 set<DTReserva*> ReservaGrupal::validarHuespedRegistrado(std::string email){
