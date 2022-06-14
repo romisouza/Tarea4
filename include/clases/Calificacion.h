@@ -17,7 +17,7 @@ class Calificacion{
         Estadia *est;
     public:
         Calificacion();
-        Calificacion(DTFecha, int, string, string, Estadia*);
+        Calificacion(DTFecha, int, string, Estadia*);
         DTFecha getFecha();
         int getPuntaje();
         string getComentarioHuesp();

@@ -4,11 +4,10 @@ Calificacion::Calificacion(){//Implementar
 
 }
 
-Calificacion::Calificacion(DTFecha Fecha, int Puntaje,std::string ComenHuesp,std::string ComenEmp, Estadia* estt){
+Calificacion::Calificacion(DTFecha Fecha, int Puntaje,std::string ComenHuesp, Estadia* estt){
     fecha=Fecha;
     puntaje=Puntaje;
     comentarioHuesp=ComenHuesp;
-    comentarioEmp= ComenEmp;
     est=estt;
 }
 
