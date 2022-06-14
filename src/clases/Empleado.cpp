@@ -9,6 +9,7 @@ Empleado::Empleado(string nom,string mail,string pass):Usuario(nom,mail,pass) {
 }
 
 Empleado::~Empleado(){
+	
 }
 
 Hostal* Empleado::getHostalAsociado(){
@@ -17,6 +18,10 @@ Hostal* Empleado::getHostalAsociado(){
 
 CargoEmpleado* Empleado::getCargoEmpleado(){
 	return cargo;
+}
+
+list<Calificacion*> Empleado::getCalifObs(){
+	return califObs;
 }
 
 void Empleado::setHostalAsociado(Hostal* host){

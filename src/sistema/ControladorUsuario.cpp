@@ -195,19 +195,28 @@ void ControladorUsuario::AsignarCargoAEmpleado(){
 	ingresarEmpleadoPunt(NULL);
 }
 
-list<Estadia*> ControladorUsuario::BuscarHuesped(string email, DTFecha hrs, string & nombre){
+list<DTIdEstadia> ControladorUsuario::BuscarHuesped(string email, DTFecha hrs){
 	Huesped* Hsp= ColHuespedes.find(email)->second;
-	string HspNom= Hsp->getNombre();
-	nombre=HspNom;
-	list<Estadia*> Est=Hsp->BuscarEstadias(email, hrs);
+	list<DTIdEstadia> Est=Hsp->BuscarEstadias(email, hrs);
 	return Est;
 }
 
-void ControladorUsuario::SuscribirEmpleado(string emp){
+Estadia* ControladorUsuario::BuscarHuesped2(DTIdEstadia est){
+	Huesped* Hsp= ColHuespedes.find(est.getEmail())->second;
+	Estadia* Est=Hsp->BuscarEstadias2(est);
+	return Est;
 }
 
-set<DTCalificacion> ControladorUsuario::ObtenerNotificaciones(string email){
+list<DTEmpleado> ControladorUsuario::getNombresEmp(){
+	list<DTEmpleado> aux;
+	for(auto it=ColEmpleados.begin();it!=ColEmpleados.end();it++){
+		DTEmpleado emp= DTEmpleado(it->second->getNombre(),it->second->getEmail(), it->second->getCargoEmpleado());
+		aux.push_back(emp);
+	}
+	return aux;
 }
 
-void EliminarNotificaciones(){
+Empleado* ControladorUsuario::buscarEmpleado(std::string emp){
+	Empleado* aux=ColEmpleados.find(emp)->second;
+	return aux;
 }

@@ -83,7 +83,7 @@ void ControladorHostal::ConfirmarAsignacionDeEmpleado(){
 	ControladorUsuario* cu = ControladorUsuario::getInstance();
 	cu->AsignarCargoAEmpleado();
 	hostalIngresado->AgregarEmpleadoAHostal(empleadoIngresado);
-	cout << hostalIngresado->getColEmpleados().size();
+	//cout << hostalIngresado->getColEmpleados().size();
 	ingresarHostal(NULL);
 	ingresarEmpleado(NULL);
 }
@@ -191,41 +191,24 @@ void ControladorHostal::SeleccionarHostal(std::string nomHostal){
 	ingresarHostal(Hst);
 }
 
-void ControladorHostal::ingresarEstadiasFinalizadas(list<Estadia*> Est){
-	EstadiasFinalizadas=Est;
-}
 
 void ControladorHostal::ingresarEstadiaFinalizada(Estadia* est){
 	EstadiaFinalizada=est;
 }
 
-void ControladorHostal::ingresarEmailHuesped(string email){
-	emailHuesped=email;
-}
 
-void ControladorHostal::ingresarNombreHuesped(string nom){
-	nombreHuesped=nom;
-}
-
-
-list<Estadia*> ControladorHostal::ListaEstadiasFinalizadas(std::string email){
+list<DTIdEstadia> ControladorHostal::ListaEstadiasFinalizadas(std::string email){
 	ControladorUsuario* cu = ControladorUsuario::getInstance();
 	SingletonFechaHora* FH = SingletonFechaHora::getInstance();
 	DTFecha hrs= FH->FechaHoraSistema();
-	string nombre;
-	list<Estadia*> estadias=cu->BuscarHuesped(email, hrs, nombre);
-	ingresarNombreHuesped(nombre);
-	ingresarEmailHuesped(email);
-	ingresarEstadiasFinalizadas(estadias);
+	list<DTIdEstadia> estadias=cu->BuscarHuesped(email, hrs);
 	return estadias;
 }
 
-void ControladorHostal::SeleccionarEstadia(Estadia estadia){
-	list<Estadia*>::iterator it=EstadiasFinalizadas.begin();
-	while((*it)->getReserva()->getCodigo()!=estadia.getReserva()->getCodigo()){
-		++it;
-	}
-	ingresarEstadiaFinalizada(*it);
+void ControladorHostal::SeleccionarEstadia(DTIdEstadia estadia){
+	ControladorUsuario* cu = ControladorUsuario::getInstance();
+	Estadia* Est= cu->BuscarHuesped2(estadia);
+	ingresarEstadiaFinalizada(Est);
 }
 
 void ControladorHostal::ConfirmarCalificacion (std::string comentario, int puntaje){
@@ -263,12 +246,71 @@ DTReserva ControladorHostal::MostrarInfoReserva(){}
 
 void ControladorHostal::LiberarMemoria(){}
 
-set<DTReserva> ControladorHostal::ObtenerReservas(std::string nombreHostal){}
+void ControladorHostal::ingresarReserva(Reserva* res){
+	reservaIngresada=res;
+}
 
-void ControladorHostal::SeleccionarReserva(int codigoRes){}
+list<DTReserva*> ControladorHostal::ObtenerReservas(std::string nombreHostal){
+	Hostal* Hst=ColHostales.find(nombreHostal)->second;
+	ingresarHostal(Hst);
+	list<DTReserva*> lista=Hst->BuscarReservas();
+	return lista;
+}
+
+void ControladorHostal::SeleccionarReserva(int codigoRes){
+	Reserva* res=hostalIngresado->getColReservas().find(codigoRes)->second;
+	ingresarReserva(res);
+}
 
 void ControladorHostal::ConfirmarEliminarReserva(){}
 
 void ControladorHostal::CancelarBajaReserva(){}
 
+void ControladorHostal::agregarObserver(IObserver* o){
+	obs.push_back(o);
+}
 
+void ControladorHostal::eliminarObserver(IObserver* o){
+	auto it=obs.begin();
+	while((*it)!=o){
+		it++;
+	}
+	obs.erase(it);
+}
+
+void ControladorHostal::SuscribirEmpleado(string emp){
+	ControladorUsuario* cu = ControladorUsuario::getInstance();
+	Empleado* EmpSel=cu->buscarEmpleado(emp);
+	agregarObserver(EmpSel);
+}
+
+list<DTCalificacion> ControladorHostal::ObtenerNotificaciones(string email){
+	ControladorUsuario* cu = ControladorUsuario::getInstance();
+	Empleado* EmpSel=cu->buscarEmpleado(email);
+	empleadoIngresado=EmpSel;
+	list<DTCalificacion> aux;
+	for(auto it=EmpSel->getCalifObs().begin();it!=EmpSel->getCalifObs().end(); it++){
+		DTCalificacion cal= DTCalificacion((*it)->getPuntaje(),(*it)->getComentarioHuesp(), (*it)->getComentarioEmp());
+		aux.push_back(cal);
+	}
+	return aux;
+}
+
+void ControladorHostal::EliminarNotificaciones(){
+	while(!empleadoIngresado->getCalifObs().empty()){
+		empleadoIngresado->getCalifObs().pop_front();
+	}
+	empleadoIngresado=NULL;
+}
+
+list<DTEmpleado> ControladorHostal::ObtenerEmpleados(){
+	ControladorUsuario* cu = ControladorUsuario::getInstance();
+	list<DTEmpleado> aux=cu->getNombresEmp();
+	return aux;
+}
+
+void ControladorHostal::eliminarSuscripcion(string emp){
+	ControladorUsuario* cu = ControladorUsuario::getInstance();
+	Empleado* EmpSel=cu->buscarEmpleado(emp);
+	eliminarObserver(EmpSel);
+}

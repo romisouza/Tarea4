@@ -12,10 +12,10 @@ Sistema_H	=include/sistema
 CLASES_NOMBRES = Calificacion Empleado Estadia Habitacion Hostal Huesped Reserva ReservaGrupal ReservaIndividual Usuario
 CLASES_O = $(CLASES_NOMBRES:%=$(Clases_CPP)/%.o)
 
-DT_NOMBRES = DataEmpleado DataEstadia DataHostalComp DTCal DTCalificacion DTEmpleado DTEstadia DTFecha DTHabitacion DTHostal DTHostalProm DTHuesped DTIdEstadia DTReserva DTReservaComp DTReservaCompInd DTReservaCompGrup 
+DT_NOMBRES = DataEmpleado DataEstadia DataHostalComp DTCal DTCalificacion DTEmpleado DTEstadia DTFecha DTHabitacion DTHostal DTHostalProm DTHuesped DTIdEstadia DTReserva  DTReservaComp DTReservaCompInd DTReservaCompGrup DTReservaIndividual DTReservaGrupal
 DT_O = $(DT_NOMBRES:%=$(DT_CPP)/%.o)
 
-SISTEMA_NOMBRES = ControladorHostal ControladorUsuario IHostal SingletonFechaHora #IObserver Fabrica IUsuario 
+SISTEMA_NOMBRES = ControladorHostal ControladorUsuario IHostal SingletonFechaHora IObserver #Fabrica IUsuario 
 SISTEMA_O =$(SISTEMA_NOMBRES:%=$(Sistema_CPP)/%.o)
 
 

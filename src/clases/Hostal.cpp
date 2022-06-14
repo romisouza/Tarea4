@@ -68,7 +68,14 @@ list<Calificacion*> Hostal::getColCal(){
 set<DTCal> Hostal::obtenerHostal(){
 }
 
-void Hostal::BuscarReservas(){}
+list<DTReserva*> Hostal::BuscarReservas(){
+	list<DTReserva*> auxRes;
+	for(auto it=ColReservas.begin();it!=ColReservas.end();it++){
+		DTReserva* aux=(*it).second->getDTReserva();
+		auxRes.push_back(aux);
+	}
+	return auxRes;
+}
 
 void Hostal::EliminarRes(Reserva* res){}
 

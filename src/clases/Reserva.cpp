@@ -76,21 +76,22 @@ void Reserva::setHues(Huesped* huesped){
 void Reserva::setEstadia(list<Estadia*> estadia){
     est = estadia;
 }
+
 /*DTReserva Reserva::getDTReserva(){
     DTReserva Res=DTReserva(getCodigo(),getCheckIn(),getCheckOut(), getEstado());
     return Res;
 }
 */
 
-void Reserva::BuscarEstadia(std::string email, DTFecha hrs, Estadia* & est){
-    list<Estadia*>::iterator it;
+void Reserva::BuscarEstadia(std::string email, DTFecha hrs,DTIdEstadia & estId){
+    list<Estadia*>::iterator it=est.begin();
     while((*it)->getHuesp()->getEmail()!=email){
         ++it;
     }
     bool EsFin= hrs.compararFecha((*it)->getCheckOut(),hrs);
     if(EsFin==true){
-        Estadia* EstSel=(*it)->getEstadia();    
-        est=EstSel;
+        DTIdEstadia EstSel=(*it)->getDTIdEstadia();   
+        estId=EstSel;
     }
 }
 

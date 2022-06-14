@@ -21,7 +21,8 @@ class Huesped: public Usuario {
 		map<int,Reserva*> getColReservasHuesp();
 		bool getEsFinger();
 		void setEsFinger(bool finger);
-		list<Estadia*> BuscarEstadias(std::string email, DTFecha hrs);//cambie el nombre
+		list<DTIdEstadia> BuscarEstadias(std::string email, DTFecha hrs);//cambie el nombre
+		Estadia* BuscarEstadias2(DTIdEstadia);//nueva, calificr estadia
 		DTHuesped getDTHuesped();
 };
 

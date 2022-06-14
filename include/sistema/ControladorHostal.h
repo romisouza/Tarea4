@@ -47,11 +47,9 @@ class ControladorHostal:public IHostal {
 		//para generar el codigo de las reservas
 		int codigoRes;
 		//para calificar estadia
-		list<Estadia*> EstadiasFinalizadas;
 		Estadia* EstadiaFinalizada;
-		string nombreHuesped;
-		string emailHuesped;
-
+		//baja de reserva
+		Reserva* reservaIngresada;
 		//Notificaciones
 		list<IObserver*> obs;
 		ControladorHostal();
@@ -84,12 +82,9 @@ class ControladorHostal:public IHostal {
 		void ReservaNCElegida(int);//registrar estadia
 		void DatosHuesped(std::string,std::string);//finalizar estadia NO SE QUE HACE LA FUNCION XD
 		void SeleccionarHostal(std::string);//calificar estadia
-		void ingresarEstadiasFinalizadas(list<Estadia*>);//Nueva, recuerda una estadia
 		void ingresarEstadiaFinalizada(Estadia*);//Nueva, recuerda la estadia de un huesped
-		void ingresarEmailHuesped(string); // Nueva, recuerda el email de un huesped
-		void ingresarNombreHuesped(string); //Nueva, recuerda el nombre de un huesped
-		list<Estadia*> ListaEstadiasFinalizadas(std::string);//calificar estadia
-		void SeleccionarEstadia(Estadia);//calificar estadia, cambie el nombre
+		list<DTIdEstadia> ListaEstadiasFinalizadas(std::string);//calificar estadia
+		void SeleccionarEstadia(DTIdEstadia);//calificar estadia, cambie el nombre
 		void ConfirmarCalificacion (std::string, int);//calificar estadiaDatoet
 		set<DTCal> ObtenerComentariosAResponder(std::string);//comentar calificacion
 		void ResponderComentarios (std::string, int, std::string);//comentarcalificacion
@@ -100,10 +95,18 @@ class ControladorHostal:public IHostal {
 		DTCalificacion MostrarCalificacion();//consulta estadia
 		DTReserva MostrarInfoReserva();//consulta estadia
 		void LiberarMemoria(); //consulta estadia		
-		set<DTReserva> ObtenerReservas(std::string);//baja reserva (Selecccionar Hostal)
+		void ingresarReserva(Reserva*);//nueva, recuerda una reserva
+		list<DTReserva*> ObtenerReservas(std::string);//baja reserva (Selecccionar Hostal)
 		void SeleccionarReserva(int);//baja reserva 
 		void ConfirmarEliminarReserva();//baja reserva
 		void CancelarBajaReserva();//baja reserva	
+		void agregarObserver(IObserver*);
+		void eliminarObserver(IObserver*);
+		void SuscribirEmpleado(string emp);
+		list<DTCalificacion> ObtenerNotificaciones(string email);
+		void EliminarNotificaciones();
+		void eliminarSuscripcion(string emp);
+		list<DTEmpleado> ObtenerEmpleados();
 };
 
 #endif

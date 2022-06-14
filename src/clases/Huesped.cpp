@@ -24,18 +24,28 @@ void Huesped::setEsFinger(bool finger){
 	esFinger = finger;
 }
 
-list<Estadia*> Huesped::BuscarEstadias(std::string email,  DTFecha hrs){
+list<DTIdEstadia> Huesped::BuscarEstadias(std::string email,  DTFecha hrs){
 	map<int,Reserva*> Res=getColReservasHuesp();
-	list<Estadia*> ListasFin;
-	Estadia* aux= new Estadia();
+	list<DTIdEstadia> ListasFin;
+	DTIdEstadia aux= DTIdEstadia();
 	for(auto it=Res.begin();it!=Res.end();it++){
-		Estadia* est= new Estadia();
+		DTIdEstadia est= DTIdEstadia();
 		it->second->BuscarEstadia(email,hrs,est);
-		if((aux->getReserva()->getCodigo() != est->getReserva()->getCodigo()) && (aux->getHuesp()->getEmail())!=est->getHuesp()->getEmail()) {
+		if((aux.getCodigo() != est.getCodigo()) && (aux.getEmail())!=est.getEmail()) {
 			ListasFin.push_back(est);
 		}
 	}
 	return ListasFin;
+}
+
+Estadia* Huesped::BuscarEstadias2(DTIdEstadia est){
+	Reserva* res= ColReservasHuesp.find(est.getCodigo())->second;
+	list<Estadia*> aux= res->getEstadia();
+	list<Estadia*>::iterator it=aux.begin();
+	while(est.getEmail()!=(*it)->getHuesp()->getEmail()){
+		it++;
+	}
+	return (*it);
 }
 
 DTHuesped Huesped::getDTHuesped(){

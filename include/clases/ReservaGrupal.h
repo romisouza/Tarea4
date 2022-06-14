@@ -6,6 +6,8 @@
 #include "Reserva.h"
 #include "Huesped.h"
 #include "../../include/datatypes/DTFecha.h"
+#include "../../include/clases/Reserva.h"
+
 using namespace std;
 
 class ReservaGrupal:public Reserva{

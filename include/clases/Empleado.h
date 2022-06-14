@@ -12,16 +12,17 @@
 using namespace std;
 class Hostal;
 
-class Empleado: public Usuario{//, IObserver {
+class Empleado: public Usuario, public IObserver{
 	private:
 		Hostal* hostalAsociado;
 		CargoEmpleado* cargo;
 		list<Calificacion*> califObs;
 	public:
 		Empleado(std::string nombre, std::string email, std::string password);
-		~Empleado();
+		virtual ~Empleado();
 		Hostal* getHostalAsociado();
 		CargoEmpleado* getCargoEmpleado();
+		list<Calificacion*> getCalifObs();
 		void setHostalAsociado(Hostal*);
 		void setCargoEmpleado(CargoEmpleado* cargo);
 		set<DTCal> obtenerComentarios();
@@ -29,6 +30,6 @@ class Empleado: public Usuario{//, IObserver {
 		bool TrabajaEnHostal();
 		void AsignarEmpleadoAHostal(CargoEmpleado*,Hostal*);
 		DTEmpleado getDTEmpleado();
-		void notificar(Calificacion* cal);
+		virtual void notificar(Calificacion* cal);
 };
 #endif

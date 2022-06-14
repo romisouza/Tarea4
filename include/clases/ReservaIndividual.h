@@ -1,6 +1,7 @@
 #ifndef RESERVAINDIVIDUAL
 #define RESERVAINDIVIDUAL
 #include "../../include/datatypes/DTReserva.h"
+#include "../../include/datatypes/DTReservaIndividual.h"
 #include "Reserva.h"
 #include <set>
 #include <string>

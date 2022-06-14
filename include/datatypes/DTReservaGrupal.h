@@ -4,7 +4,9 @@
 #include <iostream>
 #include "DTHuesped.h"
 #include "../clases/Reserva.h"
-#include "../clases/ReservaGrupal.h"
+#include "../../include/datatypes/DTReserva.h"
+#include "../../include/clases/Huesped.h"
+#include "../../include/clases/ReservaGrupal.h"
 #include <set>
 using namespace std;
 

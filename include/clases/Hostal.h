@@ -59,7 +59,7 @@ class Hostal{
 		void setTelefono(int);
 		void setPromedio(int);
 		set<DTCal> obtenerHostal();
-		void BuscarReservas();
+		list<DTReserva*> BuscarReservas();
 		void EliminarRes(Reserva*);
 		void AgregarComentarios(std::string,int,DTFecha,Estadia*, list<IObserver*>);//cambie el nombre
 		DataHostalComp getDTHostal();

@@ -10,8 +10,8 @@ ReservaIndividual::ReservaIndividual(int codigo, DTFecha checkin, DTFecha checko
 
 
 DTReserva* ReservaIndividual::getDTReserva(){
-//    DTReserva* Res = new DTReservaIndividual(getCodigo(),getCheckIn(),getCheckOut(),getEstado());
- //   return Res;
+    DTReserva* Res = new DTReservaIndividual(getCodigo(),getCheckIn(),getCheckOut(),getEstado());
+    return Res;
 }
 
 set<DTReserva*> ReservaIndividual::validarHuespedRegistrado(string email){
@@ -36,8 +36,8 @@ DTReservaComp* ReservaIndividual::getDTReservaComp(){
     return res;
 }
 
-/*ReservaIndividual::~ReservaIndividual() {
-}*/
+ReservaIndividual::~ReservaIndividual() {
+}
 
 /*
 set<DTReserva> validarHuespedRegistrado(string email){}
