@@ -185,7 +185,7 @@ void Hostal::CreateAddEstadia(DTFecha hs , int promo, int codigoRes){
 	DTFecha FHSal = res->getCheckOut();
 	Estadia* est = new Estadia(hs, FHSal,promo, res->getHues(),res);
 	list<Estadia*> colest = res->getEstadia();
-	colest.insert(est);
+	colest.push_back(est);
 	res->setEstado(Cerrada);
 }
 
