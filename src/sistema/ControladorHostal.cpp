@@ -327,4 +327,9 @@ void ControladorHostal::eliminarSuscripcion(string emp){
 =======
 
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+
+
 >>>>>>> Stashed changes

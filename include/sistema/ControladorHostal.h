@@ -100,6 +100,7 @@ class ControladorHostal:public IHostal {
 		void SeleccionarReserva(int);//baja reserva 
 		void ConfirmarEliminarReserva();//baja reserva
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 		void CancelarBajaReserva();//baja reserva	
 		void agregarObserver(IObserver*);
 		void eliminarObserver(IObserver*);
@@ -108,6 +109,9 @@ class ControladorHostal:public IHostal {
 		void EliminarNotificaciones();
 		void eliminarSuscripcion(string emp);
 		list<DTEmpleado> ObtenerEmpleados();
+=======
+		void CancelarBajaReserva();//baja reserva
+>>>>>>> Stashed changes
 =======
 		void CancelarBajaReserva();//baja reserva
 >>>>>>> Stashed changes
