@@ -24,14 +24,14 @@ void Huesped::setEsFinger(bool finger){
 	esFinger = finger;
 }
 
-list<DTIdEstadia> Huesped::BuscarEstadias(std::string email,  DTFecha hrs){
+list<Estadia*> Huesped::BuscarEstadias(std::string email,  DTFecha hrs){
 	map<int,Reserva*> Res=getColReservasHuesp();
-	list<DTIdEstadia> ListasFin;
-	DTIdEstadia aux=DTIdEstadia();
+	list<Estadia*> ListasFin;
+	Estadia* aux= new Estadia();
 	for(auto it=Res.begin();it!=Res.end();it++){
-		DTIdEstadia est= DTIdEstadia();
+		Estadia* est= new Estadia();
 		it->second->BuscarEstadia(email,hrs,est);
-		if((aux.getCodigo() != est.getCodigo()) && (aux.getEmail()!=est.getEmail()) ){
+		if((aux->getReserva()->getCodigo() != est->getReserva()->getCodigo()) && (aux->getHuesp()->getEmail())!=est->getHuesp()->getEmail()) {
 			ListasFin.push_back(est);
 		}
 	}

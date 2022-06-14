@@ -38,6 +38,7 @@ class Estadia{
         void setHuesp(Huesped*);
         void setReserva(Reserva*);
         void setCalificacion(Calificacion*);
+        Estadia* getEstadia();
         DTIdEstadia getDTIdEstadia();
         DataEstadia getDataEstadia();
         void hallarHuesped(string, string);

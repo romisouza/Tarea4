@@ -72,7 +72,9 @@ void Hostal::BuscarReservas(){}
 
 void Hostal::EliminarRes(Reserva* res){}
 
-void Hostal::AgregarComentarios(std::string comentario, int puntaje){}
+void Hostal::AgregarComentarios(std::string comentario, int puntaje){
+	//Calificacion cal= Calificacion()
+}
 
 DataHostalComp Hostal::getDTHostal(){
 	DataHostalComp Hst=DataHostalComp(getNombre(),getDireccion(),getTelefono(),getPromedio());
