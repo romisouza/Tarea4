@@ -42,7 +42,7 @@ class Reserva{
         DTReserva getDTReserva();
         //virtual DTReservaComp getDTReservaComp()=0;
         DataEstadia BuscarRes(DTIdEstadia);
-        void BuscarEstadia(string, DTFecha, DTIdEstadia &);//cambie el nombre
+        void BuscarEstadia(string, DTFecha, Estadia* &);//cambie el nombre
         DTIdEstadia accederaEstadias();
         void hallarEstadia(string,string);
         virtual set<DTReserva> validarHuespedRegistrado(string)=0;

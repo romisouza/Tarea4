@@ -82,14 +82,14 @@ DTReserva Reserva::getDTReserva(){
     return Res;
 }
 
-void Reserva::BuscarEstadia(string email, DTFecha hrs, DTIdEstadia & est){
+void Reserva::BuscarEstadia(std::string email, DTFecha hrs, Estadia* & est){
     list<Estadia*>::iterator it;
     while((*it)->getHuesp()->getEmail()!=email){
         ++it;
     }
     bool EsFin= hrs.compararFecha((*it)->getCheckOut(),hrs);
     if(EsFin==true){
-        DTIdEstadia EstSel=(*it)->getDTIdEstadia();    
+        Estadia* EstSel=(*it)->getEstadia();    
         est=EstSel;
     }
 }

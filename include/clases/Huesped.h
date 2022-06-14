@@ -9,6 +9,7 @@
 #include <list>
 using namespace std;
 class Reserva;
+class Estadia;
 
 class Huesped: public Usuario {
 	private:
@@ -20,7 +21,7 @@ class Huesped: public Usuario {
 		map<int,Reserva*> getColReservasHuesp();
 		bool getEsFinger();
 		void setEsFinger(bool finger);
-		list<DTIdEstadia> BuscarEstadias(std::string email, DTFecha);//cambie el nombre
+		list<Estadia*> BuscarEstadias(std::string email, DTFecha hrs);//cambie el nombre
 		DTHuesped getDTHuesped();
 };
 

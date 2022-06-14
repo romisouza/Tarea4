@@ -186,8 +186,12 @@ void ControladorHostal::SeleccionarHostal(std::string nomHostal){
 	ingresarHostal(Hst);
 }
 
-void ControladorHostal::ingresarEstadiasFinalizadas(list<DTIdEstadia> Est){
+void ControladorHostal::ingresarEstadiasFinalizadas(list<Estadia*> Est){
 	EstadiasFinalizadas=Est;
+}
+
+void ControladorHostal::ingresarEstadiaFinalizada(Estadia* est){
+	EstadiaFinalizada=est;
 }
 
 void ControladorHostal::ingresarEmailHuesped(string email){
@@ -199,17 +203,29 @@ void ControladorHostal::ingresarNombreHuesped(string nom){
 }
 
 
-list<DTIdEstadia> ControladorHostal::ListaEstadiasFinalizadas(std::string email){
+list<Estadia*> ControladorHostal::ListaEstadiasFinalizadas(std::string email){
 	ControladorUsuario* cu = ControladorUsuario::getInstance();
 	SingletonFechaHora* FH = SingletonFechaHora::getInstance();
 	DTFecha hrs= FH->FechaHoraSistema();
-	list<DTIdEstadia> estadias=cu->BuscarHuesped(email, hrs);
+	string nombre;
+	list<Estadia*> estadias=cu->BuscarHuesped(email, hrs, nombre);
+	ingresarNombreHuesped(nombre);
+	ingresarEmailHuesped(email);
+	ingresarEstadiasFinalizadas(estadias);
 	return estadias;
 }
 
-void ControladorHostal::SeleccionarEstadia(DTIdEstadia estadia){}
+void ControladorHostal::SeleccionarEstadia(Estadia estadia){
+	list<Estadia*>::iterator it=EstadiasFinalizadas.begin();
+	while((*it)->getReserva()->getCodigo()!=estadia.getReserva()->getCodigo()){
+		++it;
+	}
+	ingresarEstadiaFinalizada(*it);
+}
 
-void ControladorHostal::ConfirmarCalificacion (std::string comentario, int puntaje){}
+void ControladorHostal::ConfirmarCalificacion (std::string comentario, int puntaje){
+	hostalIngresado->AgregarComentarios(comentario,puntaje);
+}
 
 void ControladorHostal::ResponderComentarios (std::string emailHuesp, int codigoRes, std::string respuesta) {}
 
