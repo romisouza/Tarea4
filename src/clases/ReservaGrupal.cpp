@@ -1,6 +1,7 @@
 #include "../../include/clases/ReservaGrupal.h"
 #include "../../include/datatypes/DTReservaGrupal.h"
-
+#include "../../include/datatypes/DTReservaCompGrup.h"
+#include "../../include/datatypes/DTReservaComp.h"
 
 
 ReservaGrupal::ReservaGrupal(int codigo, DTFecha checkin, DTFecha checkout,DTFecha realiza,int totalHuespedes):Reserva(codigo, checkin, checkout, realiza){
@@ -23,7 +24,9 @@ int ReservaGrupal::getTotalHuesp(){
 }*/
 
 DTReservaComp* ReservaGrupal::getDTReservaComp(){
-
+    //DTReservaComp *res;
+    DTReservaCompGrup *res = new DTReservaCompGrup(getCodigo(),getCheckIn(),getCheckOut(),getEstado(),getHab()->getNumero(),huespedes);
+    return res;
 }
 DTReserva* ReservaGrupal::getDTReserva(){
   //  DTReserva* Res= new DTReservaGrupal(getCodigo(),getCheckIn(),getCheckOut(),getEstado(), getHuespedes(), getTotalHuesp());

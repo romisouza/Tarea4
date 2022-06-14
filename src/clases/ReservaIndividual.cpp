@@ -1,5 +1,5 @@
 #include "../../include/clases/ReservaIndividual.h"
-#include "../../include/datatypes/DTReservaIndividual.h"
+#include "../../include/datatypes/DTReservaCompInd.h"
 
 ReservaIndividual::ReservaIndividual(int codigo, DTFecha checkin, DTFecha checkout,DTFecha realiza):Reserva(codigo,checkin,checkout,realiza){
 }
@@ -32,7 +32,8 @@ void ReservaIndividual::validarHuesped(string){
 }
 
 DTReservaComp* ReservaIndividual::getDTReservaComp(){
-
+    DTReservaCompInd *res = new DTReservaCompInd(getCodigo(),getCheckIn(),getCheckOut(),getEstado(),getHab()->getNumero());
+    return res;
 }
 
 /*ReservaIndividual::~ReservaIndividual() {

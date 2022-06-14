@@ -6,8 +6,9 @@
 #include "../../include/datatypes/DTReserva.h"
 #include "../../include/clases/Huesped.h"
 class Huesped;
+using namespace std;
 
-class DTReservaCompInd:DTReservaComp {
+class DTReservaCompInd:public DTReservaComp {
 private:
 public:
     DTReservaCompInd(int, DTFecha, DTFecha,EstadoReserva,int);

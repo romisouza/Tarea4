@@ -8,6 +8,7 @@
 //#include "../../include/datatypes/DTReservaCompGrup.h"
 #include "../../include/clases/Huesped.h"
 class Huesped;
+using namespace std;
 
 class DTReservaComp {
 private:
