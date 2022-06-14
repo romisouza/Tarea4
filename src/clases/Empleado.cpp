@@ -46,5 +46,6 @@ DTEmpleado Empleado::getDTEmpleado(){
 	return DTEmpleado(nombre,email,cargo);
 }
 
-void Empleado::notificar(Calificacion cal){
+void Empleado::notificar(Calificacion* cal){
+	califObs.push_back(cal);
 }

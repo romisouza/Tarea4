@@ -16,6 +16,7 @@ class Empleado: public Usuario{//, IObserver {
 	private:
 		Hostal* hostalAsociado;
 		CargoEmpleado* cargo;
+		list<Calificacion*> califObs;
 	public:
 		Empleado(std::string nombre, std::string email, std::string password);
 		~Empleado();
@@ -28,6 +29,6 @@ class Empleado: public Usuario{//, IObserver {
 		bool TrabajaEnHostal();
 		void AsignarEmpleadoAHostal(CargoEmpleado*,Hostal*);
 		DTEmpleado getDTEmpleado();
-		void notificar(Calificacion cal);
+		void notificar(Calificacion* cal);
 };
 #endif

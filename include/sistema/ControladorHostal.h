@@ -18,6 +18,8 @@
 #include "../../include/datatypes/DTReservaComp.h"
 #include "../../include/sistema/ControladorUsuario.h"
 #include "../../include/sistema/SingletonFechaHora.h"
+#include "../../include/sistema/IObserver.h"
+
 using namespace std;
 
 class ControladorHostal:public IHostal {
@@ -50,6 +52,8 @@ class ControladorHostal:public IHostal {
 		string nombreHuesped;
 		string emailHuesped;
 
+		//Notificaciones
+		list<IObserver*> obs;
 		ControladorHostal();
 		~ControladorHostal();
 	public: 

@@ -24,7 +24,7 @@ class Estadia{
         Reserva* res;
         Calificacion* cal; 
     public:
-        Estadia(DTFecha, DTFecha, int, Huesped*, Reserva*, Calificacion*);
+        Estadia(DTFecha, DTFecha, int, Huesped*, Reserva*);
         Estadia();
         DTFecha getCheckIn();
         DTFecha getCheckOut();

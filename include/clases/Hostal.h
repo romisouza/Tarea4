@@ -13,6 +13,7 @@
 #include "../../include/datatypes/DTFecha.h"
 #include "../../include/datatypes/DTReserva.h"
 #include "../../include/datatypes/DTCalificacion.h"
+#include "../../include/sistema/IObserver.h"
 #include "Reserva.h"
 //#include "ReservaGrupal.h"
 //#include "ReservaIndividual.h"
@@ -20,7 +21,7 @@
 #include "Calificacion.h"
 
 
-
+class Estadia;
 class Empleado;
 class Reserva;
 class Habitacion;
@@ -60,7 +61,7 @@ class Hostal{
 		set<DTCal> obtenerHostal();
 		void BuscarReservas();
 		void EliminarRes(Reserva*);
-		void AgregarComentarios(std::string,int);
+		void AgregarComentarios(std::string,int,DTFecha,Estadia*, list<IObserver*>);//cambie el nombre
 		DataHostalComp getDTHostal();
 		DTIdEstadia accesoaReservas();
 		DataEstadia accederaReservas(DTIdEstadia);
