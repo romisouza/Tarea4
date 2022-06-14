@@ -1,5 +1,5 @@
 #include "../../include/clases/ReservaGrupal.h"
-#include "../include/datatypes/DTReservaGrupal.h"
+#include "../../include/datatypes/DTReservaGrupal.h"
 
 
 
