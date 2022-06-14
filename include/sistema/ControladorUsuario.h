@@ -23,7 +23,6 @@ class ControladorUsuario {
 		CargoEmpleado* cargoIngresado; 
 		Empleado* empleadoIngresado;
 		Hostal* hostalIngresado;
-
 		//NO VA
 		int cantHuespedes,cantEmpleados =0; //(COTI)
 

@@ -72,8 +72,23 @@ void Hostal::BuscarReservas(){}
 
 void Hostal::EliminarRes(Reserva* res){}
 
-void Hostal::AgregarComentarios(std::string comentario, int puntaje){
-	//Calificacion cal= Calificacion()
+void Hostal::AgregarComentarios(std::string comentario, int puntaje, DTFecha hrs, Estadia* est, list<IObserver*> obs){
+	Calificacion* cal= new Calificacion(hrs,puntaje,comentario,est);
+	list<IObserver*>::iterator it=obs.begin();
+	while(it!=obs.end()){
+		(*it)->notificar(cal);
+		it++;
+	}
+	ColCal.push_back(cal);
+	list<Calificacion*>::iterator itCal=ColCal.begin();
+	int promedio=0, cant=0;
+	while(itCal!=ColCal.end()){
+		promedio+=(*itCal)->getPuntaje();
+		cant++;
+		itCal++;
+	}
+	int promNuevo=promedio/cant;
+	setPromedio(promNuevo);
 }
 
 DataHostalComp Hostal::getDTHostal(){

@@ -229,7 +229,9 @@ void ControladorHostal::SeleccionarEstadia(Estadia estadia){
 }
 
 void ControladorHostal::ConfirmarCalificacion (std::string comentario, int puntaje){
-	hostalIngresado->AgregarComentarios(comentario,puntaje);
+	SingletonFechaHora* FH = SingletonFechaHora::getInstance();
+	DTFecha hrs=FH->FechaHoraSistema();
+	hostalIngresado->AgregarComentarios(comentario,puntaje,hrs,EstadiaFinalizada,obs);
 }
 
 void ControladorHostal::ResponderComentarios (std::string emailHuesp, int codigoRes, std::string respuesta) {}
