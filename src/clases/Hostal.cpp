@@ -156,7 +156,15 @@ void Hostal::ingresoAlHostal(int codigoRes){}
 
 void Hostal::buscarR(std::string email ){}
 
-set<DTReserva> Hostal::BuscarRes(std::string email){}
+set<DTReserva*> Hostal::BuscarRes(std::string email){
+	set<DTReserva*> colReservasNC;
+	for(map<int,Reserva*>::iterator i= ColReservas.begin(); i != ColReservas.end(); i++){
+		Reserva* res = (*i).second;
+		colReservasNC = res->validarHuespedRegistrado(email);
+	}
+
+return colReservasNC;
+}
 
 void Hostal::agregarHabAlHost(Habitacion* hab){
 	ColHabitaciones.insert(pair<int, Habitacion*>(hab->getNumero(),hab));

@@ -74,7 +74,7 @@ class Hostal{
 		bool TrabajaEnHostal();
 		void ingresoAlHostal(int);
 		void buscarR(std::string);
-		set<DTReserva> BuscarRes(std::string);
+		set<DTReserva*> BuscarRes(std::string);
 		void agregarHabAlHost(Habitacion*);
 		void recordarHostal();
 };

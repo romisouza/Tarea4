@@ -175,7 +175,12 @@ set<DTCalificacion> ControladorHostal::ObtenerCalificaciones(std::string nombreH
 
 //void ControladorHostal::ObtenerCalificaciones(TipoCargo cargoEmp, std::string emailEmp){}
 
-set<DTReserva> ControladorHostal::ObtenerReservasNC(std::string nombreHostal, std::string email, int promo){}
+set<DTReserva*> ControladorHostal::ObtenerReservasNC(std::string nombreHostal, std::string email, int promo){
+	promo = promo;
+	Hostal* Hst =ColHostales.find(nombreHostal)->second;
+	set<DTReserva*> colReservasNC = Hst->BuscarRes(email);
+	return colReservasNC;
+}
 
 void ControladorHostal::ReservaNCElegida(int codigoRes){}
 
