@@ -169,7 +169,10 @@ void ControladorHostal::cancelarAltaReserva(){
 	habRecordada = NULL;
 }
 
-set<std::string> ControladorHostal::ConsultarTop3Hostal(){}
+set<std::string> ControladorHostal::ConsultarTop3Hostal(){
+	auto iter = ColHostales.begin();
+	
+}
 
 set<DTCalificacion> ControladorHostal::ObtenerCalificaciones(std::string nombreHostal) {}
 

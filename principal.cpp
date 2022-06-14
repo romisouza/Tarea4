@@ -123,5 +123,12 @@ ControladorHostal *ctrl = ControladorHostal::getInstance();
     cout<<"ingrese capacidad hab: "; cin>>capacidad;
     ctrl->asignarHab(nombre, numero, precio, capacidad);
     ctrl->registrarHab(); */
+
+    //CONSULTA RESERVA
+    //ControladorHostal *ctrl = ControladorHostal::getInstance();
+
+    
+
+
     return 0;
 }
