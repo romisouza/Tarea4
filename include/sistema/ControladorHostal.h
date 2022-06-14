@@ -99,6 +99,7 @@ class ControladorHostal:public IHostal {
 		list<DTReserva*> ObtenerReservas(std::string);//baja reserva (Selecccionar Hostal)
 		void SeleccionarReserva(int);//baja reserva 
 		void ConfirmarEliminarReserva();//baja reserva
+<<<<<<< Updated upstream
 		void CancelarBajaReserva();//baja reserva	
 		void agregarObserver(IObserver*);
 		void eliminarObserver(IObserver*);
@@ -107,6 +108,9 @@ class ControladorHostal:public IHostal {
 		void EliminarNotificaciones();
 		void eliminarSuscripcion(string emp);
 		list<DTEmpleado> ObtenerEmpleados();
+=======
+		void CancelarBajaReserva();//baja reserva
+>>>>>>> Stashed changes
 };
 
 #endif

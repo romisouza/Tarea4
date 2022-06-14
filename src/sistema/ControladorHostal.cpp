@@ -279,6 +279,7 @@ void ControladorHostal::agregarObserver(IObserver* o){
 	obs.push_back(o);
 }
 
+<<<<<<< Updated upstream
 void ControladorHostal::eliminarObserver(IObserver* o){
 	auto it=obs.begin();
 	while((*it)!=o){
@@ -323,3 +324,7 @@ void ControladorHostal::eliminarSuscripcion(string emp){
 	Empleado* EmpSel=cu->buscarEmpleado(emp);
 	eliminarObserver(EmpSel);
 }
+=======
+
+
+>>>>>>> Stashed changes

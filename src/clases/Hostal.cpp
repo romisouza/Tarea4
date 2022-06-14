@@ -233,7 +233,12 @@ Reserva* Hostal::reservar(DTFecha horaactual, int cod, DTFecha desde, DTFecha ha
 	return res;
 }
 
+/*bool operator<(const Hostal &h1,const Hostal &h2){
+	return h1.promedio <h2.promedio;
+}
 
-       
-
+bool ordenarHostales(const Hostal* &h1, const Hostal* &h2){
+	return h1->getPromedio() < h2->getPromedio();
+}
+*/
 
