@@ -8,6 +8,8 @@ SingletonFechaHora *SingletonFechaHora::getInstance(){
     return instancia;
 }
 
+SingletonFechaHora::SingletonFechaHora(){}
+
 DTFecha SingletonFechaHora::FechaHoraSistema(){
     DTFecha res = DTFecha(12,3,2009,22,53);
     return res;
