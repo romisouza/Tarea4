@@ -183,10 +183,10 @@ bool Hostal::ingresoAlHostal(int codigoRes){
 void Hostal::CreateAddEstadia(DTFecha hs , int promo, int codigoRes){
 	Reserva* res=ColReservas.find(codigoRes)->second; 
 	DTFecha FHSal = res->getCheckOut();
-	Estadia est = Estadia(hs, FHSal,promo, res->getHues(),res);
-	
-
-	
+	Estadia* est = new Estadia(hs, FHSal,promo, res->getHues(),res);
+	list<Estadia*> colest = res->getEstadia();
+	colest.insert(est);
+	res->setEstado(Cerrada);
 }
 
 
