@@ -3,7 +3,7 @@
 #include <iostream>
 #include <set>
 #include "DTFecha.h"
-#include "../../include/datatypes/DTReserva.h"
+#include "../../include/datatypes/DTReservaComp.h"
 #include "../../include/clases/Huesped.h"
 class Huesped;
 using namespace std;
