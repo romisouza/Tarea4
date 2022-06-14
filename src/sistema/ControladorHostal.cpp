@@ -176,13 +176,19 @@ set<DTCalificacion> ControladorHostal::ObtenerCalificaciones(std::string nombreH
 //void ControladorHostal::ObtenerCalificaciones(TipoCargo cargoEmp, std::string emailEmp){}
 
 set<DTReserva*> ControladorHostal::ObtenerReservasNC(std::string nombreHostal, std::string email, int promo){
-	promo = promo;
+	promo = promo; //para recordar
 	Hostal* Hst =ColHostales.find(nombreHostal)->second;
+	hostalIngresado = Hst; //para recordar
 	set<DTReserva*> colReservasNC = Hst->BuscarRes(email);
 	return colReservasNC;
 }
 
-void ControladorHostal::ReservaNCElegida(int codigoRes){}
+void ControladorHostal::ReservaNCElegida(int codigoRes){
+	bool resp = hostalIngresado->ingresoAlHostal(codigoRes); //para mi devuelvo un bool xq tengo que saber si el codigo que puso es correcto o puso cualqueir cosa
+	SingletonFechaHora *FH = SingletonFechaHora::getInstance();
+	DTFecha hs = FH->FechaHoraSistema();
+	hostalIngresado->CreateAddEstadia(hs,promo, codigoRes);
+}
 
 void ControladorHostal::DatosHuesped(std::string nombreHostal,std::string email){}
 

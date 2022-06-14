@@ -74,7 +74,8 @@ class Hostal{
 		set<DTCalificacion> obtenerCalificaciones();
 		int getPromCal();
 		bool TrabajaEnHostal();
-		void ingresoAlHostal(int);
+		bool ingresoAlHostal(int);
+		void CreateAddEstadia(DTFecha, int, int);
 		void buscarR(std::string);
 		set<DTReserva*> BuscarRes(std::string);
 		void agregarHabAlHost(Habitacion*);

@@ -21,7 +21,7 @@ set<DTReserva*> ReservaIndividual::validarHuespedRegistrado(string email){
         EstadoReserva est = getEstado();
             if (est != Cancelada){
                 DTReserva* resp = getDTReserva();
-            resultado.insert(resp); //se agrega al retorno que va para colReservasNC
+                resultado.insert(resp); //se agrega al retorno que va para colReservasNC
             }
     }
     return resultado;
