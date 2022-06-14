@@ -39,13 +39,13 @@ class Reserva{
         Habitacion* getHab();
         Huesped* getHues();
         list<Estadia*> getEstadia();
-        DTReserva getDTReserva();
-        //virtual DTReservaComp getDTReservaComp()=0;
+        virtual DTReserva* getDTReserva()=0;
+        virtual DTReservaComp* getDTReservaComp()=0;
         DataEstadia BuscarRes(DTIdEstadia);
         void BuscarEstadia(string, DTFecha, Estadia* &);//cambie el nombre
         DTIdEstadia accederaEstadias();
         void hallarEstadia(string,string);
-        virtual set<DTReserva> validarHuespedRegistrado(string)=0;
+        virtual set<DTReserva*> validarHuespedRegistrado(string)=0;
         virtual void validarHuesped(string)=0;
         void setCodigo(int);
         void setCheckIn(DTFecha);

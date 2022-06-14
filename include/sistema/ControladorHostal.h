@@ -31,6 +31,8 @@ class ControladorHostal:public IHostal {
 		int numero; 
     	float precioNoche;
     	int capacidad;
+		//Para registrar estadia
+		int promo;
 		//Para realizar reserva
 		set<Huesped*> acompaniantesIngresados;
 		Huesped* huespRecordado;
@@ -74,7 +76,7 @@ class ControladorHostal:public IHostal {
 		void cancelarAltaReserva();//realizar res (cancelarReserva)
 		set<std::string> ConsultarTop3Hostal();//Consultartop3
 		set<DTCalificacion> ObtenerCalificaciones(std::string);//Consultartop3 (ObtenerHostal)
-		set<DTReserva> ObtenerReservasNC(std::string, std::string,int);//registrar estadia (DatosHuesped)
+		set<DTReserva*> ObtenerReservasNC(std::string, std::string,int);//registrar estadia (DatosHuesped)
 		void ReservaNCElegida(int);//registrar estadia
 		void DatosHuesped(std::string,std::string);//finalizar estadia NO SE QUE HACE LA FUNCION XD
 		void SeleccionarHostal(std::string);//calificar estadia
@@ -88,7 +90,7 @@ class ControladorHostal:public IHostal {
 		set<DTCal> ObtenerComentariosAResponder(std::string);//comentar calificacion
 		void ResponderComentarios (std::string, int, std::string);//comentarcalificacion
 		DataHostalComp ObtenerHostalComp(std::string);//Consulta Hostal (SeleccionarHostal)
-		//set<DTReservaComp> ObtenerReservasComp(std::string);//consulta reserva (SeleccionarHostal)
+		list<DTReservaComp*> ObtenerReservasComp(std::string);//consulta reserva (SeleccionarHostal)
 		set<DTIdEstadia> ObtenerDTIdEstadia(std::string);//consulta estadia (SeleccionarHostal)
 		DataEstadia ObtenerinfoEstadia(DTIdEstadia);//consulta estadia  (SeleccionarEstadia)
 		DTCalificacion MostrarCalificacion();//consulta estadia

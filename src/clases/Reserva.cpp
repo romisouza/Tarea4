@@ -76,11 +76,11 @@ void Reserva::setHues(Huesped* huesped){
 void Reserva::setEstadia(list<Estadia*> estadia){
     est = estadia;
 }
-
-DTReserva Reserva::getDTReserva(){
-    DTReserva Res=DTReserva(getCodigo(),getCheckIn(),getCheckOut());
+/*DTReserva Reserva::getDTReserva(){
+    DTReserva Res=DTReserva(getCodigo(),getCheckIn(),getCheckOut(), getEstado());
     return Res;
 }
+*/
 
 void Reserva::BuscarEstadia(std::string email, DTFecha hrs, Estadia* & est){
     list<Estadia*>::iterator it;

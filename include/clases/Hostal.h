@@ -20,11 +20,13 @@
 #include "Calificacion.h"
 
 
+
 class Empleado;
 class Reserva;
 class Habitacion;
 class Calificacion;
 class DataHostalComp;
+class DTReservaComp;
 
 using namespace std;
 
@@ -68,13 +70,13 @@ class Hostal{
 		Habitacion* seleccionarHab(int);
 		void AgregarEmpleadoAHostal(Empleado*);
     	Reserva* reservar(DTFecha,int, DTFecha, DTFecha, Huesped*,bool,int,set<Huesped*>);
-		//list<DTReservaComp> ObtenerReservas();
+		list<DTReservaComp*> ObtenerReservas();
 		set<DTCalificacion> obtenerCalificaciones();
 		int getPromCal();
 		bool TrabajaEnHostal();
 		void ingresoAlHostal(int);
 		void buscarR(std::string);
-		set<DTReserva> BuscarRes(std::string);
+		set<DTReserva*> BuscarRes(std::string);
 		void agregarHabAlHost(Habitacion*);
 		void recordarHostal();
 };

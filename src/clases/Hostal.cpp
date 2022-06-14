@@ -137,16 +137,24 @@ void Hostal::AgregarEmpleadoAHostal(Empleado* emp) {
     	}*/
 }
 
-/*list<DTReservaComp> Hostal::ObtenerReservas(){
-	list<DTReservaComp> dtreservas;
+list<DTReservaComp*> Hostal::ObtenerReservas(){
+	list<DTReservaComp*> dtreservas;
 	auto iter = ColReservas.begin();
-	while(iter!=ColReservas.end()){
+	if(iter!=ColReservas.end())
+		while(iter!=ColReservas.end()){
+			Reserva* res = iter->second;
+			DTReservaComp* dtres=res->getDTReservaComp();
+			dtreservas.push_back(dtres);
+			iter++;
+		}
+	else{
 		Reserva* res = iter->second;
-		DTReservaComp dtres=res->getDTReservaComp();
+		DTReservaComp* dtres= res->getDTReservaComp();
+		dtreservas.push_back(dtres);
+	} 
+return dtreservas;
 
-	}
-
-}*/
+}
 
 set<DTCalificacion> Hostal::obtenerCalificaciones(){}
 
@@ -158,7 +166,15 @@ void Hostal::ingresoAlHostal(int codigoRes){}
 
 void Hostal::buscarR(std::string email ){}
 
-set<DTReserva> Hostal::BuscarRes(std::string email){}
+set<DTReserva*> Hostal::BuscarRes(std::string email){
+	set<DTReserva*> colReservasNC;
+	for(map<int,Reserva*>::iterator i= ColReservas.begin(); i != ColReservas.end(); i++){
+		Reserva* res = (*i).second;
+		colReservasNC = res->validarHuespedRegistrado(email);
+	}
+
+return colReservasNC;
+}
 
 void Hostal::agregarHabAlHost(Habitacion* hab){
 	ColHabitaciones.insert(pair<int, Habitacion*>(hab->getNumero(),hab));

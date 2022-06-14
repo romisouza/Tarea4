@@ -39,4 +39,7 @@ list<Estadia*> Huesped::BuscarEstadias(std::string email,  DTFecha hrs){
 }
 
 DTHuesped Huesped::getDTHuesped(){
+
+
+
 }

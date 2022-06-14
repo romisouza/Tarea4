@@ -175,7 +175,12 @@ set<DTCalificacion> ControladorHostal::ObtenerCalificaciones(std::string nombreH
 
 //void ControladorHostal::ObtenerCalificaciones(TipoCargo cargoEmp, std::string emailEmp){}
 
-set<DTReserva> ControladorHostal::ObtenerReservasNC(std::string nombreHostal, std::string email, int promo){}
+set<DTReserva*> ControladorHostal::ObtenerReservasNC(std::string nombreHostal, std::string email, int promo){
+	promo = promo;
+	Hostal* Hst =ColHostales.find(nombreHostal)->second;
+	set<DTReserva*> colReservasNC = Hst->BuscarRes(email);
+	return colReservasNC;
+}
 
 void ControladorHostal::ReservaNCElegida(int codigoRes){}
 
@@ -240,10 +245,11 @@ DataHostalComp ControladorHostal::ObtenerHostalComp(std::string nombreHostal){
 	return HstSel;
 }
 
-/*set<DTReservaComp> ControladorHostal::ObtenerReservasComp(std::string nombreHostal){
+list<DTReservaComp*> ControladorHostal::ObtenerReservasComp(std::string nombreHostal){
 	Hostal* h= ColHostales.find(nombreHostal)->second;
-	list<DTReservaComp> dtreservas = h->ObtenerReservas();
-}*/
+	list<DTReservaComp*> dtreservas = h->ObtenerReservas();
+	return dtreservas;
+}
 
 set<DTIdEstadia> ControladorHostal::ObtenerDTIdEstadia(std::string nombreHostal){}
 
