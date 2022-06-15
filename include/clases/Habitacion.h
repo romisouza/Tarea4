@@ -31,6 +31,7 @@ public:
     DTHabitacion getHabitacion();
     bool consultarReservas(DTFecha, DTFecha);
     void asociarResAHab(Reserva*);
+    void eliminarResHab(int);
     ~Habitacion();
 };
 

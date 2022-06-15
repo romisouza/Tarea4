@@ -73,8 +73,8 @@ class Hostal{
 		void AgregarEmpleadoAHostal(Empleado*);
     	Reserva* reservar(DTFecha,int, DTFecha, DTFecha, Huesped*,bool,int,set<Huesped*>);
 		list<DTReservaComp*> ObtenerReservas();
-		set<DTCalificacion> obtenerCalificaciones();
-		int getPromCal();
+		list<DTCalificacion> obtenerCalificaciones();
+		//int getPromCal();
 		bool TrabajaEnHostal();
 		void ingresoAlHostal(int);
 		void CreateAddEstadia(DTFecha, int, int);

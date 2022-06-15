@@ -232,3 +232,8 @@ Empleado* ControladorUsuario::buscarEmpleado(std::string emp){
 	Empleado* aux=ColEmpleados.find(emp)->second;
 	return aux;
 }
+
+void ControladorUsuario::eliminarReserva(string email, int codRes){
+	Huesped* Hsp=ColHuespedes.find(email)->second;
+	Hsp->EliminarResHsp(codRes);
+}
