@@ -171,18 +171,14 @@ return res;
 }
 
 Habitacion* Hostal::seleccionarHab(int numHab){ //ADE - VERIFICAR Q FUNCION
-	return ColHabitaciones.find(numHab)->second;
+	if (ColHabitaciones.find(numHab) == ColHabitaciones.end()){
+		throw std::invalid_argument("No existe una habitacion registrada con el numero ingresado.");
+	} else 
+		return ColHabitaciones.find(numHab)->second;
 }
 
 void Hostal::AgregarEmpleadoAHostal(Empleado* emp) {
 	ColEmpleadosHost.insert({emp->getEmail(),emp});
-	//cout<<emp->getEmail();
-	//ColEmpleados.insert(pair<string,Empleado*>(emp->getEmail(),emp));
-   // bool x = ColEmpleadosHost.empty();//getColEmpleados();
-       /* for( map<std::string, Empleado*>::iterator i= x.begin(); i != x.end(); i++){
-       		std::string email = (*i).first;
-			cout << email;
-    	}*/
 }
 
 list<DTReservaComp*> Hostal::ObtenerReservas(){

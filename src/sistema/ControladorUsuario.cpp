@@ -108,10 +108,14 @@ void ControladorUsuario::CancelarAltaUsuario(){//BIEN
 		cargoIngresado = NULL;
 }
 list<DTCal> ControladorUsuario::obtenerComentariosAResponder(string mail){
+	if (ColEmpleados.find(mail) == ColEmpleados.end()){
+		throw std::invalid_argument("No existe un empleado con dicho mail.");
+	} else {
 	Empleado *emp = ColEmpleados.find(mail)->second;
 	hostalTrabajaEmp = emp->getHostalAsociado();
 	list<DTCal> res = emp->obtenerComentarios();
 	return res;
+	}
 }
 
 Hostal* ControladorUsuario::getHostalTrabajaEmp(){

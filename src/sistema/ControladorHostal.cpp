@@ -20,8 +20,16 @@ ControladorHostal* ControladorHostal:: getInstance(){
 }
 
 void ControladorHostal::agregarHostal(std::string nombre, std::string direccion, int telefono){ //LISTA
-	Hostal *host = new Hostal(nombre,direccion,telefono,0);
-	ControladorHostal::ColHostales.insert(pair<string,Hostal*>(nombre,host));
+	auto it = ColHostales.begin();
+	while (it != ColHostales.end() && ((*it).second->getNombre() != nombre)){
+		++it;
+	}
+	if (it == ColHostales.end()){
+		Hostal *host = new Hostal(nombre,direccion,telefono,0);
+		ControladorHostal::ColHostales.insert(pair<string,Hostal*>(nombre,host));
+	} else {
+		throw std::invalid_argument("Ya existe un hostal registrado con ese nombre.");
+	}
 }
 set<std::string> ControladorHostal::ObtenerNombreHostales() {
 	set<string> hostales;
@@ -105,17 +113,25 @@ list<DTHostalProm> ControladorHostal::ObtenerHostalesProm(){
 }
 
 void ControladorHostal::ingresarDatosReserva(std::string nombreHostal, DTFecha in, DTFecha out, bool grupOind, int totalHuesp){ //LISTA
+	if (ColHostales.find(nombreHostal) == ColHostales.end() || in.compararFecha(out,in)) {
+		throw std::invalid_argument("Ocurrió un error con los datos ingresados."); 
+	} else {
 	nombreHostalIngresado = nombreHostal;
 	fechaInIngresada = in;
 	fechaOutIngresada = out;
 	gruppOindIngresado = grupOind;
 	totalHuespIngresado = totalHuesp;
+	}
 }
 
 list<int> ControladorHostal::obtenerHabitacionesDisponibles(DTFecha in, DTFecha out){
+	if(in.compararFecha(out,in)){
+		throw std::invalid_argument("La fecha de salida ingresada es menor a la fecha de entrada.");
+	} else {
 	Hostal* Host=ColHostales.find(nombreHostalIngresado)->second;
 	list<int> ColHabDisp = Host->obtenerHabitaciones(in,out);
 	return ColHabDisp;
+	}
 }
 
 void ControladorHostal::seleccionarHabitacion(int numHab){ //ADE - VERIFICAR Q FUNCIONE
@@ -131,7 +147,10 @@ list<std::string> ControladorHostal::obtenerHuespedesRegistrados(){//ADE - VERIF
 
 void ControladorHostal::seleccionarHuesped(std::string emailHuesp){
 	ControladorUsuario *ctrl = ControladorUsuario::getInstance();
-	huespRecordado = ctrl->getColHuespedes().find(emailHuesp)->second;
+	if (ctrl->getColHuespedes().find(emailHuesp) == ctrl->getColHuespedes().end()){
+		throw std::invalid_argument("No existe un huesped con el mail ingresado.");
+	} else
+		huespRecordado = ctrl->getColHuespedes().find(emailHuesp)->second;
 }
 
 void ControladorHostal::seleccionarAcompaniante(std::string emailHuesp){// va a ir loopeada en el main, con algo tipo "ingrese el mail de cada huesped q forme parte de la reserva, para finalizar presione 0"
