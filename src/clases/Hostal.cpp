@@ -103,7 +103,7 @@ void Hostal::AgregarComentarios(std::string comentario, int puntaje, DTFecha hrs
 	setPromedio(promNuevo);
 }
 
-DataHostalComp Hostal::getDTHostal(){
+DataHostalComp Hostal::getDTHostal(){ /*
 	DataHostalComp Hst=DataHostalComp(getNombre(),getDireccion(),getTelefono(),getPromedio());
 	map<int,Reserva*> ResHst;
 	map<int,Reserva*> Res=getColReservas();
@@ -125,8 +125,13 @@ DataHostalComp Hostal::getDTHostal(){
 		Cali.push_back(aux);
 		it++;
 	}
+<<<<<<< Updated upstream
 	Hst.setComentarios(Cali);
 	return Hst;
+=======
+	Hst.getComentarios()=Cali;
+	return Hst; */
+>>>>>>> Stashed changes
 }
 
 list<DTIdEstadia> Hostal::accesoaReservas(Hostal* host){
