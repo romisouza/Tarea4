@@ -43,6 +43,7 @@ class Estadia{
         DTIdEstadia getDTIdEstadia();
         DataEstadia* getDataEstadia();
         void hallarHuesped(string, string);
+        void eliminarEstadia();
         DTCalificacion accederaEstadia();
         ~Estadia();
 };

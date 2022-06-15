@@ -77,7 +77,11 @@ list<DTReserva*> Hostal::BuscarReservas(){
 	return auxRes;
 }
 
-void Hostal::EliminarRes(Reserva* res){}
+void Hostal::EliminarRes(Reserva* res){
+	Habitacion* hab= ColHabitaciones.find(res->getHab()->getNumero())->second;
+	hab->eliminarResHab(res->getCodigo());
+	res->EliminarEstadias();
+}
 
 void Hostal::AgregarComentarios(std::string comentario, int puntaje, DTFecha hrs, Estadia* est, list<IObserver*> obs){
 	Calificacion* cal= new Calificacion(hrs,puntaje,comentario,est);

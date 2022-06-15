@@ -315,9 +315,17 @@ void ControladorHostal::SeleccionarReserva(int codigoRes){
 	ingresarReserva(res);
 }
 
-void ControladorHostal::ConfirmarEliminarReserva(){}
+void ControladorHostal::ConfirmarEliminarReserva(){
+	hostalIngresado->EliminarRes(reservaIngresada);
+	ControladorUsuario* cu = ControladorUsuario::getInstance();
+	cu->eliminarReserva(reservaIngresada->getHues()->getEmail(),reservaIngresada->getCodigo());
 
-void ControladorHostal::CancelarBajaReserva(){}
+}
+
+void ControladorHostal::CancelarBajaReserva(){
+	hostalIngresado=NULL;
+	reservaIngresada=NULL;
+}
 
 void ControladorHostal::agregarObserver(IObserver* o){
 	obs.push_back(o);
