@@ -9,6 +9,7 @@ Calificacion::Calificacion(DTFecha Fecha, int Puntaje,std::string ComenHuesp, Es
     puntaje=Puntaje;
     comentarioHuesp=ComenHuesp;
     est=estt;
+    comentarioEmp ="";
 }
 
 DTFecha Calificacion::getFecha(){

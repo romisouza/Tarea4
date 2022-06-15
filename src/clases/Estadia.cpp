@@ -11,6 +11,7 @@ Estadia::Estadia(DTFecha CheckIn,DTFecha CheckOut,int Promo,Huesped* Huespp,Rese
     promo=Promo;
     huesp=Huespp;
     res=Ress;
+    Estadia* est;
 }
 
 DTFecha Estadia:: getCheckIn(){
@@ -69,6 +70,11 @@ Estadia* Estadia::getEstadia(){
 DTIdEstadia Estadia::getDTIdEstadia(){
     DTIdEstadia Est= DTIdEstadia(res->getCodigo(),huesp->getEmail());
     return Est;
+}
+
+DataEstadia* Estadia::getDataEstadia(){
+    DataEstadia *est = new DataEstadia(checkIn,checkOut,res->getHab()->getNombreHostal(),huesp->getEmail(),res->getHab()->getNumero(),promo,res->getCodigo());
+    return est;
 }
 
 Estadia::~Estadia(){ //(Implementar)

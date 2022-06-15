@@ -6,6 +6,7 @@
 #include "../../include/datatypes/DTIdEstadia.h"
 #include "../../include/datatypes/DataEstadia.h"
 #include "../../include/datatypes/DTCalificacion.h"
+//#include "../../include/datatypes/DTCal.h"
 #include "../../include/clases/Huesped.h"
 #include "Reserva.h"
 #include "../../include/clases/Calificacion.h"
@@ -40,7 +41,7 @@ class Estadia{
         void setCalificacion(Calificacion*);
         Estadia* getEstadia();
         DTIdEstadia getDTIdEstadia();
-        DataEstadia getDataEstadia();
+        DataEstadia* getDataEstadia();
         void hallarHuesped(string, string);
         DTCalificacion accederaEstadia();
         ~Estadia();

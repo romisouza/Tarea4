@@ -24,6 +24,7 @@ public:
     int getCapacidad();
     int getNumero();
     float getPrecioNoche();
+    std::string getNombreHostal();
     void setCapacidad(int);
     void setNumero(int);
     void setPrecioNoche(float);

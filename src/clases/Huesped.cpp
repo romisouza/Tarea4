@@ -16,6 +16,10 @@ map<int,Reserva*> Huesped::getColReservasHuesp(){
 	return ColReservasHuesp;
 }
 
+void Huesped::setColReservasHuesp(map<int,Reserva*> colRes){
+	ColReservasHuesp = colRes;
+}
+
 bool Huesped::getEsFinger(){
 	return esFinger;
 }

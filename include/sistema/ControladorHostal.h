@@ -45,9 +45,12 @@ class ControladorHostal:public IHostal {
 		int totalHuespIngresado;
 		Habitacion* habRecordada;
 		//para generar el codigo de las reservas
-		int codigoRes;
+		int codigoRes = 100;
 		//para calificar estadia
 		Estadia* EstadiaFinalizada;
+		//consulta de estadia
+		std::string hostalRecordado;
+		DataEstadia* estadiaRecordada;
 		//baja de reserva
 		Reserva* reservaIngresada;
 		//Notificaciones
@@ -69,10 +72,11 @@ class ControladorHostal:public IHostal {
 		void CancelarAsignacionDeEmpleado();//asignar emp a host (cancelarAsignacionAUsuario)
 		list<DTHostalProm> ObtenerHostalesProm(); //Realizar reserva (ObtenerHostales)
 		void ingresarDatosReserva(std::string, DTFecha, DTFecha, bool, int);//realizar reserva
-		set<int> obtenerHabitacionesDisponibles(DTFecha, DTFecha);//realizar reserva
+		list<int> obtenerHabitacionesDisponibles(DTFecha, DTFecha);//realizar reserva
 		void seleccionarHabitacion(int); //realizar res
-		set<std::string> obtenerHuespedesRegistrados();//realizar res
+		list<std::string> obtenerHuespedesRegistrados();//realizar res
 		void seleccionarHuesped(std::string);//realizar res
+		void seleccionarAcompaniante(std::string); //realizar res
 		void confirmarAltaReserva();//realizar res
 		int generarCodigoReserva();//realizar res
 		void cancelarAltaReserva();//realizar res (cancelarReserva)
@@ -86,14 +90,14 @@ class ControladorHostal:public IHostal {
 		list<DTIdEstadia> ListaEstadiasFinalizadas(std::string);//calificar estadia
 		void SeleccionarEstadia(DTIdEstadia);//calificar estadia, cambie el nombre
 		void ConfirmarCalificacion (std::string, int);//calificar estadiaDatoet
-		set<DTCal> ObtenerComentariosAResponder(std::string);//comentar calificacion
-		void ResponderComentarios (std::string, int, std::string);//comentarcalificacion
+		list<DTCal> ObtenerComentariosAResponder(std::string);//comentar calificacion
+		void ResponderComentario(std::string, int, std::string);//comentarcalificacion
 		DataHostalComp ObtenerHostalComp(std::string);//Consulta Hostal (SeleccionarHostal)
 		list<DTReservaComp*> ObtenerReservasComp(std::string);//consulta reserva (SeleccionarHostal)
-		set<DTIdEstadia> ObtenerDTIdEstadia(std::string);//consulta estadia (SeleccionarHostal)
-		DataEstadia ObtenerinfoEstadia(DTIdEstadia);//consulta estadia  (SeleccionarEstadia)
+		list<DTIdEstadia> ObtenerDTIdEstadia(std::string);//consulta estadia (SeleccionarHostal)
+		DataEstadia* ObtenerinfoEstadia(DTIdEstadia);//consulta estadia  (SeleccionarEstadia)
 		DTCalificacion MostrarCalificacion();//consulta estadia
-		DTReserva MostrarInfoReserva();//consulta estadia
+		DTReserva* MostrarInfoReserva(Hostal* host, int codigoRes);//consulta estadia
 		void LiberarMemoria(); //consulta estadia		
 		void ingresarReserva(Reserva*);//nueva, recuerda una reserva
 		list<DTReserva*> ObtenerReservas(std::string);//baja reserva (Selecccionar Hostal)

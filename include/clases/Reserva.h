@@ -41,9 +41,9 @@ class Reserva{
         list<Estadia*> getEstadia();
         virtual DTReserva* getDTReserva()=0;
         virtual DTReservaComp* getDTReservaComp()=0;
-        DataEstadia BuscarRes(DTIdEstadia);
+        DataEstadia* BuscarRes(Reserva*,DTIdEstadia,std::string);
         void BuscarEstadia(string, DTFecha, DTIdEstadia &);//cambie el nombre
-        DTIdEstadia accederaEstadias();
+        list<DTIdEstadia> accederaEstadias(Reserva*);
         void hallarEstadia(string,string);
         virtual set<DTReserva*> validarHuespedRegistrado(string)=0;
         virtual void validarHuesped(string)=0;

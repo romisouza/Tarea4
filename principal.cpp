@@ -14,6 +14,24 @@ using namespace std;
 
 int main(){
     //ALTA DE USUARIO
+   /* std::string n1, n2, nombre;
+	int tel;
+	ControladorHostal *ctrl = ControladorHostal::getInstance();
+	ControladorUsuario *cont = ControladorUsuario ::getInstance();
+	cont->IngresarHuesped("pedro","@p","kk",1);
+	cont->ConfirmarAltaUsuario();
+    cout<<"ingrese nombre hostal: ";cin >> n1;
+    cout<<"ingrese direccion hostal ";cin >> n2;
+    cout<<"ingrese numero de telefono: "; cin>>tel;
+    ctrl->agregarHostal(n1,n2,tel);
+    ctrl->asignarHab(n1,32,2500,1);
+    ctrl->registrarHab();
+    DTFecha in = DTFecha(14,6,2022,15,00);
+    DTFecha out = DTFecha(17,6,2022,12,30);
+    ctrl->ingresarDatosReserva(n1,in,out,0,1);
+    ctrl->seleccionarHabitacion(32);
+    ctrl->seleccionarHuesped("@p");
+    ctrl->confirmarAltaReserva();*/
     //try{
         /*bool esfing1,esfing2; 
         CargoEmpleado carg1 = Administracion;
@@ -127,8 +145,68 @@ ControladorHostal *ctrl = ControladorHostal::getInstance();
     //CONSULTA RESERVA
     //ControladorHostal *ctrl = ControladorHostal::getInstance();
 
-    
+    //REALIZAR RESERVA
+    ControladorUsuario *cont = ControladorUsuario::getInstance();  
+ControladorHostal *ctrl = ControladorHostal::getInstance();
+cont->setTipoUsuario(1);
+cont->IngresarEmpleado("carlitos","@carlos","holaaa123");
+cont->ConfirmarAltaUsuario();
+cont->setTipoUsuario(0);
+cont->IngresarHuesped("ade","@ade","hola123",1);
+cont->ConfirmarAltaUsuario();
+cont->IngresarHuesped("didi","didi@gmail.com","holis123",1);
+cont->ConfirmarAltaUsuario();
+cont->IngresarHuesped("estela","estelis@hotmail.com","holis",0);
+cont->ConfirmarAltaUsuario();
+ctrl->agregarHostal("hostal morro","avenida brasil 1899",42158747);
+ctrl->asignarHab("hostal morro",101,102.3,2);
+ctrl->registrarHab();
+ctrl->asignarHab("hostal morro",201,202.3,1);
+ctrl->registrarHab();
+//asignarempleadoahostal
+list<DTEmpleado> empleados = ctrl->ObtenerEmpleados("hostal morro");
+/*cout << empleados.size();
 
+for (auto i=empleados.begin();i!=empleados.end();++i){
+    cout << (*i).getNombre();
+}*/
+CargoEmpleado carg1 = Administracion;
+CargoEmpleado *cargo1 = &carg1;
+ctrl->SeleccionarEmpleado(cargo1,"@carlos");
+ctrl->ConfirmarAsignacionDeEmpleado();
 
-    return 0;
+DTFecha in = DTFecha(14,6,2022,15,00);
+DTFecha out = DTFecha(17,6,2022,12,30);
+ctrl->ingresarDatosReserva("hostal morro",in,out,0,1);
+list<int> habitaciones = ctrl->obtenerHabitacionesDisponibles(in,out);
+for (auto i=habitaciones.begin();i!=habitaciones.end();++i){
+    cout << (*i);
+}
+ctrl->seleccionarHabitacion(201);
+list<std::string> emailHuespedes = ctrl->obtenerHuespedesRegistrados();
+/*for (auto i=emailHuespedes.begin();i!=emailHuespedes.end();++i){
+    cout << (*i);
+}*/
+ctrl->seleccionarHuesped("estelis@hotmail.com");
+ctrl->confirmarAltaReserva();
+set<DTReserva*> reservasNC = ctrl->ObtenerReservasNC("hostal morro","estelis@hotmail.com",0);
+ctrl->ReservaNCElegida(101);
+ctrl->DatosHuesped("hostal morro","estelis@hotmail.com");
+ctrl->SeleccionarHostal("hostal morro");
+list<DTIdEstadia> estfinalizadas = ctrl->ListaEstadiasFinalizadas("estelis@hotmail.com");
+DTIdEstadia estadiaselecc;
+for (auto it=estfinalizadas.begin();it!=estfinalizadas.end();++it){
+  //  cout << (*it).getCodigo();
+    //cout << (*it).getEmail();
+    estadiaselecc = DTIdEstadia((*it).getCodigo(),(*it).getEmail());
+}
+ctrl->SeleccionarEstadia(estadiaselecc);
+ctrl->ConfirmarCalificacion("el hostal fue muy lindo",1);
+list<DTCal> comentariosaresponder = ctrl->ObtenerComentariosAResponder("@carlos");
+
+for (auto it=comentariosaresponder.begin();it!=comentariosaresponder.end();++it){
+  cout << (*it).getComentarioHuesp();
+}
+ctrl->ResponderComentario("estelis@hotmail.com",101,"gracias x dejar una reseña saludos");
+return 0;
 }

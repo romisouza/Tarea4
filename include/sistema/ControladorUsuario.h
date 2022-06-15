@@ -23,6 +23,7 @@ class ControladorUsuario {
 		CargoEmpleado* cargoIngresado; 
 		Empleado* empleadoIngresado;
 		Hostal* hostalIngresado;
+		Hostal* hostalTrabajaEmp;
 		//NO VA
 		int cantHuespedes,cantEmpleados =0; //(COTI)
 
@@ -38,8 +39,8 @@ class ControladorUsuario {
 		static ControladorUsuario* getInstance();
 		map<std::string,Empleado*> getColEmpleados();
 		map<std::string,Huesped*> getColHuespedes();
-		set<DTCal> obtenerComentariosAResponder(std::string mail);
-		set<std::string> obtenerHuespedes();
+		list<DTCal> obtenerComentariosAResponder(std::string mail);
+		list<std::string> obtenerHuespedes();
 		Empleado* getEmpleadoIngresado();
 		CargoEmpleado* getCargoIngresado();
 		void ingresarHostal(Hostal*);
@@ -50,6 +51,7 @@ class ControladorUsuario {
 		void ConfirmarAltaUsuario();
 		void CancelarAltaUsuario();
 		set<std::string> ObtenerUsuarios();
+		Hostal* getHostalTrabajaEmp();
 		DTHuesped* SeleccionarHuesped(std::string email);
 		DataEmpleado* SeleccionarEmpleado2(std::string email);//cambie el nombre daba error
 		list<DTEmpleado> getEmpleados(Hostal* h);

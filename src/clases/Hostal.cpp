@@ -95,6 +95,7 @@ void Hostal::AgregarComentarios(std::string comentario, int puntaje, DTFecha hrs
 		itCal++;
 	}
 	int promNuevo=promedio/cant;
+	est->setCalificacion(cal);
 	setPromedio(promNuevo);
 }
 
@@ -124,22 +125,47 @@ DataHostalComp Hostal::getDTHostal(){
 	return Hst;
 }
 
-DTIdEstadia Hostal::accesoaReservas(){}
+list<DTIdEstadia> Hostal::accesoaReservas(Hostal* host){
+	list <DTIdEstadia> estadias;
+	list <DTIdEstadia> setEstadias;
+	DTIdEstadia est;
+	for (map<int,Reserva*>::iterator i= host->ColReservas.begin(); i != host->ColReservas.end(); i++){
+		estadias = (*i).second->accederaEstadias((*i).second);
+		for (list<DTIdEstadia>::iterator j = estadias.begin(); j != estadias.end(); j++){
+			setEstadias.push_back(*j);
+		}
+	}
+	return setEstadias;
+}
 
-DataEstadia Hostal::accederaReservas(DTIdEstadia est){}
+DataEstadia* Hostal::accederaReservas(DTIdEstadia est,string nombreHostal){
+	int res = est.getCodigo();
+	Reserva* reserva = ColReservas.find(res)->second;
+	DataEstadia* estadia = reserva->BuscarRes(reserva,est,nombreHostal);
+	return estadia;
+}
 
-void Hostal::hallarReserva(std::string mailHuesp, int codigoRes, std::string respuesta){}
+DTReserva* Hostal::ReservaAsociada(int codigo){
+	Reserva* reserva = ColReservas.find(codigo)->second;
+	DTReserva* res = reserva->getDTReserva();
+	return res;
+}
+
+void Hostal::hallarReserva(std::string mailHuesp, int codigoRes, std::string respuesta){
+	Reserva *res = ColReservas.find(codigoRes)->second;
+	res->hallarEstadia(mailHuesp,respuesta);
+}
 
 DTHostalProm Hostal::getDTHostalProm(Hostal* host){
 	DTHostalProm infoHostal = DTHostalProm(host->getNombre(),host->getDireccion(),host->getPromedio());
 	return infoHostal;
 }
 
-set<int> Hostal::obtenerHabitaciones(DTFecha in, DTFecha out){ //ADE - PROBARLA Y VER Q ANDE BIEN
-	set<int> res;
+list<int> Hostal::obtenerHabitaciones(DTFecha in, DTFecha out){ //ADE - PROBARLA Y VER Q ANDE BIEN
+	list<int> res;
 	for(auto it=ColHabitaciones.begin();it!=ColHabitaciones.end();it++){
 		if (it->second->consultarReservas(in, out))
-			res.insert(it->second->getNumero());
+			res.push_back(it->second->getNumero());
 	}
 return res;
 }
@@ -194,6 +220,7 @@ void Hostal::CreateAddEstadia(DTFecha hs , int promo, int codigoRes){
 	Estadia* est = new Estadia(hs, FHSal,promo, res->getHues(),res);
 	list<Estadia*> colest = res->getEstadia();
 	colest.push_back(est);
+	res->setEstadia(colest);
 	res->setEstado(Cerrada);
 }
 
@@ -219,18 +246,18 @@ void Hostal::agregarHabAlHost(Habitacion* hab){
 void Hostal::recordarHostal(){}
 
 Reserva* Hostal::reservar(DTFecha horaactual, int cod, DTFecha desde, DTFecha hasta, Huesped* huesp,bool grupOind,int totalHuesp,set<Huesped*> acompaniantes){
-	Reserva* res;
 	if (grupOind == 1) {//es grupal
 		ReservaGrupal *res = new ReservaGrupal(cod,desde,hasta,horaactual,totalHuesp);
 		res->setHues(huesp);
 		ColReservas.insert({cod,res});
 		res->setHuespedes(acompaniantes);
+		return res;
 	} else {
 		ReservaIndividual *res = new ReservaIndividual(cod,desde,hasta,horaactual);
 		res->setHues(huesp);
 		ColReservas.insert({cod,res});
+		return res;
 	}
-	return res;
 }
 
 /*bool operator<(const Hostal &h1,const Hostal &h2){

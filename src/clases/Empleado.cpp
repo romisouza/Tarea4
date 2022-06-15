@@ -32,7 +32,22 @@ void Empleado::setCargoEmpleado(CargoEmpleado* car){
 	cargo = car;
 }
 
-set<DTCal> Empleado::obtenerComentarios(){
+list<DTCal> Empleado::obtenerComentarios(){ //ADE PROBAR Q FUNCIONE BIEN
+	Hostal* host = getHostalAsociado();
+	list<Calificacion*> calificaciones = host->getColCal();
+	list<DTCal> lista;
+	for (auto it= calificaciones.begin(); it!=calificaciones.end();++it){
+		std::string str = (*it)->getComentarioEmp();
+		if (str.empty()){
+			std::string com = (*it)->getComentarioHuesp();
+			Estadia *est = (*it)->getEstadia();
+			Reserva *res = est->getReserva();
+			std::string email = est->getHuesp()->getEmail();
+			DTCal calif = DTCal(com,email,res->getCodigo());
+			lista.push_back(calif);
+		}
+	}
+	return lista;
 }
 
 DataEmpleado Empleado::getDataEmpleado(){

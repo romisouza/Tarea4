@@ -3,7 +3,6 @@
 ControladorHostal* ControladorHostal::instancia = NULL;
 
 ControladorHostal::ControladorHostal(){
-	codigoRes = 1000; //inicializo el codigo de las reservas, luego se incrementa uno en cada reserva q se haga
 }
 
 void ControladorHostal::ingresarHostal(Hostal* host){
@@ -107,16 +106,16 @@ list<DTHostalProm> ControladorHostal::ObtenerHostalesProm(){
 }
 
 void ControladorHostal::ingresarDatosReserva(std::string nombreHostal, DTFecha in, DTFecha out, bool grupOind, int totalHuesp){ //LISTA
-	std::string nombreHostalIngresado = nombreHostal;
-	DTFecha fechaInIngresada = in;
-	DTFecha fechaOutIngresada = out;
-	bool gruppOindIngresado = grupOind;
-	int totalHuespIngresado = totalHuesp;
+	nombreHostalIngresado = nombreHostal;
+	fechaInIngresada = in;
+	fechaOutIngresada = out;
+	gruppOindIngresado = grupOind;
+	totalHuespIngresado = totalHuesp;
 }
 
-set<int> ControladorHostal::obtenerHabitacionesDisponibles(DTFecha in, DTFecha out){
+list<int> ControladorHostal::obtenerHabitacionesDisponibles(DTFecha in, DTFecha out){
 	Hostal* Host=ColHostales.find(nombreHostalIngresado)->second;
-	set<int> ColHabDisp = Host->obtenerHabitaciones(in,out);
+	list<int> ColHabDisp = Host->obtenerHabitaciones(in,out);
 	return ColHabDisp;
 }
 
@@ -125,9 +124,9 @@ void ControladorHostal::seleccionarHabitacion(int numHab){ //ADE - VERIFICAR Q F
 	habRecordada = hostalIngresado->seleccionarHab(numHab);
 }
 
-set<std::string> ControladorHostal::obtenerHuespedesRegistrados(){//ADE - VERIFICAR Q FUNCIONE
+list<std::string> ControladorHostal::obtenerHuespedesRegistrados(){//ADE - VERIFICAR Q FUNCIONE
 	ControladorUsuario *ctrl = ControladorUsuario::getInstance();
-	set<std::string> res = ctrl->obtenerHuespedes();
+	list<std::string> res = ctrl->obtenerHuespedes();
 	return res;
 }
 
@@ -136,12 +135,21 @@ void ControladorHostal::seleccionarHuesped(std::string emailHuesp){
 	huespRecordado = ctrl->getColHuespedes().find(emailHuesp)->second;
 }
 
+void ControladorHostal::seleccionarAcompaniante(std::string emailHuesp){// va a ir loopeada en el main, con algo tipo "ingrese el mail de cada huesped q forme parte de la reserva, para finalizar presione 0"
+	ControladorUsuario *ctrl = ControladorUsuario::getInstance();
+	Huesped *huesp = ctrl->getColHuespedes().find(emailHuesp)->second;
+	acompaniantesIngresados.insert(huesp);
+}
+
 void ControladorHostal::confirmarAltaReserva(){
 	SingletonFechaHora *horario = SingletonFechaHora::getInstance();
 	DTFecha horaactual = horario->FechaHoraSistema();
 	int codigo = generarCodigoReserva();
 	Reserva* res = hostalIngresado->reservar(horaactual,codigo,fechaInIngresada,fechaOutIngresada,huespRecordado,gruppOindIngresado,totalHuespIngresado,acompaniantesIngresados); //si la reserva es individual  lepaso acompañantes vacio
 	res->setHab(habRecordada);
+	map<int,Reserva*> colRes = huespRecordado->getColReservasHuesp();
+	colRes.insert({codigo,res});
+	huespRecordado->setColReservasHuesp(colRes);
 	habRecordada->asociarResAHab(res);
 	acompaniantesIngresados.clear();
 	huespRecordado = NULL;
@@ -226,9 +234,17 @@ void ControladorHostal::ConfirmarCalificacion (std::string comentario, int punta
 	hostalIngresado->AgregarComentarios(comentario,puntaje,hrs,EstadiaFinalizada,obs);
 }
 
-void ControladorHostal::ResponderComentarios (std::string emailHuesp, int codigoRes, std::string respuesta) {}
+void ControladorHostal::ResponderComentario(std::string emailHuesp, int codigoRes, std::string respuesta){
+	ControladorUsuario *ctrl = ControladorUsuario::getInstance();
+	Hostal* host = ctrl->getHostalTrabajaEmp();
+	host->hallarReserva(emailHuesp,codigoRes,respuesta);
+}
 
-set<DTCal> ControladorHostal::ObtenerComentariosAResponder(std::string email) {}
+list<DTCal> ControladorHostal::ObtenerComentariosAResponder(std::string email){
+	ControladorUsuario *ctrl = ControladorUsuario::getInstance();
+	list<DTCal> res = ctrl->obtenerComentariosAResponder(email);
+	return res;
+}
 
 DataHostalComp ControladorHostal::ObtenerHostalComp(std::string nombreHostal){
 	Hostal* Hst=ColHostales.find(nombreHostal)->second;
@@ -245,13 +261,39 @@ list<DTReservaComp*> ControladorHostal::ObtenerReservasComp(std::string nombreHo
 	return dtreservas;
 }
 
-set<DTIdEstadia> ControladorHostal::ObtenerDTIdEstadia(std::string nombreHostal){}
+list<DTIdEstadia> ControladorHostal::ObtenerDTIdEstadia(std::string nombreHostal){
+	hostalRecordado = nombreHostal;
+	Hostal* host = ColHostales.find(hostalRecordado)->second;
+	list<DTIdEstadia> SetDTIdEstadia = host->accesoaReservas(host);
+	return SetDTIdEstadia;
+}
 
-DataEstadia ControladorHostal::ObtenerinfoEstadia(DTIdEstadia estadia){}
+DataEstadia* ControladorHostal::ObtenerinfoEstadia(DTIdEstadia estadia){
+	Hostal *host = ColHostales.find(hostalRecordado)->second;
+	estadiaRecordada = host->accederaReservas(estadia,hostalRecordado);
+	return estadiaRecordada;
+}
 
-DTCalificacion ControladorHostal::MostrarCalificacion(){}
+DTCalificacion ControladorHostal::MostrarCalificacion(){
+	DTCalificacion cal;
+	std::string host = hostalRecordado;
+	Hostal* h = ColHostales.find(hostalRecordado)->second;
+	DataEstadia* estadia = estadiaRecordada;
+	Reserva* res = h->getColReservas().find(estadia->getCod())->second;
+	for (list<Estadia*>::iterator i = res->getEstadia().begin(); i != res->getEstadia().end();i++){
+		string email = (*i)->getHuesp()->getEmail();
+		string mail = estadia->getHuesped();
+		if (email.compare(mail) == 0){
+			cal= (*i)->getCal()->getDTCalificacion();
+		}
+	}
+	return cal;
+}
 
-DTReserva ControladorHostal::MostrarInfoReserva(){}
+DTReserva* ControladorHostal::MostrarInfoReserva(Hostal* host, int codigoRes){
+	DTReserva* res = host->ReservaAsociada(codigoRes);
+	return res;
+}
 
 void ControladorHostal::LiberarMemoria(){}
 

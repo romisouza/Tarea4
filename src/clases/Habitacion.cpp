@@ -20,6 +20,10 @@ float Habitacion::getPrecioNoche(){
     return precioNoche;
 }
 
+std::string Habitacion:: getNombreHostal(){
+    return host->getNombre();
+}
+
 void Habitacion::setNumero(int num){
     numero=num;
 }

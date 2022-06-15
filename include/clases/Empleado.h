@@ -25,7 +25,7 @@ class Empleado: public Usuario, public IObserver{
 		list<Calificacion*> getCalifObs();
 		void setHostalAsociado(Hostal*);
 		void setCargoEmpleado(CargoEmpleado* cargo);
-		set<DTCal> obtenerComentarios();
+		list<DTCal> obtenerComentarios();
 		DataEmpleado getDataEmpleado();
 		bool TrabajaEnHostal();
 		void AsignarEmpleadoAHostal(CargoEmpleado*,Hostal*);

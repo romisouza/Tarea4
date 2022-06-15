@@ -10,6 +10,7 @@ class DTCalificacion {
 		std::string comentarioEmp;
 	public:
 		DTCalificacion(int,std::string,std::string);
+		DTCalificacion();
 		int getPuntaje();
 		std::string getComentarioHuesp();
 		std::string getComentarioEmp();

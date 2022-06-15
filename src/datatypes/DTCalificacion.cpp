@@ -1,5 +1,7 @@
 #include "../../include/datatypes/DTCalificacion.h"
 
+DTCalificacion::DTCalificacion(){}
+
 DTCalificacion :: DTCalificacion(int punt,std::string comentarioH,std::string comentarioE){
 	puntaje = punt;
 	comentarioHuesp = comentarioH;

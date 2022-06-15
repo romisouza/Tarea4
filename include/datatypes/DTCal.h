@@ -5,14 +5,14 @@ using namespace std;
 
 class DTCal{
     private:
-        std::string comentarioEmp;
         std::string comentarioHuesp;
+        std::string mailHuesp;
         int codigoRes;
     public:
         DTCal();
         DTCal(std::string,std::string,int);
-        std::string getComentarioEmp();
         std::string getComentarioHuesp();
+        std::string getMailHuesp();
         int getCodigoRes();
         ~DTCal();
         

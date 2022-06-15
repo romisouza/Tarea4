@@ -107,14 +107,22 @@ void ControladorUsuario::CancelarAltaUsuario(){//BIEN
 	else // sino se ingreso un emp
 		cargoIngresado = NULL;
 }
-set<DTCal> ControladorUsuario::obtenerComentariosAResponder(string mail){
+list<DTCal> ControladorUsuario::obtenerComentariosAResponder(string mail){
+	Empleado *emp = ColEmpleados.find(mail)->second;
+	hostalTrabajaEmp = emp->getHostalAsociado();
+	list<DTCal> res = emp->obtenerComentarios();
+	return res;
 }
 
-set<string> ControladorUsuario::obtenerHuespedes(){
-	set<string> emailHuespedes;
-	for( map<std::string, Huesped*>::iterator i= ColHuespedes.begin(); i != ColHuespedes.end(); i++){
+Hostal* ControladorUsuario::getHostalTrabajaEmp(){
+	return hostalTrabajaEmp;
+}
+
+list<string> ControladorUsuario::obtenerHuespedes(){
+	list<string> emailHuespedes;
+	for(map<std::string, Huesped*>::iterator i= ColHuespedes.begin(); i != ColHuespedes.end(); i++){
 		std::string email = (*i).first;
-		emailHuespedes.insert(email);
+		emailHuespedes.push_back(email);
 	}
 	return emailHuespedes;
 }

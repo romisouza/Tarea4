@@ -19,6 +19,7 @@ class Huesped: public Usuario {
 		Huesped(std::string nom, std::string mail, std::string pass, bool finger);
 		~Huesped();
 		map<int,Reserva*> getColReservasHuesp();
+		void setColReservasHuesp(map<int,Reserva*>);
 		bool getEsFinger();
 		void setEsFinger(bool finger);
 		list<DTIdEstadia> BuscarEstadias(std::string email, DTFecha hrs);//cambie el nombre

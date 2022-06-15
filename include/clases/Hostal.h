@@ -63,11 +63,12 @@ class Hostal{
 		void EliminarRes(Reserva*);
 		void AgregarComentarios(std::string,int,DTFecha,Estadia*, list<IObserver*>);//cambie el nombre
 		DataHostalComp getDTHostal();
-		DTIdEstadia accesoaReservas();
-		DataEstadia accederaReservas(DTIdEstadia);
+		list<DTIdEstadia> accesoaReservas(Hostal*t)	;
+		DataEstadia* accederaReservas(DTIdEstadia,std::string);
+		DTReserva* ReservaAsociada(int);
 		void hallarReserva(std::string,int,std::string);
 		DTHostalProm getDTHostalProm(Hostal* host);
-		set<int> obtenerHabitaciones(DTFecha, DTFecha);
+		list<int> obtenerHabitaciones(DTFecha, DTFecha);
 		Habitacion* seleccionarHab(int);
 		void AgregarEmpleadoAHostal(Empleado*);
     	Reserva* reservar(DTFecha,int, DTFecha, DTFecha, Huesped*,bool,int,set<Huesped*>);

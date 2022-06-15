@@ -4,18 +4,18 @@ DTCal::DTCal(){
 
 }
 
-DTCal::DTCal(std::string comEmp,std::string comHuesp,int codigor){
-    comentarioEmp = comEmp;
+DTCal::DTCal(std::string comHuesp,std::string mailHuesp,int codigor){
+    comentarioHuesp = comHuesp;
     comentarioHuesp = comHuesp;
     codigoRes = codigor;
 }
 
-std::string DTCal::getComentarioEmp(){
-    return comentarioEmp;
-}
-
 std::string DTCal::getComentarioHuesp(){
     return comentarioHuesp;
+}
+
+std::string DTCal::getMailHuesp(){
+    return mailHuesp;
 }
 
 int DTCal::getCodigoRes(){

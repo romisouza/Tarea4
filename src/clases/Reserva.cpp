@@ -95,6 +95,34 @@ void Reserva::BuscarEstadia(std::string email, DTFecha hrs,DTIdEstadia & estId){
     }
 }
 
+list<DTIdEstadia> Reserva::accederaEstadias(Reserva* res){
+	list<DTIdEstadia>  setEstadias;
+	DTIdEstadia estadia;
+	for (list<Estadia*>::iterator i = res->getEstadia().begin();i != res->getEstadia().end();i++){
+		setEstadias.push_back((*i)->getDTIdEstadia());
+	}
+	return setEstadias;
+}
+
+DataEstadia* Reserva::BuscarRes(Reserva* res,DTIdEstadia e, std::string nombreHostal){
+	DataEstadia* estadia;
+	for (list<Estadia*>::iterator i = res->getEstadia().begin(); i != res->getEstadia().end();i++){
+		std::string email = ((*i)->getHuesp()->getEmail());
+		if (email.compare(e.getEmail())==0){
+			estadia = (*i)->getDataEstadia();
+		}
+	}
+	return estadia;
+}
+
+void Reserva::hallarEstadia(string mailHuesp,string respuesta){
+    for(auto it=est.begin();it != est.end();++it){
+        string mailActual = (*it)->getHuesp()->getEmail();
+        if (mailActual == mailHuesp)
+            (*it)->getCal()->setComentarioEmp(respuesta);
+    }
+}
+
 Reserva ::~Reserva() {
     delete hab;
     delete hues;
