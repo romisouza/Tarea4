@@ -7,6 +7,7 @@ class SingletonFechaHora{
     private:
         static SingletonFechaHora* instancia;
         SingletonFechaHora();
+        DTFecha fechaActual;
     public:
         static SingletonFechaHora *getInstance();
         DTFecha FechaHoraSistema();

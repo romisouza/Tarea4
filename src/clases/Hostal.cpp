@@ -204,9 +204,18 @@ return dtreservas;
 
 }
 
-set<DTCalificacion> Hostal::obtenerCalificaciones(){}
+list<DTCalificacion> Hostal::obtenerCalificaciones(){
+	list<DTCalificacion> aux;
+	auto iter = ColCal.begin();
+	while((*iter)!=NULL){
+		DTCalificacion cal = (*iter)->getDTCalificacion();
+		aux.push_back(cal);
+		iter++;
+	}
+	return aux;
+}
 
-int Hostal::getPromCal(){}
+//int Hostal::getPromCal(){}
 
 bool Hostal::TrabajaEnHostal(){}
 

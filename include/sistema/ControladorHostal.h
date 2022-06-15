@@ -80,8 +80,8 @@ class ControladorHostal:public IHostal {
 		void confirmarAltaReserva();//realizar res
 		int generarCodigoReserva();//realizar res
 		void cancelarAltaReserva();//realizar res (cancelarReserva)
-		set<std::string> ConsultarTop3Hostal();//Consultartop3
-		set<DTCalificacion> ObtenerCalificaciones(std::string);//Consultartop3 (ObtenerHostal)
+		list<std::string> ConsultarTop3Hostal();//Consultartop3
+		list<DTCalificacion> ObtenerCalificaciones(std::string);//Consultartop3 (ObtenerHostal)
 		set<DTReserva*> ObtenerReservasNC(std::string, std::string,int);//registrar estadia (DatosHuesped)
 		void ReservaNCElegida(int);//registrar estadia
 		void DatosHuesped(std::string,std::string);//finalizar estadia NO SE QUE HACE LA FUNCION XD

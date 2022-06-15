@@ -8,9 +8,13 @@ SingletonFechaHora *SingletonFechaHora::getInstance(){
     return instancia;
 }
 
-SingletonFechaHora::SingletonFechaHora(){}
+SingletonFechaHora::SingletonFechaHora(){
+    
+}
 
 DTFecha SingletonFechaHora::FechaHoraSistema(){
     DTFecha res = DTFecha(18,6,2022,22,53);
     return res;
+  //  return fechaActual;
 }
+

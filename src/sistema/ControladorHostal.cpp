@@ -176,12 +176,44 @@ void ControladorHostal::cancelarAltaReserva(){
 	habRecordada = NULL;
 }
 
-set<std::string> ControladorHostal::ConsultarTop3Hostal(){
-	auto iter = ColHostales.begin();
-	
+list<std::string> ControladorHostal::ConsultarTop3Hostal(){
+	//auto iter = ColHostales.begin();
+	map<std::string,Hostal*> aux = ColHostales;
+	//sort(aux.begin(),aux.end(),comparePuntajeHostal);
+	list<Hostal*> ranking;
+	for(auto it=aux.begin();it!=aux.end();it++){
+		auto it2 = ranking.begin(); 
+		while((*it2)!=NULL && it->second->getPromedio()< (*it2)->getPromedio()){
+			it2++;	
+		}
+		if((*it2)==NULL)
+			ranking.push_back(it->second);
+		else{
+			ranking.insert(it2,it->second);
+		}
+	}
+	list<std::string> rankingOficial;
+	auto it=ranking.begin();
+	if(ranking.size()>3){
+		int i=1;
+		while(i<4){
+			rankingOficial.push_back((*it)->getNombre());
+			it++;
+			i++;
+		}
+	}
+	else{
+		while((*it)!=NULL)
+			rankingOficial.push_back((*it)->getNombre());
+	}
+	return rankingOficial;
 }
 
-set<DTCalificacion> ControladorHostal::ObtenerCalificaciones(std::string nombreHostal) {}
+list<DTCalificacion> ControladorHostal::ObtenerCalificaciones(std::string nombreHostal) {
+	Hostal *h = ColHostales.find(nombreHostal)->second;
+	list<DTCalificacion> aux=h->obtenerCalificaciones();
+	return aux;
+}
 
 //void ControladorHostal::ObtenerCalificaciones(TipoCargo cargoEmp, std::string emailEmp){}
 
