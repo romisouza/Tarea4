@@ -146,7 +146,7 @@ ControladorHostal *ctrl = ControladorHostal::getInstance();
     //ControladorHostal *ctrl = ControladorHostal::getInstance();
 
     //REALIZAR RESERVA
-    ControladorUsuario *cont = ControladorUsuario::getInstance();  
+  /*  ControladorUsuario *cont = ControladorUsuario::getInstance();  
 ControladorHostal *ctrl = ControladorHostal::getInstance();
 cont->setTipoUsuario(1);
 cont->IngresarEmpleado("carlitos","@carlos","holaaa123");
@@ -169,7 +169,8 @@ list<DTEmpleado> empleados = ctrl->ObtenerEmpleados("hostal morro");
 
 for (auto i=empleados.begin();i!=empleados.end();++i){
     cout << (*i).getNombre();
-}*/
+}*
+/
 CargoEmpleado carg1 = Administracion;
 CargoEmpleado *cargo1 = &carg1;
 ctrl->SeleccionarEmpleado(cargo1,"@carlos");
@@ -184,9 +185,9 @@ for (auto i=habitaciones.begin();i!=habitaciones.end();++i){
 }
 ctrl->seleccionarHabitacion(201);
 list<std::string> emailHuespedes = ctrl->obtenerHuespedesRegistrados();
-/*for (auto i=emailHuespedes.begin();i!=emailHuespedes.end();++i){
+for (auto i=emailHuespedes.begin();i!=emailHuespedes.end();++i){
     cout << (*i);
-}*/
+}
 ctrl->seleccionarHuesped("estelis@hotmail.com");
 ctrl->confirmarAltaReserva();
 set<DTReserva*> reservasNC = ctrl->ObtenerReservasNC("hostal morro","estelis@hotmail.com",0);
@@ -207,6 +208,55 @@ list<DTCal> comentariosaresponder = ctrl->ObtenerComentariosAResponder("@carlos"
 for (auto it=comentariosaresponder.begin();it!=comentariosaresponder.end();++it){
   cout << (*it).getComentarioHuesp();
 }
-ctrl->ResponderComentario("estelis@hotmail.com",101,"gracias x dejar una reseña saludos");
+ctrl->ResponderComentario("estelis@hotmail.com",101,"gracias x dejar una reseña saludos");*/
+std::string n1, n2, nombre;
+	int tel;
+	ControladorHostal *ctrl = ControladorHostal::getInstance();
+	ControladorUsuario *cont = ControladorUsuario ::getInstance();
+    cont->setTipoUsuario(0);
+	cont->IngresarHuesped("pedro","@p","kk",1);
+	cont->ConfirmarAltaUsuario();
+    ctrl->agregarHostal("hostal morro","avenida brasil 1899",42158747);
+    cout <<"Hostal registrado \n";
+    ctrl->asignarHab("hostal morro",101,102.3,2);
+    ctrl->registrarHab();
+    DTFecha in = DTFecha(14,6,2022,15,00);
+    DTFecha out = DTFecha(17,6,2022,12,30);
+    ctrl->ingresarDatosReserva("hostal morro",in,out,0,1);
+    ctrl->seleccionarHabitacion(101);
+    ctrl->seleccionarHuesped("@p");
+    ctrl->confirmarAltaReserva();
+    //Hago estadia
+    set<DTReserva*> res = ctrl->ObtenerReservasNC("hostal morro","@p",0);
+    for (set<DTReserva*>::iterator i = res.begin(); i != res.end(); i++){
+        cout << "CODIGO" <<(*i)->getCodigo()<<"\n";
+        cout << "DIA ENTRADA"<<((*i)->getCheckIn()).getDia()<<"\n";
+        cout << "MES ENTRADA"<<((*i)->getCheckIn()).getMes()<<"\n";
+        cout << "ANIO ENTRADA"<<((*i)->getCheckIn()).getAnio()<<"\n";
+        cout << "HORA ENTRADA"<<((*i)->getCheckIn()).getHora()<<"\n";
+        cout << "MINUTO ENTRADA"<<((*i)->getCheckIn()).getMinutos()<<"\n";
+        cout << "DIA SALIDA"<<((*i)->getCheckOut()).getDia()<<"\n";
+        cout << "MES SALIDA"<<((*i)->getCheckOut()).getMes()<<"\n";
+        cout << "ANIO SALIDA"<<((*i)->getCheckOut()).getAnio()<<"\n";
+        cout << "HORA SALIDA"<<((*i)->getCheckOut()).getHora()<<"\n";
+        cout << "MINUTO SALIDA"<<((*i)->getCheckOut()).getMinutos()<<"\n";
+        cout << "ESTADO" <<((*i)->getEstado())<<"\n";
+    }
+    int codigo;
+    cout << "Seleccione la reserva: \n"; cin >>codigo;
+    ctrl->ReservaNCElegida(codigo);
+    set<string> host = ctrl->ObtenerNombreHostales();
+    for (set<string>::iterator i = host.begin(); i != host.end(); i++){
+		cout << (*i) <<"\n";
+	}
+    std::string nom = "hostal morro";
+    //cout << "selecccione el hostal: \n" ; cin >> nom;
+    //cout<<nom;
+    list<DTIdEstadia> est = ctrl->ObtenerDTIdEstadia(nom);
+    cout<< "ESTADIAS ASOCIADAS A ESE HOSTAL";
+    for (list<DTIdEstadia>::iterator i = est.begin(); i != est.end(); i++){
+        cout << "CODIGO" << (*i).getCodigo() << "\n";
+        cout << "EMAIL" << (*i).getEmail() << "\n";
+    }
 return 0;
 }
