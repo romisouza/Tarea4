@@ -82,7 +82,5 @@ class Hostal{
 		set<DTReserva*> BuscarRes(std::string);
 		void agregarHabAlHost(Habitacion*);
 		void recordarHostal();
-		//friend bool operator<(const Hostal &h1,const Hostal &h2);
-		//bool ordenarHostales(const Hostal* &h1, const Hostal* &h2);
 };
 #endif
