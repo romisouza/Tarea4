@@ -3,20 +3,22 @@
 
 Fabrica * Fabrica::instancia=NULL;
 
+Fabrica::Fabrica(){}
+
 Fabrica * Fabrica::getInstancia(){
     if(instancia==NULL)
-        instancia = new Fabrica;
+        instancia = new Fabrica();
     return instancia;
 }
 
-IUsuario* Fabrica::getIUsuario(){
-   /* if(this->usuario==NULL)
-        this->usuario = new ControladorUsuario();
-    return this->usuario;*/
+Fabrica::~Fabrica(){
+    delete instancia;
 }
 
-IHostal* Fabrica::getIHostal(){
-   /* if(this->hostal==NULL)
-        this->hostal = new ControladorHostal();
-    return this->hostal;*/
+IHostal* Fabrica::obtenerControladorHostal(){
+    return ControladorHostal::getInstance();
+}
+
+IUsuario* Fabrica::obtenerControladorUsuario(){
+    return ControladorUsuario::getInstance();
 }

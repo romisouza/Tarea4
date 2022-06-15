@@ -6,9 +6,10 @@
 #include "../../include/clases/Huesped.h"
 #include "../../include/clases/Empleado.h"
 #include "../../include/datatypes/DTCal.h"
+#include "../../include/sistema/IUsuario.h"
 using namespace std;
 
-class ControladorUsuario {
+class ControladorUsuario: public IUsuario {
 	private:
 		static ControladorUsuario* instancia;
 		map<std::string, Empleado *> ColEmpleados; //clave email
