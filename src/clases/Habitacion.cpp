@@ -63,3 +63,7 @@ return estaOcupada;
 void Habitacion::asociarResAHab(Reserva* res){
     ColReservas.insert({res->getCodigo(),res});
 }
+
+void Habitacion::eliminarResHab(int codRes){
+    ColReservas.erase(codRes);
+}

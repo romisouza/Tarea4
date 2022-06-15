@@ -62,5 +62,6 @@ class ControladorUsuario: public IUsuario {
 		Estadia* BuscarHuesped2(DTIdEstadia);//Nueva para calificar estadia
 		list<DTEmpleado> getNombresEmp();//suscribir empleados
 		Empleado* buscarEmpleado(std::string);
+		void eliminarReserva(string,int); //baja de reserva, nueva
 };
 #endif

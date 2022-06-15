@@ -124,6 +124,15 @@ void Reserva::hallarEstadia(string mailHuesp,string respuesta){
     }
 }
 
+void Reserva::EliminarEstadias(){
+    auto it=est.begin();
+    while((*it)!=NULL){
+        (*it)->eliminarEstadia();
+        est.remove((*it));
+    }
+    est.clear();
+}
+
 Reserva ::~Reserva() {
     delete hab;
     delete hues;
