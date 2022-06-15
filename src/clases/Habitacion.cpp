@@ -1,11 +1,12 @@
 #include "../../include/clases/Habitacion.h"
 
 
-Habitacion::Habitacion(int num, float priceN, int cap){
+Habitacion::Habitacion(int num, float priceN, int cap,Hostal* h){
     numero=num;
     precioNoche=priceN;
     capacidad=cap;
     map<int,Reserva*> ColReservas;
+    host = h;
 }
 
 int Habitacion::getCapacidad(){

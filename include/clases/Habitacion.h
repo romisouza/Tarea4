@@ -20,7 +20,7 @@ private:
     map<int,Reserva*> ColReservas;
     Hostal* host;
 public:
-    Habitacion(int, float, int);
+    Habitacion(int, float, int,Hostal*);
     int getCapacidad();
     int getNumero();
     float getPrecioNoche();

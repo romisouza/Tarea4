@@ -54,7 +54,7 @@ class IHostal{
 		virtual list<DTIdEstadia> ObtenerDTIdEstadia(std::string) =0;//consulta estadia (SeleccionarHostal)
 		virtual DataEstadia* ObtenerinfoEstadia(DTIdEstadia) =0;//consulta estadia  (SeleccionarEstadia)
 		virtual DTCalificacion MostrarCalificacion() =0;//consulta estadia
-		virtual DTReserva* MostrarInfoReserva(Hostal* host, int codigoRes) =0;//consulta estadia
+		virtual DTReserva* MostrarInfoReserva(std::string, int codigoRes) =0;//consulta estadia
 		virtual void LiberarMemoria() =0; //consulta estadia		
 		virtual void ingresarReserva(Reserva*) =0;//nueva, recuerda una reserva
 		virtual list<DTReserva*> ObtenerReservas(std::string) =0;//baja reserva (Selecccionar Hostal)

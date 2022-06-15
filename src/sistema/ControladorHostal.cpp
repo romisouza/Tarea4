@@ -44,13 +44,12 @@ void ControladorHostal::registrarHab(){
 //se anade una nueva habitacion al hostal seleccionado con los datos de la habi recordada ant
 	//se crea una instancia de hab con los datos ing, se cea un link de la instancia hab y hostal, y se 
 	//libera la mem asociada a hab hostal elegido
-	Habitacion *hab = new Habitacion(numero, precioNoche, capacidad);
+	Habitacion *hab = new Habitacion(numero, precioNoche, capacidad,hostalIngresado);
 	hostalIngresado->agregarHabAlHost(hab);
 	hostalIngresado = NULL;
 	numero = -1;
 	precioNoche = -1;
 	capacidad = -1;
-
 }
 
 void ControladorHostal::cancelarAltaHabitacion(){
@@ -279,8 +278,10 @@ DTCalificacion ControladorHostal::MostrarCalificacion(){
 	std::string host = hostalRecordado;
 	Hostal* h = ColHostales.find(hostalRecordado)->second;
 	DataEstadia* estadia = estadiaRecordada;
+	int codigo = estadia->getCod();
 	Reserva* res = h->getColReservas().find(estadia->getCod())->second;
-	for (list<Estadia*>::iterator i = res->getEstadia().begin(); i != res->getEstadia().end();i++){
+	list<Estadia*> est = res->getEstadia();
+	for (list<Estadia*>::iterator i = est.begin(); i != est.end();i++){
 		string email = (*i)->getHuesp()->getEmail();
 		string mail = estadia->getHuesped();
 		if (email.compare(mail) == 0){
@@ -290,7 +291,8 @@ DTCalificacion ControladorHostal::MostrarCalificacion(){
 	return cal;
 }
 
-DTReserva* ControladorHostal::MostrarInfoReserva(Hostal* host, int codigoRes){
+DTReserva* ControladorHostal::MostrarInfoReserva(std::string nombreHostal, int codigoRes){
+	Hostal* host = ColHostales.find(nombreHostal)->second;
 	DTReserva* res = host->ReservaAsociada(codigoRes);
 	return res;
 }

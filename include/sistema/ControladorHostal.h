@@ -97,7 +97,7 @@ class ControladorHostal:public IHostal {
 		list<DTIdEstadia> ObtenerDTIdEstadia(std::string);//consulta estadia (SeleccionarHostal)
 		DataEstadia* ObtenerinfoEstadia(DTIdEstadia);//consulta estadia  (SeleccionarEstadia)
 		DTCalificacion MostrarCalificacion();//consulta estadia
-		DTReserva* MostrarInfoReserva(Hostal* host, int codigoRes);//consulta estadia
+		DTReserva* MostrarInfoReserva(std::string, int codigoRes);//consulta estadia
 		void LiberarMemoria(); //consulta estadia		
 		void ingresarReserva(Reserva*);//nueva, recuerda una reserva
 		list<DTReserva*> ObtenerReservas(std::string);//baja reserva (Selecccionar Hostal)
