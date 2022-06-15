@@ -98,7 +98,8 @@ void Reserva::BuscarEstadia(std::string email, DTFecha hrs,DTIdEstadia & estId){
 list<DTIdEstadia> Reserva::accederaEstadias(Reserva* res){
 	list<DTIdEstadia>  setEstadias;
 	DTIdEstadia estadia;
-	for (list<Estadia*>::iterator i = res->getEstadia().begin();i != res->getEstadia().end();i++){
+    list<Estadia*> coleccionEst = res->getEstadia();
+	for (list<Estadia*>::iterator i = coleccionEst.begin();i != coleccionEst.end();++i){
 		setEstadias.push_back((*i)->getDTIdEstadia());
 	}
 	return setEstadias;
