@@ -166,10 +166,10 @@ DTHostalProm Hostal::getDTHostalProm(Hostal* host){
 	return infoHostal;
 }
 
-list<int> Hostal::obtenerHabitaciones(DTFecha in, DTFecha out){ //ADE - PROBARLA Y VER Q ANDE BIEN
+list<int> Hostal::obtenerHabitaciones(DTFecha in, DTFecha out,int totalHuesp){ //ADE - PROBARLA Y VER Q ANDE BIEN
 	list<int> res;
 	for(auto it=ColHabitaciones.begin();it!=ColHabitaciones.end();it++){
-		if (it->second->consultarReservas(in, out))
+		if (it->second->consultarReservas(in, out) && totalHuesp<=it->second->getCapacidad())
 			res.push_back(it->second->getNumero());
 	}
 return res;

@@ -68,7 +68,7 @@ class Hostal{
 		DTReserva* ReservaAsociada(int);
 		void hallarReserva(std::string,int,std::string);
 		DTHostalProm getDTHostalProm(Hostal* host);
-		list<int> obtenerHabitaciones(DTFecha, DTFecha);
+		list<int> obtenerHabitaciones(DTFecha, DTFecha,int);
 		Habitacion* seleccionarHab(int);
 		void AgregarEmpleadoAHostal(Empleado*);
     	Reserva* reservar(DTFecha,int, DTFecha, DTFecha, Huesped*,bool,int,set<Huesped*>);
