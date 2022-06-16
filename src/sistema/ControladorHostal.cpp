@@ -42,22 +42,30 @@ return hostales;
 }
 
 void ControladorHostal::asignarHab(std::string nombreHostal, int num, float precio, int capacidad){
-	numero = num;
-	precioNoche = precio;
-	this->capacidad = capacidad;
-	hostalIngresado = ColHostales.find(nombreHostal)->second;
+	if (ColHostales.find(nombreHostal) == ColHostales.end()) {
+		throw std::invalid_argument("No existe un hostal con el nombre ingresado"); 
+	}else {
+		numero = num;
+		precioNoche = precio;
+		this->capacidad = capacidad;
+		hostalIngresado = ColHostales.find(nombreHostal)->second;
+	}
 }
 
 void ControladorHostal::registrarHab(){
-//se anade una nueva habitacion al hostal seleccionado con los datos de la habi recordada ant
+	//se anade una nueva habitacion al hostal seleccionado con los datos de la habi recordada ant
 	//se crea una instancia de hab con los datos ing, se cea un link de la instancia hab y hostal, y se 
 	//libera la mem asociada a hab hostal elegido
-	Habitacion *hab = new Habitacion(numero, precioNoche, capacidad,hostalIngresado);
-	hostalIngresado->agregarHabAlHost(hab);
-	hostalIngresado = NULL;
-	numero = -1;
-	precioNoche = -1;
-	capacidad = -1;
+	if (hostalIngresado == NULL || (habRecordada = hostalIngresado->seleccionarHab(numero)) == NULL) {//no se si esta bien
+		throw std::invalid_argument("Ocurrió un error con los datos ingresados."); 
+	}else{
+		Habitacion *hab = new Habitacion(numero, precioNoche, capacidad,hostalIngresado);
+		hostalIngresado->agregarHabAlHost(hab);
+		hostalIngresado = NULL; //estas cosas para mi van afuera del else, xq si o si tengo que resetear o no?
+		numero = -1;
+		precioNoche = -1;
+		capacidad = -1;
+	}	
 }
 
 void ControladorHostal::cancelarAltaHabitacion(){
@@ -252,25 +260,41 @@ list<DTCalificacion> ControladorHostal::ObtenerCalificaciones(std::string nombre
 //void ControladorHostal::ObtenerCalificaciones(TipoCargo cargoEmp, std::string emailEmp){}
 
 set<DTReserva*> ControladorHostal::ObtenerReservasNC(std::string nombreHostal, std::string email, int promo){
+	ControladorUsuario *ctrl = ControladorUsuario::getInstance();
+	if (ColHostales.find(nombreHostal) == ColHostales.end() || ctrl->getColHuespedes().find(email) == ctrl->getColHuespedes().end()) {
+		throw std::invalid_argument("Ocurrió un error con los datos ingresados."); 
+	}else{
 	promo = promo; //para recordar
 	Hostal* Hst =ColHostales.find(nombreHostal)->second;
 	hostalIngresado = Hst; //para recordar
 	set<DTReserva*> colReservasNC = Hst->BuscarRes(email);
 	return colReservasNC;
+	}
 }
 
 void ControladorHostal::ReservaNCElegida(int codigoRes){
-	hostalIngresado->ingresoAlHostal(codigoRes); //para mi devuelvo un bool xq tengo que saber si el codigo que puso es correcto o puso cualqueir cosa
+	map<int, Reserva*> res =hostalIngresado->getColReservas(); //asumo que hostal esta bien?
+	SingletonFechaHora *FH = SingletonFechaHora::getInstance();
+	if (res.find(codigoRes) == res.end()|| (FH->FechaHoraSistema()).compararFecha(FH->FechaHoraSistema(),(res.find(codigoRes))->second->getCheckOut())==1) {//ojo
+		throw std::invalid_argument("Ocurrió un error con los datos ingresados."); 
+	}else{
+	hostalIngresado->ingresoAlHostal(codigoRes); 
 	SingletonFechaHora *FH = SingletonFechaHora::getInstance();
 	DTFecha hs = FH->FechaHoraSistema();
 	hostalIngresado->CreateAddEstadia(hs,promo, codigoRes);
+	}
 }
 
-void ControladorHostal::DatosHuesped(std::string nombreHostal,std::string email){
-	Hostal* Hst =ColHostales.find(nombreHostal)->second;
-	SingletonFechaHora *FH = SingletonFechaHora::getInstance();
-	DTFecha hs = FH->FechaHoraSistema();
-	Hst->buscarR(email,hs);
+void ControladorHostal::DatosHuesped(std::string nombreHostal,std::string email){ //finalizarEst
+	ControladorUsuario *ctrl = ControladorUsuario::getInstance();
+	if (ColHostales.find(nombreHostal) == ColHostales.end() || ctrl->getColHuespedes().find(email) == ctrl->getColHuespedes().end()) {
+		throw std::invalid_argument("Ocurrió un error con los datos ingresados."); 
+	}else{
+		Hostal* Hst =ColHostales.find(nombreHostal)->second;
+		SingletonFechaHora *FH = SingletonFechaHora::getInstance();
+		DTFecha hs = FH->FechaHoraSistema();
+		Hst->buscarR(email,hs);
+	}
 }
 
 void ControladorHostal::SeleccionarHostal(std::string nomHostal){
