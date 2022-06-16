@@ -677,9 +677,9 @@ void bajaReserva(){
 
 void modificarFechaSistema(){
     SingletonFechaHora *FH = SingletonFechaHora::getInstance();
-    int año, mes, dia, hora, minutos;
+    int anio, mes, dia, hora, minutos;
     cout<< "Ingresar año:"<<endl;
-    cin>> año;
+    cin>> anio;
     cout<< "Ingresar mes:"<<endl;
     cin>> mes;
     cout<< "Ingresar dia:"<<endl;
@@ -688,7 +688,7 @@ void modificarFechaSistema(){
     cin>> hora;
     cout<< "Ingresar minutos:"<<endl;
     cin >> minutos;
-    FH->actualizarFechaSistema(año,mes,dia,hora, minutos);
+    FH->actualizarFechaSistema(anio,mes,dia,hora, minutos);
 }
 
 void SuscribirseaNotificaciones(){
