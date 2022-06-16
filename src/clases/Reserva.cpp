@@ -65,7 +65,7 @@ void Reserva::setEstado(EstadoReserva est){
 }
 
 void Reserva::setHab(Habitacion* habitacion){
-    hab = habitacion;
+    this->hab = habitacion;
 }
 
 

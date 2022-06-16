@@ -381,6 +381,7 @@ void realizarReserva(){
     cout << "Ingrese el mail del huesped que realiza la reserva: ";
     string mailHuesp;
     getline(cin >> ws, mailHuesp);
+    ctrlHostal->seleccionarHuesped(mailHuesp);
     if (grupOind == 1){
         for(int i=1;i<totalHuesp;i++){
             cout << "Ingrese el mail del acompañante " << i << ": ";
