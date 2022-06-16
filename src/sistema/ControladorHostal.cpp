@@ -276,7 +276,7 @@ set<DTReserva*> ControladorHostal::ObtenerReservasNC(std::string nombreHostal, s
 void ControladorHostal::ReservaNCElegida(int codigoRes){
 	map<int, Reserva*> res =hostalIngresado->getColReservas(); //asumo que hostal esta bien?
 	SingletonFechaHora *FH = SingletonFechaHora::getInstance();
-	if (res.find(codigoRes) == res.end()|| (FH->FechaHoraSistema()).compararFecha(FH->FechaHoraSistema(),(res.find(codigoRes))->second->getCheckOut())==1) {//ojo
+	if (res.find(codigoRes) == res.end()|| (FH->FechaHoraSistema()).compararFecha(FH->FechaHoraSistema(),(res.find(codigoRes))->second->getCheckOut())!=1) {//ojo
 		throw std::invalid_argument("Ocurrió un error con los datos ingresados."); 
 	}else{
 	hostalIngresado->ingresoAlHostal(codigoRes); 
