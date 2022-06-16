@@ -58,7 +58,12 @@ void Menu(){
     cout << "- Ingrese su opción -" << endl;
 }
 
-void cargarDatosPrueba(){}
+void cargarDatosPrueba(){
+
+    //Estadias
+    IHostal *ctrlHostal = fabrica->obtenerControladorHostal();
+    set<DTReserva*> reservasNC = ctrlHostal->ObtenerReservasNC("La posada del finger", "sofia@mail.com", 0); //deevolver solo el codigo
+}
 
 void altaUsuario(){
     IUsuario* ctrlUsuario = fabrica->obtenerControladorUsuario();
