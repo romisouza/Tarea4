@@ -125,13 +125,8 @@ DataHostalComp Hostal::getDTHostal(){ /*
 		Cali.push_back(aux);
 		it++;
 	}
-<<<<<<< Updated upstream
-	Hst.setComentarios(Cali);
-	return Hst;
-=======
 	Hst.getComentarios()=Cali;
 	return Hst; */
->>>>>>> Stashed changes
 }
 
 list<DTIdEstadia> Hostal::accesoaReservas(Hostal* host){
@@ -238,9 +233,12 @@ void Hostal::CreateAddEstadia(DTFecha hs , int promo, int codigoRes){
 	res->setEstado(Cerrada);
 }
 
-
-
-void Hostal::buscarR(std::string email ){}
+void Hostal::buscarR(std::string email, DTFecha hs){
+	for(map<int,Reserva*>::iterator i= ColReservas.begin(); i != ColReservas.end(); i++){
+		Reserva* res = (*i).second;
+		res->validarHuesped(email, hs);
+	}
+}
 
 set<DTReserva*> Hostal::BuscarRes(std::string email){
 	set<DTReserva*> colReservasNC;

@@ -24,7 +24,7 @@ class ReservaGrupal:public Reserva{
         virtual DTReservaComp* getDTReservaComp();
         virtual set<DTReserva*> validarHuespedRegistrado(string);
         /*virtual void agregarAcompañante(Huesped*);*/
-        virtual void validarHuesped(string);
+        virtual void validarHuesped(string,DTFecha);
         ~ReservaGrupal();
 };
 

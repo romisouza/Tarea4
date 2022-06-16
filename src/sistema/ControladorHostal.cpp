@@ -251,7 +251,12 @@ void ControladorHostal::ReservaNCElegida(int codigoRes){
 	hostalIngresado->CreateAddEstadia(hs,promo, codigoRes);
 }
 
-void ControladorHostal::DatosHuesped(std::string nombreHostal,std::string email){}
+void ControladorHostal::DatosHuesped(std::string nombreHostal,std::string email){
+	Hostal* Hst =ColHostales.find(nombreHostal)->second;
+	SingletonFechaHora *FH = SingletonFechaHora::getInstance();
+	DTFecha hs = FH->FechaHoraSistema();
+	Hst->buscarR(email,hs);
+}
 
 void ControladorHostal::SeleccionarHostal(std::string nomHostal){
 	Hostal* Hst=ColHostales.find(nomHostal)->second;

@@ -27,8 +27,16 @@ set<DTReserva*> ReservaIndividual::validarHuespedRegistrado(string email){
     return resultado;
 }
 
-void ReservaIndividual::validarHuesped(string){
-
+void ReservaIndividual::validarHuesped(string email, DTFecha hs){
+    if (getHues()->getEmail() == email){
+        list<Estadia*> est = getEstadia();
+        DTFecha checkoutEst = est.front()->getCheckOut();
+        DTFecha comparar;
+        bool Ter = comparar.compararFecha(checkoutEst, hs);
+        if (!Ter){
+            est.front()->setCheckOut(hs);
+        }
+    }
 }
 
 DTReservaComp* ReservaIndividual::getDTReservaComp(){
