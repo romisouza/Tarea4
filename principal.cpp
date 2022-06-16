@@ -59,11 +59,6 @@ void Menu(){
 }
 
 void cargarDatosPrueba(){
-
-    //Estadias
-    IHostal *ctrlHostal = fabrica->obtenerControladorHostal();
-    set<DTReserva*> reservasNC = ctrlHostal->ObtenerReservasNC("La posada del finger", "sofia@mail.com", 0); //deevolver solo el codigo
-void cargarDatosPrueba(){
     IUsuario* ctrlUsuario = fabrica->obtenerControladorUsuario();
     IHostal* ctrlHostal = fabrica->obtenerControladorHostal();
     //Ingreso los huespedes al sistema
@@ -80,7 +75,6 @@ void cargarDatosPrueba(){
     ctrlUsuario->IngresarHuesped("Seba","seba@mail.com","123",1);
     ctrlUsuario->ConfirmarAltaUsuario();
     //Ingreso los empleados al sistema
-    //VER SI PASAR EL CARGO POR PARAMETRO!!!!! (esperando respuesta de profe)
     ctrlUsuario->IngresarEmpleado("Emilia","emilia@mail.com","123");
     ctrlUsuario->ConfirmarAltaUsuario();
     ctrlUsuario->IngresarEmpleado("Leonardo","leo@mail.com","123");
@@ -110,7 +104,7 @@ void cargarDatosPrueba(){
     ctrlHostal->registrarHab();
     //Asigno los empleados a los hostales
     list<DTEmpleado> HostalSeleccionado;
-    CargoEmpleado cargo;
+    CargoEmpleado* cargo;
     HostalSeleccionado = ctrlHostal->ObtenerEmpleados("La posada del finger");
     cargo= new CargoEmpleado(Recepcion);
     ctrlHostal->SeleccionarEmpleado(cargo,"emilia@mail.com");
@@ -129,13 +123,13 @@ void cargarDatosPrueba(){
     ctrlHostal->ConfirmarAsignacionDeEmpleado(); 
     //Realizo las reservas
     DTFecha in = DTFecha(1,5,2022,14,00);
-    DTFecha in = DTFecha(10,5,2022,10,00);
+    DTFecha out = DTFecha(10,5,2022,10,00);
     ctrlHostal->ingresarDatosReserva("La posada del finger",in,out,0,1);
     ctrlHostal->seleccionarHabitacion(1);
     ctrlHostal->seleccionarHuesped("sofia@mail.com");
     ctrlHostal->confirmarAltaReserva();
     DTFecha in = DTFecha(4,1,2001,20,00);
-    DTFecha in = DTFecha(5,1,2001,2,00);
+    DTFecha out = DTFecha(5,1,2001,2,00);
     ctrlHostal->ingresarDatosReserva("El Pony Pisador",in,out,1,4);
     ctrlHostal->seleccionarHabitacion(1);
     ctrlHostal->seleccionarHuesped("frodo@mail.com");
@@ -144,17 +138,52 @@ void cargarDatosPrueba(){
     ctrlHostal->seleccionarAcompaniante("pippin@mail.com");
     ctrlHostal->confirmarAltaReserva();
     DTFecha in = DTFecha(7,6,2022,14,00);
-    DTFecha in = DTFecha(30,6,2022,11,00);
+    DTFecha out = DTFecha(30,6,2022,11,00);
     ctrlHostal->ingresarDatosReserva("La posada del finger",in,out,0,1);
     ctrlHostal->seleccionarHabitacion(3);
     ctrlHostal->seleccionarHuesped("sofia@mail.com");
     ctrlHostal->confirmarAltaReserva();
     DTFecha in = DTFecha(10,6,2022,14,00);
-    DTFecha in = DTFecha(30,6,2022,11,00);
+    DTFecha out = DTFecha(30,6,2022,11,00);
     ctrlHostal->ingresarDatosReserva("Caverna Lujosa",in,out,0,1);
     ctrlHostal->seleccionarHabitacion(1);
     ctrlHostal->seleccionarHuesped("seba@mail.com");
     ctrlHostal->confirmarAltaReserva();
+    //Estadias
+    set<DTReserva*> reservasNC = ctrlHostal->ObtenerReservasNC("La posada del finger","sofi@mail.com",0);
+    int codigo;
+    auto it=reservasNC.begin();
+    DTFecha checkin=DTFecha(1,5,2022,18,00);
+    while ((codigo!=0) && (it!=reservasNC.end())){
+        if(((*it)->getCheckIn().compararFecha((*it)->getCheckIn(),checkin)) && ((*it)->getCheckOut().compararFecha(checkin,(*it)->getCheckOut()))){
+                codigo=(*it)->getCodigo();
+        }
+        ++it;
+    }
+    set<DTReserva*> reservasNC = ctrlHostal->ObtenerReservasNC("Mochileros","frodo@mail.com",0);
+    int codigo;
+    auto it=reservasNC.begin();
+    DTFecha checkin=DTFecha(4,1,2001,21,00);
+    while ((codigo!=0) && (it!=reservasNC.end())){
+        if(((*it)->getCheckIn().compararFecha((*it)->getCheckIn(),checkin)) && ((*it)->getCheckOut().compararFecha(checkin,(*it)->getCheckOut()))){
+                codigo=(*it)->getCodigo();
+        }
+        ++it;
+    }
+    set<DTReserva*> reservasNC = ctrlHostal->ObtenerReservasNC("Mochileros","frodo@mail.com",0);
+    int codigo;
+    auto it=reservasNC.begin();
+    DTFecha checkin=DTFecha(4,1,2001,21,00);
+    while ((codigo!=0) && (it!=reservasNC.end())){
+        if(((*it)->getCheckIn().compararFecha((*it)->getCheckIn(),checkin)) && ((*it)->getCheckOut().compararFecha(checkin,(*it)->getCheckOut()))){
+                codigo=(*it)->getCodigo();
+        }
+        ++it;
+    }
+    //Finalizacion de estadias
+
+    //calificar estadia
+
 }
 
 void altaUsuario(){
