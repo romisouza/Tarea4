@@ -36,7 +36,7 @@ class Hostal{
 	private:
 		std::string nombre; 
 		std::string direccion;
-		int telefono;
+		std::string telefono;
 		int promedio;
 		map<int,Reserva*> ColReservas; // clave codigo
 		map<int, Habitacion*> ColHabitaciones; //clave numero 
@@ -44,19 +44,19 @@ class Hostal{
 		map<std::string,Empleado*> ColEmpleadosHost;
 	public:
 		Hostal();
-		Hostal(std::string,std::string,int,int); 
+		Hostal(std::string,std::string,std::string,int); 
 		~Hostal();
 		map<std::string,Empleado*> getColEmpleados();
 		std::string getNombre();
 		std::string getDireccion();
-		int getTelefono();
+		std::string getTelefono();
 		int getPromedio();
 		map<int,Reserva*> getColReservas();
 		map<int, Habitacion*> getColHabitaciones();
 		list<Calificacion*> getColCal();
 		void setNombre(std::string);
 		void setDireccion(std::string);
-		void setTelefono(int);
+		void setTelefono(std::string);
 		void setPromedio(int);
 		set<DTCal> obtenerHostal();
 		list<DTReserva*> BuscarReservas();

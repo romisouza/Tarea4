@@ -4,7 +4,7 @@
 
 Hostal::Hostal(){}
 
-Hostal::Hostal(std::string nom,std::string direc,int tel,int prom) {
+Hostal::Hostal(std::string nom,std::string direc,std::string tel,int prom) {
 	nombre = nom;
 	direccion = direc;
 	telefono = tel;
@@ -29,7 +29,7 @@ std::string Hostal::getDireccion(){
 	return direccion;
 }
 
-int Hostal::getTelefono(){
+std::string Hostal::getTelefono(){
 	return telefono;
 }
 
@@ -45,7 +45,7 @@ void Hostal::setDireccion(std::string direc){
 	direccion = direc;
 }
 
-void Hostal::setTelefono(int tel){
+void Hostal::setTelefono(std::string tel){
 	telefono = tel;
 }
 

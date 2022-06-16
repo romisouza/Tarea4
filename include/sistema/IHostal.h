@@ -18,7 +18,7 @@ class IHostal{
     public:
 		virtual void ingresarHostal(Hostal*) =0;
 		virtual void ingresarEmpleado(Empleado*) =0;
-		virtual void agregarHostal(std::string, std::string, int) =0;//Alta Hostal
+		virtual void agregarHostal(std::string, std::string, std::string) =0;//Alta Hostal
 		virtual set<std::string> ObtenerNombreHostales() =0; //Alta habitacion (ObtenerHostales)
 		virtual void asignarHab(std::string, int, float, int) =0;//Alta habitacion; 
 		virtual void registrarHab() =0; //Alta habitacion ; 

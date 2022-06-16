@@ -61,7 +61,7 @@ class ControladorHostal:public IHostal {
 		static ControladorHostal* getInstance();
 		void ingresarHostal(Hostal*);
 		void ingresarEmpleado(Empleado*);
-		void agregarHostal(std::string, std::string, int);//Alta Hostal
+		void agregarHostal(std::string, std::string, std::string);//Alta Hostal
 		set<std::string> ObtenerNombreHostales(); //Alta habitacion (ObtenerHostales)
 		void asignarHab(std::string, int, float, int);//Alta habitacion; 
 		void registrarHab(); //Alta habitacion ; 

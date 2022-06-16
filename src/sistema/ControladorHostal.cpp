@@ -19,7 +19,7 @@ ControladorHostal* ControladorHostal:: getInstance(){
 	return instancia; 
 }
 
-void ControladorHostal::agregarHostal(std::string nombre, std::string direccion, int telefono){ //LISTA
+void ControladorHostal::agregarHostal(std::string nombre, std::string direccion, string telefono){ //LISTA
 	auto it = ColHostales.begin();
 	while (it != ColHostales.end() && ((*it).second->getNombre() != nombre)){
 		++it;
