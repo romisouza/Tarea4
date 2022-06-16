@@ -107,7 +107,7 @@ list<DTIdEstadia> Reserva::accederaEstadias(Reserva* res){
 
 DataEstadia* Reserva::BuscarRes(Reserva* res,DTIdEstadia e, std::string nombreHostal){
 	DataEstadia* estadia;
-    	list<Estadia*> est = res->getEstadia; 
+    	list<Estadia*> est = res->getEstadia(); 
 	for (list<Estadia*>::iterator i = est.begin(); i != est.end();i++){
 		std::string email = ((*i)->getHuesp()->getEmail());
 		if (email.compare(e.getEmail())==0){
