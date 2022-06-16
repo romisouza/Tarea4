@@ -45,8 +45,8 @@ void ControladorHostal::asignarHab(std::string nombreHostal, int num, float prec
 	if (ColHostales.find(nombreHostal) == ColHostales.end()) {
 		throw std::invalid_argument("No existe un hostal con el nombre ingresado"); 
 	}else {
-		numero = num;
-		precioNoche = precio;
+		this->numero = num;
+		this->precioNoche = precio;
 		this->capacidad = capacidad;
 		hostalIngresado = ColHostales.find(nombreHostal)->second;
 	}
