@@ -441,7 +441,7 @@ void realizarReserva(){
     }
     ctrlHostal->ingresarDatosReserva(nombreHostal,in,out,grupOind,totalHuesp);
     cout << "Las habitaciones disponibles en esas fechas son: ";
-    list<int> ColHabDisp = ctrlHostal->obtenerHabitacionesDisponibles(in,out); //aca controlo q las q devuelvo sean para la capacidad d los huespedes q pidio
+    list<int> ColHabDisp = ctrlHostal->obtenerHabitacionesDisponibles(in,out,totalHuesp); //aca controlo q las q devuelvo sean para la capacidad d los huespedes q pidio
     //cout<<"cant de habs: " << ColHabDisp.size();
     for (auto it=ColHabDisp.begin();it!=ColHabDisp.end();++it){
         cout << *it << endl;
