@@ -471,10 +471,7 @@ void registrarEstadia(){
     std::string email;
     cout << "Ingrese el email del huesped: "<< endl;
     cin >> email;
-    int promo;
-    cout << "Si hay promo ingresarla y 0 en caso contrario: ";
-    cin >> promo;
-    set<DTReserva*> reservasNC = ctrlHostal->ObtenerReservasNC(nombreHostal, email, promo); //deevolver solo el codigo
+    set<DTReserva*> reservasNC = ctrlHostal->ObtenerReservasNC(nombreHostal, email); //deevolver solo el codigo
     cout << "Los reservas no canceladas en el sistema son:" << endl;
     for (auto it=reservasNC.begin();it!=reservasNC.end();++it){
         cout << (*it)->getCodigo() << endl; //ver que mas mostrar

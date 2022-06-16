@@ -77,7 +77,7 @@ class Hostal{
 		//int getPromCal();
 		bool TrabajaEnHostal();
 		void ingresoAlHostal(int);
-		void CreateAddEstadia(DTFecha, int, int);
+		void CreateAddEstadia(DTFecha, int);
 		void buscarR(std::string,DTFecha);
 		set<DTReserva*> BuscarRes(std::string);
 		void agregarHabAlHost(Habitacion*);

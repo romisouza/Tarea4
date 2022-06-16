@@ -7,13 +7,11 @@ class DTEstadia {
     private:
         DTFecha checkIn;
         DTFecha checkOut;
-        int promo;
     public:
-        DTEstadia(DTFecha, DTFecha, int);
+        DTEstadia(DTFecha, DTFecha);
         ~DTEstadia();
         DTFecha getCheckIn();
         DTFecha getCheckOut();
-        int  getPromo();
 };
 
 #endif

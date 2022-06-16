@@ -11,17 +11,15 @@ class DataEstadia{
         std::string hostal;
         std::string huesped;
         int hab;
-        int promo;
         int cod;
     public:
         DataEstadia();
-        DataEstadia(DTFecha,DTFecha,std::string,std::string,int,int,int);
+        DataEstadia(DTFecha,DTFecha,std::string,std::string,int,int);
         DTFecha getCheckIn();
         DTFecha getCheckOut();
         std::string getHostal();
         std::string getHuesped();
         int getHabitacion();
-        int getPromo();
         int getCod();
         ~DataEstadia();
 

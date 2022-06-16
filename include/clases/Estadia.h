@@ -20,22 +20,19 @@ class Estadia{
     private:
         DTFecha checkOut;
         DTFecha checkIn;
-        int promo;
         Huesped* huesp;
         Reserva* res;
         Calificacion* cal; 
     public:
-        Estadia(DTFecha, DTFecha, int, Huesped*, Reserva*);
+        Estadia(DTFecha, DTFecha, Huesped*, Reserva*);
         Estadia();
         DTFecha getCheckIn();
         DTFecha getCheckOut();
-        int getPromo();
         Huesped* getHuesp();
         Reserva* getReserva();
         Calificacion* getCal();
         void setCheckIn(DTFecha);
         void setCheckOut(DTFecha);
-        void setPromo(int);
         void setHuesp(Huesped*);
         void setReserva(Reserva*);
         void setCalificacion(Calificacion*);

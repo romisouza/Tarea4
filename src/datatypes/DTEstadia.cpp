@@ -1,9 +1,8 @@
 #include "../../include/datatypes/DTEstadia.h"
 
-DTEstadia::DTEstadia(DTFecha ent ,DTFecha sal ,int prom){
+DTEstadia::DTEstadia(DTFecha ent ,DTFecha sal){
     checkIn = ent;
     checkOut = sal;
-    promo = prom;
 }
 
 DTEstadia::~DTEstadia(){}
@@ -14,8 +13,4 @@ DTFecha DTEstadia::getCheckIn(){
 
 DTFecha DTEstadia::getCheckOut(){
     return checkOut;
-}
-
-int DTEstadia::getPromo(){
-    return promo;
 }

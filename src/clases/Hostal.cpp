@@ -217,10 +217,10 @@ void Hostal::ingresoAlHostal(int codigoRes){
 	Reserva* res=ColReservas.find(codigoRes)->second; //duda si es bool, que avise si el int es correcto, sino es al pedo esta funcion
 }
 
-void Hostal::CreateAddEstadia(DTFecha hs , int promo, int codigoRes){
+void Hostal::CreateAddEstadia(DTFecha hs, int codigoRes){
 	Reserva* res=ColReservas.find(codigoRes)->second; 
 	DTFecha FHSal = res->getCheckOut();
-	Estadia* est = new Estadia(hs, FHSal,promo, res->getHues(),res);
+	Estadia* est = new Estadia(hs, FHSal, res->getHues(),res);
 	list<Estadia*> colest = res->getEstadia();
 	colest.push_back(est);
 	res->setEstadia(colest);

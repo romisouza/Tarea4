@@ -260,12 +260,11 @@ list<DTCalificacion> ControladorHostal::ObtenerCalificaciones(std::string nombre
 
 //void ControladorHostal::ObtenerCalificaciones(TipoCargo cargoEmp, std::string emailEmp){}
 
-set<DTReserva*> ControladorHostal::ObtenerReservasNC(std::string nombreHostal, std::string email, int promo){
+set<DTReserva*> ControladorHostal::ObtenerReservasNC(std::string nombreHostal, std::string email){
 	ControladorUsuario *ctrl = ControladorUsuario::getInstance();
 	if (ColHostales.find(nombreHostal) == ColHostales.end() || ctrl->getColHuespedes().find(email) == ctrl->getColHuespedes().end()) {
 		throw std::invalid_argument("Ocurrió un error con los datos ingresados."); 
-	}else{
-	this->promo = promo; //para recordar
+	}else{ //para recordar
 	Hostal* Hst =ColHostales.find(nombreHostal)->second;
 	hostalIngresado = Hst; //para recordar
 	set<DTReserva*> colReservasNC = Hst->BuscarRes(email);
@@ -276,13 +275,13 @@ set<DTReserva*> ControladorHostal::ObtenerReservasNC(std::string nombreHostal, s
 void ControladorHostal::ReservaNCElegida(int codigoRes){
 	map<int, Reserva*> res =hostalIngresado->getColReservas(); //asumo que hostal esta bien?
 	SingletonFechaHora *FH = SingletonFechaHora::getInstance();
-	if (res.find(codigoRes) == res.end()|| (FH->FechaHoraSistema()).compararFecha(FH->FechaHoraSistema(),(res.find(codigoRes))->second->getCheckOut())!=1) {//ojo
+	if (res.find(codigoRes) == res.end()|| (FH->FechaHoraSistema()).compararFecha(FH->FechaHoraSistema(),(res.find(codigoRes))->second->getCheckOut())!=1) {//ojo con !=
 		throw std::invalid_argument("Ocurrió un error con los datos ingresados."); 
 	}else{
 	hostalIngresado->ingresoAlHostal(codigoRes); 
 	SingletonFechaHora *FH = SingletonFechaHora::getInstance();
 	DTFecha hs = FH->FechaHoraSistema();
-	hostalIngresado->CreateAddEstadia(hs,promo, codigoRes);
+	hostalIngresado->CreateAddEstadia(hs, codigoRes);
 	}
 }
 
