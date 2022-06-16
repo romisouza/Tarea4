@@ -160,7 +160,8 @@ void cargarDatosPrueba(){
         }
         ++it;
     }
-    set<DTReserva*> reservasNC = ctrlHostal->ObtenerReservasNC("Mochileros","frodo@mail.com",0);
+    ctrlHostal->ReservaNCElegida(codigo);
+    set<DTReserva*> reservasNC = ctrlHostal->ObtenerReservasNC("El Pony Pisador","frodo@mail.com",0);
     int codigo;
     auto it=reservasNC.begin();
     DTFecha checkin=DTFecha(4,1,2001,21,00);
@@ -170,7 +171,8 @@ void cargarDatosPrueba(){
         }
         ++it;
     }
-    set<DTReserva*> reservasNC = ctrlHostal->ObtenerReservasNC("Mochileros","frodo@mail.com",0);
+    ctrlHostal->ReservaNCElegida(codigo);
+    set<DTReserva*> reservasNC = ctrlHostal->ObtenerReservasNC("El Pony Pisador","sam@mail.com",0);
     int codigo;
     auto it=reservasNC.begin();
     DTFecha checkin=DTFecha(4,1,2001,21,00);
@@ -180,8 +182,44 @@ void cargarDatosPrueba(){
         }
         ++it;
     }
+    ctrlHostal->ReservaNCElegida(codigo);
+    set<DTReserva*> reservasNC = ctrlHostal->ObtenerReservasNC("El Pony Pisador","merry@mail.com",0);
+    int codigo;
+    auto it=reservasNC.begin();
+    DTFecha checkin=DTFecha(4,1,2001,21,00);
+    while ((codigo!=0) && (it!=reservasNC.end())){
+        if(((*it)->getCheckIn().compararFecha((*it)->getCheckIn(),checkin)) && ((*it)->getCheckOut().compararFecha(checkin,(*it)->getCheckOut()))){
+                codigo=(*it)->getCodigo();
+        }
+        ++it;
+    }
+    ctrlHostal->ReservaNCElegida(codigo);
+    set<DTReserva*> reservasNC = ctrlHostal->ObtenerReservasNC("El Pony Pisador","pippin@mail.com",0);
+    int codigo;
+    auto it=reservasNC.begin();
+    DTFecha checkin=DTFecha(4,1,2001,21,00);
+    while ((codigo!=0) && (it!=reservasNC.end())){
+        if(((*it)->getCheckIn().compararFecha((*it)->getCheckIn(),checkin)) && ((*it)->getCheckOut().compararFecha(checkin,(*it)->getCheckOut()))){
+                codigo=(*it)->getCodigo();
+        }
+        ++it;
+    }
+    ctrlHostal->ReservaNCElegida(codigo);
+    set<DTReserva*> reservasNC = ctrlHostal->ObtenerReservasNC("Caverna Lujosa","seba@mail.com",0);
+    int codigo;
+    auto it=reservasNC.begin();
+    DTFecha checkin=DTFecha(7,6,2022,18,00);
+    while ((codigo!=0) && (it!=reservasNC.end())){
+        if(((*it)->getCheckIn().compararFecha((*it)->getCheckIn(),checkin)) && ((*it)->getCheckOut().compararFecha(checkin,(*it)->getCheckOut()))){
+                codigo=(*it)->getCodigo();
+        }
+        ++it;
+    }
+    ctrlHostal->ReservaNCElegida(codigo);
     //Finalizacion de estadias
-
+    ctrlHostal->DatosHuesped("La posada del finger", "sofia@mail.com");
+    ctrlHostal->DatosHuesped("El Pony Pisador", "frodo@mail.com");
+    ctrlHostal->DatosHuesped("Caverna Lujosa", "seba@mail.com");
     //calificar estadia
 
 }
