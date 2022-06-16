@@ -56,7 +56,8 @@ void ControladorHostal::registrarHab(){
 	//se anade una nueva habitacion al hostal seleccionado con los datos de la habi recordada ant
 	//se crea una instancia de hab con los datos ing, se cea un link de la instancia hab y hostal, y se 
 	//libera la mem asociada a hab hostal elegido
-	if (hostalIngresado == NULL || (habRecordada = hostalIngresado->seleccionarHab(numero)) == NULL) {//no se si esta bien
+	map<int,Habitacion*> hab = hostalIngresado->getColHabitaciones();
+	if (hab.find(numero) == hab.end()) {//no se si esta bien
 		throw std::invalid_argument("Ocurrió un error con los datos ingresados."); 
 	}else{
 		Habitacion *hab = new Habitacion(numero, precioNoche, capacidad,hostalIngresado);
