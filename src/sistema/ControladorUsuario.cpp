@@ -144,36 +144,43 @@ set<string> ControladorUsuario::ObtenerUsuarios(){ //BIEN
 	for( map<std::string, Huesped*>::iterator i= ColHuespedes.begin(); i != ColHuespedes.end(); i++){
 		std::string email = (*i).first;
 		std::string nombre = (*i).second->getNombre();
-		std::string user = "huesped: nombre: "+nombre+" ->email: " + email;
+		std::string user = "Huesped: \n nombre: "+nombre+" \n email: " + email;
 		users.insert(user);
 	} 
 	for( map<std::string, Empleado*>::iterator i= ColEmpleados.begin(); i != ColEmpleados.end(); i++){
 		std::string email = (*i).first;
 		std::string nombre = (*i).second->getNombre();
-		std::string user = "empleado:nombre: "+nombre+" ->email: " + email;
+		std::string user = "Empleado: \n nombre: "+nombre+" \n email: " + email;
 		users.insert(user);
 	} 
 	return users;		
 }
 
 DTHuesped* ControladorUsuario::SeleccionarHuesped(string email){ //BIEN 
-	Huesped* h = ColHuespedes.find(email)->second;
-	std::string nom = h->getNombre();
-	std::string mail = email;
-	bool esFinger = h->getEsFinger();
-	DTHuesped *huesped = new DTHuesped(nom,mail,esFinger);
-	return huesped;
+	if (ColHuespedes.find(email) != ColHuespedes.end()){
+		Huesped* h = ColHuespedes.find(email)->second;
+		std::string nom = h->getNombre();
+		std::string mail = email;
+		bool esFinger = h->getEsFinger();
+		DTHuesped *huesped = new DTHuesped(nom,mail,esFinger);
+		return huesped;
+	}else
+		throw std::invalid_argument("No existe un huesped con ese email"); 
 }
 
 DataEmpleado* ControladorUsuario::SeleccionarEmpleado2(string email){//cambie el nombre daba error sobrecarga 
-	Empleado* e = ColEmpleados.find(email)->second;
-	std::string nom = e->getNombre();
-	std::string mail = email;
-	CargoEmpleado* cargo = e->getCargoEmpleado();
-	Hostal* h = e->getHostalAsociado();
-	std::string hostal = h->getNombre();
-	DataEmpleado *empleado = new DataEmpleado(nom,mail,cargo,hostal);
-	return empleado;
+	if (ColHuespedes.find(email) != ColHuespedes.end()){
+		Empleado* e = ColEmpleados.find(email)->second;
+		std::string nom = e->getNombre();
+		std::string mail = email;
+		CargoEmpleado* cargo = e->getCargoEmpleado();
+		Hostal* h = e->getHostalAsociado();
+		std::string hostal = h->getNombre();
+		DataEmpleado *empleado = new DataEmpleado(nom,mail,cargo,hostal);
+		return empleado;
+	} else
+		throw std::invalid_argument("No existe un empleado con ese email"); 
+
 }
 
 list<DTEmpleado> ControladorUsuario::getEmpleados(Hostal* h){

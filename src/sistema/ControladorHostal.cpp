@@ -379,10 +379,13 @@ list<DTReservaComp*> ControladorHostal::ObtenerReservasComp(std::string nombreHo
 }
 
 list<DTIdEstadia> ControladorHostal::ObtenerDTIdEstadia(std::string nombreHostal){
-	hostalRecordado = nombreHostal;
-	Hostal* host = ColHostales.find(hostalRecordado)->second;
-	list<DTIdEstadia> SetDTIdEstadia = host->accesoaReservas(host);
-	return SetDTIdEstadia;
+	if (ColHostales.find(nombreHostal) != ColHostales.end()){
+		hostalRecordado = nombreHostal;
+		Hostal* host = ColHostales.find(hostalRecordado)->second;
+		list<DTIdEstadia> SetDTIdEstadia = host->accesoaReservas(host);
+		return SetDTIdEstadia;
+	}else
+		throw std::invalid_argument("No existe un hostal con ese email"); 
 }
 
 DataEstadia* ControladorHostal::ObtenerinfoEstadia(DTIdEstadia estadia){
