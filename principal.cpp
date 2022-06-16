@@ -63,6 +63,98 @@ void cargarDatosPrueba(){
     //Estadias
     IHostal *ctrlHostal = fabrica->obtenerControladorHostal();
     set<DTReserva*> reservasNC = ctrlHostal->ObtenerReservasNC("La posada del finger", "sofia@mail.com", 0); //deevolver solo el codigo
+void cargarDatosPrueba(){
+    IUsuario* ctrlUsuario = fabrica->obtenerControladorUsuario();
+    IHostal* ctrlHostal = fabrica->obtenerControladorHostal();
+    //Ingreso los huespedes al sistema
+    ctrlUsuario->IngresarHuesped("Sofia","sofia@mail.com","123",1);
+    ctrlUsuario->ConfirmarAltaUsuario();
+    ctrlUsuario->IngresarHuesped("Frodo","frodo@mail.com","123",1);
+    ctrlUsuario->ConfirmarAltaUsuario();
+    ctrlUsuario->IngresarHuesped("Sam","sam@mail.com","123",0);
+    ctrlUsuario->ConfirmarAltaUsuario();
+    ctrlUsuario->IngresarHuesped("Merry","merry@mail.com","123",0);
+    ctrlUsuario->ConfirmarAltaUsuario();
+    ctrlUsuario->IngresarHuesped("Pippin","pippin@mail.com","123",0);
+    ctrlUsuario->ConfirmarAltaUsuario();
+    ctrlUsuario->IngresarHuesped("Seba","seba@mail.com","123",1);
+    ctrlUsuario->ConfirmarAltaUsuario();
+    //Ingreso los empleados al sistema
+    //VER SI PASAR EL CARGO POR PARAMETRO!!!!! (esperando respuesta de profe)
+    ctrlUsuario->IngresarEmpleado("Emilia","emilia@mail.com","123");
+    ctrlUsuario->ConfirmarAltaUsuario();
+    ctrlUsuario->IngresarEmpleado("Leonardo","leo@mail.com","123");
+    ctrlUsuario->ConfirmarAltaUsuario();
+    ctrlUsuario->IngresarEmpleado("Alina","alina@mail.com","123");
+    ctrlUsuario->ConfirmarAltaUsuario();
+    ctrlUsuario->IngresarEmpleado("Barliman","barli@mail.com","123");
+    ctrlUsuario->ConfirmarAltaUsuario();
+    //Ingreso los hostales al sistema
+    ctrlHostal->agregarHostal("La posada del finger", "Av de la playa 123, Maldonado", "099111111");
+    ctrlHostal->agregarHostal("Mochileros", "Rambla Costanera 333, Rocha", "42579512");
+    ctrlHostal->agregarHostal("El Pony Pisador", "Bree (preguntar por Gandalf)", "000");
+    ctrlHostal->agregarHostal("Altos de Fing", "Av del Toro 1424", "099892992");
+    ctrlHostal->agregarHostal("Caverna Lujosa", "Amaya 2515", "233233235");
+    //Ingreso las habitaciones 
+    ctrlHostal->asignarHab("La posada del finger",1,40,2);
+    ctrlHostal->registrarHab();
+    ctrlHostal->asignarHab("La posada del finger",2,10,7);
+    ctrlHostal->registrarHab();
+    ctrlHostal->asignarHab("La posada del finger",3,30,3);
+    ctrlHostal->registrarHab();
+    ctrlHostal->asignarHab("La posada del finger",4,5,12);
+    ctrlHostal->registrarHab();
+    ctrlHostal->asignarHab("Caverna Lujosa",1,3,2);
+    ctrlHostal->registrarHab();
+    ctrlHostal->asignarHab("El Pony Pisador",1,9,5);
+    ctrlHostal->registrarHab();
+    //Asigno los empleados a los hostales
+    list<DTEmpleado> HostalSeleccionado;
+    CargoEmpleado cargo;
+    HostalSeleccionado = ctrlHostal->ObtenerEmpleados("La posada del finger");
+    cargo= new CargoEmpleado(Recepcion);
+    ctrlHostal->SeleccionarEmpleado(cargo,"emilia@mail.com");
+    ctrlHostal->ConfirmarAsignacionDeEmpleado();
+    HostalSeleccionado = ctrlHostal->ObtenerEmpleados("Mochileros");
+    cargo= new CargoEmpleado(Recepcion);
+    ctrlHostal->SeleccionarEmpleado(cargo,"leo@mail.com");
+    ctrlHostal->ConfirmarAsignacionDeEmpleado();
+    HostalSeleccionado = ctrlHostal->ObtenerEmpleados("Mochileros");
+    cargo= new CargoEmpleado(Administracion);
+    ctrlHostal->SeleccionarEmpleado(cargo,"alina@mail.com");
+    ctrlHostal->ConfirmarAsignacionDeEmpleado(); 
+    HostalSeleccionado = ctrlHostal->ObtenerEmpleados("El Pony Pisador");
+    cargo= new CargoEmpleado(Recepcion);
+    ctrlHostal->SeleccionarEmpleado(cargo,"alina@mail.com");
+    ctrlHostal->ConfirmarAsignacionDeEmpleado(); 
+    //Realizo las reservas
+    DTFecha in = DTFecha(1,5,2022,14,00);
+    DTFecha in = DTFecha(10,5,2022,10,00);
+    ctrlHostal->ingresarDatosReserva("La posada del finger",in,out,0,1);
+    ctrlHostal->seleccionarHabitacion(1);
+    ctrlHostal->seleccionarHuesped("sofia@mail.com");
+    ctrlHostal->confirmarAltaReserva();
+    DTFecha in = DTFecha(4,1,2001,20,00);
+    DTFecha in = DTFecha(5,1,2001,2,00);
+    ctrlHostal->ingresarDatosReserva("El Pony Pisador",in,out,1,4);
+    ctrlHostal->seleccionarHabitacion(1);
+    ctrlHostal->seleccionarHuesped("frodo@mail.com");
+    ctrlHostal->seleccionarAcompaniante("sam@mail.com");
+    ctrlHostal->seleccionarAcompaniante("merry@mail.com");
+    ctrlHostal->seleccionarAcompaniante("pippin@mail.com");
+    ctrlHostal->confirmarAltaReserva();
+    DTFecha in = DTFecha(7,6,2022,14,00);
+    DTFecha in = DTFecha(30,6,2022,11,00);
+    ctrlHostal->ingresarDatosReserva("La posada del finger",in,out,0,1);
+    ctrlHostal->seleccionarHabitacion(3);
+    ctrlHostal->seleccionarHuesped("sofia@mail.com");
+    ctrlHostal->confirmarAltaReserva();
+    DTFecha in = DTFecha(10,6,2022,14,00);
+    DTFecha in = DTFecha(30,6,2022,11,00);
+    ctrlHostal->ingresarDatosReserva("Caverna Lujosa",in,out,0,1);
+    ctrlHostal->seleccionarHabitacion(1);
+    ctrlHostal->seleccionarHuesped("seba@mail.com");
+    ctrlHostal->confirmarAltaReserva();
 }
 
 void altaUsuario(){
