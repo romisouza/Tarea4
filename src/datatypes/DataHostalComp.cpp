@@ -4,7 +4,7 @@ DataHostalComp::DataHostalComp(){
 
 }
 
-DataHostalComp::DataHostalComp(std::string nom,std::string dir,int tel,float prom){
+DataHostalComp::DataHostalComp(std::string nom,std::string dir,std::string tel,float prom){
     nombre = nom;
     direccion = dir;
     telefono = tel;
@@ -23,7 +23,7 @@ std::string DataHostalComp::getDireccion(){
     return direccion;
 }
 
-int DataHostalComp::getTelefono(){
+std::string DataHostalComp::getTelefono(){
     return telefono;
 }
 

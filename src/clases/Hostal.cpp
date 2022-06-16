@@ -80,7 +80,8 @@ list<DTReserva*> Hostal::BuscarReservas(){
 void Hostal::EliminarRes(Reserva* res){
 	Habitacion* hab= ColHabitaciones.find(res->getHab()->getNumero())->second;
 	hab->eliminarResHab(res->getCodigo());
-	res->EliminarEstadias();
+	res->~Reserva();
+
 }
 
 void Hostal::AgregarComentarios(std::string comentario, int puntaje, DTFecha hrs, Estadia* est, list<IObserver*> obs){
@@ -103,7 +104,7 @@ void Hostal::AgregarComentarios(std::string comentario, int puntaje, DTFecha hrs
 	setPromedio(promNuevo);
 }
 
-DataHostalComp Hostal::getDTHostal(){ /*
+DataHostalComp Hostal::getDTHostal(){ 
 	DataHostalComp Hst=DataHostalComp(getNombre(),getDireccion(),getTelefono(),getPromedio());
 	map<int,Reserva*> ResHst;
 	map<int,Reserva*> Res=getColReservas();
@@ -126,7 +127,7 @@ DataHostalComp Hostal::getDTHostal(){ /*
 		it++;
 	}
 	Hst.getComentarios()=Cali;
-	return Hst; */
+	return Hst; 
 }
 
 list<DTIdEstadia> Hostal::accesoaReservas(Hostal* host){

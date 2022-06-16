@@ -28,9 +28,6 @@ int DTReservaComp::getNumHab(){
     return numHab;
 }
 
-
-
-
 DTReservaComp::~DTReservaComp(){
-    
+
 }

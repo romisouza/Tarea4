@@ -69,6 +69,10 @@ hostalIngresado = NULL;
 }
 
 list<DTEmpleado> ControladorHostal::ObtenerEmpleados(std::string nombreHostal){
+	if (ColHostales.find(nombreHostal) == ColHostales.end()) {
+		throw std::invalid_argument("No existe un hostal con el nombre ingresado"); 
+	}
+	else{
 	list<DTEmpleado> dtemps;
 	Hostal* h = ColHostales.find(nombreHostal)->second;
 	ingresarHostal(h);
@@ -77,12 +81,18 @@ list<DTEmpleado> ControladorHostal::ObtenerEmpleados(std::string nombreHostal){
 		dtemps = cu->getEmpleados(h);
 	}
 	return dtemps;
+	}
 }
 
 void ControladorHostal::SeleccionarEmpleado(CargoEmpleado *cargoEmp, std::string emailEmp){
+	if (hostalIngresado->getColEmpleados().find(emailEmp) == hostalIngresado->getColEmpleados().end()) {
+		throw std::invalid_argument("No existe un empleado con el email ingresado"); 
+	}
+	else{
 	ControladorUsuario* cu = ControladorUsuario::getInstance();
 	Empleado* emp = cu->SeleccionarEmpleado(cargoEmp,emailEmp,hostalIngresado);
 	ingresarEmpleado(emp);
+	}
 }
 
 void ControladorHostal::ConfirmarAsignacionDeEmpleado(){
@@ -229,9 +239,14 @@ list<std::string> ControladorHostal::ConsultarTop3Hostal(){
 }
 
 list<DTCalificacion> ControladorHostal::ObtenerCalificaciones(std::string nombreHostal) {
+	if (ColHostales.find(nombreHostal) == ColHostales.end()) {
+		throw std::invalid_argument("No existe un hostal con el nombre ingresado"); 
+	}
+	else{
 	Hostal *h = ColHostales.find(nombreHostal)->second;
 	list<DTCalificacion> aux=h->obtenerCalificaciones();
 	return aux;
+	}
 }
 
 //void ControladorHostal::ObtenerCalificaciones(TipoCargo cargoEmp, std::string emailEmp){}
@@ -259,8 +274,13 @@ void ControladorHostal::DatosHuesped(std::string nombreHostal,std::string email)
 }
 
 void ControladorHostal::SeleccionarHostal(std::string nomHostal){
-	Hostal* Hst=ColHostales.find(nomHostal)->second;
-	ingresarHostal(Hst);
+	if (ColHostales.find(nomHostal) == ColHostales.end()) {
+		throw std::invalid_argument("No existe un hostal con el nombre ingresado"); 
+	}
+	else{
+		Hostal* Hst=ColHostales.find(nomHostal)->second;
+		ingresarHostal(Hst);
+	}
 }
 
 
@@ -271,10 +291,15 @@ void ControladorHostal::ingresarEstadiaFinalizada(Estadia* est){
 
 list<DTIdEstadia> ControladorHostal::ListaEstadiasFinalizadas(std::string email){
 	ControladorUsuario* cu = ControladorUsuario::getInstance();
-	SingletonFechaHora* FH = SingletonFechaHora::getInstance();
-	DTFecha hrs= FH->FechaHoraSistema();
-	list<DTIdEstadia> estadias=cu->BuscarHuesped(email, hrs);
-	return estadias;
+	if (cu->getColHuespedes().find(email) == cu->getColHuespedes().end()) {
+		throw std::invalid_argument("No existe un usuario con el email ingresado"); 
+	}
+	else{
+		SingletonFechaHora* FH = SingletonFechaHora::getInstance();
+		DTFecha hrs= FH->FechaHoraSistema();
+		list<DTIdEstadia> estadias=cu->BuscarHuesped(email, hrs);
+		return estadias;
+	}
 }
 
 void ControladorHostal::SeleccionarEstadia(DTIdEstadia estadia){
@@ -287,6 +312,8 @@ void ControladorHostal::ConfirmarCalificacion (std::string comentario, int punta
 	SingletonFechaHora* FH = SingletonFechaHora::getInstance();
 	DTFecha hrs=FH->FechaHoraSistema();
 	hostalIngresado->AgregarComentarios(comentario,puntaje,hrs,EstadiaFinalizada,obs);
+	hostalIngresado=NULL;
+	EstadiaFinalizada=NULL;
 }
 
 void ControladorHostal::ResponderComentario(std::string emailHuesp, int codigoRes, std::string respuesta){
@@ -302,18 +329,28 @@ list<DTCal> ControladorHostal::ObtenerComentariosAResponder(std::string email){
 }
 
 DataHostalComp ControladorHostal::ObtenerHostalComp(std::string nombreHostal){
+	if (ColHostales.find(nombreHostal) == ColHostales.end()) {
+		throw std::invalid_argument("No existe hostal con el nombre ingresado"); 
+	}
+	else{
 	Hostal* Hst=ColHostales.find(nombreHostal)->second;
 	DataHostalComp HstSel;
 	if (Hst->getNombre()== nombreHostal){
 		HstSel= Hst->getDTHostal();
 	}
 	return HstSel;
+	}
 }
 
 list<DTReservaComp*> ControladorHostal::ObtenerReservasComp(std::string nombreHostal){
+	if (ColHostales.find(nombreHostal) == ColHostales.end()) {
+		throw std::invalid_argument("No existe un hostal con el nombre ingresado"); 
+	}
+	else{
 	Hostal* h= ColHostales.find(nombreHostal)->second;
 	list<DTReservaComp*> dtreservas = h->ObtenerReservas();
 	return dtreservas;
+	}
 }
 
 list<DTIdEstadia> ControladorHostal::ObtenerDTIdEstadia(std::string nombreHostal){
@@ -360,15 +397,25 @@ void ControladorHostal::ingresarReserva(Reserva* res){
 }
 
 list<DTReserva*> ControladorHostal::ObtenerReservas(std::string nombreHostal){
-	Hostal* Hst=ColHostales.find(nombreHostal)->second;
-	ingresarHostal(Hst);
-	list<DTReserva*> lista=Hst->BuscarReservas();
-	return lista;
+	if (ColHostales.find(nombreHostal) == ColHostales.end()) {
+		throw std::invalid_argument("No existe un hostal con el nombre ingresado"); 
+	}
+	else{
+		Hostal* Hst=ColHostales.find(nombreHostal)->second;
+		ingresarHostal(Hst);
+		list<DTReserva*> lista=Hst->BuscarReservas();
+		return lista;
+	}
 }
 
 void ControladorHostal::SeleccionarReserva(int codigoRes){
-	Reserva* res=hostalIngresado->getColReservas().find(codigoRes)->second;
-	ingresarReserva(res);
+	if (hostalIngresado->getColReservas().find(codigoRes) == hostalIngresado->getColReservas().end()) {
+		throw std::invalid_argument("No existe una reserva con el codigo ingresado"); 
+	}
+	else{
+		Reserva* res=hostalIngresado->getColReservas().find(codigoRes)->second;
+		ingresarReserva(res);
+	}
 }
 
 void ControladorHostal::ConfirmarEliminarReserva(){

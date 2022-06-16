@@ -127,7 +127,59 @@ void altaHostal(){
 
 void altaHabitacion(){}
 
-void asignarEmpleadoAHostal(){}
+void asignarEmpleadoAHostal(){
+    IHostal *ctrlHostal = fabrica->obtenerControladorHostal();
+    list<DTHostalProm> hostalesRegistrados = ctrlHostal->ObtenerHostalesProm();
+    cout << "Los hostales registrados en el sistema son:" << endl;
+    for (auto it=hostalesRegistrados.begin();it!=hostalesRegistrados.end();++it){
+        cout << "Nombre del hostal: " << (*it).getNombre() << endl;
+        cout << "Direccion del hostal: " << (*it).getDireccion() << endl;
+        cout << "Calificaciones promedio del hostal: " << (*it).getCalificacionesPromedio() << endl;
+    }
+    string nombreHostal;
+    cout << "Ingrese el nombre del hostal elegido: ";
+    getline(cin >> ws, nombreHostal);
+    list<DTEmpleado> empleadosRegistrados = ctrlHostal->ObtenerEmpleados(nombreHostal);
+    cout << "Los empleados registrados en el sistema sin cargo son:" << endl;
+    for (auto it=empleadosRegistrados.begin();it!=empleadosRegistrados.end();++it){
+        cout << "Nombre del empleado: " << (*it).getNombre() << endl;
+        cout << "Email del empleado: " << (*it).getEmail() << endl;
+    }
+    string mailEmp;
+    int cargo;    
+    cout << "Ingrese el nombre del empleado elegido: ";
+    getline(cin >> ws, mailEmp);
+    cout << "'1' para asignar el cargo Administracion" << endl;
+    cout << "'2' para asignar el cargo Limpieza" << endl;
+    cout << "'3' para asignar el cargo Recepcion" << endl;
+    cout << "'4' para asignar el cargo Infraestructura" << endl;
+    cout << "Ingrese el numero del cargo a ejercer por el empleado elegido: ";
+    cin >> cargo;
+    CargoEmpleado* cargo1;
+        switch(cargo){
+        case 1: cargo1= new CargoEmpleado(Administracion);
+        break;
+        case 2: cargo1= new CargoEmpleado(Limpieza);
+        break;
+        case 3: cargo1= new CargoEmpleado(Recepcion);;
+        break;
+        case 4: cargo1= new CargoEmpleado(Infraestructura);
+        break;
+        default: throw std::invalid_argument("El numero ingresado no es correcto, ingrese nuevamente: ");
+    }    
+    ctrlHostal->SeleccionarEmpleado(cargo1,mailEmp);
+    cout << "Ingrese 1 para confirmar la asignacion o 0 para cancelarla: ";
+    bool opcionIngresada;
+    cin >> opcionIngresada;
+    if (opcionIngresada==1){
+        ctrlHostal->ConfirmarAsignacionDeEmpleado();
+        cout << "Asignacion realizada con exito.";
+    } else {
+        ctrlHostal->CancelarAsignacionDeEmpleado();
+        cout << "Asignacion cancelada con exito.";
+    }
+
+}
 
 void realizarReserva(){
     IHostal *ctrlHostal = fabrica->obtenerControladorHostal();
@@ -218,13 +270,75 @@ void realizarReserva(){
     }
 }
 
-void consultarTop3Hostales(){}
+void consultarTop3Hostales(){
+    IHostal *ctrlHostal = fabrica->obtenerControladorHostal();
+    list<std::string> ranking;
+    ranking = ctrlHostal->ConsultarTop3Hostal();
+    cout << "Los hostales registrados en el sistema con mayor promedio de puntaje son:" << endl;
+    int i=1;
+    auto it=ranking.begin();
+    while(it != ranking.end()){
+        cout << i << "." <<(*it) << endl;
+        i++;
+        ++it;
+    }
+    string nombreHostal;
+    cout << "Ingrese el nombre del hostal elegido: ";
+    getline(cin >> ws, nombreHostal);
+    list<DTCalificacion> empleados = ctrlHostal->ObtenerCalificaciones(nombreHostal);
+    cout << "Calificaciones y comentarios del hostal:" << endl;
+    for (auto it=empleados.begin();it!=empleados.end();++it){
+        cout << "Puntaje: " << (*it).getPuntaje() << endl;
+        cout << "Comentario huesped: " << (*it).getComentarioHuesp() << endl;
+        if((*it).getComentarioEmp()!=""){
+          cout << "Comentario empleado: " << (*it).getComentarioEmp() << endl;  
+        }
+    }
+    
+}
 
 void registrarEstadia(){}
 
 void finalizarEstadia(){}
 
-void calificarEstadia(){}
+void calificarEstadia(){
+    IHostal *ctrlHostal = fabrica->obtenerControladorHostal();
+    set<std::string> nombres= ctrlHostal->ObtenerNombreHostales();
+    cout << "Los hostales registrados en el sistema son:" << endl;
+    for (auto it=nombres.begin();it!=nombres.end();++it){
+        cout << "Nombre del hostal: " << (*it)<<endl;
+    }
+    string nombreHostal;
+    cout << "Ingrese el nombre del hostal elegido: "<<endl;
+    getline(cin >> ws, nombreHostal);
+    cout << "Ingrese el mail del huesped: "<<endl;
+    string mailHsp;
+    getline(cin >> ws, mailHsp);
+    list<DTIdEstadia> lista=ctrlHostal->ListaEstadiasFinalizadas(mailHsp);
+    if(lista.empty()){
+        throw std::invalid_argument("No existen estadias finalizadas");
+    }
+    cout<< "Las estadias finalizadas son:"<<endl;
+    for(auto it=lista.begin();it!=lista.end();it++){
+        cout<< "El codigo de la reserva es:"<< (*it).getCodigo()<<endl;
+    }
+    int codRes;
+    cout<< "Ingrese codigo de la reserva elegida:"<<endl;
+    cin>> codRes;
+    auto it=lista.begin();
+    while((*it).getCodigo()!=codRes){
+        it++;
+    }
+    ctrlHostal->SeleccionarEstadia((*it));
+    int Puntaje;
+    cout<< "Ingrese puntaje de la calificacion:"<<endl;
+    cin>> Puntaje;
+    string comentario;
+    cout<< "Igrese comentario de la calificacion:"<<endl;
+    getline(cin >> ws, comentario);
+    ctrlHostal->ConfirmarCalificacion(comentario,Puntaje);
+
+}
 
 void comentarCalificacion(){
     IHostal *ctrlHostal = fabrica->obtenerControladorHostal();
@@ -251,21 +365,161 @@ void comentarCalificacion(){
 
 void consultaUsuario(){}
 
-void consultaHostal(){}
+void consultaHostal(){
+    IHostal *ctrlHostal = fabrica->obtenerControladorHostal();
+    set<std::string> nombres= ctrlHostal->ObtenerNombreHostales();
+    cout << "Los hostales registrados en el sistema son:" << endl;
+    for (auto it=nombres.begin();it!=nombres.end();++it){
+        cout << "Nombre del hostal: " << (*it)<<endl;
+    }
+    string nombreHostal;
+    cout << "Ingrese el nombre del hostal elegido: "<<endl;
+    getline(cin >> ws, nombreHostal);
+    DataHostalComp Hst=ctrlHostal->ObtenerHostalComp(nombreHostal);
+    cout<< "Nombre del hostal:"<< Hst.getNombre()<<endl;
+    cout<< "Direccion del hostal:"<< Hst.getDireccion()<<endl;
+    cout<< "Telefono del hostal:"<< Hst.getTelefono()<<endl;
+    cout<< "Promedio del hostal:"<< Hst.getNombre()<<endl;
+    cout<< "Habitaciones del hostal:"<<endl;
+    for(auto it=Hst.getHabitaciones().begin();it!=Hst.getHabitaciones().end();it++){
+        cout<< "Numero de la habitacion:"<< (*it).second->getNumero()<<endl;
+        cout<< "Capacidad de la habitacion:"<< (*it).second->getCapacidad()<<endl;
+        cout<< "Precio de la habitacion :"<< (*it).second->getPrecioNoche()<<endl;
+    }
+    cout<< "Reservas del hostal:";
+    for(auto it=Hst.getReservas().begin();it!=Hst.getReservas().end();it++){
+        cout<< "Codigo de la reserva:"<< (*it).second->getCodigo()<<endl;
+        cout<< "Fecha de entrada de la reserva:"<< (*it).second->getCheckIn().getDia()<<"/"<<(*it).second->getCheckIn().getMes()<<"/"<< (*it).second->getCheckIn().getAnio()<<endl ;
+        cout<< "Fecha de salida de la reserva:"<< (*it).second->getCheckOut().getDia()<<"/"<<(*it).second->getCheckOut().getMes()<<"/"<<(*it).second->getCheckOut().getAnio();
+        cout<< "Estado de la reserva:"<< (*it).second->getEstado()<<endl;
+    }
+    cout<< "Comentarios del hostal:"<<endl;
+    for(auto it=Hst.getComentarios().begin();it!=Hst.getComentarios().end();it++){
+        cout<< "Puntaje:"<< (*it).getPuntaje()<<endl;
+        cout<< "Comentario de huesped:"<< (*it).getComentarioHuesp()<<endl;
+        if((*it).getComentarioHuesp()==""){
+            cout<< "Comentario de huesped:"<< (*it).getComentarioHuesp()<<endl;
+        }   
+    }
+}
 
-void consultaReserva(){}
+void consultaReserva(){
+    IHostal *ctrlHostal = fabrica->obtenerControladorHostal();
+    set<std::string> nombres= ctrlHostal->ObtenerNombreHostales();
+    cout << "Los hostales registrados en el sistema son:" << endl;
+    for (auto it=nombres.begin();it!=nombres.end();++it){
+        cout << "Nombre del hostal: " << (*it);
+    }
+    string nombreHostal;
+    cout << "Ingrese el nombre del hostal elegido: ";
+    getline(cin >> ws, nombreHostal);
+    list<DTReservaComp*> reservas = ctrlHostal->ObtenerReservasComp(nombreHostal);
+    cout<< "Informacion de las reservas :";
+    auto it=reservas.begin();
+    while(it!=reservas.end()){
+        DTReservaCompInd* ind = dynamic_cast<DTReservaCompInd*>((*it));
+        if(ind!=NULL){
+        cout<< "Codigo de la reserva: "<< (ind)->getCodigo() << endl;
+        cout<< "Fecha de entrada de la reserva:"<< (ind)->getCheckIn().getDia() <<"/" <<(ind)->getCheckIn().getMes()<<"/"<<(ind)->getCheckIn().getAnio()  << endl;
+        cout<< "Fecha de salida de la reserva:"<< (ind)->getCheckOut().getDia() <<"/"<<(ind)->getCheckOut().getMes()<<"/"<<(ind)->getCheckOut().getAnio() << endl ;
+        cout<< "Estado de la reserva :"<< (ind)->getEstado() << endl;
+        cout<< "Numero de habitacion :"<< (ind)->getNumHab() << endl;
+        }
+        else{
+            DTReservaCompGrup* ind = dynamic_cast<DTReservaCompGrup*>((*it));
+            cout<< "Codigo de la reserva: "<< (ind)->getCodigo() << endl;
+            cout<< "Fecha de entrada de la reserva:"<< (ind)->getCheckIn().getDia() <<"/" <<(ind)->getCheckIn().getMes()<<"/"<<(ind)->getCheckIn().getAnio()  << endl;
+            cout<< "Fecha de salida de la reserva:"<< (ind)->getCheckOut().getDia() <<"/"<<(ind)->getCheckOut().getMes()<<"/"<<(ind)->getCheckOut().getAnio() << endl ;
+            cout<< "Estado de la reserva :"<< (ind)->getEstado() << endl;
+            cout<< "Numero de habitacion :"<< (ind)->getNumHab() << endl;
+            set<Huesped*> huespedes = ind->getHuesp();
+            cout<< "Los huespedes de la reserva son:"<<endl;
+            for(auto iter=huespedes.begin();iter!=huespedes.end();iter++){
+                cout<< "Nombre del huesped: "<< (*iter)->getNombre()<< endl;
+                cout<< "Email del huesped:"<< (*iter)->getEmail()  << endl;
+            }
+        }
+        it++;
+    }
+}
 
 void consultaEstadia(){}
 
-void bajaReserva(){}
+void bajaReserva(){
+    IHostal *ctrlHostal = fabrica->obtenerControladorHostal();
+    set<std::string> nombres= ctrlHostal->ObtenerNombreHostales();
+    cout << "Los hostales registrados en el sistema son:" << endl;
+    for (auto it=nombres.begin();it!=nombres.end();++it){
+        cout << "Nombre del hostal: " << (*it)<<endl;
+    }
+    string nombreHostal;
+    cout << "Ingrese el nombre del hostal elegido: "<<endl;
+    getline(cin >> ws, nombreHostal);
+    list<DTReserva*> Reservas= ctrlHostal->ObtenerReservas(nombreHostal);
+    cout<< "Las reservas son:"<<endl;
+    for(auto it=Reservas.begin();it!=Reservas.end();it++){
+        cout<< "El codigo de la reserva es:"<< (*it)->getCodigo()<<endl;
+    }
+    int codRes;
+    cout<< "Ingrese codigo de la reserva elegida:"<<endl;
+    cin>> codRes;
+    ctrlHostal->SeleccionarReserva(codRes);
+    cout << "Ingrese 1 para confirmar la baja o 0 para cancelar "<<endl;
+    bool conf;
+    cin>> conf;
+    if(conf){
+        ctrlHostal->ConfirmarEliminarReserva();
+    }
+    else{
+        ctrlHostal->CancelarBajaReserva();
+    }
+}
 
 void modificarFechaSistema(){}
 
-void SuscribirseaNotificaciones(){}
+void SuscribirseaNotificaciones(){
+    IHostal *ctrlHostal = fabrica->obtenerControladorHostal();
+    list<DTEmpleado> Emp=ctrlHostal->ObtenerEmpleados();
+    cout<< "Los email de los empleados son:"<<endl;
+    for (auto it=Emp.begin();it!=Emp.end();it++){
+        cout<< (*it).getEmail()<<endl;
+    }
+    string email;
+    cout<< "Ingrese el email del empleado elegido:"<<endl;
+    getline(cin >> ws, email);
+    ctrlHostal->SuscribirEmpleado(email);
+}
 
-void ConsultaDeNotificaciones(){}
+void ConsultaDeNotificaciones(){
+    IHostal *ctrlHostal = fabrica->obtenerControladorHostal();
+    list<DTEmpleado> Emp=ctrlHostal->ObtenerEmpleados();
+    cout<< "Los email de los empleados son:"<<endl;
+    for (auto it=Emp.begin();it!=Emp.end();it++){
+        cout<< (*it).getEmail()<<endl;
+    }
+    string email;
+    cout<< "Ingrese el email del empleado elegido:"<<endl;
+    getline(cin >> ws, email);
+    list<DTCalificacion> cal=ctrlHostal->ObtenerNotificaciones(email);
+    for(auto it=cal.begin();it!=cal.end();it++){
+        cout<< "El puntaje de la calificacion es:"<< (*it).getPuntaje()<<endl;
+        cout<< "El comentario de la calificacion es:"<< (*it).getComentarioHuesp()<<endl;
+    }
+    ctrlHostal->EliminarNotificaciones();
+}
 
-void EliminarSuscripcion(){}
+void EliminarSuscripcion(){
+    IHostal *ctrlHostal = fabrica->obtenerControladorHostal();
+    list<DTEmpleado> Emp=ctrlHostal->ObtenerEmpleados();
+    cout<< "Los email de los empleados son:"<<endl;
+    for (auto it=Emp.begin();it!=Emp.end();it++){
+        cout<< (*it).getEmail()<<endl;
+    }
+    string email;
+    cout<< "Ingrese el email del empleado elegido:"<<endl;
+    getline(cin >> ws, email);
+    ctrlHostal->eliminarSuscripcion(email);
+}
 
 int main(){
     int opcionMenu = 0;

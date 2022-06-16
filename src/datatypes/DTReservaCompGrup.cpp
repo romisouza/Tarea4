@@ -10,3 +10,7 @@ DTReservaCompGrup::DTReservaCompGrup(int codi, DTFecha CheckIn, DTFecha CheckOut
 set<Huesped*> DTReservaCompGrup::getHuesp(){
     return huespedes;
 }
+
+DTReservaCompGrup::~DTReservaCompGrup(){
+    
+}

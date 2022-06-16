@@ -16,18 +16,18 @@ class DataHostalComp {
     private:
         std::string nombre;
         std::string direccion;
-        int telefono;
+        std::string telefono;
         float promedio;
         map<int, Habitacion*> ColHabit;
         map<int,Reserva*>  ColRes;
         list<DTCalificacion> ColCalif;
     public:
         DataHostalComp();
-        DataHostalComp(std::string,std::string,int,float);
+        DataHostalComp(std::string,std::string,std::string,float);
         ~DataHostalComp();
         std::string getNombre();
         std::string getDireccion();
-        int getTelefono();
+        std::string getTelefono();
         float getPromedio();
         map<int, Habitacion*> getHabitaciones();
         map<int, Reserva*> getReservas();

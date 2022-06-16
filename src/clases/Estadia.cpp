@@ -77,11 +77,10 @@ DataEstadia* Estadia::getDataEstadia(){
     return est;
 }
 
-void Estadia::eliminarEstadia(){
+    
+
+Estadia::~Estadia(){ 
     delete huesp;
     delete res;
     delete cal;
-}
-
-Estadia::~Estadia(){ //(Implementar)
 }

@@ -14,7 +14,7 @@ private:
 public:
     DTReservaCompGrup(int, DTFecha, DTFecha,EstadoReserva,int, set<Huesped*>);
     set<Huesped*> getHuesp();
-    ~DTReservaCompGrup();
+    virtual ~DTReservaCompGrup();
 };
 
 #endif

@@ -13,7 +13,7 @@ class DTReservaCompInd:public DTReservaComp {
 private:
 public:
     DTReservaCompInd(int, DTFecha, DTFecha,EstadoReserva,int);
-    ~DTReservaCompInd();
+    virtual ~DTReservaCompInd();
 };
 
 #endif
