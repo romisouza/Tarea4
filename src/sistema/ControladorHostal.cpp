@@ -143,12 +143,12 @@ void ControladorHostal::ingresarDatosReserva(std::string nombreHostal, DTFecha i
 	}
 }
 
-list<int> ControladorHostal::obtenerHabitacionesDisponibles(DTFecha in, DTFecha out){
+list<int> ControladorHostal::obtenerHabitacionesDisponibles(DTFecha in, DTFecha out,int totalHuesp){
 	if(in.compararFecha(out,in)){
 		throw std::invalid_argument("La fecha de salida ingresada es menor a la fecha de entrada.");
 	} else {
 	Hostal* Host=ColHostales.find(nombreHostalIngresado)->second;
-	list<int> ColHabDisp = Host->obtenerHabitaciones(in,out);
+	list<int> ColHabDisp = Host->obtenerHabitaciones(in,out,totalHuesp);
 	return ColHabDisp;
 	}
 }

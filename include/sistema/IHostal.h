@@ -29,7 +29,7 @@ class IHostal{
 		virtual void CancelarAsignacionDeEmpleado() =0;//asignar emp a host (cancelarAsignacionAUsuario)
 		virtual list<DTHostalProm> ObtenerHostalesProm() =0; //Realizar reserva (ObtenerHostales)
 		virtual void ingresarDatosReserva(std::string, DTFecha, DTFecha, bool, int) =0;//realizar reserva
-		virtual list<int> obtenerHabitacionesDisponibles(DTFecha, DTFecha) =0;//realizar reserva
+		virtual list<int> obtenerHabitacionesDisponibles(DTFecha, DTFecha,int) =0;//realizar reserva
 		virtual void seleccionarHabitacion(int) =0; //realizar res
 		virtual list<std::string> obtenerHuespedesRegistrados() =0;//realizar res
 		virtual void seleccionarHuesped(std::string) =0;//realizar res

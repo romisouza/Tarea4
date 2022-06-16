@@ -72,7 +72,7 @@ class ControladorHostal:public IHostal {
 		void CancelarAsignacionDeEmpleado();//asignar emp a host (cancelarAsignacionAUsuario)
 		list<DTHostalProm> ObtenerHostalesProm(); //Realizar reserva (ObtenerHostales)
 		void ingresarDatosReserva(std::string, DTFecha, DTFecha, bool, int);//realizar reserva
-		list<int> obtenerHabitacionesDisponibles(DTFecha, DTFecha);//realizar reserva
+		list<int> obtenerHabitacionesDisponibles(DTFecha, DTFecha,int);//realizar reserva
 		void seleccionarHabitacion(int); //realizar res
 		list<std::string> obtenerHuespedesRegistrados();//realizar res
 		void seleccionarHuesped(std::string);//realizar res
