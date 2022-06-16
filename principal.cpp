@@ -785,7 +785,6 @@ void consultaEstadia(){
     cout << "Hostal asociado: " << EstSeleccionada->getHostal() <<endl;
     cout << "Habitacion asociada: " << EstSeleccionada->getHabitacion() <<endl;
     cout << "Codigo de la reserva asociada: "<< EstSeleccionada->getCod()<<endl;
-    cout << "Promo: "<<EstSeleccionada->getPromo()<<endl;
     cout << "¿Desea ver la calificacion de la estadía y la respuesta del empleado? Ingrese 1 si lo desea y 0 en caso contrario."<<endl;
     bool VerCalificacion;
     cin >> VerCalificacion;
