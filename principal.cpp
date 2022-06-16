@@ -758,8 +758,8 @@ void consultaEstadia(){
     int Codigo;
     cout << "Código de la reserva asociada: " <<endl; cin >> Codigo;
     std::string emailHuesp;
+    cout << "Email del huesped asociado:" <<endl; 
     getline(cin >> ws, emailHuesp);
-    cout << "Email del huesped asociado:" <<endl; cin >> emailHuesp;
     DTIdEstadia estadia;
     for (list<DTIdEstadia>::iterator i = IdEstadia.begin(); i != IdEstadia.end(); i++){
         std::string email = (*i).getEmail();
