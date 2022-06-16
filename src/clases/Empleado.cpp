@@ -63,7 +63,8 @@ void Empleado::AsignarEmpleadoAHostal(CargoEmpleado* cargoEmp,Hostal* host){
 }
 
 DTEmpleado Empleado::getDTEmpleado(){
-	return DTEmpleado(nombre,email,cargo);
+	DTEmpleado emp = DTEmpleado(nombre,email,cargo);
+	return emp;
 }
 
 void Empleado::notificar(Calificacion* cal){
