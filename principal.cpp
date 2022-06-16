@@ -180,7 +180,7 @@ void asignarEmpleadoAHostal(){
     }
     string mailEmp;
     int cargo;    
-    cout << "Ingrese el nombre del empleado elegido: ";
+    cout << "Ingrese el email del empleado elegido: ";
     getline(cin >> ws, mailEmp);
     cout << "'1' para asignar el cargo Administracion" << endl;
     cout << "'2' para asignar el cargo Limpieza" << endl;
