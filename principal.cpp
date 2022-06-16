@@ -125,7 +125,38 @@ void altaHostal(){
     ctrlHostal->agregarHostal(nombre,direccion,telefono);
 }
 
-void altaHabitacion(){}
+void altaHabitacion(){
+    IHostal *ctrlHostal = fabrica->obtenerControladorHostal();
+    set<std::string> nombres= ctrlHostal->ObtenerNombreHostales();
+    cout << "Los hostales registrados en el sistema son:" << endl;
+    for (auto it=nombres.begin();it!=nombres.end();++it){
+        cout << "Nombre del hostal: " << (*it)<<endl;
+    }
+    string nombreHostal;
+    cout << "Ingrese el nombre del hostal elegido: "<<endl;
+    getline(cin >> ws, nombreHostal);
+    int num;
+    cout << "Ingrese el numero de habitación: "<<endl;
+    cin>> num;
+    float precio;
+    cout << "Ingrese el precio de dicha habitación: "<<endl;
+    cin>> precio;
+    int capacidad;
+    cout << "Ingrese la capacidad de dicha habitación: "<<endl;
+    cin>> capacidad;
+    //muestro algo antes de preguntar si confirma o cancela?
+    ctrlHostal->asignarHab(nombreHostal,num, precio, capacidad);
+    cout << "Ingrese 1 para asignar la habitación o 0 para cancelarla: ";
+    bool cual;
+    cin >> cual;
+    if (cual==1){
+        ctrlHostal->registrarHab();
+        cout << "Habitación asignada con exito.";
+    } else {
+        ctrlHostal->cancelarAltaHabitacion();
+        cout << "Habitación no asignada.";
+    }
+}
 
 void asignarEmpleadoAHostal(){
     IHostal *ctrlHostal = fabrica->obtenerControladorHostal();
@@ -297,9 +328,48 @@ void consultarTop3Hostales(){
     
 }
 
-void registrarEstadia(){}
+void registrarEstadia(){
+    IHostal *ctrlHostal = fabrica->obtenerControladorHostal();
+    set<std::string> nombres= ctrlHostal->ObtenerNombreHostales();
+    cout << "Los hostales registrados en el sistema son:" << endl;
+    for (auto it=nombres.begin();it!=nombres.end();++it){
+        cout << "Nombre del hostal: " << (*it)<<endl;
+    }
+    string nombreHostal;
+    cout << "Ingrese el nombre del hostal elegido: "<<endl;
+    getline(cin >> ws, nombreHostal);
+    std::string email;
+    cout << "Ingrese el email del huesped: "<< endl;
+    cin >> email;
+    int promo;
+    cout << "Si hay promo ingresarla y 0 en caso contrario: ";
+    cin >> promo;
+    set<DTReserva*> reservasNC = ctrlHostal->ObtenerReservasNC(nombreHostal, email, promo); //deevolver solo el codigo
+    cout << "Los reservas no canceladas en el sistema son:" << endl;
+    for (auto it=reservasNC.begin();it!=reservasNC.end();++it){
+        cout << (*it)->getCodigo() << endl; //ver que mas mostrar
+        }
+    int codigo;
+    cout << "Ingresar el codigo de la reserva no cancelada elegida:" << endl;
+    cin >>codigo;
+    ctrlHostal->ReservaNCElegida(codigo);
+}
 
-void finalizarEstadia(){}
+void finalizarEstadia(){
+    IHostal *ctrlHostal = fabrica->obtenerControladorHostal();
+    set<std::string> nombres= ctrlHostal->ObtenerNombreHostales();
+    cout << "Los hostales registrados en el sistema son:" << endl;
+    for (auto it=nombres.begin();it!=nombres.end();++it){
+        cout << "Nombre del hostal: " << (*it)<<endl;
+    }
+    string nombreHostal;
+    cout << "Ingrese el nombre del hostal elegido: "<<endl;
+    getline(cin >> ws, nombreHostal);
+    std::string email;
+    cout << "Ingrese el email del huesped: "<< endl;
+    cin >> email;
+    ctrlHostal->DatosHuesped(nombreHostal, email);
+}
 
 void calificarEstadia(){
     IHostal *ctrlHostal = fabrica->obtenerControladorHostal();
@@ -475,7 +545,21 @@ void bajaReserva(){
     }
 }
 
-void modificarFechaSistema(){}
+void modificarFechaSistema(){
+    SingletonFechaHora *FH = SingletonFechaHora::getInstance();
+    int año, mes, dia, hora, minutos;
+    cout<< "Ingresar año:"<<endl;
+    cin>> año;
+    cout<< "Ingresar mes:"<<endl;
+    cin>> mes;
+    cout<< "Ingresar dia:"<<endl;
+    cin>> dia;
+    cout<< "Ingresar hora:"<<endl;
+    cin>> hora;
+    cout<< "Ingresar minutos:"<<endl;
+    cin >> minutos;
+    FH->actualizarFechaSistema(año,mes,dia,hora, minutos);
+}
 
 void SuscribirseaNotificaciones(){
     IHostal *ctrlHostal = fabrica->obtenerControladorHostal();
