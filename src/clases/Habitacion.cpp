@@ -48,16 +48,16 @@ DTHabitacion Habitacion::getHabitacion(){
 }
 
 bool Habitacion::consultarReservas(DTFecha desde, DTFecha hasta){ //ADE - REVISAR Q FUNCIONE BIBEN.
-    bool estaOcupada = false; 
+    bool estaLibre = true; 
 	auto it=ColReservas.begin();
-      while (it!=ColReservas.end() && !estaOcupada) {
+      while (it!=ColReservas.end() && estaLibre) {
           bool x = hasta.compararFecha(hasta,it->second->getCheckIn()); //no se si es hasta. (ade)
           bool y = desde.compararFecha(desde,it->second->getCheckOut()); //no se si es desde. (ade)
           if (x != true && y != true) 
-            estaOcupada = true;
+            estaLibre = false;
           it++;
       }
-return estaOcupada;
+return estaLibre;
 }
 
 void Habitacion::asociarResAHab(Reserva* res){
