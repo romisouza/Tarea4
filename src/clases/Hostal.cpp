@@ -189,20 +189,13 @@ void Hostal::AgregarEmpleadoAHostal(Empleado* emp) {
 list<DTReservaComp*> Hostal::ObtenerReservas(){
 	list<DTReservaComp*> dtreservas;
 	auto iter = ColReservas.begin();
-	if(iter!=ColReservas.end())
-		while(iter!=ColReservas.end()){
-			Reserva* res = iter->second;
-			DTReservaComp* dtres=res->getDTReservaComp();
-			dtreservas.push_back(dtres);
-			iter++;
-		}
-	else{
+	while(iter!=ColReservas.end()){
 		Reserva* res = iter->second;
-		DTReservaComp* dtres= res->getDTReservaComp();
+		DTReservaComp* dtres=res->getDTReservaComp();
 		dtreservas.push_back(dtres);
-	} 
-return dtreservas;
-
+		iter++;
+	}		
+	return dtreservas;
 }
 
 list<DTCalificacion> Hostal::obtenerCalificaciones(){
