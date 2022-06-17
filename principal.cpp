@@ -671,35 +671,56 @@ void consultaHostal(){
     for (auto it=nombres.begin();it!=nombres.end();++it){
         cout << "Nombre del hostal: " << (*it)<<endl;
     }
-    string nombreHostal;
+    std::string nombreHostal;
     cout << "Ingrese el nombre del hostal elegido: "<<endl;
     getline(cin >> ws, nombreHostal);
     DataHostalComp Hst=ctrlHostal->ObtenerHostalComp(nombreHostal);
-    cout<< "Nombre del hostal:"<< Hst.getNombre()<<endl;
+    cout<< "Nombre del hostal:"<< nombreHostal<<endl;
     cout<< "Direccion del hostal:"<< Hst.getDireccion()<<endl;
     cout<< "Telefono del hostal:"<< Hst.getTelefono()<<endl;
-    cout<< "Promedio del hostal:"<< Hst.getNombre()<<endl;
+    cout<< "Promedio del hostal:"<< Hst.getPromedio()<<endl;
     cout<< "Habitaciones del hostal:"<<endl;
-    for(auto it=Hst.getHabitaciones().begin();it!=Hst.getHabitaciones().end();it++){
+   
+    auto it=Hst.getHabitaciones().begin();
+    unsigned int tam= 1;
+    while(tam<= Hst.getHabitaciones().size()){
         cout<< "Numero de la habitacion:"<< (*it).second->getNumero()<<endl;
         cout<< "Capacidad de la habitacion:"<< (*it).second->getCapacidad()<<endl;
         cout<< "Precio de la habitacion :"<< (*it).second->getPrecioNoche()<<endl;
+        tam++;
+        ++it;
     }
-    cout<< "Reservas del hostal:";
-    for(auto it=Hst.getReservas().begin();it!=Hst.getReservas().end();it++){
-        cout<< "Codigo de la reserva:"<< (*it).second->getCodigo()<<endl;
-        cout<< "Fecha de entrada de la reserva:"<< (*it).second->getCheckIn().getDia()<<"/"<<(*it).second->getCheckIn().getMes()<<"/"<< (*it).second->getCheckIn().getAnio()<<endl ;
-        cout<< "Fecha de salida de la reserva:"<< (*it).second->getCheckOut().getDia()<<"/"<<(*it).second->getCheckOut().getMes()<<"/"<<(*it).second->getCheckOut().getAnio();
-        cout<< "Estado de la reserva:"<< (*it).second->getEstado()<<endl;
+    cout<< Hst.getReservas().size()<<endl;
+    if(Hst.getReservas().empty()){
+        cout<<"El hostal no tiene reservas realizadas."<<endl;
     }
-    cout<< "Comentarios del hostal:"<<endl;
-    for(auto it=Hst.getComentarios().begin();it!=Hst.getComentarios().end();it++){
-        cout<< "Puntaje:"<< (*it).getPuntaje()<<endl;
-        cout<< "Comentario de huesped:"<< (*it).getComentarioHuesp()<<endl;
-        if((*it).getComentarioHuesp()==""){
+    else{
+        tam=1;
+        auto it=Hst.getReservas().begin();
+        cout<< "Reservas del hostal:"<<endl;
+       while(tam<= Hst.getReservas().size()){
+            cout<< "Codigo de la reserva:"<< (*it).second->getCodigo()<<endl;
+            cout<< "Fecha de entrada de la reserva:"<< (*it).second->getCheckIn().getDia()<<"/"<<(*it).second->getCheckIn().getMes()<<"/"<< (*it).second->getCheckIn().getAnio()<<endl ;
+            cout<< "Fecha de salida de la reserva:"<< (*it).second->getCheckOut().getDia()<<"/"<<(*it).second->getCheckOut().getMes()<<"/"<<(*it).second->getCheckOut().getAnio()<<endl;
+            cout<< "Estado de la reserva:"<< (*it).second->getEstado()<<endl;
+            tam++;
+            ++it;
+        }
+    }
+    /*if(Hst.getComentarios().empty()){
+        cout<<"El hostal no tiene comentarios realizadas.";
+    }
+    else{
+        cout<< "Comentarios del hostal:"<<endl;
+        for(auto it=Hst.getComentarios().begin();it!=Hst.getComentarios().end();it++){
+            cout<< "Puntaje:"<< (*it).getPuntaje()<<endl;
             cout<< "Comentario de huesped:"<< (*it).getComentarioHuesp()<<endl;
-        }   
-    }
+            if((*it).getComentarioHuesp()==""){
+             cout<< "Comentario de huesped:"<< (*it).getComentarioHuesp()<<endl;
+            }   
+        }
+    }*/
+    
 }
 
 void consultaReserva(){

@@ -9,6 +9,9 @@ DataHostalComp::DataHostalComp(std::string nom,std::string dir,std::string tel,f
     direccion = dir;
     telefono = tel;
     promedio = prom;
+    map<int, Habitacion*> ColHabit;
+    map<int, Reserva*> ColRes;
+    list<DTCalificacion> ColCalif;
 }
 
 DataHostalComp::~DataHostalComp(){
@@ -44,7 +47,7 @@ list<DTCalificacion> DataHostalComp::getComentarios(){
 }
 
 void DataHostalComp::setHabitaciones(map<int, Habitacion*> habs) {
-    ColHabit=habs;
+    this->ColHabit=habs;
 }
 
 void DataHostalComp::setReservas(map<int, Reserva*> Res){
