@@ -70,7 +70,7 @@ void ControladorUsuario::IngresarEmpleado(std::string nombre,std::string email,s
 void ControladorUsuario::ConfirmarAltaUsuario(){//BIEN
 	bool esta;
 	if (tipoUsuario == 0) {//Si tipoUsuario es 0, entonces se ingreso un huesp
-		if (ColHuespedes.find(emailIngresado) == ColHuespedes.end())
+		if (ColHuespedes.find(emailIngresado) == ColHuespedes.end() && ColEmpleados.find(emailIngresado) == ColEmpleados.end() )
 			esta = false;
 		else 
 			esta = true;
@@ -80,10 +80,10 @@ void ControladorUsuario::ConfirmarAltaUsuario(){//BIEN
 			cantHuespedes++; 
 		}
 		else
-			throw std::invalid_argument("Ya existe un huesped con el mismo email.");   
+			throw std::invalid_argument("Ya existe un usuario con el mismo email.");   
 	}
 	else {
-		if (ColEmpleados.find(emailIngresado) == ColEmpleados.end())
+		if (ColEmpleados.find(emailIngresado) == ColEmpleados.end() && ColHuespedes.find(emailIngresado) == ColHuespedes.end())
 			esta = false;
 		else 
 			esta = true;
@@ -93,7 +93,7 @@ void ControladorUsuario::ConfirmarAltaUsuario(){//BIEN
 			cantEmpleados++;
 		}
 		else 
-			throw std::invalid_argument("Ya existe un empleado con el mismo email.");   
+			throw std::invalid_argument("Ya existe un usuario con el mismo email.");   
 		
 	}
 } 

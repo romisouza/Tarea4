@@ -134,7 +134,7 @@ list<DTHostalProm> ControladorHostal::ObtenerHostalesProm(){
 
 void ControladorHostal::ingresarDatosReserva(std::string nombreHostal, DTFecha in, DTFecha out, bool grupOind, int totalHuesp){ //LISTA
 	if (ColHostales.find(nombreHostal) == ColHostales.end() || in.compararFecha(out,in)) {
-		throw std::invalid_argument("Ocurrió un error con los datos ingresados."); 
+		throw std::invalid_argument("Se produjo un error con los datos ingresados."); 
 	} else {
 		nombreHostalIngresado = nombreHostal;
 		fechaInIngresada = in;

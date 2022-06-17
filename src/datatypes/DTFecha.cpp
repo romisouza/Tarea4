@@ -36,7 +36,7 @@ bool DTFecha::compararFecha(DTFecha a,DTFecha b){ // ASUMO Q SE USAN LAS 24HRS D
         if (a.anio == b.anio){
             if (a.mes == b.mes){
                 if (a.dia == b.dia){
-                    if (a.hora == a.hora){
+                    if (a.hora == b.hora){
                         if (a.minutos <= b.minutos)
                             return true;
                         else
