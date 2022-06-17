@@ -238,7 +238,7 @@ set<DTReserva*> Hostal::BuscarRes(std::string email){
 	set<DTReserva*> colReservasNC;
 	for(map<int,Reserva*>::iterator i= ColReservas.begin(); i != ColReservas.end(); i++){
 		Reserva* res = (*i).second;
-		colReservasNC = res->validarHuespedRegistrado(email);
+		/*colReservasNC = res->validarHuespedRegistrado(email);*/
 	}
 
 return colReservasNC;
