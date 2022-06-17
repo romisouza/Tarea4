@@ -51,7 +51,6 @@ set<DTReserva*> ReservaGrupal::validarHuespedRegistrado(std::string email){
             resultado.insert(resp);*/ //se agrega al retorno que va para colReservasNC
             } 
         }
-	}
     return resultado;
 }
 
