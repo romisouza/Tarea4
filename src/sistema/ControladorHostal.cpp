@@ -266,7 +266,7 @@ set<DTReserva*> ControladorHostal::ObtenerReservasNC(std::string nombreHostal, s
 		throw std::invalid_argument("Ocurrió un error con los datos ingresados."); 
 	}else{ //para recordar
 	Hostal* Hst =ColHostales.find(nombreHostal)->second;
-	hostalIngresado = Hst; //para recordar
+	this->hostalIngresado = Hst; //para recordar
 	set<DTReserva*> colReservasNC = Hst->BuscarRes(email);
 	return colReservasNC;
 	}
