@@ -228,6 +228,7 @@ void Hostal::CreateAddEstadia(DTFecha hs, int codigoRes){
 	colest.push_back(est);
 	res->setEstadia(colest);
 	res->setEstado(Cerrada);
+
 }
 
 void Hostal::buscarR(std::string email, DTFecha hs){
