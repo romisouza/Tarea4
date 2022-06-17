@@ -756,13 +756,13 @@ void consultaHostal(){
     cout<< "  - Telefono del hostal:"<< Hst.getTelefono()<<endl;
     cout<< "  - Promedio del hostal:"<< Hst.getPromedio()<<endl;
     cout<< "  - Habitaciones del hostal:"<<endl;
-   cout << "Las habitaciones del hostal son: "<<endl;
+    cout << "  - Habitaciones: "<<endl;
     auto it=Hst.getHabitaciones().begin();
     unsigned int tam= 1;
     while(tam<= Hst.getHabitaciones().size()){
-        cout<< "  - Numero de la habitacion:"<< (*it).second->getNumero()<<endl;
-        cout<< "  - Capacidad de la habitacion:"<< (*it).second->getCapacidad()<<endl;
-        cout<< "  - Precio de la habitacion :"<< (*it).second->getPrecioNoche()<<endl;
+        cout<< "    - Numero de la habitacion:"<< (*it).second->getNumero()<<endl;
+        cout<< "    - Capacidad de la habitacion:"<< (*it).second->getCapacidad()<<endl;
+        cout<< "    - Precio de la habitacion :"<< (*it).second->getPrecioNoche()<<endl;
         tam++;
         ++it;
     }
