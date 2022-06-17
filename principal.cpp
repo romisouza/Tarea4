@@ -154,7 +154,7 @@ void cargarDatosPrueba(){
     set<DTReserva*> reservasNC;
     DTFecha checkin;
 
-    reservasNC = ctrlHostal->ObtenerReservasNC("La posada del finger","sofi@mail.com",0);
+    reservasNC = ctrlHostal->ObtenerReservasNC("La posada del finger","sofi@mail.com");
     int codigo1;
     auto it1=reservasNC.begin();
     checkin =DTFecha(1,5,2022,18,00);
@@ -166,7 +166,7 @@ void cargarDatosPrueba(){
     }
     ctrlHostal->ReservaNCElegida(codigo1);
 
-    reservasNC = ctrlHostal->ObtenerReservasNC("El Pony Pisador","frodo@mail.com",0);
+    reservasNC = ctrlHostal->ObtenerReservasNC("El Pony Pisador","frodo@mail.com");
     int codigo2;
     auto it2=reservasNC.begin();
     checkin=DTFecha(4,1,2001,21,00);
@@ -178,7 +178,7 @@ void cargarDatosPrueba(){
     }
     ctrlHostal->ReservaNCElegida(codigo2);
 
-    reservasNC = ctrlHostal->ObtenerReservasNC("El Pony Pisador","sam@mail.com",0);
+    reservasNC = ctrlHostal->ObtenerReservasNC("El Pony Pisador","sam@mail.com");
     int codigo3;
     auto it3=reservasNC.begin();
     checkin=DTFecha(4,1,2001,21,00);
@@ -190,7 +190,7 @@ void cargarDatosPrueba(){
     }
     ctrlHostal->ReservaNCElegida(codigo3);
 
-    reservasNC = ctrlHostal->ObtenerReservasNC("El Pony Pisador","merry@mail.com",0);
+    reservasNC = ctrlHostal->ObtenerReservasNC("El Pony Pisador","merry@mail.com");
     int codigo4;
     auto it4=reservasNC.begin();
     checkin=DTFecha(4,1,2001,21,00);
@@ -202,7 +202,7 @@ void cargarDatosPrueba(){
     }
     ctrlHostal->ReservaNCElegida(codigo4);
 
-    reservasNC = ctrlHostal->ObtenerReservasNC("El Pony Pisador","pippin@mail.com",0);
+    reservasNC = ctrlHostal->ObtenerReservasNC("El Pony Pisador","pippin@mail.com");
     int codigo5;
     auto it5=reservasNC.begin();
     checkin=DTFecha(4,1,2001,21,00);
@@ -214,7 +214,7 @@ void cargarDatosPrueba(){
     }
     ctrlHostal->ReservaNCElegida(codigo5);
 
-    reservasNC = ctrlHostal->ObtenerReservasNC("Caverna Lujosa","seba@mail.com",0);
+    reservasNC = ctrlHostal->ObtenerReservasNC("Caverna Lujosa","seba@mail.com");
     int codigo6;
     auto it6=reservasNC.begin();
     checkin=DTFecha(7,6,2022,18,00);
