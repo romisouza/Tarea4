@@ -39,6 +39,8 @@ set<DTReserva*> ReservaGrupal::validarHuespedRegistrado(std::string email){
     bool encontre = true;
     set<Huesped*> mover = getHuespedes();
     for(auto i= mover.begin(); i != mover.end(); i++){
+        Huesped* mailhuesp = (*i);
+        std::string el = mailhuesp->getEmail();
         /*if(email == (*i)->getDTHuesped().getMail()){
             
             encontre = true;
