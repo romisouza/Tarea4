@@ -585,10 +585,12 @@ void registrarEstadia(){
     std::string email;
     cout << "Ingrese el email del huesped: "<< endl; //PARA MI HABRIA QUE MOSTRAR ANTES A LOS HUESPEDES
     cin >> email;
-    set<DTReserva*> reservasNC = ctrlHostal->ObtenerReservasNC(nombreHostal, email); //deevolver solo el codigo
-    cout << "Los reservas no canceladas en el sistema son:" << endl;
-    auto it=reservasNC.begin();
-    for (auto it=reservasNC.begin();it!=reservasNC.end();++it){
+    list<DTReserva*> reservasNC = ctrlHostal->ObtenerReservasNC(nombreHostal, email); //deevolver solo el codigo
+     if(reservasNC.empty()){
+        throw std::invalid_argument("No existen reservas no canceladas.");
+    }
+        cout << "Los reservas no canceladas en el sistema son:" << endl;
+       for (auto it=reservasNC.begin();it!=reservasNC.end();++it){
         DTReservaIndividual* ind = dynamic_cast<DTReservaIndividual*>((*it));
         if(ind!=NULL){
             cout << (ind)->getCodigo() << endl;

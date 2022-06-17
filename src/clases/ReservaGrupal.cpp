@@ -32,8 +32,8 @@ DTReserva* ReservaGrupal::getDTReserva(){
     return Res;
 }
 
-set<DTReserva*> ReservaGrupal::validarHuespedRegistrado(std::string email){
-    set<DTReserva*> resultado;
+DTReserva* ReservaGrupal::validarHuespedRegistrado(std::string email){
+    DTReserva* resultado;
     set<Huesped*> mover = getHuespedes();
     //cout << getHuespedes().size();
     for(auto i= mover.begin(); i != mover.end(); i++){
@@ -43,7 +43,7 @@ set<DTReserva*> ReservaGrupal::validarHuespedRegistrado(std::string email){
             EstadoReserva est = getEstado();
             if (est != Cancelada){
             DTReserva* resp = getDTReserva();
-            resultado.insert(resp);
+            resultado = resp;
             }
         }
     

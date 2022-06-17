@@ -39,7 +39,7 @@ class IHostal{
 		virtual void cancelarAltaReserva() =0;//realizar res (cancelarReserva)
 		virtual list<std::string> ConsultarTop3Hostal() =0;//Consultartop3
 		virtual list<DTCalificacion> ObtenerCalificaciones(std::string) =0;//Consultartop3 (ObtenerHostal)
-		virtual set<DTReserva*> ObtenerReservasNC(std::string, std::string) =0;//registrar estadia (DatosHuesped)
+		virtual list<DTReserva*> ObtenerReservasNC(std::string, std::string) =0;//registrar estadia (DatosHuesped)
 		virtual void ReservaNCElegida(int) =0;//registrar estadia
 		virtual void DatosHuesped(std::string,std::string) =0;//finalizar estadia NO SE QUE HACE LA FUNCION XD
 		virtual void SeleccionarHostal(std::string) =0;//calificar estadia
