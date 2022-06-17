@@ -158,7 +158,7 @@ void cargarDatosPrueba(){
     set<DTReserva*> reservasNC;
     DTFecha checkin;
 
-    reservasNC = ctrlHostal->ObtenerReservasNC("La posada del finger","sofi@mail.com");
+    reservasNC = ctrlHostal->ObtenerReservasNC("La posada del finger","sofia@mail.com");
     int codigo1;
     auto it1=reservasNC.begin();
     checkin =DTFecha(1,5,2022,18,00);
