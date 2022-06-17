@@ -520,6 +520,8 @@ void registrarEstadia(){
     cin >> email;
     set<DTReserva*> reservasNC = ctrlHostal->ObtenerReservasNC(nombreHostal, email); //deevolver solo el codigo
     cout << "Los reservas no canceladas en el sistema son:" << endl;
+    auto it=reservasNC.begin();
+    DTReservaIndividual* ind = dynamic_cast<DTReservaIndividual*> ((*it));
     for (auto it=reservasNC.begin();it!=reservasNC.end();++it){
         cout << (*it)->getCodigo() << endl; //ver que mas mostrar
         }

@@ -10,7 +10,7 @@ class DTReservaIndividual:public DTReserva{
     private:
     public:
         DTReservaIndividual(int, DTFecha, DTFecha,EstadoReserva);
-        ~DTReservaIndividual();
+        virtual ~DTReservaIndividual();
 };
 
 #endif
