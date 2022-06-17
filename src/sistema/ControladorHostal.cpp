@@ -31,6 +31,7 @@ void ControladorHostal::agregarHostal(std::string nombre, std::string direccion,
 		throw std::invalid_argument("Ya existe un hostal registrado con ese nombre.");
 	}
 }
+
 set<std::string> ControladorHostal::ObtenerNombreHostales() {
 	set<string> hostales;
 	for( map<std::string,Hostal*>::iterator i= ColHostales.begin(); i != ColHostales.end(); i++){
@@ -352,17 +353,14 @@ list<DTCal> ControladorHostal::ObtenerComentariosAResponder(std::string email){
 	return res;
 }
 
-DataHostalComp ControladorHostal::ObtenerHostalComp(std::string nombreHostal){
+DataHostalComp ControladorHostal::ObtenerHostalComp(string nombreHostal){
 	if (ColHostales.find(nombreHostal) == ColHostales.end()) {
 		throw std::invalid_argument("No existe hostal con el nombre ingresado"); 
 	}
 	else{
-	Hostal* Hst=ColHostales.find(nombreHostal)->second;
-	DataHostalComp HstSel;
-	if (Hst->getNombre()== nombreHostal){
-		HstSel= Hst->getDTHostal();
-	}
-	return HstSel;
+		Hostal* Hst=ColHostales.find(nombreHostal)->second;
+		DataHostalComp HstSel=Hst->getDTHostal();
+		return HstSel;
 	}
 }
 

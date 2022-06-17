@@ -106,18 +106,13 @@ void Hostal::AgregarComentarios(std::string comentario, int puntaje, DTFecha hrs
 
 DataHostalComp Hostal::getDTHostal(){ 
 	DataHostalComp Hst=DataHostalComp(getNombre(),getDireccion(),getTelefono(),getPromedio());
-	map<int,Reserva*> ResHst;
 	map<int,Reserva*> Res=getColReservas();
-	for(auto it=Res.begin();it!=Res.end();it++){
-		ResHst.emplace(it->first,it->second);
-	}
-	Hst.setReservas(ResHst);
-	map<int, Habitacion*> HabHst;
+	Hst.setReservas(Res);
 	map<int, Habitacion*> Hab=getColHabitaciones();
-	for(auto itH=Hab.begin();itH!=Hab.end();itH++){
-		HabHst.emplace(itH->first,itH->second);
+	Hst.setHabitaciones(Hab);
+	/*if(Hst.getComentarios().empty()){
+		throw std::invalid_argument("No existe comentarios en el hostal ingresado");
 	}
-	Hst.setHabitaciones(HabHst);
 	list<Calificacion*> Cal=getColCal();
 	list<DTCalificacion> Cali;
 	list<Calificacion*>:: iterator it=Cal.begin();
@@ -126,7 +121,7 @@ DataHostalComp Hostal::getDTHostal(){
 		Cali.push_back(aux);
 		it++;
 	}
-	Hst.getComentarios()=Cali;
+	Hst.setComentarios(Cali);*/
 	return Hst; 
 }
 
