@@ -62,6 +62,7 @@ void cargarDatosPrueba(){
     IUsuario* ctrlUsuario = fabrica->obtenerControladorUsuario();
     IHostal* ctrlHostal = fabrica->obtenerControladorHostal();
     //Ingreso los huespedes al sistema
+    ctrlUsuario->setTipoUsuario(0);
     ctrlUsuario->IngresarHuesped("Sofia","sofia@mail.com","123",1);
     ctrlUsuario->ConfirmarAltaUsuario();
     ctrlUsuario->IngresarHuesped("Frodo","frodo@mail.com","123",1);
@@ -75,6 +76,7 @@ void cargarDatosPrueba(){
     ctrlUsuario->IngresarHuesped("Seba","seba@mail.com","123",1);
     ctrlUsuario->ConfirmarAltaUsuario();
     //Ingreso los empleados al sistema
+    ctrlUsuario->setTipoUsuario(1);
     ctrlUsuario->IngresarEmpleado("Emilia","emilia@mail.com","123");
     ctrlUsuario->ConfirmarAltaUsuario();
     ctrlUsuario->IngresarEmpleado("Leonardo","leo@mail.com","123");
@@ -102,6 +104,7 @@ void cargarDatosPrueba(){
     ctrlHostal->registrarHab();
     ctrlHostal->asignarHab("El Pony Pisador",1,9,5);
     ctrlHostal->registrarHab();
+
     //Asigno los empleados a los hostales
     list<DTEmpleado> HostalSeleccionado;
     CargoEmpleado* cargo;
@@ -124,7 +127,7 @@ void cargarDatosPrueba(){
     //Realizo las reservas
     DTFecha in,out;
     in = DTFecha(1,5,2022,14,00);
-     out = DTFecha(10,5,2022,10,00);
+    out = DTFecha(10,5,2022,10,00);
     ctrlHostal->ingresarDatosReserva("La posada del finger",in,out,0,1);
     ctrlHostal->seleccionarHabitacion(1);
     ctrlHostal->seleccionarHuesped("sofia@mail.com");
@@ -150,11 +153,11 @@ void cargarDatosPrueba(){
     ctrlHostal->seleccionarHabitacion(1);
     ctrlHostal->seleccionarHuesped("seba@mail.com");
     ctrlHostal->confirmarAltaReserva();
-    //Estadias
+   //Estadias
     set<DTReserva*> reservasNC;
     DTFecha checkin;
 
-    reservasNC = ctrlHostal->ObtenerReservasNC("La posada del finger","sofi@mail.com",0);
+    reservasNC = ctrlHostal->ObtenerReservasNC("La posada del finger","sofi@mail.com");
     int codigo1;
     auto it1=reservasNC.begin();
     checkin =DTFecha(1,5,2022,18,00);
@@ -166,7 +169,7 @@ void cargarDatosPrueba(){
     }
     ctrlHostal->ReservaNCElegida(codigo1);
 
-    reservasNC = ctrlHostal->ObtenerReservasNC("El Pony Pisador","frodo@mail.com",0);
+    reservasNC = ctrlHostal->ObtenerReservasNC("El Pony Pisador","frodo@mail.com");
     int codigo2;
     auto it2=reservasNC.begin();
     checkin=DTFecha(4,1,2001,21,00);
@@ -178,7 +181,7 @@ void cargarDatosPrueba(){
     }
     ctrlHostal->ReservaNCElegida(codigo2);
 
-    reservasNC = ctrlHostal->ObtenerReservasNC("El Pony Pisador","sam@mail.com",0);
+    reservasNC = ctrlHostal->ObtenerReservasNC("El Pony Pisador","sam@mail.com");
     int codigo3;
     auto it3=reservasNC.begin();
     checkin=DTFecha(4,1,2001,21,00);
@@ -190,7 +193,7 @@ void cargarDatosPrueba(){
     }
     ctrlHostal->ReservaNCElegida(codigo3);
 
-    reservasNC = ctrlHostal->ObtenerReservasNC("El Pony Pisador","merry@mail.com",0);
+    reservasNC = ctrlHostal->ObtenerReservasNC("El Pony Pisador","merry@mail.com");
     int codigo4;
     auto it4=reservasNC.begin();
     checkin=DTFecha(4,1,2001,21,00);
@@ -202,7 +205,7 @@ void cargarDatosPrueba(){
     }
     ctrlHostal->ReservaNCElegida(codigo4);
 
-    reservasNC = ctrlHostal->ObtenerReservasNC("El Pony Pisador","pippin@mail.com",0);
+    reservasNC = ctrlHostal->ObtenerReservasNC("El Pony Pisador","pippin@mail.com");
     int codigo5;
     auto it5=reservasNC.begin();
     checkin=DTFecha(4,1,2001,21,00);
@@ -214,7 +217,7 @@ void cargarDatosPrueba(){
     }
     ctrlHostal->ReservaNCElegida(codigo5);
 
-    reservasNC = ctrlHostal->ObtenerReservasNC("Caverna Lujosa","seba@mail.com",0);
+    reservasNC = ctrlHostal->ObtenerReservasNC("Caverna Lujosa","seba@mail.com");
     int codigo6;
     auto it6=reservasNC.begin();
     checkin=DTFecha(7,6,2022,18,00);
@@ -230,6 +233,7 @@ void cargarDatosPrueba(){
     ctrlHostal->DatosHuesped("La posada del finger", "sofia@mail.com");
     ctrlHostal->DatosHuesped("El Pony Pisador", "frodo@mail.com");
     ctrlHostal->DatosHuesped("Caverna Lujosa", "seba@mail.com");
+    
     //calificar estadia
 
 }
