@@ -48,6 +48,7 @@ set<DTReserva*> ReservaGrupal::validarHuespedRegistrado(std::string email){
             resultado.insert(resp);
             }
         }
+    
     }
 return resultado;
 }
