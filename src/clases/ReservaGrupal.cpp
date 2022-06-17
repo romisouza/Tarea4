@@ -20,8 +20,6 @@ int ReservaGrupal::getTotalHuesp(){
     return TotalHuesp;
 }
 
-ReservaGrupal::~ReservaGrupal() {
-}
 
 DTReservaComp* ReservaGrupal::getDTReservaComp(){
     //DTReservaComp *res;
@@ -36,21 +34,19 @@ DTReserva* ReservaGrupal::getDTReserva(){
 
 set<DTReserva*> ReservaGrupal::validarHuespedRegistrado(std::string email){
     set<DTReserva*> resultado;
-    bool encontre = false;
     set<Huesped*> mover = getHuespedes();
+    cout << getHuespedes().size();
     for(auto i= mover.begin(); i != mover.end(); i++){
-        Huesped* mailhuesp = (*i);
-        std::string el = mailhuesp->getEmail();
-        if(email == el ){
-            encontre = true;
-        }
-        if (encontre){
+        //Huesped* mailhuesp = (*i);
+        //std::string el = mailhuesp->getEmail();
+        if(email == (*i)->getEmail()){
             EstadoReserva est = getEstado();
             if (est != Cancelada){
-                DTReserva* resp = getDTReserva();
-                resultado.insert(resp); //se agrega al retorno que va para colReservasNC
-            } 
+            DTReserva* resp = getDTReserva();
+            resultado.insert(resp);
+            }
         }
+    
     }
 return resultado;
 }
