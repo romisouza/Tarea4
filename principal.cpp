@@ -949,7 +949,7 @@ void bajaReserva(){
 }
 
 void modificarFechaSistema(){
-    SingletonFechaHora *FH = SingletonFechaHora::getInstance();
+    IHostal *ctrlHostal = fabrica->obtenerControladorHostal();
     int anio, mes, dia, hora, minutos;
     cout<< "Ingresar año:"<<endl;
     cin>> anio;
@@ -961,7 +961,7 @@ void modificarFechaSistema(){
     cin>> hora;
     cout<< "Ingresar minutos:"<<endl;
     cin >> minutos;
-    FH->actualizarFechaSistema(anio,mes,dia,hora, minutos);
+    ctrlHostal->actualizarFS(anio,mes,dia,hora, minutos);
 }
 
 void SuscribirseaNotificaciones(){

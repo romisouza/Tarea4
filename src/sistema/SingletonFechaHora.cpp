@@ -16,7 +16,7 @@ DTFecha SingletonFechaHora::FechaHoraSistema(){
     return fechaActual;
 }
 
-void SingletonFechaHora::actualizarFechaSistema(int anio,int mes,int dia ,int hora,int minutos){
-DTFecha nueva = DTFecha(dia ,mes ,anio ,hora ,minutos);
-fechaActual = nueva;
+void SingletonFechaHora::actualizarFechaSistema(int anio,int mes,int dia ,int hora ,int minutos){
+    DTFecha nueva = DTFecha(anio,mes,dia,hora,minutos);
+    fechaActual = nueva;
 }

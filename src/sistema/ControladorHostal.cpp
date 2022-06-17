@@ -506,3 +506,8 @@ void ControladorHostal::eliminarSuscripcion(string emp){
 	Empleado* EmpSel=cu->buscarEmpleado(emp);
 	eliminarObserver(EmpSel);
 }
+
+void ControladorHostal::actualizarFS(int anio,int mes,int dia ,int hora,int minutos){
+	SingletonFechaHora* FH = SingletonFechaHora::getInstance();
+	FH->actualizarFechaSistema(anio, mes, dia, hora, minutos);
+}

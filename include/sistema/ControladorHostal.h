@@ -19,6 +19,7 @@
 #include "../../include/sistema/ControladorUsuario.h"
 #include "../../include/sistema/SingletonFechaHora.h"
 #include "../../include/sistema/IObserver.h"
+#include "../../include/sistema/SingletonFechaHora.h"
 
 using namespace std;
 
@@ -109,6 +110,7 @@ class ControladorHostal:public IHostal {
 		void eliminarSuscripcion(string emp);
 		list<DTEmpleado> ObtenerEmpleados();
 		void CancelarBajaReserva();//baja reserva
+		void actualizarFS(int,int,int,int,int); //modificarFechaSistema
 };
 
 #endif

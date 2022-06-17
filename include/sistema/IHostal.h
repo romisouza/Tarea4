@@ -68,6 +68,7 @@ class IHostal{
 		virtual void eliminarSuscripcion(string emp) =0;
 		virtual list<DTEmpleado> ObtenerEmpleados() =0;
 		virtual void CancelarBajaReserva() =0;//baja reserva
+		virtual void actualizarFS(int,int,int,int,int)=0;
 };
 
 #endif
