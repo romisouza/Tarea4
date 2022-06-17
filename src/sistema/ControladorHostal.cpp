@@ -268,7 +268,6 @@ set<DTReserva*> ControladorHostal::ObtenerReservasNC(std::string nombreHostal, s
 	Hostal* Hst =ColHostales.find(nombreHostal)->second;
 	this->hostalIngresado = Hst; //para recordar
 	set<DTReserva*> colReservasNC = Hst->BuscarRes(email);
-	set<DTReserva*> colReservasNC;
 
 	return colReservasNC;
 	}
