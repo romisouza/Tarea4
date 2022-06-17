@@ -394,21 +394,24 @@ DataEstadia* ControladorHostal::ObtenerinfoEstadia(DTIdEstadia estadia){
 }
 
 DTCalificacion ControladorHostal::MostrarCalificacion(){
-	DTCalificacion cal;
-	std::string host = hostalRecordado;
-	Hostal* h = ColHostales.find(hostalRecordado)->second;
-	DataEstadia* estadia = estadiaRecordada;
-	int codigo = estadia->getCod();
-	Reserva* res = h->getColReservas().find(estadia->getCod())->second;
-	list<Estadia*> est = res->getEstadia();
-	for (list<Estadia*>::iterator i = est.begin(); i != est.end();i++){
-		string email = (*i)->getHuesp()->getEmail();
-		string mail = estadia->getHuesped();
-		if (email.compare(mail) == 0){
-			cal= (*i)->getCal()->getDTCalificacion();
+		DTCalificacion cal;
+		Hostal* h = ColHostales.find(hostalRecordado)->second;
+		DataEstadia* estadia = estadiaRecordada;
+		int codigo = estadia->getCod();
+		Reserva* res = h->getColReservas().find(codigo)->second;
+		list<Estadia*> est = res->getEstadia();
+		for (list<Estadia*>::iterator i = est.begin(); i != est.end();i++){
+			string email = (*i)->getHuesp()->getEmail();
+			string mail = estadia->getHuesped();
+			if ((*i)->getCal() != NULL) {
+				if (email.compare(mail) == 0){
+					cal= (*i)->getCal()->getDTCalificacion();
+				}
+			} else
+			 	  throw std::invalid_argument("No existe una calificacion para esta estadia."); 
+
 		}
-	}
-	return cal;
+		return cal;
 }
 
 DTReserva* ControladorHostal::MostrarInfoReserva(std::string nombreHostal, int codigoRes){
