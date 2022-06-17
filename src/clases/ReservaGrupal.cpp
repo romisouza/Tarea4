@@ -79,6 +79,3 @@ void ReservaGrupal::validarHuesped(string email, DTFecha hs){
     }
 }
 
-ReservaGrupal::~ReservaGrupal(){
-
-}
