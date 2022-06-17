@@ -599,6 +599,7 @@ void registrarEstadia(){
             cout << (ind)->getCodigo() << endl; //ver que mas mostrar
         }
     }
+}
     int codigo;
     cout << "Ingresar el codigo de la reserva no cancelada elegida:" << endl;
     cin >>codigo;
