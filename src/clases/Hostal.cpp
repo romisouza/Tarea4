@@ -250,6 +250,7 @@ Reserva* Hostal::reservar(DTFecha horaactual, int cod, DTFecha desde, DTFecha ha
 	if (grupOind == 1) {//es grupal
 		ReservaGrupal *res = new ReservaGrupal(cod,desde,hasta,horaactual,totalHuesp);
 		res->setHues(huesp);
+		acompaniantes.insert(huesp);
 		ColReservas.insert({cod,res});
 		res->setHuespedes(acompaniantes);
 		return res;

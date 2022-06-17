@@ -35,7 +35,7 @@ DTReserva* ReservaGrupal::getDTReserva(){
 set<DTReserva*> ReservaGrupal::validarHuespedRegistrado(std::string email){
     set<DTReserva*> resultado;
     set<Huesped*> mover = getHuespedes();
-    cout << getHuespedes().size();
+    //cout << getHuespedes().size();
     for(auto i= mover.begin(); i != mover.end(); i++){
         //Huesped* mailhuesp = (*i);
         //std::string el = mailhuesp->getEmail();
@@ -81,3 +81,6 @@ void ReservaGrupal::validarHuesped(string email, DTFecha hs){
     }
 }
 
+ReservaGrupal::~ReservaGrupal(){
+
+}
