@@ -588,7 +588,7 @@ void registrarEstadia(){
     list<DTReserva*> reservasNC = ctrlHostal->ObtenerReservasNC(nombreHostal, email); //deevolver solo el codigo
      if(reservasNC.empty()){
         throw std::invalid_argument("No existen reservas no canceladas.");
-        }else{
+    }
         cout << "Los reservas no canceladas en el sistema son:" << endl;
        for (auto it=reservasNC.begin();it!=reservasNC.end();++it){
         DTReservaIndividual* ind = dynamic_cast<DTReservaIndividual*>((*it));
@@ -599,7 +599,6 @@ void registrarEstadia(){
             cout << (ind)->getCodigo() << endl; //ver que mas mostrar
         }
     }
-}
     int codigo;
     cout << "Ingresar el codigo de la reserva no cancelada elegida:" << endl;
     cin >>codigo;
