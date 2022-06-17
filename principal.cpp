@@ -1074,6 +1074,9 @@ void modificarFechaSistema(){
     cin>> hora;
     cout<< "Ingresar minutos:"<<endl;
     cin >> minutos;
+    if (dia < 1 || dia>31 || mes<1 || mes>12 || hora<1 || hora>24 || minutos<0 || minutos>59) {
+        throw std::invalid_argument("La fecha/hora ingresada no es correcta.");
+    }
     ctrlHostal->actualizarFS(anio,mes,dia,hora, minutos);
     cout<< "¡ACTUALIZACION DE FECHA Y HORA DEL SISTEMA REALIZADA CON EXITO!"<<endl;
 }
