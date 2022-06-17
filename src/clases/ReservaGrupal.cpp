@@ -68,7 +68,7 @@ void ReservaGrupal::validarHuesped(string email, DTFecha hs){
             if(hay){
                 DTFecha checkoutEst = estEncontrada->getCheckOut();
                 DTFecha comparar;
-                bool Ter = comparar.compararFecha(checkoutEst, hs);
+                bool Ter = comparar.compararFecha(checkoutEst, hs);//true  si a<= b
                     if (!Ter){
                         estEncontrada->setCheckOut(hs);
                     }
