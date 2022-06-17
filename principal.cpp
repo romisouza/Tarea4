@@ -962,6 +962,7 @@ void modificarFechaSistema(){
     cout<< "Ingresar minutos:"<<endl;
     cin >> minutos;
     ctrlHostal->actualizarFS(anio,mes,dia,hora, minutos);
+    cout<< "¡ACTUALIZACION DE FECHA Y HORA DEL SISTEMA REALIZADA CON EXITO!"<<endl;
 }
 
 void SuscribirseaNotificaciones(){
