@@ -236,6 +236,48 @@ void cargarDatosPrueba(){
     ctrlHostal->DatosHuesped("Caverna Lujosa", "seba@mail.com");
     
     //calificar estadia
+    DTIdEstadia estadia;
+    list<DTIdEstadia> est;
+    std::string comentario;
+
+    ctrlHostal->actualizarFS(2022,5,11,18,00);
+    ctrlHostal->SeleccionarHostal("La posada del finger");
+    est = ctrlHostal->ListaEstadiasFinalizadas("sofia@mail.com");
+    for (list<DTIdEstadia>::iterator i = est.begin(); i != est.end(); i++){
+        if (codigo1 == (*i).getCodigo())
+            estadia = (*i);
+    }
+    ctrlHostal->SeleccionarEstadia(estadia);
+    comentario = "Un poco caro para lo que ofrecen.El famoso gimnasio era una caminadora (que hacía tremendo ruido) y 2 pesas, la piscina parecía el lago del Parque Rodó y el desayuno eran 2 tostadas con mermelada. Internet se pasaba cayendo. No vuelvo";
+    ctrlHostal->ConfirmarCalificacion(comentario, 3);
+
+    ctrlHostal->actualizarFS(2001,1,1,3,00);
+    ctrlHostal->SeleccionarHostal("El Pony Pisador");
+    est = ctrlHostal->ListaEstadiasFinalizadas("frodo@mail.com");
+    for (list<DTIdEstadia>::iterator i = est.begin(); i != est.end(); i++){
+        if (codigo2 == (*i).getCodigo())
+            estadia = (*i);
+    }
+    ctrlHostal->SeleccionarEstadia(estadia);
+    comentario = "Se pone peligroso de noche, no recomiendo. Además no hay caja fuerte para guardar anillos.";
+    ctrlHostal->ConfirmarCalificacion(comentario, 2);
+
+    ctrlHostal->actualizarFS(2022,6,15,23,00);
+    ctrlHostal->SeleccionarHostal("Caverna Lujosa ");
+    est = ctrlHostal->ListaEstadiasFinalizadas("seba@mail.com");
+    for (list<DTIdEstadia>::iterator i = est.begin(); i != est.end(); i++){
+        if (codigo6 == (*i).getCodigo())
+            estadia = (*i);
+    }
+    ctrlHostal->SeleccionarEstadia(estadia);
+    comentario = "Había pulgas en la habitación. Que lugar más mamarracho!!";
+    ctrlHostal->ConfirmarCalificacion(comentario, 1);
+
+    //comentar calificacion
+    ctrlHostal->actualizarFS(2001,1,6,15,00);
+    list<DTCal> comentaResponder = ctrlHostal->ObtenerComentariosAResponder("barli@mail.com");
+    std::string respuesta = "Desapareció y se fue sin pagar.";
+    ctrlHostal-> ResponderComentario("frodo@mail.com",codigo2,respuesta);
 
 }
 
