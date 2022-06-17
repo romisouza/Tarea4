@@ -5,3 +5,7 @@
 
 DTReservaIndividual::DTReservaIndividual(int codigo, DTFecha checkin, DTFecha checkout,EstadoReserva estado):DTReserva(codigo, checkin, checkout, estado){
 }
+
+DTReservaIndividual::~DTReservaIndividual(){ 
+
+}
