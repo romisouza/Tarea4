@@ -36,7 +36,7 @@ set<std::string> ControladorHostal::ObtenerNombreHostales() {
 	set<string> hostales;
 	for( map<std::string,Hostal*>::iterator i= ColHostales.begin(); i != ColHostales.end(); i++){
 		std::string nombre = (*i).first;
-		std::string frase = "Hostal: "+nombre+"";
+		std::string frase = nombre;
 		hostales.insert(frase);
 	}
 return hostales;

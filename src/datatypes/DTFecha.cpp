@@ -1,4 +1,6 @@
 #include "../../include/datatypes/DTFecha.h"
+#include <iostream>
+using namespace std;
 
 DTFecha::DTFecha(){}
 
@@ -30,23 +32,31 @@ int DTFecha::getMinutos(){
     return minutos;
 }
 
-std::string DTFecha::convertirFechaToString(int anio, int mes, int dia,int hora,int min){
-    std::string anioConvertido = std::to_string(anio);
-    std::string mesConvertido = std::to_string(mes);
-    std::string diaConvertido = std::to_string(dia);
-    std::string horaConvertido = std::to_string(hora);
-    std::string minConvertido = std::to_string(min);
-    std::string res = anioConvertido+'-'+mesConvertido+'-'+diaConvertido+' '+horaConvertido+'-'+minConvertido;
-    return res;
-}
-
 bool DTFecha::compararFecha(DTFecha a,DTFecha b){ // ASUMO Q SE USAN LAS 24HRS DEL DIA
-    std::string dateA = convertirFechaToString(a.anio,a.mes,a.dia,a.hora,a.minutos);
-    std::string dateB = convertirFechaToString(b.anio,b.mes,b.dia,b.hora,b.minutos);
-    if (dateA <= dateB)
-        return true;
-    else
-        return false;
+        if (a.anio == b.anio){
+            if (a.mes == b.mes){
+                if (a.dia == b.dia){
+                    if (a.hora == a.hora){
+                        if (a.minutos <= b.minutos)
+                            return true;
+                        else
+                            return false;
+                    } else if (a.hora < b.hora)
+                        return true;
+                    else
+                        return false;
+                } else if (a.dia < b.dia)
+                    return true;
+                else
+                    return false;
+            } else if (a.mes < b.mes)
+                return true;
+            else
+                return false;
+        } else if (a.anio < b.anio)
+            return true;
+            else
+            return false;
 }
 
 DTFecha::~DTFecha(){

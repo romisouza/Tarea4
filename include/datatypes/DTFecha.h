@@ -13,7 +13,6 @@ class DTFecha {
         int getAnio();
         int getHora();
         int getMinutos();
-        std::string convertirFechaToString(int anio, int mes, int dia,int hora,int min); //la agregue para poder comparar fechas mas facil
         bool compararFecha(DTFecha,DTFecha);
         ~DTFecha();
 };
