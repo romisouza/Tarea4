@@ -12,7 +12,7 @@ class DTReserva {
         EstadoReserva estado;
     public:
         DTReserva(int, DTFecha, DTFecha, EstadoReserva);
-        ~DTReserva();
+        virtual ~DTReserva();
         int getCodigo();
         DTFecha getCheckIn();
         DTFecha getCheckOut(); 
