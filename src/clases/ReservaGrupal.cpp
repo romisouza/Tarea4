@@ -36,9 +36,7 @@ set<DTReserva*> ReservaGrupal::validarHuespedRegistrado(std::string email){
     set<DTReserva*> resultado;
     set<Huesped*> mover = getHuespedes();
     cout << getHuespedes().size();
-    for(auto i= mover.begin(); i != mover.end(); i++){
-        //Huesped* mailhuesp = (*i);
-        //std::string el = mailhuesp->getEmail();
+    for(auto i= mover.begin(); i != mover.end(); i++){;
         if(email == (*i)->getEmail()){
             EstadoReserva est = getEstado();
             if (est != Cancelada){
