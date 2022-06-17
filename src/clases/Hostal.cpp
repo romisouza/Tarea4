@@ -229,11 +229,11 @@ void Hostal::buscarR(std::string email, DTFecha hs){
 	}
 }
 
-list<int> Hostal::BuscarRes(std::string email){
-	list<int> colReservasNC;
+list<DTReserva*> Hostal::BuscarRes(std::string email){
+	list<DTReserva*> colReservasNC;
 	for(map<int,Reserva*>::iterator i= ColReservas.begin(); i != ColReservas.end(); i++){
 		Reserva* res = (*i).second;
-		int ellas = res->validarHuespedRegistrado(email);
+		DTReserva* ellas = res->validarHuespedRegistrado(email);
 		colReservasNC.push_back(ellas);
 	}
 

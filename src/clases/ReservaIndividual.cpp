@@ -14,14 +14,14 @@ DTReserva* ReservaIndividual::getDTReserva(){
     return Res;
 }
 
-int ReservaIndividual::validarHuespedRegistrado(string email){
-    int resultado; //en realidad tengo que mandar DTReserva* y que el ultimo sea el set
+DTReserva* ReservaIndividual::validarHuespedRegistrado(string email){
+    DTReserva* resultado; //en realidad tengo que mandar DTReserva* y que el ultimo sea el set
     Huesped* huesp = getHues();
     if (email == huesp->getEmail()){
         EstadoReserva est = getEstado();
             if (est != Cancelada){
                 DTReserva* resp = getDTReserva(); //ver
-                resultado = resp->getCodigo(); //se agrega al retorno que va para colReservasNC
+                resultado = resp; //se agrega al retorno que va para colReservasNC
             } 
     }
     return resultado;
