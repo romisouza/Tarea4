@@ -20,8 +20,6 @@ int ReservaGrupal::getTotalHuesp(){
     return TotalHuesp;
 }
 
-ReservaGrupal::~ReservaGrupal() {
-}
 
 DTReservaComp* ReservaGrupal::getDTReservaComp(){
     //DTReservaComp *res;
