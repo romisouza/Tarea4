@@ -36,15 +36,15 @@ DTReserva* ReservaGrupal::getDTReserva(){
 
 set<DTReserva*> ReservaGrupal::validarHuespedRegistrado(std::string email){
     set<DTReserva*> resultado;
-    bool encontre = true;
+    bool encontre = false;
     set<Huesped*> mover = getHuespedes();
     for(auto i= mover.begin(); i != mover.end(); i++){
         Huesped* mailhuesp = (*i);
         std::string el = mailhuesp->getEmail();
-        /*if(email == (*i)->getDTHuesped().getMail()){
+        if(email == el ){
             
             encontre = true;
-        }*/
+        }
         if (encontre){
             EstadoReserva est = getEstado();
             if (est != Cancelada){
