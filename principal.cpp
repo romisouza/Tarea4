@@ -284,62 +284,80 @@ void cargarDatosPrueba(){
 void altaUsuario(){
     IUsuario* ctrlUsuario = fabrica->obtenerControladorUsuario();
     cout << "Ingrese 0 si va a ingresar un Huesped y 1 si va a ingresar un Empleado: "<<endl;
-    bool TipoUsuario;
-    cin >> TipoUsuario;
-    ctrlUsuario->setTipoUsuario(TipoUsuario);
-    if (TipoUsuario == 0) {
-        cout << "Ingrese el nombre del huesped: " << endl;
-        std::string nombre;
-        getline(cin >> ws, nombre);
-        cout << "Ingrese el email del huesped: " << endl;
-        std::string email;
-        getline(cin >> ws, email);
-        cout << "Ingrese la contraseña del huesped: " << endl;
-        std::string password;
-        getline(cin >> ws, password);
-        cout << "Ingrese 1 si el huesped es finger y 0 en caso contrario: " << endl;
-        bool esfinger;
-        cin >> esfinger; 
-        ctrlUsuario->IngresarHuesped(nombre,email,password,esfinger);
-        cout << "Si desea confirmar el alta del usuario ingrese 1, de lo contrario ingrese 0: "<< endl;
-        bool confirmar;
-        cin >> confirmar;
-        if (confirmar == 1){
-	        ctrlUsuario->ConfirmarAltaUsuario();
-            cout << "¡HUESPED INGRESADO CON EXITO!"<<endl;
-            cout << endl;
-        }else {
-            ctrlUsuario->CancelarAltaUsuario();
-            cout << "¡HUESPED CANCELADO CON EXITO!"<<endl;
-            cout << endl;
-        }
-    }
+    std::string tipoUser;
+    cin >> tipoUser;
+    if (tipoUser != "1" && tipoUser != "0")
+        throw std::invalid_argument("El dato ingresado no es correcto."); 
     else {
-        cout << "Ingrese el nombre del empleado: " <<endl;
-        std::string nombre;
-        getline(cin >> ws, nombre);
-        cout << "Ingrese el email del empleado: " << endl;
-        std::string email;
-        getline(cin >> ws, email);
-        cout << "Ingrese la contraseña del empleado: " << endl;
-        std::string password;
-        getline(cin >> ws, password);
-        ctrlUsuario->IngresarEmpleado(nombre,email,password);
-        cout << "Si desea confirmar el alta del usuario ingrese 1, de lo contrario ingrese 0: "<< endl;
-        bool confirmar;
-        cin >> confirmar;
-        if (confirmar == 1){
-	        ctrlUsuario->ConfirmarAltaUsuario();
-            cout << "¡EMPLEADO INGRESADO CON EXITO!"<<endl;
-            cout << endl;
+        bool TipoUsuario = (tipoUser == "1");
+        ctrlUsuario->setTipoUsuario(TipoUsuario);
+        if (TipoUsuario == 0) {
+            cout << "Ingrese el nombre del huesped: " << endl;
+            std::string nombre;
+            getline(cin >> ws, nombre);
+            cout << "Ingrese el email del huesped: " << endl;
+            std::string email;
+            getline(cin >> ws, email);
+            cout << "Ingrese la contraseña del huesped: " << endl;
+            std::string password;
+            getline(cin >> ws, password);
+            cout << "Ingrese 1 si el huesped es finger y 0 en caso contrario: " << endl;
+            std::string finger;
+            cin >> finger;
+            if (finger != "1" && finger != "0")
+                throw std::invalid_argument("El dato ingresado no es correcto."); 
+            else {
+                bool esfinger = (finger == "1"); 
+                ctrlUsuario->IngresarHuesped(nombre,email,password,esfinger);
+                cout << "Si desea confirmar el alta del usuario ingrese 1, de lo contrario ingrese 0: "<< endl;
+                std::string confirmo;
+                cin >>confirmo;
+                if (confirmo != "1" && confirmo != "0")
+                    throw std::invalid_argument("El dato ingresado no es correcto."); 
+                else {
+                    bool confirmar = (confirmo == "1");
+                    if (confirmar == 1){
+                        ctrlUsuario->ConfirmarAltaUsuario();
+                        cout << "¡HUESPED INGRESADO CON EXITO!"<<endl;
+                        cout << endl;
+                    }else {
+                        ctrlUsuario->CancelarAltaUsuario();
+                        cout << "¡HUESPED CANCELADO CON EXITO!"<<endl;
+                        cout << endl;
+                    }
+                }
+            }
         }else {
-            ctrlUsuario->CancelarAltaUsuario();
-            cout << "¡EMPLEADO CANCELADO CON EXITO!"<<endl;
-            cout << endl;
+            cout << "Ingrese el nombre del empleado: " <<endl;
+            std::string nombre;
+            getline(cin >> ws, nombre);
+            cout << "Ingrese el email del empleado: " << endl;
+            std::string email;
+            getline(cin >> ws, email);
+            cout << "Ingrese la contraseña del empleado: " << endl;
+            std::string password;
+            getline(cin >> ws, password);
+            ctrlUsuario->IngresarEmpleado(nombre,email,password);
+            cout << "Si desea confirmar el alta del usuario ingrese 1, de lo contrario ingrese 0: "<< endl;
+            int confirmo;
+            cin >>confirmo;
+            if (confirmo != 1 && confirmo != 0)
+                throw std::invalid_argument("El dato ingresado no es correcto."); 
+            else {
+                bool confirmar = (confirmo == 1);
+                if (confirmar){
+                    ctrlUsuario->ConfirmarAltaUsuario();
+                    cout << "¡EMPLEADO INGRESADO CON EXITO!"<<endl;
+                    cout << endl;
+                }else {
+                    ctrlUsuario->CancelarAltaUsuario();
+                    cout << "¡EMPLEADO CANCELADO CON EXITO!"<<endl;
+                    cout << endl;
+                }
+            }
         }
     }
 }
-
 void altaHostal(){
     IHostal *ctrlHostal = fabrica->obtenerControladorHostal();
     string nombre,direccion,telefono;
@@ -375,16 +393,21 @@ void altaHabitacion(){
     cin>> capacidad;
     ctrlHostal->asignarHab(nombreHostal,num, precio, capacidad);
     cout << "Ingrese 1 para asignar la habitación o 0 para cancelarla: "<<endl;
-    bool cual;
-    cin >> cual;
-    if (cual==1){
-        ctrlHostal->registrarHab();
-        cout << "¡HABITACION ASIGNADA CON EXITO!"<<endl;
-        cout << endl;
-    } else {
-        ctrlHostal->cancelarAltaHabitacion();
-        cout << "¡HABITACION CANCELADA CON EXITO!"<<endl;
-        cout << endl;
+    std::string opcion;
+    cin >>opcion;
+    if (opcion != "1" && opcion != "0")
+        throw std::invalid_argument("El dato ingresado no es correcto."); 
+    else {
+        bool cual = (opcion == "1");
+        if (cual){
+            ctrlHostal->registrarHab();
+            cout << "¡HABITACION ASIGNADA CON EXITO!"<<endl;
+            cout << endl;
+        } else {
+            ctrlHostal->cancelarAltaHabitacion();
+            cout << "¡HABITACION CANCELADA CON EXITO!"<<endl;
+            cout << endl;
+        }
     }
 }
 
@@ -436,18 +459,22 @@ void asignarEmpleadoAHostal(){
     }    
     ctrlHostal->SeleccionarEmpleado(cargo1,mailEmp);
     cout << "Ingrese 1 para confirmar la asignacion o 0 para cancelarla: ";
-    bool opcionIngresada;
-    cin >> opcionIngresada;
-    if (opcionIngresada==1){
-        ctrlHostal->ConfirmarAsignacionDeEmpleado();
-        cout << "¡ASIGNACION REALIZADA CON EXITO!"<<endl;
-        cout << endl;
-    } else {
-        ctrlHostal->CancelarAsignacionDeEmpleado();
-        cout << "¡ASIGNACION CANCELADA CON EXITO!"<<endl;
-        cout << endl;
+    std::string confirmo;
+    cin >>confirmo;
+    if (confirmo != "1" && confirmo != "0")
+        throw std::invalid_argument("El dato ingresado no es correcto."); 
+    else {
+        bool opcionIngresada = (confirmo == "1");
+        if (opcionIngresada){
+            ctrlHostal->ConfirmarAsignacionDeEmpleado();
+            cout << "¡ASIGNACION REALIZADA CON EXITO!"<<endl;
+            cout << endl;
+        } else {
+            ctrlHostal->CancelarAsignacionDeEmpleado();
+            cout << "¡ASIGNACION CANCELADA CON EXITO!"<<endl;
+            cout << endl;
+        }
     }
-
 }
 
 void realizarReserva(){
@@ -496,52 +523,63 @@ void realizarReserva(){
     DTFecha out = DTFecha(dia_out,mes_out,anio_out,hora_out,min_out);
     bool grupOind;
     cout << "Ingrese 1 si la reserva es grupal, y 0 si es individual: "<<endl;
-    cin >> grupOind;
-    int totalHuesp;
-    if (grupOind==1){
-        cout << "Ingrese la cantidad de huespedes que se quedaran con usted (incluyendose): "<<endl;
-        cin >> totalHuesp;
-    } else {
-        totalHuesp=1;
-    }
-    ctrlHostal->ingresarDatosReserva(nombreHostal,in,out,grupOind,totalHuesp);
-    cout << "Las habitaciones disponibles en esas fechas son: "<<endl;
-    list<int> ColHabDisp = ctrlHostal->obtenerHabitacionesDisponibles(in,out,totalHuesp); //aca controlo q las q devuelvo sean para la capacidad d los huespedes q pidio
-    for (auto it=ColHabDisp.begin();it!=ColHabDisp.end();++it){
-        cout << "  - "<<*it << endl;
+    std::string grupInd;
+    cin >>grupInd;
+    if (grupInd != "1" && grupInd != "0")
+        throw std::invalid_argument("El dato ingresado no es correcto."); 
+    else {
+        bool grupOind = (grupInd == "1");
+        int totalHuesp;
+        if (grupOind){
+            cout << "Ingrese la cantidad de huespedes que se quedaran con usted (incluyendose): "<<endl;
+            cin >> totalHuesp;
+        } else {
+            totalHuesp=1;
         }
-    cout << "Ingrese el numero de la habitacion elegida: "<<endl;
-    int numHab;
-    cin >> numHab;
-    ctrlHostal->seleccionarHabitacion(numHab);
-    cout << "Los mail de los huespedes registrados en el sistema son:" <<  endl;
-    list<string> mailHuespedes = ctrlHostal->obtenerHuespedesRegistrados();
-    for (auto it=mailHuespedes.begin();it!=mailHuespedes.end();++it){
-        cout << "  - "<<*it << endl;
-    }
-    cout << "Ingrese el mail del huesped que realiza la reserva: "<<endl;
-    string mailHuesp;
-    getline(cin >> ws, mailHuesp);
-    ctrlHostal->seleccionarHuesped(mailHuesp);
-    if (grupOind == 1){
-        for(int i=1;i<totalHuesp;i++){
-            cout << "Ingrese el mail del acompañante " << i << ": "<<endl;
-            string mailAcompaniante;
-            getline(cin >> ws, mailAcompaniante);
-            ctrlHostal->seleccionarAcompaniante(mailAcompaniante);
+        ctrlHostal->ingresarDatosReserva(nombreHostal,in,out,grupOind,totalHuesp);
+        cout << "Las habitaciones disponibles en esas fechas son: "<<endl;
+        list<int> ColHabDisp = ctrlHostal->obtenerHabitacionesDisponibles(in,out,totalHuesp); //aca controlo q las q devuelvo sean para la capacidad d los huespedes q pidio
+        for (auto it=ColHabDisp.begin();it!=ColHabDisp.end();++it){
+            cout << "  - "<<*it << endl;
+            }
+        cout << "Ingrese el numero de la habitacion elegida: "<<endl;
+        int numHab;
+        cin >> numHab;
+        ctrlHostal->seleccionarHabitacion(numHab);
+        cout << "Los mail de los huespedes registrados en el sistema son:" <<  endl;
+        list<string> mailHuespedes = ctrlHostal->obtenerHuespedesRegistrados();
+        for (auto it=mailHuespedes.begin();it!=mailHuespedes.end();++it){
+            cout << "  - "<<*it << endl;
         }
-    }
-    cout << "Ingrese 1 para confirmar la reserva o 0 para cancelarla: "<<endl;
-    bool opcionIngresada;
-    cin >> opcionIngresada;
-    if (opcionIngresada==1){
-        ctrlHostal->confirmarAltaReserva();
-        cout << "¡RESERVA REALIZADA CON EXITO!"<<endl;
-        cout << endl;
-    } else {
-        ctrlHostal->cancelarAltaReserva();
-        cout << "¡RESERVA CANCELADA CON EXITO!"<<endl;
-        cout << endl;
+        cout << "Ingrese el mail del huesped que realiza la reserva: "<<endl;
+        string mailHuesp;
+        getline(cin >> ws, mailHuesp);
+        ctrlHostal->seleccionarHuesped(mailHuesp);
+        if (grupOind){
+            for(int i=1;i<totalHuesp;i++){
+                cout << "Ingrese el mail del acompañante " << i << ": "<<endl;
+                string mailAcompaniante;
+                getline(cin >> ws, mailAcompaniante);
+                ctrlHostal->seleccionarAcompaniante(mailAcompaniante);
+            }
+        }
+        cout << "Ingrese 1 para confirmar la reserva o 0 para cancelarla: "<<endl;
+        std::string confirmo;
+        cin >>confirmo;
+        if (confirmo != "1" && confirmo != "0")
+            throw std::invalid_argument("El dato ingresado no es correcto."); 
+        else {
+            bool opcionIngresada = (confirmo == "1");
+            if (opcionIngresada){
+                ctrlHostal->confirmarAltaReserva();
+                cout << "¡RESERVA REALIZADA CON EXITO!"<<endl;
+                cout << endl;
+            } else {
+                ctrlHostal->cancelarAltaReserva();
+                cout << "¡RESERVA CANCELADA CON EXITO!"<<endl;
+                cout << endl;
+            }
+        }
     }
 }
 
@@ -700,46 +738,51 @@ void consultaUsuario(){
         cout << *i << "\n" <<endl;
     }
     cout <<"Si desea consultar la informacion de un huesped ingrese 0, si quiere la de un empleado ingrese 1: "<<endl;
-    bool tipoUser;
-    cin >> tipoUser;
-    if (!tipoUser) {
-        cout << "Ingrese el email correspondiente al huesped cuya informacion quiere consultar: " <<endl;
-        std::string email;
-        getline(cin >> ws, email);
-        DTHuesped* Huesped = ctrlUsuario->SeleccionarHuesped(email);
-        cout << "__Información del huesped seleccionado__"<<endl;
-        cout << "  - Nombre: "<< Huesped->getNombre()  <<endl;
-        cout << "  - Email: " << Huesped->getMail()  <<endl;
-        bool esfing = Huesped->getEsFinger();
-        if (esfing)
-            cout << "  - Es finger" << endl;
-        else    
-            cout << "  - No es finger" <<endl;
-    }
+    std::string User;
+    cin >>User;
+    if (User != "1" && User != "0")
+        throw std::invalid_argument("El dato ingresado no es correcto."); 
     else {
-        cout << "Ingrese el email correspondiente al empleado cuya informacion quiere consultar: "<<endl;
-        std::string email;
-        getline(cin >> ws, email);
-        DataEmpleado* Empleado = ctrlUsuario->SeleccionarEmpleado2(email);
-        cout << "__Información del empleado seleccionado__"<<endl;
-        cout << "  - Nombre: "<< Empleado->getNombre()  <<endl;
-        cout << "  - Email: " << Empleado->getEmail()  <<endl;
-        CargoEmpleado* cargo = Empleado->getCargo();
-    	switch(*cargo) {
-        case 0: cout << "  - El cargo del empleado es: Administracion"<<endl; 
-        break;
-        case 1: cout << "  - El cargo del empleado es: Limpieza"<<endl; 
-        break;
-        case 2: cout << "  - El cargo del empleado es: Recepcion"<<endl;
-        break;
-        case 3: cout << "  - El cargo del empleado es: Infraestructura"<<endl;
-        break;
-        default:
-            break;
+        bool tipoUser = (User == "1");
+        if (!tipoUser) {
+            cout << "Ingrese el email correspondiente al huesped cuya informacion quiere consultar: " <<endl;
+            std::string email;
+            getline(cin >> ws, email);
+            DTHuesped* Huesped = ctrlUsuario->SeleccionarHuesped(email);
+            cout << "__Información del huesped seleccionado__"<<endl;
+            cout << "  - Nombre: "<< Huesped->getNombre()  <<endl;
+            cout << "  - Email: " << Huesped->getMail()  <<endl;
+            bool esfing = Huesped->getEsFinger();
+            if (esfing)
+                cout << "  - Es finger" << endl;
+            else    
+                cout << "  - No es finger" <<endl;
         }
-        cout << "  - El empleado trabaja en el Hostal: " << Empleado->getHostal() << endl;  
+        else {
+            cout << "Ingrese el email correspondiente al empleado cuya informacion quiere consultar: "<<endl;
+            std::string email;
+            getline(cin >> ws, email);
+            DataEmpleado* Empleado = ctrlUsuario->SeleccionarEmpleado2(email);
+            cout << "__Información del empleado seleccionado__"<<endl;
+            cout << "  - Nombre: "<< Empleado->getNombre()  <<endl;
+            cout << "  - Email: " << Empleado->getEmail()  <<endl;
+            CargoEmpleado* cargo = Empleado->getCargo();
+            switch(*cargo) {
+            case 0: cout << "  - El cargo del empleado es: Administracion"<<endl; 
+            break;
+            case 1: cout << "  - El cargo del empleado es: Limpieza"<<endl; 
+            break;
+            case 2: cout << "  - El cargo del empleado es: Recepcion"<<endl;
+            break;
+            case 3: cout << "  - El cargo del empleado es: Infraestructura"<<endl;
+            break;
+            default:
+                break;
+            }
+            cout << "  - El empleado trabaja en el Hostal: " << Empleado->getHostal() << endl;  
+        }
+        cout <<endl;
     }
-    cout <<endl;
 }
 
 void consultaHostal(){
@@ -794,7 +837,7 @@ void consultaHostal(){
         }
     }
     if(Hst.getComentarios().empty()){
-        cout<<"El hostal no tiene comentarios realizadas."<<endl;
+        cout<<"El hostal no tiene comentarios realizados."<<endl;
     }
     else{
         cout<< "Comentarios del hostal:"<<endl;
@@ -810,7 +853,6 @@ void consultaHostal(){
             ++it;              
         }
     }
-    
 }
 
 void consultaReserva(){
@@ -818,13 +860,13 @@ void consultaReserva(){
     set<std::string> nombres= ctrlHostal->ObtenerNombreHostales();
     cout << "Los hostales registrados en el sistema son:" << endl;
     for (auto it=nombres.begin();it!=nombres.end();++it){
-        cout << "  - " << (*it)<<endl;
+        cout << "  - " << (*it);
     }
     string nombreHostal;
     cout << "Ingrese el nombre del hostal elegido: "<<endl;
     getline(cin >> ws, nombreHostal);
     list<DTReservaComp*> reservas = ctrlHostal->ObtenerReservasComp(nombreHostal);
-    cout<< "Informacion de las reservas :"<<endl;
+    cout<< "_Informacion de las reservas_"<<endl;
     auto it=reservas.begin();
     while(it!=reservas.end()){
         DTReservaCompInd* ind = dynamic_cast<DTReservaCompInd*>((*it));
@@ -834,11 +876,11 @@ void consultaReserva(){
         cout<< "  - Fecha de salida de la reserva:"<< (ind)->getCheckOut().getDia() <<"/"<<(ind)->getCheckOut().getMes()<<"/"<<(ind)->getCheckOut().getAnio() << endl ;
         EstadoReserva estado = (ind)->getEstado();
         switch(estado){
-        case 0: cout << "  - la reserva está abierta"<<endl;
+        case 0: cout << "  - La reserva está abierta"<<endl;
         break;
-        case 1: cout << "  - la reserva está cerrada"<<endl;
+        case 1: cout << "  - La reserva está cerrada"<<endl;
         break;
-        case 2: cout << "  - la reserva está cancelada"<<endl;
+        case 2: cout << "  - La reserva está cancelada"<<endl;
         break;
         }
         cout<< "  - Numero de habitacion :"<< (ind)->getNumHab() << endl;
@@ -850,11 +892,11 @@ void consultaReserva(){
             cout<< "  - Fecha de salida de la reserva:"<< (ind)->getCheckOut().getDia() <<"/"<<(ind)->getCheckOut().getMes()<<"/"<<(ind)->getCheckOut().getAnio() << endl ;
             EstadoReserva estado = (ind)->getEstado();
             switch(estado){
-            case 0: cout << "  - la reserva está abierta"<<endl;
+            case 0: cout << "  - La reserva está abierta"<<endl;
             break;
-            case 1: cout << "  - la reserva está cerrada"<<endl;
+            case 1: cout << "  - La reserva está cerrada"<<endl;
             break;
-            case 2: cout << "  - la reserva está cancelada"<<endl;
+            case 2: cout << "  - La reserva está cancelada"<<endl;
             break;
             }
             cout<< "  - Numero de habitacion :"<< (ind)->getNumHab() << endl;
@@ -896,70 +938,91 @@ void consultaEstadia(){
     cout << "  - Email del huesped asociado:" <<endl; 
     getline(cin >> ws, emailHuesp);
     DTIdEstadia estadia;
+    bool existe;
     for (list<DTIdEstadia>::iterator i = IdEstadia.begin(); i != IdEstadia.end(); i++){
         std::string email = (*i).getEmail();
         int cod = (*i).getCodigo();
-        if (email.compare(emailHuesp)== 0 && Codigo == cod)
+        if (email.compare(emailHuesp)== 0 && Codigo == cod) {
             estadia = *i;
+            existe = true;
+            break;
+        } 
+        else 
+            existe = false;
     }
-    DataEstadia* EstSeleccionada = ctrlHostal->ObtenerinfoEstadia(estadia);
-    cout << "__Informacion de la estadia__"<<endl;
-    int diaIn = EstSeleccionada->getCheckIn().getDia();
-    int mesIn = EstSeleccionada->getCheckIn().getMes();
-    int anioIn = EstSeleccionada->getCheckIn().getAnio();
-    int horaIn = EstSeleccionada->getCheckIn().getHora();
-    int minutoIn = EstSeleccionada->getCheckIn().getMinutos();
-    cout << "  - Fecha de ingreso: " << diaIn <<"/"<<mesIn<<"/"<<anioIn<<"-"<<horaIn<<":"<<minutoIn<<endl;
-    int diaOut = EstSeleccionada->getCheckOut().getDia();
-    int mesOut = EstSeleccionada->getCheckOut().getMes();
-    int anioOut = EstSeleccionada->getCheckOut().getAnio();
-    int horaOut = EstSeleccionada->getCheckOut().getHora();
-    int minutoOut = EstSeleccionada->getCheckOut().getMinutos();
-    cout << "  - Fecha de salida: " << diaOut <<"/"<<mesOut<<"/"<<anioOut<<"-"<<horaOut<<":"<<minutoOut<<endl;
-    cout << "  - Huesped asociado: " << EstSeleccionada->getHuesped() <<endl;
-    cout << "  - Hostal asociado: " << EstSeleccionada->getHostal() <<endl;
-    cout << "  - Habitacion asociada: " << EstSeleccionada->getHabitacion() <<endl;
-    cout << "  - Codigo de la reserva asociada: "<< EstSeleccionada->getCod()<<endl;
-    cout << " Si desea ver la calificacion de la estadía y la respuesta del empleado ingrese 1, sino ingrese 0."<<endl;
-    bool VerCalificacion;
-    cin >> VerCalificacion;
-    if (VerCalificacion) {
-        DTCalificacion cal = ctrlHostal->MostrarCalificacion();
-        cout << "  - Calificacion: " <<cal.getPuntaje()<<endl;
-        cout << "  - Comentario del empleado: " << cal.getComentarioEmp() <<endl;
-    }
-    cout << "Si desea ver la informacion de la reserva asociada ingrese 1, sino ingrese 0."<<endl;
-    bool VerInfoReserva;
-    cin >> VerInfoReserva;
-    if (VerInfoReserva) {
-        DTReserva* res = ctrlHostal->MostrarInfoReserva(nombreHostal, Codigo);
-        cout << "__Informacion de la reserva__"<<endl;
-        cout << "  - Codigo de la reserva" <<res->getCodigo()<<endl;
-        int diaIn = res->getCheckIn().getDia();
-        int mesIn = res->getCheckIn().getMes();
-        int anioIn = res->getCheckIn().getAnio();
-        int horaIn = res->getCheckIn().getHora();
-        int minutoIn = res->getCheckIn().getMinutos();
-        cout << "  - Fecha de realizada: " << diaIn <<"/"<<mesIn<<"/"<<anioIn<<"-"<<horaIn<<":"<<minutoIn<<endl;
-        int diaOut = res->getCheckOut().getDia();
-        int mesOut = res->getCheckOut().getMes();
-        int anioOut = res->getCheckOut().getAnio();
-        int horaOut = res->getCheckOut().getHora();
-        int minutoOut = res->getCheckOut().getMinutos();
-        cout << "  - Fecha de terminada: " << diaOut <<"/"<<mesOut<<"/"<<anioOut<<"-"<<horaOut<<":"<<minutoOut<<endl;
-        EstadoReserva estado = res->getEstado();
-        switch(estado){
-            case 0: cout << "  - La reserva está abierta"<<endl;
-            break;
-            case 1: cout << "  - La reserva está cerrada"<<endl;
-            break;
-            case 2: cout << "  - La reserva está cancelada"<<endl;
-            break;
+    if (!existe) 
+        throw std::invalid_argument("Datos ingresados incorrectos."); 
+    else {
+        DataEstadia* EstSeleccionada = ctrlHostal->ObtenerinfoEstadia(estadia);
+        cout << "__Informacion de la estadia__"<<endl;
+        int diaIn = EstSeleccionada->getCheckIn().getDia();
+        int mesIn = EstSeleccionada->getCheckIn().getMes();
+        int anioIn = EstSeleccionada->getCheckIn().getAnio();
+        int horaIn = EstSeleccionada->getCheckIn().getHora();
+        int minutoIn = EstSeleccionada->getCheckIn().getMinutos();
+        cout << "  - Fecha de ingreso: " << diaIn <<"/"<<mesIn<<"/"<<anioIn<<"-"<<horaIn<<":"<<minutoIn<<endl;
+        int diaOut = EstSeleccionada->getCheckOut().getDia();
+        int mesOut = EstSeleccionada->getCheckOut().getMes();
+        int anioOut = EstSeleccionada->getCheckOut().getAnio();
+        int horaOut = EstSeleccionada->getCheckOut().getHora();
+        int minutoOut = EstSeleccionada->getCheckOut().getMinutos();
+        cout << "  - Fecha de salida: " << diaOut <<"/"<<mesOut<<"/"<<anioOut<<"-"<<horaOut<<":"<<minutoOut<<endl;
+        cout << "  - Huesped asociado: " << EstSeleccionada->getHuesped() <<endl;
+        cout << "  - Hostal asociado: " << EstSeleccionada->getHostal() <<endl;
+        cout << "  - Habitacion asociada: " << EstSeleccionada->getHabitacion() <<endl;
+        cout << "  - Codigo de la reserva asociada: "<< EstSeleccionada->getCod()<<endl;
+        cout << " Si desea ver la calificacion de la estadía y la respuesta del empleado ingrese 1, sino ingrese 0."<<endl;
+        std::string verCalif;
+        cin >>verCalif;
+        if (verCalif != "1" && verCalif != "0")
+            throw std::invalid_argument("El dato ingresado no es correcto."); 
+        else {
+            bool VerCalificacion = (verCalif == "1");
+            if (VerCalificacion) {
+                DTCalificacion cal = ctrlHostal->MostrarCalificacion();
+                cout << "  - Calificacion: " <<cal.getPuntaje()<<endl;
+                cout << "  - Comentario del empleado: " << cal.getComentarioEmp() <<endl;
+            }
+            cout << "Si desea ver la informacion de la reserva asociada ingrese 1, sino ingrese 0."<<endl;
+            std::string verRes;
+            cin >>verRes;
+            if (verRes != "1" && verRes != "0")
+                throw std::invalid_argument("El dato ingresado no es correcto."); 
+            else {
+                bool VerInfoReserva = (verRes == "1");
+                if (VerInfoReserva) {
+                    DTReserva* res = ctrlHostal->MostrarInfoReserva(nombreHostal, Codigo);
+                    cout << "__Informacion de la reserva__"<<endl;
+                    cout << "  - Codigo de la reserva" <<res->getCodigo()<<endl;
+                    int diaIn = res->getCheckIn().getDia();
+                    int mesIn = res->getCheckIn().getMes();
+                    int anioIn = res->getCheckIn().getAnio();
+                    int horaIn = res->getCheckIn().getHora();
+                    int minutoIn = res->getCheckIn().getMinutos();
+                    cout << "  - Fecha de realizada: " << diaIn <<"/"<<mesIn<<"/"<<anioIn<<"-"<<horaIn<<":"<<minutoIn<<endl;
+                    int diaOut = res->getCheckOut().getDia();
+                    int mesOut = res->getCheckOut().getMes();
+                    int anioOut = res->getCheckOut().getAnio();
+                    int horaOut = res->getCheckOut().getHora();
+                    int minutoOut = res->getCheckOut().getMinutos();
+                    cout << "  - Fecha de terminada: " << diaOut <<"/"<<mesOut<<"/"<<anioOut<<"-"<<horaOut<<":"<<minutoOut<<endl;
+                    EstadoReserva estado = res->getEstado();
+                    switch(estado){
+                        case 0: cout << "  - La reserva está abierta"<<endl;
+                        break;
+                        case 1: cout << "  - La reserva está cerrada"<<endl;
+                        break;
+                        case 2: cout << "  - La reserva está cancelada"<<endl;
+                        break;
+                    }
+                    
+                }
+                cout <<endl;
+            }
         }
-        
     }
-    cout <<endl;
 }
+
 void bajaReserva(){
     IHostal *ctrlHostal = fabrica->obtenerControladorHostal();
     set<std::string> nombres= ctrlHostal->ObtenerNombreHostales();
@@ -980,16 +1043,21 @@ void bajaReserva(){
     cin>> codRes;
     ctrlHostal->SeleccionarReserva(codRes);
     cout << "Ingrese 1 para confirmar la baja o 0 para cancelar "<<endl;
-    bool conf;
-    cin>> conf;
-    if(conf){
-        ctrlHostal->ConfirmarEliminarReserva();
-        cout << "¡BAJA DE LA RESERVA REALIZADA CON EXITO!"<<endl;
-        cout <<endl;
-    }
-    else{
-        ctrlHostal->CancelarBajaReserva();
-        cout <<endl;
+    std::string confirmo;
+    cin >>confirmo;
+    if (confirmo != "1" && confirmo != "0")
+        throw std::invalid_argument("El dato ingresado no es correcto."); 
+    else {
+        bool conf = (confirmo == "1");
+        if(conf){
+            ctrlHostal->ConfirmarEliminarReserva();
+            cout << "¡BAJA DE LA RESERVA REALIZADA CON EXITO!"<<endl;
+            cout <<endl;
+        }
+        else{
+            ctrlHostal->CancelarBajaReserva();
+            cout <<endl;
+        }
     }
 }
 
