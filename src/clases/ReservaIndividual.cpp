@@ -40,7 +40,7 @@ void ReservaIndividual::validarHuesped(string email, DTFecha hs){
 }
 
 DTReservaComp* ReservaIndividual::getDTReservaComp(){
-    DTReservaCompInd *res = new DTReservaCompInd(getCodigo(),getCheckIn(),getCheckOut(),getEstado(),getHab()->getNumero());
+    DTReservaCompInd *res = new DTReservaCompInd(getCodigo(),getCheckIn(),getCheckOut(),getHues(),getEstado(),getHab()->getNumero());
     return res;
 }
 

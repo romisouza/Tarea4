@@ -12,7 +12,7 @@ using namespace std;
 class DTReservaCompInd:public DTReservaComp {
 private:
 public:
-    DTReservaCompInd(int, DTFecha, DTFecha,EstadoReserva,int);
+    DTReservaCompInd(int, DTFecha, DTFecha,Huesped*,EstadoReserva,int);
     virtual ~DTReservaCompInd();
 };
 

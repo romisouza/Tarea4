@@ -1,9 +1,10 @@
 #include "../../include/datatypes/DTReservaComp.h"
 
-DTReservaComp::DTReservaComp(int codi, DTFecha CheckIn, DTFecha CheckOut, EstadoReserva est,int Num){
+DTReservaComp::DTReservaComp(int codi, DTFecha CheckIn, DTFecha CheckOut,Huesped* hues, EstadoReserva est,int Num){
     codigo=codi;
     checkIn=CheckIn;
     checkOut=CheckOut;
+    huesp = hues;
     estado=est;
     numHab=Num;
 }
@@ -18,6 +19,10 @@ DTFecha DTReservaComp::getCheckIn(){
 
 DTFecha DTReservaComp::getCheckOut(){
     return checkOut;
+}
+
+Huesped* DTReservaComp::getHuesped(){
+    return huesp;
 }
 
 EstadoReserva DTReservaComp::getEstado(){

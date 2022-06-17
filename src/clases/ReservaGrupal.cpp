@@ -23,7 +23,7 @@ int ReservaGrupal::getTotalHuesp(){
 
 DTReservaComp* ReservaGrupal::getDTReservaComp(){
     //DTReservaComp *res;
-    DTReservaCompGrup *res = new DTReservaCompGrup(getCodigo(),getCheckIn(),getCheckOut(),getEstado(),getHab()->getNumero(),huespedes);
+    DTReservaCompGrup *res = new DTReservaCompGrup(getCodigo(),getCheckIn(),getCheckOut(),getHues(),getEstado(),getHab()->getNumero(),huespedes);
     return res;
 }
 

@@ -12,7 +12,7 @@ class DTReservaCompGrup:public DTReservaComp {
 private:
     set<Huesped*> huespedes;
 public:
-    DTReservaCompGrup(int, DTFecha, DTFecha,EstadoReserva,int, set<Huesped*>);
+    DTReservaCompGrup(int, DTFecha, DTFecha,Huesped*,EstadoReserva,int, set<Huesped*>);
     set<Huesped*> getHuesp();
     virtual ~DTReservaCompGrup();
 };

@@ -15,13 +15,15 @@ private:
     int codigo;
     DTFecha checkIn;
     DTFecha checkOut;
+    Huesped* huesp;
     int numHab;
     EstadoReserva estado;
 public:
-    DTReservaComp(int, DTFecha, DTFecha,EstadoReserva,int);
+    DTReservaComp(int, DTFecha, DTFecha,Huesped*,EstadoReserva,int);
     int getCodigo();
     DTFecha getCheckIn();
     DTFecha getCheckOut();
+    Huesped* getHuesped();
     EstadoReserva getEstado();
     int getNumHab();
     virtual ~DTReservaComp();

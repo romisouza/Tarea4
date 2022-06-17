@@ -52,8 +52,8 @@ bool Habitacion::consultarReservas(DTFecha desde, DTFecha hasta){ //ADE - REVISA
 	auto it=ColReservas.begin();
       while (it!=ColReservas.end() && estaLibre) {
           bool x = hasta.compararFecha(hasta,it->second->getCheckIn()); //no se si es hasta. (ade)
-          bool y = desde.compararFecha(desde,it->second->getCheckOut()); //no se si es desde. (ade)
-          if (x == true || y == true) 
+          bool y = desde.compararFecha(it->second->getCheckOut(),desde); //no se si es desde. (ade)
+          if (!(x == true || y == true)) 
             estaLibre = false;
           it++;
       }

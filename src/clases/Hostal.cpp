@@ -81,7 +81,15 @@ void Hostal::EliminarRes(Reserva* res){
 	Habitacion* hab= ColHabitaciones.find(res->getHab()->getNumero())->second;
 	hab->eliminarResHab(res->getCodigo());
 	res->~Reserva();
-
+	int promedio=0, cant=0;
+	list<Calificacion*>::iterator itCal=ColCal.begin();
+	while(itCal!=ColCal.end()){
+		promedio+=(*itCal)->getPuntaje();
+		cant++;
+		itCal++;
+	}
+	int promNuevo=promedio/cant;
+	setPromedio(promNuevo);
 }
 
 void Hostal::AgregarComentarios(std::string comentario, int puntaje, DTFecha hrs, Estadia* est, list<IObserver*> obs){

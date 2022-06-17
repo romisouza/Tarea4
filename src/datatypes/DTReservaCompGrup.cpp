@@ -3,7 +3,7 @@
 #include "../include/datatypes/DTFecha.h"*/
 #include "../../include/datatypes/DTReservaCompGrup.h"
 
-DTReservaCompGrup::DTReservaCompGrup(int codi, DTFecha CheckIn, DTFecha CheckOut,EstadoReserva est,int Num, set<Huesped*> Huespedes):DTReservaComp(codi,CheckIn,CheckOut,est,Num){
+DTReservaCompGrup::DTReservaCompGrup(int codi, DTFecha CheckIn, DTFecha CheckOut,Huesped* huesp,EstadoReserva est,int Num, set<Huesped*> Huespedes):DTReservaComp(codi,CheckIn,CheckOut,huesp,est,Num){
     huespedes = Huespedes;
 }
 
