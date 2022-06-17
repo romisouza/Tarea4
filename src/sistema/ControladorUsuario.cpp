@@ -199,12 +199,16 @@ list<DTEmpleado> ControladorUsuario::getEmpleados(Hostal* h){
 }
 
 Empleado* ControladorUsuario::SeleccionarEmpleado(CargoEmpleado* cargoEmp,string mailEmp,Hostal*  host){
-	Empleado* emp = ColEmpleados.find(mailEmp)->second;
-	if(emp->getEmail()==mailEmp){
-		ingresarEmpleadoPunt(emp);
-		ingresarCargo(cargoEmp);
+	if (ColEmpleados.find(mailEmp) != ColEmpleados.end()){
+		Empleado* emp = ColEmpleados.find(mailEmp)->second;
+		if(emp->getEmail()==mailEmp){
+			ingresarEmpleadoPunt(emp);
+			ingresarCargo(cargoEmp);
+		}
+		return emp;
 	}
-	return emp;
+	else
+		throw std::invalid_argument("No existe un empleado con ese email."); 
 }
 
 void ControladorUsuario::AsignarCargoAEmpleado(){
