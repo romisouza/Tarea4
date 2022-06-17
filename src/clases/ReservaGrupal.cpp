@@ -55,26 +55,23 @@ void ReservaGrupal::validarHuesped(string email, DTFecha hs){
     bool encontre = false;
     for(set<Huesped*>::iterator i= huespedes.begin(); i != huespedes.end(); i++){
         if(email == (*i)->getEmail()){
-            encontre = true;
-        }
-    }
-    if (encontre){
-        list<Estadia*> est = getEstadia();
-        Estadia* estEncontrada;
-        bool hay = false;
-        for (list<Estadia*>::iterator i = est.begin(); i != est.end();i++){
-            Huesped* huesp = (*i)->getHuesp();
-            if (huesp->getEmail() == email){
-                estEncontrada = (*i);
-                hay = true;
+            list<Estadia*> est = getEstadia();
+            Estadia* estEncontrada;
+            bool hay = false;
+            for (list<Estadia*>::iterator i = est.begin(); i != est.end();i++){
+                Huesped* huesp = (*i)->getHuesp();
+                    if (huesp->getEmail() == email){
+                        estEncontrada = (*i);
+                        hay = true;
+                    }
             }
-        }
-        if(true){
-            DTFecha checkoutEst = estEncontrada->getCheckOut();
-            DTFecha comparar;
-            bool Ter = comparar.compararFecha(checkoutEst, hs);
-            if (!Ter){
-            estEncontrada->setCheckOut(hs);
+            if(hay){
+                DTFecha checkoutEst = estEncontrada->getCheckOut();
+                DTFecha comparar;
+                bool Ter = comparar.compararFecha(checkoutEst, hs);
+                    if (!Ter){
+                        estEncontrada->setCheckOut(hs);
+                    }
             }
         }
     }
