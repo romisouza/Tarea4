@@ -37,7 +37,8 @@ DTReserva* ReservaGrupal::getDTReserva(){
 set<DTReserva*> ReservaGrupal::validarHuespedRegistrado(std::string email){
     set<DTReserva*> resultado;
     bool encontre = false;
-    for(set<Huesped*>::iterator i= huespedes.begin(); i != huespedes.end(); i++){
+    set<Huesped*> mover = getHuespedes();
+    for(set<Huesped*>::iterator i= mover.begin(); i != mover.end(); i++){
 		DTHuesped huesped = (*i)->getDTHuesped();
         if(email == huesped.getMail()){
             encontre = true;
@@ -46,7 +47,7 @@ set<DTReserva*> ReservaGrupal::validarHuespedRegistrado(std::string email){
             EstadoReserva est = getEstado();
             if (est != Cancelada){
             DTReserva* resp = getDTReserva();
-            /*resultado.insert(resp);*/ //se agrega al retorno que va para colReservasNC
+            resultado.insert(resp); //se agrega al retorno que va para colReservasNC
             } 
         }
 	}
