@@ -633,6 +633,7 @@ void calificarEstadia(){
     string nombreHostal;
     cout << "Ingrese el nombre del hostal elegido: "<<endl;
     getline(cin >> ws, nombreHostal);
+    ctrlHostal->SeleccionarHostal(nombreHostal);
     cout << "Ingrese el mail del huesped: "<<endl; //HABRIA QUE MOSTRAR LOS HUESPEDES
     string mailHsp;
     getline(cin >> ws, mailHsp);
