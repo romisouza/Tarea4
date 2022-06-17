@@ -1128,6 +1128,7 @@ void EliminarSuscripcion(){
 int main(){
     int opcionMenu = 0;
     while (opcionMenu != 21){
+        try {
         Menu();
         cin >> opcionMenu;
         switch (opcionMenu)
@@ -1176,6 +1177,10 @@ int main(){
         default:
             break;
         }
+    }
+    catch (const std::invalid_argument& e) {
+        std::cout<<"Error: "<<e.what()<<std::endl;
+    }
     }
     return 0;
 }
