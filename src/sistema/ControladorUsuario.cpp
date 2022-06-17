@@ -169,7 +169,7 @@ DTHuesped* ControladorUsuario::SeleccionarHuesped(string email){ //BIEN
 }
 
 DataEmpleado* ControladorUsuario::SeleccionarEmpleado2(string email){//cambie el nombre daba error sobrecarga 
-	if (ColHuespedes.find(email) != ColHuespedes.end()){
+	if (ColEmpleados.find(email) != ColEmpleados.end()){
 		Empleado* e = ColEmpleados.find(email)->second;
 		std::string nom = e->getNombre();
 		std::string mail = email;

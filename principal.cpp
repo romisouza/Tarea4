@@ -62,6 +62,7 @@ void cargarDatosPrueba(){
     IUsuario* ctrlUsuario = fabrica->obtenerControladorUsuario();
     IHostal* ctrlHostal = fabrica->obtenerControladorHostal();
     //Ingreso los huespedes al sistema
+    ctrlUsuario->setTipoUsuario(0);
     ctrlUsuario->IngresarHuesped("Sofia","sofia@mail.com","123",1);
     ctrlUsuario->ConfirmarAltaUsuario();
     ctrlUsuario->IngresarHuesped("Frodo","frodo@mail.com","123",1);
@@ -75,6 +76,7 @@ void cargarDatosPrueba(){
     ctrlUsuario->IngresarHuesped("Seba","seba@mail.com","123",1);
     ctrlUsuario->ConfirmarAltaUsuario();
     //Ingreso los empleados al sistema
+    ctrlUsuario->setTipoUsuario(1);
     ctrlUsuario->IngresarEmpleado("Emilia","emilia@mail.com","123");
     ctrlUsuario->ConfirmarAltaUsuario();
     ctrlUsuario->IngresarEmpleado("Leonardo","leo@mail.com","123");
@@ -102,6 +104,7 @@ void cargarDatosPrueba(){
     ctrlHostal->registrarHab();
     ctrlHostal->asignarHab("El Pony Pisador",1,9,5);
     ctrlHostal->registrarHab();
+
     //Asigno los empleados a los hostales
     list<DTEmpleado> HostalSeleccionado;
     CargoEmpleado* cargo;
@@ -124,7 +127,7 @@ void cargarDatosPrueba(){
     //Realizo las reservas
     DTFecha in,out;
     in = DTFecha(1,5,2022,14,00);
-     out = DTFecha(10,5,2022,10,00);
+    out = DTFecha(10,5,2022,10,00);
     ctrlHostal->ingresarDatosReserva("La posada del finger",in,out,0,1);
     ctrlHostal->seleccionarHabitacion(1);
     ctrlHostal->seleccionarHuesped("sofia@mail.com");
@@ -150,7 +153,7 @@ void cargarDatosPrueba(){
     ctrlHostal->seleccionarHabitacion(1);
     ctrlHostal->seleccionarHuesped("seba@mail.com");
     ctrlHostal->confirmarAltaReserva();
-    //Estadias
+   //Estadias
     set<DTReserva*> reservasNC;
     DTFecha checkin;
 
@@ -230,6 +233,7 @@ void cargarDatosPrueba(){
     ctrlHostal->DatosHuesped("La posada del finger", "sofia@mail.com");
     ctrlHostal->DatosHuesped("El Pony Pisador", "frodo@mail.com");
     ctrlHostal->DatosHuesped("Caverna Lujosa", "seba@mail.com");
+    
     //calificar estadia
 
 }
