@@ -191,14 +191,13 @@ void cargarDatosPrueba(){
     ctrlHostal->DatosHuesped("Caverna Lujosa", "seba@mail.com");
     
     //calificar estadia
-  /*  DTIdEstadia estadia;
+   DTIdEstadia estadia;
     list<DTIdEstadia> est;
     std::string comentario;
-
     ctrlHostal->actualizarFS(2022,5,11,18,00);
     ctrlHostal->SeleccionarHostal("La posada del finger");
     est = ctrlHostal->ListaEstadiasFinalizadas("sofia@mail.com");
-    for (list<DTIdEstadia>::iterator i = est.begin(); i != est.end(); i++){
+    /* for (list<DTIdEstadia>::iterator i = est.begin(); i != est.end(); i++){
         if (codigo1 == (*i).getCodigo())
             estadia = (*i);
     }

@@ -316,12 +316,13 @@ void ControladorHostal::ingresarEstadiaFinalizada(Estadia* est){
 }
 
 
-list<DTIdEstadia> ControladorHostal::ListaEstadiasFinalizadas(std::string email){
+list<DTIdEstadia> ControladorHostal::ListaEstadiasFinalizadas(string email){
 	ControladorUsuario* cu = ControladorUsuario::getInstance();
 	if (cu->getColHuespedes().find(email) == cu->getColHuespedes().end()) {
 		throw std::invalid_argument("No existe un usuario con el email ingresado"); 
 	}
 	else{
+		
 		SingletonFechaHora* FH = SingletonFechaHora::getInstance();
 		DTFecha hrs= FH->FechaHoraSistema();
 		list<DTIdEstadia> estadias=cu->BuscarHuesped(email, hrs);
