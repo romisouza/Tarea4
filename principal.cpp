@@ -23,6 +23,8 @@
 using namespace std;
 
 Fabrica *fabrica = Fabrica::getInstancia();
+int opcionMenu;
+std::string opcion;
 
 /*void opcionNoValida(){
     cout << "===============================" << endl;
@@ -1121,12 +1123,40 @@ void EliminarSuscripcion(){
     ctrlHostal->eliminarSuscripcion(email);
 }
 
+int convertiraEntero(std::string opcion) {
+    int opcionMenu;
+    if (opcion == "1") {opcionMenu = 1;}
+    else if (opcion == "2") {opcionMenu = 2;}
+    else if (opcion == "3") {opcionMenu = 3;}
+    else if (opcion == "4") {opcionMenu = 4;}
+    else if (opcion == "5") {opcionMenu = 5;}
+    else if (opcion == "6") {opcionMenu = 6;}
+    else if (opcion == "7") {opcionMenu = 7;}
+    else if (opcion == "8") {opcionMenu = 8;}
+    else if (opcion == "9") {opcionMenu = 9;}
+    else if (opcion == "10") {opcionMenu = 10;}
+    else if (opcion == "11") {opcionMenu = 11;}
+    else if (opcion == "12") {opcionMenu = 12;}
+    else if (opcion == "13") {opcionMenu = 13;}
+    else if (opcion == "14") {opcionMenu = 14;}
+    else if (opcion == "15") {opcionMenu = 15;}
+    else if (opcion == "16") {opcionMenu = 16;}
+    else if (opcion == "17") {opcionMenu = 17;}
+    else if (opcion == "18") {opcionMenu = 18;}
+    else if (opcion == "19") {opcionMenu = 19;}
+    else if (opcion == "20") {opcionMenu = 20;}
+    else if (opcion == "21") {opcionMenu = 21;}
+    else 
+        throw std::invalid_argument("Dato ingresado incorrecto.");
+    return opcionMenu;
+}  
+
 int main(){
-    int opcionMenu = 0;
     while (opcionMenu != 21){
         try {
         Menu();
-        cin >> opcionMenu;
+        cin >>opcion;
+        opcionMenu = convertiraEntero(opcion);        
         switch (opcionMenu)
         {case 1: cargarDatosPrueba();
         break;
@@ -1180,3 +1210,4 @@ int main(){
     }
     return 0;
 }
+
