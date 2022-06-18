@@ -204,7 +204,8 @@ list<DTReservaComp*> Hostal::ObtenerReservas(){
 list<DTCalificacion> Hostal::obtenerCalificaciones(){
 	list<DTCalificacion> aux;
 	auto iter = ColCal.begin();
-	while((*iter)!=NULL){
+	//while((*iter)!=NULL){
+	while (iter != ColCal.end()){
 		DTCalificacion cal = (*iter)->getDTCalificacion();
 		aux.push_back(cal);
 		iter++;
