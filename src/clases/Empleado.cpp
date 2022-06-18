@@ -81,3 +81,7 @@ IObserver* Empleado::getObserver(){
 string Empleado::getEmailObs(){
 	return getEmail();
 }
+
+void Empleado::EliminarCalificaciones(){
+	califObs.clear();
+}

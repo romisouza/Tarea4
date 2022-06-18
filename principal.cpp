@@ -595,7 +595,7 @@ void registrarEstadia(){
         throw std::invalid_argument("No existen reservas no canceladas.");
     }
         cout << "Los reservas no canceladas en el sistema son:" << endl;
-       for (auto it=reservasNC.begin();it!=reservasNC.end();++it){
+        for (auto it=reservasNC.begin();it!=reservasNC.end();++it){
         DTReservaIndividual* ind = dynamic_cast<DTReservaIndividual*>((*it));
         if(ind!=NULL){
             cout << (ind)->getCodigo() << endl;
@@ -1121,8 +1121,7 @@ void ConsultaDeNotificaciones(){
         cout<< "Ingrese el email del empleado elegido:"<<endl;
         getline(cin >> ws, email);
         list<DTCalificacion> cal=ctrlHostal->ObtenerNotificaciones(email);
-
-        /*if(cal.begin()==cal.end()){
+        if(cal.begin()==cal.end()){
             cout<< "No hay notificaciones nuevas."<<endl;
         }
         else{
@@ -1130,10 +1129,9 @@ void ConsultaDeNotificaciones(){
                 cout<< "El puntaje de la calificacion es: "<< (*it).getPuntaje()<<endl;
                 cout<< "El comentario de la calificacion es: "<< (*it).getComentarioHuesp()<<endl;
              }
-        /*ctrlHostal->EliminarNotificaciones();*/
-        //}
-        
-        
+        }
+        //ctrlHostal->EliminarNotificaciones();   
+        cout<< cal.size() <<endl ;  
     }
 }
 

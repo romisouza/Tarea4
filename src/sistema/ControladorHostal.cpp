@@ -486,7 +486,8 @@ list<DTCalificacion> ControladorHostal::ObtenerNotificaciones(string email){
 	EmpNoti=EmpSel;
 	cout<< EmpSel->getCalifObs().size();
 	list<DTCalificacion> aux;
-	for(auto it=EmpSel->getCalifObs().begin();it!=EmpSel->getCalifObs().end(); ++it){
+	list<Calificacion*> iter= EmpSel->getCalifObs();
+	for(auto it=iter.begin();it!=iter.end(); ++it){
 		DTCalificacion cal= DTCalificacion((*it)->getPuntaje(),(*it)->getComentarioHuesp(), (*it)->getComentarioEmp());
 		aux.push_back(cal);
 	}
@@ -502,10 +503,12 @@ IObserver* ControladorHostal::BuscarEmp(string email){
 }
 
 void ControladorHostal::EliminarNotificaciones(){
-	while(!empleadoIngresado->getCalifObs().empty()){
-		empleadoIngresado->getCalifObs().pop_front();
-	}
-	empleadoIngresado=NULL;
+	//list<Calificacion*> aux=empleadoIngresado->getCalifObs();
+	//while(!aux.empty()){
+		//aux.pop_front();
+	//}
+	empleadoIngresado->EliminarCalificaciones();
+	//empleadoIngresado=NULL;
 }
 
 list<DTEmpleado> ControladorHostal::ObtenerEmpleados(){
