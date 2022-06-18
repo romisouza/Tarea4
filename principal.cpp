@@ -852,7 +852,7 @@ void consultaReserva(){
     set<std::string> nombres= ctrlHostal->ObtenerNombreHostales();
     cout << "Los hostales registrados en el sistema son:" << endl;
     for (auto it=nombres.begin();it!=nombres.end();++it){
-        cout << "  - " << (*it);
+        cout << "  - " << (*it)<<endl;
     }
     string nombreHostal;
     cout << "Ingrese el nombre del hostal elegido: "<<endl;
