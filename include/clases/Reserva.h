@@ -45,7 +45,7 @@ class Reserva{
         void BuscarEstadia(string, DTFecha, list<DTIdEstadia> &);//cambie el nombre
         list<DTIdEstadia> accederaEstadias(Reserva*);
         void hallarEstadia(string,string);
-        virtual DTReserva* validarHuespedRegistrado(string)=0;
+        virtual bool validarHuespedRegistrado(string)=0;
         virtual void validarHuesped(string,DTFecha,bool&)=0;
         void setCodigo(int);
         void setCheckIn(DTFecha);

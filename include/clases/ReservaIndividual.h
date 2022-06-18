@@ -12,7 +12,7 @@ class ReservaIndividual:public Reserva{
     public:
         ReservaIndividual(int codigo, DTFecha checkin, DTFecha checkout,DTFecha realiza);
         virtual DTReserva* getDTReserva();
-        virtual DTReserva* validarHuespedRegistrado(string);
+        virtual bool validarHuespedRegistrado(string);
         virtual DTReservaComp* getDTReservaComp();
         virtual void validarHuesped(string,DTFecha,bool&);
         ~ReservaIndividual();

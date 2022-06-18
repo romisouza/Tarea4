@@ -262,14 +262,14 @@ list<DTCalificacion> ControladorHostal::ObtenerCalificaciones(std::string nombre
 
 //void ControladorHostal::ObtenerCalificaciones(TipoCargo cargoEmp, std::string emailEmp){}
 
-list<DTReserva*> ControladorHostal::ObtenerReservasNC(std::string nombreHostal, std::string email){
+list<int> ControladorHostal::ObtenerReservasNC(std::string nombreHostal, std::string email){
 	ControladorUsuario *ctrl = ControladorUsuario::getInstance();
 	if (ColHostales.find(nombreHostal) == ColHostales.end() || ctrl->getColHuespedes().find(email) == ctrl->getColHuespedes().end()) {
 		throw std::invalid_argument("Ocurrió un error con los datos ingresados."); 
 	}else{ //para recordar
 	Hostal* Hst =ColHostales.find(nombreHostal)->second;
 	this->hostalIngresado = Hst; //para recordar
-	list<DTReserva*> colReservasNC = Hst->BuscarRes(email);
+	list<int> colReservasNC = Hst->BuscarRes(email);
 	return colReservasNC;
 	}
 }

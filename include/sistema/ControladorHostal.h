@@ -82,7 +82,7 @@ class ControladorHostal:public IHostal {
 		void cancelarAltaReserva();//realizar res (cancelarReserva)
 		list<std::string> ConsultarTop3Hostal();//Consultartop3
 		list<DTCalificacion> ObtenerCalificaciones(std::string);//Consultartop3 (ObtenerHostal)
-		list<DTReserva*> ObtenerReservasNC(std::string, std::string);//registrar estadia (DatosHuesped)
+		list<int> ObtenerReservasNC(std::string, std::string);//registrar estadia (DatosHuesped)
 		void ReservaNCElegida(int,Huesped*);//registrar estadia
 		void DatosHuesped(std::string,std::string,bool&);//finalizar estadia NO SE QUE HACE LA FUNCION XD
 		void SeleccionarHostal(std::string);//calificar estadia

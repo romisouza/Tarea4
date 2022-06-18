@@ -79,7 +79,7 @@ class Hostal{
 		void ingresoAlHostal(int);
 		void CreateAddEstadia(DTFecha, int,Huesped*);
 		void buscarR(std::string,DTFecha,bool&);
-		list<DTReserva*> BuscarRes(std::string);
+		list<int> BuscarRes(std::string);
 		void agregarHabAlHost(Habitacion*);
 		void recordarHostal();
 };

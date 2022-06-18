@@ -160,7 +160,7 @@ void cargarDatosPrueba(){
     ctrlHostal->seleccionarHuesped("seba@mail.com");
     int codigo4 = ctrlHostal->confirmarAltaReserva();
    //Estadias
-    list<DTReserva*> reservasNC;
+    list<int> reservasNC;
     DTFecha checkin;
 
     reservasNC = ctrlHostal->ObtenerReservasNC("La posada del finger","sofia@mail.com");
@@ -237,6 +237,7 @@ void cargarDatosPrueba(){
     ctrlHostal-> ResponderComentario("frodo@mail.com",codigo2,respuesta);
 
     cout<< " ¡DATOS CARGADOS CON EXITO!"<<endl;
+
 }
 
 void altaUsuario(){
@@ -602,19 +603,13 @@ void registrarEstadia(){
     }
     cout << "Ingrese el email del huesped: "<< endl; //PARA MI HABRIA QUE MOSTRAR ANTES A LOS HUESPEDES
     cin >> email;
-    list<DTReserva*> reservasNC = ctrlHostal->ObtenerReservasNC(nombreHostal, email); //deevolver solo el codigo
-     if(reservasNC.empty()){
+    list<int> reservasNC = ctrlHostal->ObtenerReservasNC(nombreHostal, email); //deevolver solo el codigo
+    if(reservasNC.empty()){
         throw std::invalid_argument("No existen reservas no canceladas.");
     }
-        cout << "Los reservas no canceladas en el sistema son:" << endl;
-       for (auto it=reservasNC.begin();it!=reservasNC.end();++it){
-        DTReservaIndividual* ind = dynamic_cast<DTReservaIndividual*>((*it));
-        if(ind!=NULL){
-            cout << (ind)->getCodigo() << endl;
-        }else{
-            DTReservaGrupal* ind = dynamic_cast<DTReservaGrupal*>((*it));
-            cout << (ind)->getCodigo() << endl; //ver que mas mostrar
-        }
+    cout << "Los reservas no canceladas en el sistema son:" << endl;
+    for (auto it=reservasNC.begin();it!=reservasNC.end();++it){
+        cout << "-" << (*it) << endl;
     }
     int codigo;
     cout << "Ingresar el codigo de la reserva no cancelada elegida:" << endl;
