@@ -63,5 +63,6 @@ class ControladorUsuario: public IUsuario {
 		list<DTEmpleado> getNombresEmp();//suscribir empleados
 		Empleado* buscarEmpleado(std::string);
 		void eliminarReserva(string,int); //baja de reserva, nueva
+		Huesped* buscarHuesped(std::string);
 };
 #endif

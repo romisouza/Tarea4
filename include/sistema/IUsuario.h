@@ -40,6 +40,7 @@ class IUsuario {
 		virtual Estadia* BuscarHuesped2(DTIdEstadia) =0;//Nueva para calificar estadia
 		virtual list<DTEmpleado> getNombresEmp() =0;//suscribir empleados
 		virtual Empleado* buscarEmpleado(std::string) =0;
+		virtual Huesped* buscarHuesped(std::string) = 0;
 };
 
 #endif

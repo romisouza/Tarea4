@@ -248,3 +248,8 @@ void ControladorUsuario::eliminarReserva(string email, int codRes){
 	Huesped* Hsp=ColHuespedes.find(email)->second;
 	Hsp->EliminarResHsp(codRes);
 }
+
+Huesped* ControladorUsuario::buscarHuesped(std::string email){
+	Huesped* huesp = ColHuespedes.find(email)->second;
+	return huesp;
+}

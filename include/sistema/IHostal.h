@@ -34,13 +34,13 @@ class IHostal{
 		virtual list<std::string> obtenerHuespedesRegistrados() =0;//realizar res
 		virtual void seleccionarHuesped(std::string) =0;//realizar res
 		virtual void seleccionarAcompaniante(std::string) =0; //realizar res
-		virtual void confirmarAltaReserva() =0;//realizar res
+		virtual int confirmarAltaReserva() =0;//realizar res
 		virtual int generarCodigoReserva() =0;//realizar res
 		virtual void cancelarAltaReserva() =0;//realizar res (cancelarReserva)
 		virtual list<std::string> ConsultarTop3Hostal() =0;//Consultartop3
 		virtual list<DTCalificacion> ObtenerCalificaciones(std::string) =0;//Consultartop3 (ObtenerHostal)
 		virtual list<DTReserva*> ObtenerReservasNC(std::string, std::string) =0;//registrar estadia (DatosHuesped)
-		virtual void ReservaNCElegida(int) =0;//registrar estadia
+		virtual void ReservaNCElegida(int,Huesped*) =0;//registrar estadia
 		virtual void DatosHuesped(std::string,std::string) =0;//finalizar estadia NO SE QUE HACE LA FUNCION XD
 		virtual void SeleccionarHostal(std::string) =0;//calificar estadia
 		virtual void ingresarEstadiaFinalizada(Estadia*) =0;//Nueva, recuerda la estadia de un huesped

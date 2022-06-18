@@ -132,7 +132,7 @@ void cargarDatosPrueba(){
     ctrlHostal->ingresarDatosReserva("La posada del finger",in,out,0,1);
     ctrlHostal->seleccionarHabitacion(1);
     ctrlHostal->seleccionarHuesped("sofia@mail.com");
-    ctrlHostal->confirmarAltaReserva();
+    int codigo1 = ctrlHostal->confirmarAltaReserva();
 
     in = DTFecha(4,1,2001,20,00);
     out = DTFecha(5,1,2001,2,00);
@@ -142,86 +142,56 @@ void cargarDatosPrueba(){
     ctrlHostal->seleccionarAcompaniante("sam@mail.com");
     ctrlHostal->seleccionarAcompaniante("merry@mail.com");
     ctrlHostal->seleccionarAcompaniante("pippin@mail.com");
-    ctrlHostal->confirmarAltaReserva();
+    int codigo2 = ctrlHostal->confirmarAltaReserva();
 
     in = DTFecha(7,6,2022,14,00);
     out = DTFecha(30,6,2022,11,00);
     ctrlHostal->ingresarDatosReserva("La posada del finger",in,out,0,1);
     ctrlHostal->seleccionarHabitacion(3);
     ctrlHostal->seleccionarHuesped("sofia@mail.com");
-    ctrlHostal->confirmarAltaReserva();
+    int codigo3 = ctrlHostal->confirmarAltaReserva();
 
     in = DTFecha(10,6,2022,14,00);
     out = DTFecha(30,6,2022,11,00);
     ctrlHostal->ingresarDatosReserva("Caverna Lujosa",in,out,0,1);
     ctrlHostal->seleccionarHabitacion(1);
     ctrlHostal->seleccionarHuesped("seba@mail.com");
-    ctrlHostal->confirmarAltaReserva();
+    int codigo4 = ctrlHostal->confirmarAltaReserva();
    //Estadias
     list<DTReserva*> reservasNC;
     DTFecha checkin;
 
     reservasNC = ctrlHostal->ObtenerReservasNC("La posada del finger","sofia@mail.com");
-    int codigo1;
-    auto it1=reservasNC.begin();
-    checkin =DTFecha(1,5,2022,18,00);
-    while ((codigo1!=0) && (it1!=reservasNC.end())){
-        if(((*it1)->getCheckIn().compararFecha((*it1)->getCheckIn(),checkin)) && ((*it1)->getCheckOut().compararFecha(checkin,(*it1)->getCheckOut()))){
-                codigo1=(*it1)->getCodigo();
-        }
-        ++it1;
-    }
     Huesped* huesp1 = ctrlUsuario->buscarHuesped("sofia@mail.com");
     ctrlHostal->ReservaNCElegida(codigo1,huesp1);
 
     reservasNC = ctrlHostal->ObtenerReservasNC("El Pony Pisador","frodo@mail.com");
-    int codigo2;
-    auto it2=reservasNC.begin();
-    checkin=DTFecha(4,1,2001,21,00);
-    while ((codigo2!=0) && (it2!=reservasNC.end())){
-        if(((*it2)->getCheckIn().compararFecha((*it2)->getCheckIn(),checkin)) && ((*it2)->getCheckOut().compararFecha(checkin,(*it2)->getCheckOut()))){
-                codigo2=(*it2)->getCodigo();
-        }
-        ++it2;
-    }
     Huesped* huesp2 = ctrlUsuario->buscarHuesped("frodo@mail.com");
     ctrlHostal->ReservaNCElegida(codigo2,huesp2);
 
     reservasNC = ctrlHostal->ObtenerReservasNC("El Pony Pisador","sam@mail.com");
-    checkin=DTFecha(4,1,2001,21,00);
     Huesped* huesp3 = ctrlUsuario->buscarHuesped("sam@mail.com");
     ctrlHostal->ReservaNCElegida(codigo2,huesp3);
 
     reservasNC = ctrlHostal->ObtenerReservasNC("El Pony Pisador","merry@mail.com");
-    checkin=DTFecha(4,1,2001,21,00);
     Huesped* huesp4 = ctrlUsuario->buscarHuesped("merry@mail.com");
     ctrlHostal->ReservaNCElegida(codigo2,huesp4);
 
     reservasNC = ctrlHostal->ObtenerReservasNC("El Pony Pisador","pippin@mail.com");
-    checkin=DTFecha(4,1,2001,21,00);
     Huesped* huesp5 = ctrlUsuario->buscarHuesped("pippin@mail.com");
     ctrlHostal->ReservaNCElegida(codigo2,huesp5);
 
     reservasNC = ctrlHostal->ObtenerReservasNC("Caverna Lujosa","seba@mail.com");
-    int codigo6;
-    auto it6=reservasNC.begin();
-    checkin=DTFecha(7,6,2022,18,00);
-    while ((codigo6!=0) && (it6!=reservasNC.end())){
-        if(((*it6)->getCheckIn().compararFecha((*it6)->getCheckIn(),checkin)) && ((*it6)->getCheckOut().compararFecha(checkin,(*it6)->getCheckOut()))){
-                codigo6=(*it6)->getCodigo();
-        }
-        ++it6;
-    }
     Huesped* huesp6 = ctrlUsuario->buscarHuesped("seba@mail.com");
-    ctrlHostal->ReservaNCElegida(codigo6,huesp6);
+    ctrlHostal->ReservaNCElegida(codigo4,huesp6);
 
     //Finalizacion de estadias
-    ctrlHostal->DatosHuesped("La posada del finger", "sofia@mail.com");
-    ctrlHostal->DatosHuesped("El Pony Pisador", "frodo@mail.com");
-    ctrlHostal->DatosHuesped("Caverna Lujosa", "seba@mail.com");
+   // ctrlHostal->DatosHuesped("La posada del finger", "sofia@mail.com");
+    //ctrlHostal->DatosHuesped("El Pony Pisador", "frodo@mail.com");
+    //ctrlHostal->DatosHuesped("Caverna Lujosa", "seba@mail.com");
     
     //calificar estadia
-    DTIdEstadia estadia;
+  /*  DTIdEstadia estadia;
     list<DTIdEstadia> est;
     std::string comentario;
 
@@ -262,7 +232,8 @@ void cargarDatosPrueba(){
     ctrlHostal->actualizarFS(2001,1,6,15,00);
     list<DTCal> comentaResponder = ctrlHostal->ObtenerComentariosAResponder("barli@mail.com");
     std::string respuesta = "Desapareció y se fue sin pagar.";
-    ctrlHostal-> ResponderComentario("frodo@mail.com",codigo2,respuesta);*/
+    ctrlHostal-> ResponderComentario("frodo@mail.com",codigo2,respuesta);
+*/
 }
 
 void altaUsuario(){
@@ -624,7 +595,9 @@ void registrarEstadia(){
     int codigo;
     cout << "Ingresar el codigo de la reserva no cancelada elegida:" << endl;
     cin >>codigo;
-    ctrlHostal->ReservaNCElegida(codigo);
+    IUsuario *ctrlUsuario = fabrica->obtenerControladorUsuario();
+    Huesped* huesp = ctrlUsuario->buscarHuesped(email);
+    ctrlHostal->ReservaNCElegida(codigo,huesp);
     cout << "¡ESTADIA REALIZADA CON EXITO!"<<endl;
     cout << endl;
 }

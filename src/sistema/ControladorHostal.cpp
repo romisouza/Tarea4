@@ -179,7 +179,7 @@ void ControladorHostal::seleccionarAcompaniante(std::string emailHuesp){// va a 
 	acompaniantesIngresados.insert(huesp);
 }
 
-void ControladorHostal::confirmarAltaReserva(){
+int ControladorHostal::confirmarAltaReserva(){
 	SingletonFechaHora *horario = SingletonFechaHora::getInstance();
 	DTFecha horaactual = horario->FechaHoraSistema();
 	int codigo = generarCodigoReserva();
@@ -197,6 +197,7 @@ void ControladorHostal::confirmarAltaReserva(){
 	//bool gruppOindIngresado;
 	//int totalHuespIngresado;
 	habRecordada = NULL;
+	return codigo;
 }
 
 int ControladorHostal::generarCodigoReserva(){
@@ -273,7 +274,7 @@ list<DTReserva*> ControladorHostal::ObtenerReservasNC(std::string nombreHostal, 
 	}
 }
 
-void ControladorHostal::ReservaNCElegida(int codigoRes){
+void ControladorHostal::ReservaNCElegida(int codigoRes,Huesped* huesp){
 	map<int, Reserva*> res =hostalIngresado->getColReservas(); //asumo que hostal esta bien?
 	SingletonFechaHora *FH = SingletonFechaHora::getInstance();
 	if (res.find(codigoRes) == res.end()|| (FH->FechaHoraSistema()).compararFecha(FH->FechaHoraSistema(),(res.find(codigoRes))->second->getCheckOut())!=1) {//ojo con !=
@@ -282,7 +283,7 @@ void ControladorHostal::ReservaNCElegida(int codigoRes){
 	hostalIngresado->ingresoAlHostal(codigoRes); 
 	SingletonFechaHora *FH = SingletonFechaHora::getInstance();
 	DTFecha hs = FH->FechaHoraSistema();
-	hostalIngresado->CreateAddEstadia(hs, codigoRes);
+	hostalIngresado->CreateAddEstadia(hs, codigoRes,huesp);
 	}
 }
 

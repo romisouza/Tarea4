@@ -76,13 +76,13 @@ class ControladorHostal:public IHostal {
 		list<std::string> obtenerHuespedesRegistrados();//realizar res
 		void seleccionarHuesped(std::string);//realizar res
 		void seleccionarAcompaniante(std::string); //realizar res
-		void confirmarAltaReserva();//realizar res
+		int confirmarAltaReserva();//realizar res
 		int generarCodigoReserva();//realizar res
 		void cancelarAltaReserva();//realizar res (cancelarReserva)
 		list<std::string> ConsultarTop3Hostal();//Consultartop3
 		list<DTCalificacion> ObtenerCalificaciones(std::string);//Consultartop3 (ObtenerHostal)
 		list<DTReserva*> ObtenerReservasNC(std::string, std::string);//registrar estadia (DatosHuesped)
-		void ReservaNCElegida(int);//registrar estadia
+		void ReservaNCElegida(int,Huesped*);//registrar estadia
 		void DatosHuesped(std::string,std::string);//finalizar estadia NO SE QUE HACE LA FUNCION XD
 		void SeleccionarHostal(std::string);//calificar estadia
 		void ingresarEstadiaFinalizada(Estadia*);//Nueva, recuerda la estadia de un huesped
