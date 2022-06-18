@@ -570,6 +570,7 @@ void consultarTop3Hostales(){
 
 void registrarEstadia(){
     IHostal *ctrlHostal = fabrica->obtenerControladorHostal();
+    IUsuario *ctrlUsuario = fabrica->obtenerControladorUsuario();
     set<std::string> nombres= ctrlHostal->ObtenerNombreHostales();
     cout << "Los hostales registrados en el sistema son:" << endl;
     for (auto it=nombres.begin();it!=nombres.end();++it){
@@ -579,6 +580,11 @@ void registrarEstadia(){
     cout << "Ingrese el nombre del hostal elegido: "<<endl;
     getline(cin >> ws, nombreHostal);
     std::string email;
+    cout << "Huespedes regitrados en el sistema: "<<endl;
+    list<string> huespedes = ctrlUsuario->obtenerHuespedes();
+    for (list<string>::iterator i = huespedes.begin(); i != huespedes.end();i++){
+        cout << "  - " << (*i)<<endl;
+    }
     cout << "Ingrese el email del huesped: "<< endl; //PARA MI HABRIA QUE MOSTRAR ANTES A LOS HUESPEDES
     cin >> email;
     list<DTReserva*> reservasNC = ctrlHostal->ObtenerReservasNC(nombreHostal, email); //deevolver solo el codigo
@@ -607,6 +613,7 @@ void registrarEstadia(){
 
 void finalizarEstadia(){
     IHostal *ctrlHostal = fabrica->obtenerControladorHostal();
+    IUsuario *ctrlUsuario = fabrica->obtenerControladorUsuario();
     set<std::string> nombres= ctrlHostal->ObtenerNombreHostales();
     cout << "Los hostales registrados en el sistema son:" << endl;
     for (auto it=nombres.begin();it!=nombres.end();++it){
@@ -616,6 +623,11 @@ void finalizarEstadia(){
     cout << "Ingrese el nombre del hostal elegido: "<<endl;
     getline(cin >> ws, nombreHostal);
     std::string email;
+    cout << "Huespedes regitrados en el sistema: "<<endl;
+    list<string> huespedes = ctrlUsuario->obtenerHuespedes();
+    for (list<string>::iterator i = huespedes.begin(); i != huespedes.end();i++){
+        cout << "  - " << (*i)<<endl;
+    }
     cout << "Ingrese el email del huesped: "<< endl; //HABRIA QUE MOSTRAR A LOS HUESPEDES
     getline(cin >> ws, email);
     ctrlHostal->DatosHuesped(nombreHostal, email);
@@ -625,6 +637,7 @@ void finalizarEstadia(){
 
 void calificarEstadia(){
     IHostal *ctrlHostal = fabrica->obtenerControladorHostal();
+    IUsuario *ctrlUsuario = fabrica->obtenerControladorUsuario();
     set<std::string> nombres= ctrlHostal->ObtenerNombreHostales();
     cout << "Los hostales registrados en el sistema son:" << endl;
     for (auto it=nombres.begin();it!=nombres.end();++it){
@@ -634,6 +647,11 @@ void calificarEstadia(){
     cout << "Ingrese el nombre del hostal elegido: "<<endl;
     getline(cin >> ws, nombreHostal);
     ctrlHostal->SeleccionarHostal(nombreHostal);
+    cout << "Huespedes regitrados en el sistema: "<<endl;
+    list<string> huespedes = ctrlUsuario->obtenerHuespedes();
+    for (list<string>::iterator i = huespedes.begin(); i != huespedes.end();i++){
+        cout << "  - " << (*i)<<endl;
+    }
     cout << "Ingrese el mail del huesped: "<<endl; //HABRIA QUE MOSTRAR LOS HUESPEDES
     string mailHsp;
     getline(cin >> ws, mailHsp);
@@ -667,6 +685,16 @@ void calificarEstadia(){
 
 void comentarCalificacion(){
     IHostal *ctrlHostal = fabrica->obtenerControladorHostal();
+    IUsuario *ctrlUsuario = fabrica->obtenerControladorUsuario();
+    map<std::string,Empleado*> ColEmpleados = ctrlUsuario->getColEmpleados();
+    set<string> empleados;
+    for( map<std::string, Empleado*>::iterator i= ColEmpleados.begin(); i != ColEmpleados.end(); i++){
+		std::string email = (*i).first;
+		empleados.insert(email);
+	} 
+    for (set<string>::iterator i = empleados.begin(); i != empleados.end();i++){
+        cout << "  - " << (*i)<<endl;
+    }
     cout << "Ingrese el mail de un empleado: "; //PRIMERO MOSTRAR LOS EMPLEADOS
     string mailEmp;
     getline(cin >> ws, mailEmp);
@@ -675,6 +703,11 @@ void comentarCalificacion(){
         cout << "Comentario del huesped: " << (*it).getComentarioHuesp();
         cout << "Mail del huesped: " << (*it).getMailHuesp();
         cout << "Codigo de la reserva asociada: " << (*it).getCodigoRes();
+    }
+    cout << "Huespedes regitrados en el sistema: "<<endl;
+    list<string> huespedes = ctrlUsuario->obtenerHuespedes();
+    for (list<string>::iterator i = huespedes.begin(); i != huespedes.end();i++){
+        cout << "  - " << (*i)<<endl;
     }
     cout << "Ingrese el mail del huesped del cual desea responder un comentario: "<<endl; //PRIMERO MOSTRAR LOS HUESPEDES
     string mailHuesp,respuesta;
