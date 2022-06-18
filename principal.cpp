@@ -23,6 +23,8 @@
 using namespace std;
 
 Fabrica *fabrica = Fabrica::getInstancia();
+int opcionMenu;
+std::string opcion;
 
 /*void opcionNoValida(){
     cout << "===============================" << endl;
