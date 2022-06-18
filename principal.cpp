@@ -633,7 +633,7 @@ void finalizarEstadia(){
     cout << "Ingrese el email del huesped: "<< endl; //HABRIA QUE MOSTRAR A LOS HUESPEDES
     getline(cin >> ws, email);
     bool finalizoEst = false;
-    ctrlHostal->DatosHuesped(nombreHostal, ,finalizoEst);
+    ctrlHostal->DatosHuesped(nombreHostal,email,finalizoEst);
     if (!finalizoEst){
     	cout << "NO HAY ESTADIAS PARA FINALIZAR."<<endl;
     }else
@@ -800,12 +800,11 @@ void consultaHostal(){
     cout<< "  - Telefono del hostal:"<< Hst.getTelefono()<<endl;
     cout<< "  - Promedio del hostal:"<< Hst.getPromedio()<<endl;
     cout<< "  - Habitaciones del hostal:"<<endl;
-    auto it=Hst.getHabitaciones().begin();
     cout << "  - Habitaciones: "<<endl;
     map<int,Habitacion*> habitaciones = Hst.getHabitaciones();
     auto it = habitaciones.begin();
     unsigned int tam= 1;
-    while(tam<= habitaciones().size()){
+    while(tam<= habitaciones.size()){
         cout<< "    - Numero de la habitacion:"<< (*it).second->getNumero()<<endl;
         cout<< "    - Capacidad de la habitacion:"<< (*it).second->getCapacidad()<<endl;
         cout<< "    - Precio de la habitacion :"<< (*it).second->getPrecioNoche()<<endl;
