@@ -219,7 +219,7 @@ void cargarDatosPrueba(){
     ctrlHostal->ConfirmarCalificacion(comentario, 2);
 
     ctrlHostal->actualizarFS(2022,6,15,23,00);
-    ctrlHostal->SeleccionarHostal("Caverna Lujosa ");
+    ctrlHostal->SeleccionarHostal("Caverna Lujosa");
     est = ctrlHostal->ListaEstadiasFinalizadas("seba@mail.com");
     for (list<DTIdEstadia>::iterator i = est.begin(); i != est.end(); i++){
         if (codigo4 == (*i).getCodigo())
