@@ -53,7 +53,7 @@ void Calificacion::setEstadia(Estadia* estt){
 }
 
 DTCalificacion Calificacion::getDTCalificacion(){
-    DTCalificacion Cal=DTCalificacion(getPuntaje(),getComentarioEmp(),getComentarioHuesp());
+    DTCalificacion Cal=DTCalificacion(getPuntaje(),getComentarioHuesp(),getComentarioEmp());
     return Cal;
 }
 
