@@ -85,7 +85,7 @@ void Reserva::setEstadia(list<Estadia*> estadia){
 
 void Reserva::BuscarEstadia(std::string email, DTFecha hrs,list<DTIdEstadia> & estId){
     list<Estadia*>::iterator it=est.begin();
-    while((*it)->getHuesp()->getEmail()!=email){
+    while((it!=est.end() && (*it)->getHuesp()->getEmail()!=email)){
         ++it;
     }
     bool EsFin= hrs.compararFecha((*it)->getCheckOut(),hrs);

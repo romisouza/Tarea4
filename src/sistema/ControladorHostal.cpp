@@ -318,7 +318,8 @@ void ControladorHostal::ingresarEstadiaFinalizada(Estadia* est){
 
 list<DTIdEstadia> ControladorHostal::ListaEstadiasFinalizadas(string email){
 	ControladorUsuario* cu = ControladorUsuario::getInstance();
-	if (cu->getColHuespedes().find(email) == cu->getColHuespedes().end()) {
+	map<std::string,Huesped*> huespedes = cu->getColHuespedes();
+	if (huespedes.find(email) == huespedes.end()) {
 		throw std::invalid_argument("No existe un usuario con el email ingresado"); 
 	}
 	else{

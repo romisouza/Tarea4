@@ -199,11 +199,12 @@ void cargarDatosPrueba(){
     ctrlHostal->actualizarFS(2022,5,11,18,00);
     ctrlHostal->SeleccionarHostal("La posada del finger");
     est = ctrlHostal->ListaEstadiasFinalizadas("sofia@mail.com");
-    /* for (list<DTIdEstadia>::iterator i = est.begin(); i != est.end(); i++){
+    //cout << "CANT: " << est.size();
+    /*for (list<DTIdEstadia>::iterator i = est.begin(); i != est.end(); i++){
         if (codigo1 == (*i).getCodigo())
             estadia = (*i);
-    }
-    ctrlHostal->SeleccionarEstadia(estadia);
+    }*/
+/*    ctrlHostal->SeleccionarEstadia(estadia);
     comentario = "Un poco caro para lo que ofrecen.El famoso gimnasio era una caminadora (que hacía tremendo ruido) y 2 pesas, la piscina parecía el lago del Parque Rodó y el desayuno eran 2 tostadas con mermelada. Internet se pasaba cayendo. No vuelvo";
     ctrlHostal->ConfirmarCalificacion(comentario, 3);
 

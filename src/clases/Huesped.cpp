@@ -31,7 +31,7 @@ void Huesped::setEsFinger(bool finger){
 list<DTIdEstadia> Huesped::BuscarEstadias(std::string email,  DTFecha hrs){
 	map<int,Reserva*> Res=getColReservasHuesp();
 	list<DTIdEstadia> ListasFin;
-	//DTIdEstadia aux= DTIdEstadia();
+	DTIdEstadia aux= DTIdEstadia();
 	for(auto it=Res.begin();it!=Res.end();it++){
 		it->second->BuscarEstadia(email,hrs,ListasFin);
 	}
