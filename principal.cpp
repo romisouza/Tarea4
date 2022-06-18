@@ -604,7 +604,6 @@ void registrarEstadia(){
     int codigo;
     cout << "Ingresar el codigo de la reserva no cancelada elegida:" << endl;
     cin >>codigo;
-    IUsuario *ctrlUsuario = fabrica->obtenerControladorUsuario();
     Huesped* huesp = ctrlUsuario->buscarHuesped(email);
     ctrlHostal->ReservaNCElegida(codigo,huesp);
     cout << "¡ESTADIA REALIZADA CON EXITO!"<<endl;
