@@ -222,7 +222,7 @@ void cargarDatosPrueba(){
     ctrlHostal->SeleccionarHostal("Caverna Lujosa ");
     est = ctrlHostal->ListaEstadiasFinalizadas("seba@mail.com");
     for (list<DTIdEstadia>::iterator i = est.begin(); i != est.end(); i++){
-        if (codigo6 == (*i).getCodigo())
+        if (codigo4 == (*i).getCodigo())
             estadia = (*i);
     }
     ctrlHostal->SeleccionarEstadia(estadia);
