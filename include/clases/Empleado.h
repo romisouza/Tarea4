@@ -22,7 +22,7 @@ class Empleado: public Usuario, public IObserver{
 		virtual ~Empleado();
 		Hostal* getHostalAsociado();
 		CargoEmpleado* getCargoEmpleado();
-		list<Calificacion*> getCalifObs();
+		virtual list<Calificacion*> getCalifObs();
 		void setHostalAsociado(Hostal*);
 		void setCargoEmpleado(CargoEmpleado* cargo);
 		list<DTCal> obtenerComentarios();
@@ -31,5 +31,7 @@ class Empleado: public Usuario, public IObserver{
 		void AsignarEmpleadoAHostal(CargoEmpleado*,Hostal*);
 		DTEmpleado getDTEmpleado();
 		virtual void notificar(Calificacion* cal);
+		virtual IObserver* getObserver();
+		virtual string getEmailObs();
 };
 #endif

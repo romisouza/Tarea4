@@ -482,14 +482,23 @@ void ControladorHostal::SuscribirEmpleado(string emp){
 
 list<DTCalificacion> ControladorHostal::ObtenerNotificaciones(string email){
 	ControladorUsuario* cu = ControladorUsuario::getInstance();
-	Empleado* EmpSel=cu->buscarEmpleado(email);
-	empleadoIngresado=EmpSel;
+	IObserver* EmpSel=BuscarEmp(email);
+	EmpNoti=EmpSel;
+	cout<< EmpSel->getCalifObs().size();
 	list<DTCalificacion> aux;
-	for(auto it=EmpSel->getCalifObs().begin();it!=EmpSel->getCalifObs().end(); it++){
+	for(auto it=EmpSel->getCalifObs().begin();it!=EmpSel->getCalifObs().end(); ++it){
 		DTCalificacion cal= DTCalificacion((*it)->getPuntaje(),(*it)->getComentarioHuesp(), (*it)->getComentarioEmp());
 		aux.push_back(cal);
 	}
 	return aux;
+}
+
+IObserver* ControladorHostal::BuscarEmp(string email){
+		auto it=obs.begin();
+		while(((it)!= obs.end()) && ((*it)->getEmailObs()!=email)){
+			it++;
+		}
+		return (*it);
 }
 
 void ControladorHostal::EliminarNotificaciones(){
@@ -500,8 +509,20 @@ void ControladorHostal::EliminarNotificaciones(){
 }
 
 list<DTEmpleado> ControladorHostal::ObtenerEmpleados(){
-	ControladorUsuario* cu = ControladorUsuario::getInstance();
-	list<DTEmpleado> aux=cu->getNombresEmp();
+	ControladorUsuario* cu=ControladorUsuario::getInstance();
+	list<DTEmpleado> emp=cu->getNombresEmp();
+	return emp;
+}
+
+list<IObserver*> ControladorHostal::ObtenerSuscritos(){
+	list<IObserver*>::iterator it=obs.begin();
+	list<IObserver*> aux;
+	while (it!=obs.end()){
+		IObserver* emp=(*it)->getObserver();
+		aux.push_back(emp);
+		++it;
+	}
+	
 	return aux;
 }
 

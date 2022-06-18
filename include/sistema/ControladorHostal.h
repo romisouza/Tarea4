@@ -54,6 +54,7 @@ class ControladorHostal:public IHostal {
 		Reserva* reservaIngresada;
 		//Notificaciones
 		list<IObserver*> obs;
+		IObserver* EmpNoti;
 		ControladorHostal();
 		~ControladorHostal();
 	public: 
@@ -108,7 +109,9 @@ class ControladorHostal:public IHostal {
 		list<DTCalificacion> ObtenerNotificaciones(string email);
 		void EliminarNotificaciones();
 		void eliminarSuscripcion(string emp);
+		list<IObserver*> ObtenerSuscritos();
 		list<DTEmpleado> ObtenerEmpleados();
+		IObserver* BuscarEmp(string);
 		void CancelarBajaReserva();//baja reserva
 		void actualizarFS(int,int,int,int,int); //modificarFechaSistema
 };

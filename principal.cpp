@@ -234,6 +234,8 @@ void cargarDatosPrueba(){
     list<DTCal> comentaResponder = ctrlHostal->ObtenerComentariosAResponder("barli@mail.com");
     std::string respuesta = "Desapareció y se fue sin pagar.";
     ctrlHostal-> ResponderComentario("frodo@mail.com",codigo2,respuesta);
+
+    cout<< " ¡DATOS CARGADOS CON EXITO!"<<endl;
 }
 
 void altaUsuario(){
@@ -793,7 +795,6 @@ void consultaHostal(){
     cout<< "  - Telefono del hostal:"<< Hst.getTelefono()<<endl;
     cout<< "  - Promedio del hostal:"<< Hst.getPromedio()<<endl;
     cout<< "  - Habitaciones del hostal:"<<endl;
-    cout << "  - Habitaciones: "<<endl;
     auto it=Hst.getHabitaciones().begin();
     unsigned int tam= 1;
     while(tam<= Hst.getHabitaciones().size()){
@@ -863,17 +864,17 @@ void consultaReserva(){
     while(it!=reservas.end()){
         DTReservaCompInd* ind = dynamic_cast<DTReservaCompInd*>((*it));
         if(ind!=NULL){
-        cout<< "  - Codigo de la reserva: "<< (ind)->getCodigo() << endl;
-        cout<< "  - Fecha de entrada de la reserva:"<< (ind)->getCheckIn().getDia() <<"/" <<(ind)->getCheckIn().getMes()<<"/"<<(ind)->getCheckIn().getAnio()  << endl;
-        cout<< "  - Fecha de salida de la reserva:"<< (ind)->getCheckOut().getDia() <<"/"<<(ind)->getCheckOut().getMes()<<"/"<<(ind)->getCheckOut().getAnio() << endl ;
-        EstadoReserva estado = (ind)->getEstado();
-        switch(estado){
-        case 0: cout << "  - La reserva está abierta"<<endl;
-        break;
-        case 1: cout << "  - La reserva está cerrada"<<endl;
-        break;
-        case 2: cout << "  - La reserva está cancelada"<<endl;
-        break;
+            cout<< "  - Codigo de la reserva: "<< (ind)->getCodigo() << endl;
+            cout<< "  - Fecha de entrada de la reserva:"<< (ind)->getCheckIn().getDia() <<"/" <<(ind)->getCheckIn().getMes()<<"/"<<(ind)->getCheckIn().getAnio()  << endl;
+            cout<< "  - Fecha de salida de la reserva:"<< (ind)->getCheckOut().getDia() <<"/"<<(ind)->getCheckOut().getMes()<<"/"<<(ind)->getCheckOut().getAnio() << endl ;
+            EstadoReserva estado = (ind)->getEstado();
+            switch(estado){
+            case 0: cout << "  - La reserva está abierta"<<endl;
+            break;
+            case 1: cout << "  - La reserva está cerrada"<<endl;
+            break;
+            case 2: cout << "  - La reserva está cancelada"<<endl;
+            break;
         }
         cout<< "  - Numero de habitacion :"<< (ind)->getNumHab() << endl;
         }
@@ -1093,29 +1094,47 @@ void SuscribirseaNotificaciones(){
 
 void ConsultaDeNotificaciones(){
     IHostal *ctrlHostal = fabrica->obtenerControladorHostal();
-    list<DTEmpleado> Emp=ctrlHostal->ObtenerEmpleados();
-    cout<< "Los email de los empleados son:"<<endl;
-    for (auto it=Emp.begin();it!=Emp.end();it++){
-        cout<< "  - "<< (*it).getEmail()<<endl;
+    list<IObserver*> Emp=ctrlHostal->ObtenerSuscritos();
+    if(Emp.begin()==Emp.end()){
+		throw std::invalid_argument ("No existen empleados suscritos.");
+	}
+	else{
+        auto it=Emp.begin();
+        cout<< "Los email de los empleados suscritos son:"<<endl;
+        while (it!=Emp.end()){
+            Empleado* ind= dynamic_cast<Empleado*>((*it));
+            if(ind!=NULL){
+                cout<< "  - "<< (*ind).getEmail()<<endl;
+            }
+            ++it;   
+        }
+        string email;
+        cout<< "Ingrese el email del empleado elegido:"<<endl;
+        getline(cin >> ws, email);
+        list<DTCalificacion> cal=ctrlHostal->ObtenerNotificaciones(email);
+
+        /*if(cal.begin()==cal.end()){
+            cout<< "No hay notificaciones nuevas."<<endl;
+        }
+        else{
+            for(auto it=cal.begin();it!=cal.end();it++){
+                cout<< "El puntaje de la calificacion es: "<< (*it).getPuntaje()<<endl;
+                cout<< "El comentario de la calificacion es: "<< (*it).getComentarioHuesp()<<endl;
+             }
+        /*ctrlHostal->EliminarNotificaciones();*/
+        //}
+        
+        
     }
-    string email;
-    cout<< "Ingrese el email del empleado elegido:"<<endl;
-    getline(cin >> ws, email);
-    list<DTCalificacion> cal=ctrlHostal->ObtenerNotificaciones(email);
-    for(auto it=cal.begin();it!=cal.end();it++){
-        cout<< "El puntaje de la calificacion es: "<< (*it).getPuntaje()<<endl;
-        cout<< "El comentario de la calificacion es: "<< (*it).getComentarioHuesp()<<endl;
-    }
-    ctrlHostal->EliminarNotificaciones();
 }
 
 void EliminarSuscripcion(){
     IHostal *ctrlHostal = fabrica->obtenerControladorHostal();
-    list<DTEmpleado> Emp=ctrlHostal->ObtenerEmpleados();
+    list<IObserver*> Emp=ctrlHostal->ObtenerSuscritos();
     cout<< "Los email de los empleados son:"<<endl;
-    for (auto it=Emp.begin();it!=Emp.end();it++){
+   /* for (auto it=Emp.begin();it!=Emp.end();it++){
         cout<< "  - "<< (*it).getEmail()<<endl;
-    }
+    }*/
     string email;
     cout<< "Ingrese el email del empleado elegido:"<<endl;
     getline(cin >> ws, email);

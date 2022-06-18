@@ -118,9 +118,6 @@ DataHostalComp Hostal::getDTHostal(){
 	Hst.setReservas(Res);
 	map<int, Habitacion*> Hab=getColHabitaciones();
 	Hst.setHabitaciones(Hab);
-	/*if(Hst.getComentarios().empty()){
-		throw std::invalid_argument("No existe comentarios en el hostal ingresado");
-	}
 	list<Calificacion*> Cal=getColCal();
 	list<DTCalificacion> Cali;
 	list<Calificacion*>:: iterator it=Cal.begin();
@@ -129,7 +126,7 @@ DataHostalComp Hostal::getDTHostal(){
 		Cali.push_back(aux);
 		it++;
 	}
-	Hst.setComentarios(Cali);*/
+	Hst.setComentarios(Cali);
 	return Hst; 
 }
 

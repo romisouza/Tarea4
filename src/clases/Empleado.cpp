@@ -6,6 +6,7 @@ Empleado::Empleado(string nom,string mail,string pass):Usuario(nom,mail,pass) {
 	password = pass;
 	hostalAsociado = NULL;
 	cargo = NULL;
+	list<IObserver*> califObs; 
 }
 
 Empleado::~Empleado(){
@@ -69,4 +70,14 @@ DTEmpleado Empleado::getDTEmpleado(){
 
 void Empleado::notificar(Calificacion* cal){
 	califObs.push_back(cal);
+}
+
+IObserver* Empleado::getObserver(){
+	Empleado* nuevo= new Empleado(getNombre(),getEmail(),getPassword());
+	return nuevo;
+}
+
+
+string Empleado::getEmailObs(){
+	return getEmail();
 }

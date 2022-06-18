@@ -66,7 +66,9 @@ class IHostal{
 		virtual list<DTCalificacion> ObtenerNotificaciones(string email) =0;
 		virtual void EliminarNotificaciones() =0;
 		virtual void eliminarSuscripcion(string emp) =0;
-		virtual list<DTEmpleado> ObtenerEmpleados() =0;
+		virtual list<IObserver*> ObtenerSuscritos() =0;
+		virtual list<DTEmpleado> ObtenerEmpleados()=0;
+		virtual IObserver* BuscarEmp(string)=0;
 		virtual void CancelarBajaReserva() =0;//baja reserva
 		virtual void actualizarFS(int,int,int,int,int)=0;
 };
