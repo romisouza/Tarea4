@@ -41,7 +41,7 @@ class IHostal{
 		virtual list<DTCalificacion> ObtenerCalificaciones(std::string) =0;//Consultartop3 (ObtenerHostal)
 		virtual list<DTReserva*> ObtenerReservasNC(std::string, std::string) =0;//registrar estadia (DatosHuesped)
 		virtual void ReservaNCElegida(int,Huesped*) =0;//registrar estadia
-		virtual void DatosHuesped(std::string,std::string) =0;//finalizar estadia NO SE QUE HACE LA FUNCION XD
+		virtual void DatosHuesped(std::string,std::string,bool&) =0;//finalizar estadia NO SE QUE HACE LA FUNCION XD
 		virtual void SeleccionarHostal(std::string) =0;//calificar estadia
 		virtual void ingresarEstadiaFinalizada(Estadia*) =0;//Nueva, recuerda la estadia de un huesped
 		virtual list<DTIdEstadia> ListaEstadiasFinalizadas(std::string) =0;//calificar estadia
