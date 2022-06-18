@@ -188,10 +188,10 @@ void cargarDatosPrueba(){
     ctrlHostal->ReservaNCElegida(codigo4,huesp6);
 
     //Finalizacion de estadias
-    bool FinalizarEst = false;
-    ctrlHostal->DatosHuesped("La posada del finger", "sofia@mail.com");
-    ctrlHostal->DatosHuesped("El Pony Pisador", "frodo@mail.com");
-    ctrlHostal->DatosHuesped("Caverna Lujosa", "seba@mail.com");
+    bool finalizoEst = false;
+    ctrlHostal->DatosHuesped("La posada del finger", "sofia@mail.com",finalizoEst);
+    ctrlHostal->DatosHuesped("El Pony Pisador", "frodo@mail.com",finalizoEst);
+    ctrlHostal->DatosHuesped("Caverna Lujosa", "seba@mail.com",finalizoEst);
     
     //calificar estadia
    DTIdEstadia estadia;
