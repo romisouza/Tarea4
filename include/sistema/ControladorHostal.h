@@ -84,7 +84,7 @@ class ControladorHostal:public IHostal {
 		list<DTCalificacion> ObtenerCalificaciones(std::string);//Consultartop3 (ObtenerHostal)
 		list<DTReserva*> ObtenerReservasNC(std::string, std::string);//registrar estadia (DatosHuesped)
 		void ReservaNCElegida(int,Huesped*);//registrar estadia
-		void DatosHuesped(std::string,std::string);//finalizar estadia NO SE QUE HACE LA FUNCION XD
+		void DatosHuesped(std::string,std::strin,bool&);//finalizar estadia NO SE QUE HACE LA FUNCION XD
 		void SeleccionarHostal(std::string);//calificar estadia
 		void ingresarEstadiaFinalizada(Estadia*);//Nueva, recuerda la estadia de un huesped
 		list<DTIdEstadia> ListaEstadiasFinalizadas(std::string);//calificar estadia
