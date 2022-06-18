@@ -78,7 +78,7 @@ class Hostal{
 		bool TrabajaEnHostal();
 		void ingresoAlHostal(int);
 		void CreateAddEstadia(DTFecha, int,Huesped*);
-		void buscarR(std::string,DTFecha);
+		void buscarR(std::string,DTFecha,bool&);
 		list<DTReserva*> BuscarRes(std::string);
 		void agregarHabAlHost(Habitacion*);
 		void recordarHostal();
