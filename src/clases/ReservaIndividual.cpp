@@ -27,16 +27,17 @@ DTReserva* ReservaIndividual::validarHuespedRegistrado(string email){
     return resultado;
 }
 
-void ReservaIndividual::validarHuesped(string email, DTFecha hs){
+void ReservaIndividual::validarHuesped(string email, DTFecha hs,bool &finalizoEst){
     if (getHues()->getEmail() == email){
         list<Estadia*> est = getEstadia();
         if (est.size()>0){
-        DTFecha checkoutEst = est.front()->getCheckOut();
-        DTFecha comparar;
-        bool Ter = comparar.compararFecha(checkoutEst, hs);
-        if (!Ter){
-            est.front()->setCheckOut(hs);
-       }
+            DTFecha checkoutEst = est.front()->getCheckOut();
+            DTFecha comparar;
+            bool Ter = comparar.compararFecha(checkoutEst, hs);
+            if (!Ter){
+                est.front()->setCheckOut(hs);
+                finalizoEst = true;
+            }
        } 
     }
 }
