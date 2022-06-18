@@ -402,7 +402,19 @@ void asignarEmpleadoAHostal(){
     cout << "'3' para asignar el cargo Recepcion" << endl;
     cout << "'4' para asignar el cargo Infraestructura" << endl;
     cout << "Ingrese el numero del cargo a ejercer por el empleado elegido: "<<endl;
-    cin >> cargo;
+    std::string Cargoemp;
+    cin >> Cargoemp;
+    if (Cargoemp != "1"||Cargoemp != "2"||Cargoemp != "3"||Cargoemp != "4") {
+        throw std::invalid_argument("El dato ingresado no es correcto."); 
+    }
+    if (Cargoemp == "1")
+        cargo = 1;    
+    if (Cargoemp == "2")
+        cargo = 2;
+    if (Cargoemp == "3")
+        cargo = 3;
+    if (Cargoemp == "4")
+        cargo = 4;
     CargoEmpleado* cargo1;
         switch(cargo){
         case 1: cargo1= new CargoEmpleado(Administracion);
