@@ -681,7 +681,7 @@ void calificarEstadia(){
     cout<< "Ingrese puntaje de la calificacion:"<<endl;
     cin>> Puntaje;
     string comentario;
-    cout<< "Igrese comentario de la calificacion:"<<endl;
+    cout<< "Ingrese comentario de la calificacion:"<<endl;
     getline(cin >> ws, comentario);
     ctrlHostal->ConfirmarCalificacion(comentario,Puntaje);
     cout << "¡CALIFICACION DE ESTADIA REALIZADA CON EXITO!"<<endl;
