@@ -124,7 +124,7 @@ void cargarDatosPrueba(){
     ctrlHostal->ConfirmarAsignacionDeEmpleado(); 
     HostalSeleccionado = ctrlHostal->ObtenerEmpleados("El Pony Pisador");
     cargo= new CargoEmpleado(Recepcion);
-    ctrlHostal->SeleccionarEmpleado(cargo,"alina@mail.com");
+    ctrlHostal->SeleccionarEmpleado(cargo,"barli@mail.com");
     ctrlHostal->ConfirmarAsignacionDeEmpleado(); 
     //Realizo las reservas
     DTFecha in,out;
@@ -199,12 +199,11 @@ void cargarDatosPrueba(){
     ctrlHostal->actualizarFS(2022,5,11,18,00);
     ctrlHostal->SeleccionarHostal("La posada del finger");
     est = ctrlHostal->ListaEstadiasFinalizadas("sofia@mail.com");
-    //cout << "CANT: " << est.size();
-    /*for (list<DTIdEstadia>::iterator i = est.begin(); i != est.end(); i++){
+    for (list<DTIdEstadia>::iterator i = est.begin(); i != est.end(); i++){
         if (codigo1 == (*i).getCodigo())
             estadia = (*i);
-    }*/
-/*    ctrlHostal->SeleccionarEstadia(estadia);
+    }
+    ctrlHostal->SeleccionarEstadia(estadia);
     comentario = "Un poco caro para lo que ofrecen.El famoso gimnasio era una caminadora (que hacía tremendo ruido) y 2 pesas, la piscina parecía el lago del Parque Rodó y el desayuno eran 2 tostadas con mermelada. Internet se pasaba cayendo. No vuelvo";
     ctrlHostal->ConfirmarCalificacion(comentario, 3);
 
@@ -235,7 +234,6 @@ void cargarDatosPrueba(){
     list<DTCal> comentaResponder = ctrlHostal->ObtenerComentariosAResponder("barli@mail.com");
     std::string respuesta = "Desapareció y se fue sin pagar.";
     ctrlHostal-> ResponderComentario("frodo@mail.com",codigo2,respuesta);
-*/
 }
 
 void altaUsuario(){
