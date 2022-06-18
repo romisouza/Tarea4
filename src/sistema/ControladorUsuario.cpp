@@ -240,8 +240,14 @@ list<DTEmpleado> ControladorUsuario::getNombresEmp(){
 }
 
 Empleado* ControladorUsuario::buscarEmpleado(std::string emp){
-	Empleado* aux=ColEmpleados.find(emp)->second;
+	if(ColEmpleados.find(emp) == ColEmpleados.end()){
+		throw std::invalid_argument ("No existe empleado con el email ingresado.");
+	}
+	else{
+		Empleado* aux=ColEmpleados.find(emp)->second;
 	return aux;
+	}
+	
 }
 
 void ControladorUsuario::eliminarReserva(string email, int codRes){
