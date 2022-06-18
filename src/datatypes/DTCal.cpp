@@ -4,9 +4,9 @@ DTCal::DTCal(){
 
 }
 
-DTCal::DTCal(std::string comHuesp,std::string mailHuesp,int codigor){
+DTCal::DTCal(std::string comHuesp,std::string mail,int codigor){
     comentarioHuesp = comHuesp;
-    comentarioHuesp = comHuesp;
+    mailHuesp = mail;
     codigoRes = codigor;
 }
 
