@@ -706,9 +706,9 @@ void comentarCalificacion(){
     getline(cin >> ws, mailEmp);
     list<DTCal> comentarios = ctrlHostal->ObtenerComentariosAResponder(mailEmp);
     for (auto it=comentarios.begin();it!=comentarios.end();++it){
-        cout << "Comentario del huesped: " << (*it).getComentarioHuesp();
-        cout << "Mail del huesped: " << (*it).getMailHuesp();
-        cout << "Codigo de la reserva asociada: " << (*it).getCodigoRes();
+        cout << "Comentario del huesped: " << (*it).getComentarioHuesp()<<endl;
+        cout << "Mail del huesped: " << (*it).getMailHuesp()<<endl;
+        cout << "Codigo de la reserva asociada: " << (*it).getCodigoRes()<<endl;
     }
     cout << "Huespedes regitrados en el sistema: "<<endl;
     list<string> huespedes = ctrlUsuario->obtenerHuespedes();
