@@ -6,7 +6,7 @@
 #include "include/datatypes/DataHostalComp.h"
 #include "include/datatypes/DTCal.h"
 #include "include/datatypes/DTCalificacion.h"
-#include "include/datatypes/DTEmpleado.h"asignaremp
+#include "include/datatypes/DTEmpleado.h"
 #include "include/datatypes/DTEstadia.h"
 #include "include/datatypes/DTFecha.h"
 #include "include/datatypes/DTHabitacion.h"
