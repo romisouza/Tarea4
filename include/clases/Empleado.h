@@ -33,6 +33,6 @@ class Empleado: public Usuario, public IObserver{
 		virtual void notificar(Calificacion* cal);
 		virtual IObserver* getObserver();
 		virtual string getEmailObs();
-		void EliminarCalificaciones();
+		virtual void EliminarCalificaciones();
 };
 #endif

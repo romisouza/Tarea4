@@ -127,14 +127,23 @@ void Reserva::hallarEstadia(string mailHuesp,string respuesta){
     }
 }
 
+
+set<Calificacion*> Reserva::eliminarComentarios(){
+    set<Calificacion*> coment; 
+    if(est.begin()!=est.end()){
+        for(auto iter=est.begin();iter!=est.end();++iter){
+            Calificacion* cal=(*iter)->getCal();
+           coment.emplace(cal);
+       }
+    }
+    return coment;
+}
+
+
 Reserva ::~Reserva() {
     auto it=est.begin();
-    while((*it)!=NULL){
-        (*it)->~Estadia();
-        est.remove((*it));
-    }
     est.clear();
-    delete hab;
-    delete hues;
+   // delete hab;
+   // delete hues;
    //delete est;
 }

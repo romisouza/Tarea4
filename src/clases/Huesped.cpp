@@ -53,5 +53,7 @@ DTHuesped Huesped::getDTHuesped(){
 }
 
 void Huesped::EliminarResHsp(int codRes){
-	ColReservasHuesp.erase(codRes);
+	if(ColReservasHuesp.empty()){
+		ColReservasHuesp.erase(codRes);
+	}	
 }

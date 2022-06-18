@@ -58,6 +58,7 @@ class Hostal{
 		void setDireccion(std::string);
 		void setTelefono(std::string);
 		void setPromedio(int);
+		void setColCal(list<Calificacion*>);
 		set<DTCal> obtenerHostal();
 		list<DTReserva*> BuscarReservas();
 		void EliminarRes(Reserva*);

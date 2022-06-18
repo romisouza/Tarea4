@@ -55,6 +55,7 @@ class Reserva{
         void setHab(Habitacion*);
         void setHues(Huesped*);
         void setEstadia(list<Estadia*>);
+        set<Calificacion*> eliminarComentarios();
         ~Reserva();
 };
 

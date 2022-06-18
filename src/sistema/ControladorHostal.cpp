@@ -453,7 +453,8 @@ void ControladorHostal::SeleccionarReserva(int codigoRes){
 void ControladorHostal::ConfirmarEliminarReserva(){
 	hostalIngresado->EliminarRes(reservaIngresada);
 	ControladorUsuario* cu = ControladorUsuario::getInstance();
-	cu->eliminarReserva(reservaIngresada->getHues()->getEmail(),reservaIngresada->getCodigo());
+	Huesped* aux=reservaIngresada->getHues();
+	cu->eliminarReserva(aux->getEmail(),reservaIngresada->getCodigo());
 
 }
 
@@ -484,7 +485,6 @@ list<DTCalificacion> ControladorHostal::ObtenerNotificaciones(string email){
 	ControladorUsuario* cu = ControladorUsuario::getInstance();
 	IObserver* EmpSel=BuscarEmp(email);
 	EmpNoti=EmpSel;
-	cout<< EmpSel->getCalifObs().size();
 	list<DTCalificacion> aux;
 	list<Calificacion*> iter= EmpSel->getCalifObs();
 	for(auto it=iter.begin();it!=iter.end(); ++it){
@@ -507,8 +507,8 @@ void ControladorHostal::EliminarNotificaciones(){
 	//while(!aux.empty()){
 		//aux.pop_front();
 	//}
-	empleadoIngresado->EliminarCalificaciones();
-	//empleadoIngresado=NULL;
+	EmpNoti->EliminarCalificaciones();
+	EmpNoti=NULL;
 }
 
 list<DTEmpleado> ControladorHostal::ObtenerEmpleados(){

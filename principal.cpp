@@ -806,18 +806,24 @@ void consultaHostal(){
     cout<< "  - Direccion del hostal:"<< Hst.getDireccion()<<endl;
     cout<< "  - Telefono del hostal:"<< Hst.getTelefono()<<endl;
     cout<< "  - Promedio del hostal:"<< Hst.getPromedio()<<endl;
-    cout<< "  - Habitaciones del hostal:"<<endl;
-    cout << "  - Habitaciones: "<<endl;
-    map<int,Habitacion*> habitaciones = Hst.getHabitaciones();
-    auto it = habitaciones.begin();
-    unsigned int tam= 1;
-    while(tam<= habitaciones.size()){
-        cout<< "    - Numero de la habitacion:"<< (*it).second->getNumero()<<endl;
-        cout<< "    - Capacidad de la habitacion:"<< (*it).second->getCapacidad()<<endl;
-        cout<< "    - Precio de la habitacion :"<< (*it).second->getPrecioNoche()<<endl;
-        tam++;
-        ++it;
+    unsigned int tam;
+    if(Hst.getHabitaciones().empty()){
+        cout<< "El hostal no tiene habitaciones registradas."<<endl;
     }
+    else{
+        cout<< "  - Habitaciones del hostal:"<<endl;
+        map<int,Habitacion*> habitaciones = Hst.getHabitaciones();
+        auto it = habitaciones.begin();
+        tam = 1;
+        while(tam<= habitaciones.size()){
+            cout<< "    - Numero de la habitacion:"<< (*it).second->getNumero()<<endl;
+            cout<< "    - Capacidad de la habitacion:"<< (*it).second->getCapacidad()<<endl;
+            cout<< "    - Precio de la habitacion :"<< (*it).second->getPrecioNoche()<<endl;
+            tam++;
+            ++it;
+        }
+    }
+    
     map<int,Reserva*> reservas = Hst.getReservas();
     //cout<< Hst.getReservas().size()<<endl;
     if(reservas.empty()){
@@ -1047,6 +1053,7 @@ void bajaReserva(){
     string nombreHostal;
     cout << "Ingrese el nombre del hostal elegido: "<<endl;
     getline(cin >> ws, nombreHostal);
+    ctrlHostal->SeleccionarHostal(nombreHostal);
     list<DTReserva*> Reservas= ctrlHostal->ObtenerReservas(nombreHostal);
     cout<< "Las reservas son:"<<endl;
     for(auto it=Reservas.begin();it!=Reservas.end();it++){
@@ -1106,6 +1113,7 @@ void SuscribirseaNotificaciones(){
     cout<< "Ingrese el email del empleado elegido:"<<endl;
     getline(cin >> ws, email);
     ctrlHostal->SuscribirEmpleado(email);
+     cout<< "¡SE REALIZO LA SUSCRIPCION CON EXITO!"<<endl;
 }
 
 void ConsultaDeNotificaciones(){
@@ -1137,22 +1145,27 @@ void ConsultaDeNotificaciones(){
                 cout<< "El comentario de la calificacion es: "<< (*it).getComentarioHuesp()<<endl;
              }
         }
-        //ctrlHostal->EliminarNotificaciones();   
-        cout<< cal.size() <<endl ;  
+        ctrlHostal->EliminarNotificaciones();  
     }
 }
 
 void EliminarSuscripcion(){
     IHostal *ctrlHostal = fabrica->obtenerControladorHostal();
     list<IObserver*> Emp=ctrlHostal->ObtenerSuscritos();
-    cout<< "Los email de los empleados son:"<<endl;
-   /* for (auto it=Emp.begin();it!=Emp.end();it++){
-        cout<< "  - "<< (*it).getEmail()<<endl;
-    }*/
+    auto it=Emp.begin();
+        cout<< "Los email de los empleados suscritos son:"<<endl;
+        while (it!=Emp.end()){
+            Empleado* ind= dynamic_cast<Empleado*>((*it));
+            if(ind!=NULL){
+                cout<< "  - "<< (*ind).getEmail()<<endl;
+            }
+            ++it;   
+        }
     string email;
     cout<< "Ingrese el email del empleado elegido:"<<endl;
     getline(cin >> ws, email);
     ctrlHostal->eliminarSuscripcion(email);
+    cout<< "¡SE HA ELIMINADO LA SUSCRIPCION CON EXITO!"<<endl;
 }
 
 int convertiraEntero(std::string opcion) {

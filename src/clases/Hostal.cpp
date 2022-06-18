@@ -76,20 +76,39 @@ list<DTReserva*> Hostal::BuscarReservas(){
 	}
 	return auxRes;
 }
+void Hostal::setColCal(list<Calificacion*> cal){
+	this->ColCal=cal;
+}
 
 void Hostal::EliminarRes(Reserva* res){
 	Habitacion* hab= ColHabitaciones.find(res->getHab()->getNumero())->second;
 	hab->eliminarResHab(res->getCodigo());
-	res->~Reserva();
 	int promedio=0, cant=0;
-	list<Calificacion*>::iterator itCal=ColCal.begin();
-	while(itCal!=ColCal.end()){
-		promedio+=(*itCal)->getPuntaje();
-		cant++;
-		itCal++;
+	ColReservas.erase(res->getCodigo());
+	set<Calificacion*> nueva=res->eliminarComentarios();
+	list<Calificacion*> ColCalNueva;
+	if(!nueva.empty()){
+		list<Calificacion*>::iterator itCal=ColCal.begin();
+		while(itCal!=ColCal.end()){
+			set<Calificacion*>::iterator it=(nueva.find((*itCal)));
+			if(it==nueva.end()){
+				ColCalNueva.push_back((*itCal));
+				promedio=promedio + (*itCal)->getPuntaje();
+				cant++;
+			}
+			++itCal;
+		}
+			
+	}	
+	if(cant!=0){
+		int promNuevo=promedio/cant;
+		setPromedio(promNuevo);
 	}
-	int promNuevo=promedio/cant;
-	setPromedio(promNuevo);
+	else{
+		setPromedio(0);
+	}
+		setColCal(ColCalNueva);/**/
+		res->~Reserva();
 }
 
 void Hostal::AgregarComentarios(std::string comentario, int puntaje, DTFecha hrs, Estadia* est, list<IObserver*> obs){
