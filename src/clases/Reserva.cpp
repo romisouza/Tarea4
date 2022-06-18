@@ -88,10 +88,12 @@ void Reserva::BuscarEstadia(std::string email, DTFecha hrs,list<DTIdEstadia> & e
     while((it!=est.end() && (*it)->getHuesp()->getEmail()!=email)){
         ++it;
     }
-    bool EsFin= hrs.compararFecha((*it)->getCheckOut(),hrs);
-    if(EsFin==true){
-        DTIdEstadia EstSel=(*it)->getDTIdEstadia();   
-        estId.push_back(EstSel);
+    if (it != est.end()){
+	bool EsFin= hrs.compararFecha((*it)->getCheckOut(),hrs);
+	if(EsFin==true){
+	    DTIdEstadia EstSel=(*it)->getDTIdEstadia();   
+	    estId.push_back(EstSel);
+	}
     }
 }
 
