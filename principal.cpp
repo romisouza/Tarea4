@@ -6,7 +6,7 @@
 #include "include/datatypes/DataHostalComp.h"
 #include "include/datatypes/DTCal.h"
 #include "include/datatypes/DTCalificacion.h"
-#include "include/datatypes/DTEmpleado.h"
+#include "include/datatypes/DTEmpleado.h"asignaremp
 #include "include/datatypes/DTEstadia.h"
 #include "include/datatypes/DTFecha.h"
 #include "include/datatypes/DTHabitacion.h"
@@ -405,7 +405,7 @@ void asignarEmpleadoAHostal(){
     cout << "Ingrese el numero del cargo a ejercer por el empleado elegido: "<<endl;
     std::string Cargoemp;
     cin >> Cargoemp;
-    if (Cargoemp != "1"||Cargoemp != "2"||Cargoemp != "3"||Cargoemp != "4") {
+    if (Cargoemp != "1"&&Cargoemp != "2"&&Cargoemp != "3"&&Cargoemp != "4") {
         throw std::invalid_argument("El dato ingresado no es correcto."); 
     }
     if (Cargoemp == "1")
