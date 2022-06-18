@@ -186,9 +186,9 @@ void cargarDatosPrueba(){
     ctrlHostal->ReservaNCElegida(codigo4,huesp6);
 
     //Finalizacion de estadias
-   // ctrlHostal->DatosHuesped("La posada del finger", "sofia@mail.com");
-    //ctrlHostal->DatosHuesped("El Pony Pisador", "frodo@mail.com");
-    //ctrlHostal->DatosHuesped("Caverna Lujosa", "seba@mail.com");
+    ctrlHostal->DatosHuesped("La posada del finger", "sofia@mail.com");
+    ctrlHostal->DatosHuesped("El Pony Pisador", "frodo@mail.com");
+    ctrlHostal->DatosHuesped("Caverna Lujosa", "seba@mail.com");
     
     //calificar estadia
   /*  DTIdEstadia estadia;
@@ -617,7 +617,7 @@ void finalizarEstadia(){
     getline(cin >> ws, nombreHostal);
     std::string email;
     cout << "Ingrese el email del huesped: "<< endl; //HABRIA QUE MOSTRAR A LOS HUESPEDES
-    cin >> email;
+    getline(cin >> ws, email);
     ctrlHostal->DatosHuesped(nombreHostal, email);
     cout << "¡ESTADIA FINALIZADA CON EXITO!"<<endl;
     cout << endl;

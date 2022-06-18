@@ -289,7 +289,8 @@ void ControladorHostal::ReservaNCElegida(int codigoRes,Huesped* huesp){
 
 void ControladorHostal::DatosHuesped(std::string nombreHostal,std::string email){ //finalizarEst
 	ControladorUsuario *ctrl = ControladorUsuario::getInstance();
-	if (ColHostales.find(nombreHostal) == ColHostales.end() || ctrl->getColHuespedes().find(email) == ctrl->getColHuespedes().end()) {
+	map<std::string,Huesped*> huespedes = ctrl->getColHuespedes();
+	if (ColHostales.find(nombreHostal) == ColHostales.end() || huespedes.find(email) == huespedes.end()) {
 		throw std::invalid_argument("Ocurrió un error con los datos ingresados."); 
 	}else{
 		Hostal* Hst =ColHostales.find(nombreHostal)->second;
