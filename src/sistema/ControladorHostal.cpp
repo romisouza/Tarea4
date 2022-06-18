@@ -287,7 +287,7 @@ void ControladorHostal::ReservaNCElegida(int codigoRes,Huesped* huesp){
 	}
 }
 
-void ControladorHostal::DatosHuesped(std::string nombreHostal,std::string email){ //finalizarEst
+void ControladorHostal::DatosHuesped(std::string nombreHostal,std::string email,bool &finalizoEst){ //finalizarEst
 	ControladorUsuario *ctrl = ControladorUsuario::getInstance();
 	map<std::string,Huesped*> huespedes = ctrl->getColHuespedes();
 	if (ColHostales.find(nombreHostal) == ColHostales.end() || huespedes.find(email) == huespedes.end()) {
@@ -296,7 +296,7 @@ void ControladorHostal::DatosHuesped(std::string nombreHostal,std::string email)
 		Hostal* Hst =ColHostales.find(nombreHostal)->second;
 		SingletonFechaHora *FH = SingletonFechaHora::getInstance();
 		DTFecha hs = FH->FechaHoraSistema();
-		Hst->buscarR(email,hs);
+		Hst->buscarR(email,hs,finalizoEst);
 	}
 }
 
