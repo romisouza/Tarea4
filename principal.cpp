@@ -487,7 +487,7 @@ void realizarReserva(){
     cin >> hora_in;
     cout << "Ingrese los minutos de entrada: "<<endl;
     cin >> min_in;
-    if (dia_in < 1 || dia_in>31 || mes_in<1 || mes_in>12 || hora_in<1 || hora_in>24 || min_in<0 || min_in>59) {
+    if (dia_in < 1 || dia_in>31 || mes_in<1 || mes_in>12 || hora_in<0 || hora_in>23 || min_in<0 || min_in>59) {
         throw std::invalid_argument("La fecha/hora ingresada no es correcta.");
     }
     DTFecha in = DTFecha(dia_in,mes_in,anio_in,hora_in,min_in);
@@ -501,7 +501,7 @@ void realizarReserva(){
     cin >> hora_out;
     cout << "Ingrese los minutos de salida: "<<endl;
     cin >> min_out;
-    if (dia_out < 1 || dia_out>31 || mes_out<1 || mes_out>12 || hora_out<1 || hora_out>24 || min_out<0 || min_out>59) {
+    if (dia_out < 1 || dia_out>31 || mes_out<1 || mes_out>12 || hora_out<0 || hora_out>23 || min_out<0 || min_out>59) {
         throw std::invalid_argument("La fecha/hora ingresada no es correcta.");
     }
     DTFecha out = DTFecha(dia_out,mes_out,anio_out,hora_out,min_out);
@@ -1120,7 +1120,7 @@ void modificarFechaSistema(){
     cin>> hora;
     cout<< "Ingresar minutos:"<<endl;
     cin >> minutos;
-    if (dia < 1 || dia>31 || mes<1 || mes>12 || hora<1 || hora>24 || minutos<0 || minutos>59) {
+    if (dia < 1 || dia>31 || mes<1 || mes>12 || hora<0 || hora>23 || minutos<0 || minutos>59) {
         throw std::invalid_argument("La fecha/hora ingresada no es correcta.");
     }
     ctrlHostal->actualizarFS(anio,mes,dia,hora, minutos);
