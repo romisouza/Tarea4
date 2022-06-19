@@ -404,6 +404,7 @@ DataEstadia* ControladorHostal::ObtenerinfoEstadia(DTIdEstadia estadia){
 }
 
 DTCalificacion ControladorHostal::MostrarCalificacion(){
+		existe = false;
 		DTCalificacion cal;
 		Hostal* h = ColHostales.find(hostalRecordado)->second;
 		DataEstadia* estadia = estadiaRecordada;
@@ -414,14 +415,17 @@ DTCalificacion ControladorHostal::MostrarCalificacion(){
 			string email = (*i)->getHuesp()->getEmail();
 			string mail = estadia->getHuesped();
 			if ((*i)->getCal() != NULL) {
+				existe = true;
 				if (email.compare(mail) == 0){
 					cal= (*i)->getCal()->getDTCalificacion();
 				}
-			} else
-			 	  throw std::invalid_argument("No existe una calificacion para esta estadia."); 
-
+			}
 		}
 		return cal;
+}
+
+bool ControladorHostal:: ExisteCalif(){
+	return existe;
 }
 
 DTReserva* ControladorHostal::MostrarInfoReserva(std::string nombreHostal, int codigoRes){
