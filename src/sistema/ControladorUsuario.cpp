@@ -259,3 +259,20 @@ Huesped* ControladorUsuario::buscarHuesped(std::string email){
 	Huesped* huesp = ColHuespedes.find(email)->second;
 	return huesp;
 }
+
+list<std::string> ControladorUsuario::empleadosEnHostal(std::string nombreHostal){
+	list<string> emp;
+	bool hay= false;
+	for (auto it=ColEmpleados.begin();it!=ColEmpleados.end();it++){
+		if ((*it).second->getHostalAsociado() != NULL){
+			if ((*it).second->getHostalAsociado()->getNombre() == nombreHostal){
+				emp.push_back((*it).second->getEmail());
+				hay = true;
+			}
+		}
+	}
+	if (!hay)
+		throw std::invalid_argument("No hay empleados trabajando en ese hostal.");
+
+	return emp;
+}
