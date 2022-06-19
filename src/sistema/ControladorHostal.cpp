@@ -282,9 +282,6 @@ list<int> ControladorHostal::ObtenerReservasNC(std::string nombreHostal, std::st
 void ControladorHostal::ReservaNCElegida(int codigoRes,Huesped* huesp){
 	map<int, Reserva*> res =hostalIngresado->getColReservas(); //asumo que hostal esta bien?
 	SingletonFechaHora *FH = SingletonFechaHora::getInstance();
-	if ((FH->FechaHoraSistema()).compararFecha(FH->FechaHoraSistema(),(res.find(codigoRes))->second->getCheckIn())!=1){
-		throw std::invalid_argument("Dicha estadía aún comenzó."); 
-	}
 	if (res.find(codigoRes) == res.end()|| (FH->FechaHoraSistema()).compararFecha(FH->FechaHoraSistema(),(res.find(codigoRes))->second->getCheckOut())!=1 ) {
 		throw std::invalid_argument("Ocurrió un error con los datos ingresados."); 
 	}else{

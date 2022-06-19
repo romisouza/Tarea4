@@ -45,6 +45,9 @@ Estadia* Huesped::BuscarEstadias2(DTIdEstadia est){
 	while(est.getEmail()!=(*it)->getHuesp()->getEmail()){
 		it++;
 	}
+	if ((*it)->getCal()!=NULL){
+		throw std::invalid_argument("La estadia seleccionada ya fue calificada.");
+	}
 	return (*it);
 }
 

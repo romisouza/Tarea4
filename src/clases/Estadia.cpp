@@ -10,7 +10,7 @@ Estadia::Estadia(DTFecha CheckIn,DTFecha CheckOut,Huesped* Huespp,Reserva* Ress)
     checkOut=CheckOut;
     huesp=Huespp;
     res=Ress;
-    Calificacion* cal;
+    cal = NULL;
 }
 
 DTFecha Estadia:: getCheckIn(){
