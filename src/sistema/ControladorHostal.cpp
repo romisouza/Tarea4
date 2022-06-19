@@ -5,6 +5,22 @@ ControladorHostal* ControladorHostal::instancia = NULL;
 ControladorHostal::ControladorHostal(){
 }
 
+
+ControladorHostal::~ControladorHostal(){
+	delete instancia;
+	ColHostales.clear();
+	delete hostalIngresado;
+	delete empleadoIngresado;
+	acompaniantesIngresados.clear();
+	delete huespRecordado;
+	delete habRecordada;
+	delete EstadiaFinalizada;
+	delete estadiaRecordada;
+	delete reservaIngresada;
+	obs.clear();
+	delete EmpNoti;
+}
+
 void ControladorHostal::ingresarHostal(Hostal* host){
 	hostalIngresado = host;
 }
@@ -282,6 +298,9 @@ list<int> ControladorHostal::ObtenerReservasNC(std::string nombreHostal, std::st
 void ControladorHostal::ReservaNCElegida(int codigoRes,Huesped* huesp){
 	map<int, Reserva*> res =hostalIngresado->getColReservas(); //asumo que hostal esta bien?
 	SingletonFechaHora *FH = SingletonFechaHora::getInstance();
+	if (FH->FechaHoraSistema().compararFecha(FH->FechaHoraSistema(),(res.find(codigoRes))->second->getCheckIn())==true){
+		throw std::invalid_argument("La estadia aun no comenzó.");
+	} else {
 	if (res.find(codigoRes) == res.end()|| (FH->FechaHoraSistema()).compararFecha(FH->FechaHoraSistema(),(res.find(codigoRes))->second->getCheckOut())!=1 ) {
 		throw std::invalid_argument("Ocurrió un error con los datos ingresados."); 
 	}else{
@@ -289,6 +308,7 @@ void ControladorHostal::ReservaNCElegida(int codigoRes,Huesped* huesp){
 	SingletonFechaHora *FH = SingletonFechaHora::getInstance();
 	DTFecha hs = FH->FechaHoraSistema();
 	hostalIngresado->CreateAddEstadia(hs, codigoRes,huesp);
+	}
 	}
 }
 
@@ -352,8 +372,13 @@ void ControladorHostal::ConfirmarCalificacion (std::string comentario, int punta
 
 void ControladorHostal::ResponderComentario(std::string emailHuesp, int codigoRes, std::string respuesta){
 	ControladorUsuario *ctrl = ControladorUsuario::getInstance();
+	map<std::string,Huesped*> huespedes = ctrl->getColHuespedes();
+	if (huespedes.find(emailHuesp) == huespedes.end()){
+		throw std::invalid_argument("No existe un huesped con el email ingresado.");
+	} else {
 	Hostal* host = ctrl->getHostalTrabajaEmp();
 	host->hallarReserva(emailHuesp,codigoRes,respuesta);
+	}
 }
 
 list<DTCal> ControladorHostal::ObtenerComentariosAResponder(std::string email){

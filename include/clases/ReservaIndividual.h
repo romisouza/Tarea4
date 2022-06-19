@@ -15,7 +15,7 @@ class ReservaIndividual:public Reserva{
         virtual bool validarHuespedRegistrado(string);
         virtual DTReservaComp* getDTReservaComp();
         virtual bool validarHuesped(string,DTFecha);
-        ~ReservaIndividual();
+        virtual ~ReservaIndividual();
 };
 
 #endif

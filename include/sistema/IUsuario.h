@@ -43,6 +43,7 @@ class IUsuario {
 		virtual Huesped* buscarHuesped(std::string) = 0;
 		virtual list<std::string> empleadosEnHostal(std::string) = 0;
 		virtual bool existeEmp(std::string )=0;
+		virtual ~IUsuario(){};
 
 };
 

@@ -8,11 +8,11 @@ class SingletonFechaHora{
         static SingletonFechaHora* instancia;
         SingletonFechaHora();
         DTFecha fechaActual;
+        ~SingletonFechaHora();
     public:
         static SingletonFechaHora *getInstance();
         DTFecha FechaHoraSistema();
         void actualizarFechaSistema(int,int,int,int,int);
-
 };
 
 #endif

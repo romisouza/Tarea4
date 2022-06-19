@@ -5,6 +5,15 @@ ControladorUsuario* ControladorUsuario::instancia = NULL;
 ControladorUsuario::ControladorUsuario(){
 }
 
+ControladorUsuario::~ControladorUsuario(){
+	delete instancia;
+	ColEmpleados.clear();
+	ColHuespedes.clear();
+	delete cargoIngresado;
+	delete empleadoIngresado;
+	delete hostalIngresado;
+	delete hostalTrabajaEmp;
+}
 //NO VA
 int ControladorUsuario::getCantHuesped() {
 	return cantHuespedes;

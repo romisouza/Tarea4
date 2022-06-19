@@ -9,6 +9,7 @@ Huesped::Huesped(std::string nom,std::string mail,std::string pass, bool finger)
 }
 
 Huesped::~Huesped(){
+	ColReservasHuesp.clear();
 }
 
 

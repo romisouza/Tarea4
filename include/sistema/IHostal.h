@@ -72,6 +72,7 @@ class IHostal{
 		virtual IObserver* BuscarEmp(string)=0;
 		virtual void CancelarBajaReserva() =0;//baja reserva
 		virtual void actualizarFS(int,int,int,int,int)=0;
+		virtual ~IHostal(){};
 };
 
 #endif

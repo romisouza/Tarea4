@@ -28,5 +28,5 @@ std::string DataEmpleado::getHostal(){
 }
 
 DataEmpleado::~DataEmpleado(){
-    
+    delete cargo;
 }

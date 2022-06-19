@@ -15,7 +15,9 @@ DataHostalComp::DataHostalComp(std::string nom,std::string dir,std::string tel,f
 }
 
 DataHostalComp::~DataHostalComp(){
-
+    ColHabit.clear();
+    ColRes.clear();
+    ColCalif.clear();
 }
 
 std::string DataHostalComp::getNombre(){

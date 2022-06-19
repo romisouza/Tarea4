@@ -12,6 +12,10 @@ SingletonFechaHora::SingletonFechaHora(){
     
 }
 
+SingletonFechaHora::~SingletonFechaHora(){
+    delete instancia;
+}
+
 DTFecha SingletonFechaHora::FechaHoraSistema(){
     return fechaActual;
 }

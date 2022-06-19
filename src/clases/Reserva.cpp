@@ -9,7 +9,7 @@ Reserva::Reserva(int cod,DTFecha entrada,DTFecha salida,DTFecha realiza){
     estado= Abierta;
     this->hab = NULL;
     hues = NULL;
-    //this->est = NULL;
+    list<Estadia*> est;
 }
 
 int Reserva::getCodigo(){
@@ -141,8 +141,12 @@ set<Calificacion*> Reserva::eliminarComentarios(){
 
 
 Reserva ::~Reserva() {
-    auto it=est.begin();
+    delete hab;
+    delete hues;
     est.clear();
+    
+    //auto it=est.begin();
+    //est.clear();
    // delete hab;
    // delete hues;
    //delete est;

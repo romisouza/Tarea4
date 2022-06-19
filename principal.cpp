@@ -188,7 +188,7 @@ void cargarDatosPrueba(){
     Huesped* huesp5 = ctrlUsuario->buscarHuesped("pippin@mail.com");
     ctrlHostal->ReservaNCElegida(codigo2,huesp5);
 
-    ctrlHostal->actualizarFS(2022,6,7,18,00);
+    ctrlHostal->actualizarFS(2022,6,10,18,00);
     reservasNC = ctrlHostal->ObtenerReservasNC("Caverna Lujosa","seba@mail.com");
     Huesped* huesp6 = ctrlUsuario->buscarHuesped("seba@mail.com");
     ctrlHostal->ReservaNCElegida(codigo4,huesp6);
@@ -618,7 +618,7 @@ void registrarEstadia(){
     cin >> email;
     list<int> reservasNC = ctrlHostal->ObtenerReservasNC(nombreHostal, email); //deevolver solo el codigo
     if(reservasNC.empty()){
-        throw std::invalid_argument("No existen reservas no canceladas.");
+        throw std::invalid_argument("No existen reservas aptas para registrar la estadia.");
     }
     cout << "Los reservas no canceladas en el sistema son:" << endl;
     for (auto it=reservasNC.begin();it!=reservasNC.end();++it){
@@ -683,7 +683,7 @@ void calificarEstadia(){
     getline(cin >> ws, mailHsp);
     list<DTIdEstadia> lista=ctrlHostal->ListaEstadiasFinalizadas(mailHsp);
     if(lista.empty()){
-        throw std::invalid_argument("No existen estadias finalizadas");
+        throw std::invalid_argument("No existen estadias para calificar.");
     }
     cout<< "Las estadias finalizadas son:"<<endl;
     for(auto it=lista.begin();it!=lista.end();it++){
@@ -756,7 +756,6 @@ void comentarCalificacion(){
     ctrlHostal->ResponderComentario(mailHuesp,codigoRes,respuesta);    
     cout << "¡RESPUESTA REALIZADA CON EXITO!"<<endl;
     cout << endl;
-    
 }
 
 void consultaUsuario(){

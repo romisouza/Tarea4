@@ -12,5 +12,5 @@ set<Huesped*> DTReservaCompGrup::getHuesp(){
 }
 
 DTReservaCompGrup::~DTReservaCompGrup(){
-    
+    huespedes.clear();
 }

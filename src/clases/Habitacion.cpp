@@ -38,7 +38,8 @@ void Habitacion::setPrecioNoche(float price){
 }
 
 Habitacion::~Habitacion() {
-
+    ColReservas.clear();
+    delete host;
 }
 
 DTHabitacion Habitacion::getHabitacion(){

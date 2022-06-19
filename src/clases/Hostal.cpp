@@ -15,7 +15,12 @@ Hostal::Hostal(std::string nom,std::string direc,std::string tel,int prom) {
 	map<std::string,Empleado*> ColEmpleadosHost;
 }
 
-Hostal :: ~Hostal() {}
+Hostal :: ~Hostal(){
+	ColReservas.clear();
+	ColHabitaciones.clear();
+	ColCal.clear();
+	ColEmpleadosHost.clear();
+}
 
 map<std::string,Empleado*> Hostal::getColEmpleados(){
 	return ColEmpleadosHost;
@@ -176,6 +181,9 @@ DTReserva* Hostal::ReservaAsociada(int codigo){
 }
 
 void Hostal::hallarReserva(std::string mailHuesp, int codigoRes, std::string respuesta){
+	if (ColReservas.find(codigoRes) == ColReservas.end()){
+		throw std::invalid_argument("No existe una reserva con ese codigo.");
+	}
 	Reserva *res = ColReservas.find(codigoRes)->second;
 	res->hallarEstadia(mailHuesp,respuesta);
 }
@@ -261,7 +269,15 @@ list<int> Hostal::BuscarRes(std::string email){
 	list<int> colReservasNC;
 	for(map<int,Reserva*>::iterator i= ColReservas.begin(); i != ColReservas.end(); i++){
 		Reserva* res = (*i).second;
-		if (res->validarHuespedRegistrado(email)){
+		bool encontrado = false;
+		list<Estadia*> estadias = res->getEstadia();
+		auto it = estadias.begin();
+		while(it!=estadias.end() && !encontrado){
+			if((*it)->getHuesp()->getEmail()==email)
+				encontrado = true;
+			it++;
+		}
+		if (res->validarHuespedRegistrado(email) && !encontrado){
 		colReservasNC.push_back((*i).second->getCodigo());
 		}
 	}

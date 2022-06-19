@@ -15,5 +15,5 @@ int DTReservaGrupal::getTotalHuesp(){
 }
 
 DTReservaGrupal::~DTReservaGrupal(){
-
+    huespedes.clear();
 }

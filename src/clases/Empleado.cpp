@@ -10,7 +10,9 @@ Empleado::Empleado(string nom,string mail,string pass):Usuario(nom,mail,pass) {
 }
 
 Empleado::~Empleado(){
-	
+	delete hostalAsociado;
+	delete cargo;
+	califObs.clear();
 }
 
 Hostal* Empleado::getHostalAsociado(){

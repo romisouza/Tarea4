@@ -58,5 +58,5 @@ DTCalificacion Calificacion::getDTCalificacion(){
 }
 
 Calificacion::~Calificacion(){//Implementar
-
+    delete est;
 }

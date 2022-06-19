@@ -17,7 +17,7 @@ class Huesped: public Usuario {
 		map<int,Reserva*> ColReservasHuesp; 
 	public:
 		Huesped(std::string nom, std::string mail, std::string pass, bool finger);
-		~Huesped();
+		virtual ~Huesped();
 		map<int,Reserva*> getColReservasHuesp();
 		void setColReservasHuesp(map<int,Reserva*>);
 		bool getEsFinger();

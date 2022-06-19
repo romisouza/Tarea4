@@ -34,5 +34,5 @@ int DTReservaComp::getNumHab(){
 }
 
 DTReservaComp::~DTReservaComp(){
-
+    delete huesp;
 }
