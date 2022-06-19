@@ -42,6 +42,7 @@ class IUsuario {
 		virtual Empleado* buscarEmpleado(std::string) =0;
 		virtual Huesped* buscarHuesped(std::string) = 0;
 		virtual list<std::string> empleadosEnHostal(std::string) = 0;
+		virtual bool existeEmp(std::string )=0;
 
 };
 
