@@ -720,18 +720,22 @@ void comentarCalificacion(){
     string nombreHostal;
     cout << "Ingrese el nombre del hostal elegido: "<<endl;
     getline(cin >> ws, nombreHostal);
+    bool existe = false;
+    for (auto it = nombres.begin();it != nombres.end(); it++){
+        if (*it == nombreHostal)
+            existe = true;
+    }
+    if (!existe)
+        throw std::invalid_argument("No existe un hostal con ese nombre."); 
     list<std::string> empleados = ctrlUsuario->empleadosEnHostal(nombreHostal);
     cout << "Los empleados que trabajan en ese hostal son: "<<endl;
     for (auto it = empleados.begin(); it != empleados.end(); it++){
         cout <<"  - "<< *it <<endl;
     }
-    cout << "Ingrese el mail de un empleado: "; //PRIMERO MOSTRAR LOS EMPLEADOS
+    cout << "Ingrese el mail de un empleado: "; 
     string mailEmp;
     getline(cin >> ws, mailEmp);
-    bool esta= false;
-    for (auto it = empleados.begin(); it != empleados.end(); it++){
-        esta = (mailEmp == *it);
-    }
+    bool esta = ctrlUsuario->existeEmp(mailEmp);
     if (!esta) {
         throw std::invalid_argument("El dato ingresado no es correcto."); 
     }
