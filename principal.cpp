@@ -997,7 +997,7 @@ void consultaEstadia(){
                 if (VerCalificacion) {
                     DTCalificacion cal = ctrlHostal->MostrarCalificacion();
                     cout << "  - Calificacion: " <<cal.getPuntaje()<<endl;
-                    cout << "  - Comentario del huesped: "<<cal.getComentarioHuesp();<<endl;
+                    cout << "  - Comentario del huesped: "<<cal.getComentarioHuesp()<<endl;
                     if (cal.getComentarioEmp() != "")
                         cout << "  - Comentario del empleado: " << cal.getComentarioEmp() <<endl;
                 }
