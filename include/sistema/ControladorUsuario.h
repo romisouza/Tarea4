@@ -64,5 +64,7 @@ class ControladorUsuario: public IUsuario {
 		Empleado* buscarEmpleado(std::string);
 		void eliminarReserva(string,int); //baja de reserva, nueva
 		Huesped* buscarHuesped(std::string);
+		list<std::string> empleadosEnHostal(std::string);
+
 };
 #endif
