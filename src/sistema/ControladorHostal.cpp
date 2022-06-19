@@ -483,6 +483,8 @@ void ControladorHostal::SuscribirEmpleado(string emp){
 
 list<DTCalificacion> ControladorHostal::ObtenerNotificaciones(string email){
 	ControladorUsuario* cu = ControladorUsuario::getInstance();
+	if (!cu->existeEmp(email))
+		throw std::invalid_argument("Email incorrecto."); 
 	IObserver* EmpSel=BuscarEmp(email);
 	EmpNoti=EmpSel;
 	list<DTCalificacion> aux;
