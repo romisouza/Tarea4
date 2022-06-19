@@ -1019,10 +1019,14 @@ void consultaEstadia(){
                 bool VerCalificacion = (verCalif == "1");
                 if (VerCalificacion) {
                     DTCalificacion cal = ctrlHostal->MostrarCalificacion();
-                    cout << "  - Calificacion: " <<cal.getPuntaje()<<endl;
-                    cout << "  - Comentario del huesped: "<<cal.getComentarioHuesp()<<endl;
-                    if (cal.getComentarioEmp() != "")
-                        cout << "  - Comentario del empleado: " << cal.getComentarioEmp() <<endl;
+                    if (!ctrlHostal->ExisteCalif())
+                        cout << "La estadía no tiene calificaciones."<<endl;
+                    else {
+                        cout << "  - Calificacion: " <<cal.getPuntaje()<<endl;
+                        cout << "  - Comentario del huesped: "<<cal.getComentarioHuesp()<<endl;
+                        if (cal.getComentarioEmp() != "")
+                            cout << "  - Comentario del empleado: " << cal.getComentarioEmp() <<endl;
+                    }
                 }
                 cout << "Si desea ver la informacion de la reserva asociada ingrese 1, sino ingrese 0."<<endl;
                 std::string verRes;
