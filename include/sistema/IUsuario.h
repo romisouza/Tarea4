@@ -41,6 +41,8 @@ class IUsuario {
 		virtual list<DTEmpleado> getNombresEmp() =0;//suscribir empleados
 		virtual Empleado* buscarEmpleado(std::string) =0;
 		virtual Huesped* buscarHuesped(std::string) = 0;
+		virtual list<std::string> empleadosEnHostal(std::string) = 0;
+
 };
 
 #endif
