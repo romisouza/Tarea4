@@ -395,6 +395,9 @@ void asignarEmpleadoAHostal(){
     cout << "Ingrese el nombre del hostal elegido: "<<endl;
     getline(cin >> ws, nombreHostal);
     list<DTEmpleado> empleadosRegistrados = ctrlHostal->ObtenerEmpleados(nombreHostal);
+    if(empleadosRegistrados.empty())
+        throw std::invalid_argument("No hay empleados registrados en el sistema sin cargo asignado."); 
+    cout << "Los empleados registrados en el sistema sin cargo son:" << endl;
     cout << "Los empleados registrados en el sistema sin cargo son:" << endl;
     int k = 1;
     for (auto it=empleadosRegistrados.begin();it!=empleadosRegistrados.end();++it){
