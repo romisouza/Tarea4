@@ -37,6 +37,12 @@ Empleado* ControladorUsuario::getEmpleadoIngresado(){
 	return empleadoIngresado;
 }
 
+bool ControladorUsuario::existeEmp(std::string email){
+	bool res = (ColEmpleados.find(email) != ColEmpleados.end());
+	return res;
+}
+
+
 CargoEmpleado* ControladorUsuario::getCargoIngresado(){
 	return cargoIngresado;
 }
