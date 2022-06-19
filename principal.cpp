@@ -163,34 +163,43 @@ void cargarDatosPrueba(){
     list<int> reservasNC;
     DTFecha checkin;
 
+    ctrlHostal->actualizarFS(2022,5,1,18,00);
     reservasNC = ctrlHostal->ObtenerReservasNC("La posada del finger","sofia@mail.com");
     Huesped* huesp1 = ctrlUsuario->buscarHuesped("sofia@mail.com");
     ctrlHostal->ReservaNCElegida(codigo1,huesp1);
 
+    ctrlHostal->actualizarFS(2001,1,4,21,00);
     reservasNC = ctrlHostal->ObtenerReservasNC("El Pony Pisador","frodo@mail.com");
     Huesped* huesp2 = ctrlUsuario->buscarHuesped("frodo@mail.com");
     ctrlHostal->ReservaNCElegida(codigo2,huesp2);
 
+    ctrlHostal->actualizarFS(2001,1,4,21,00);
     reservasNC = ctrlHostal->ObtenerReservasNC("El Pony Pisador","sam@mail.com");
     Huesped* huesp3 = ctrlUsuario->buscarHuesped("sam@mail.com");
     ctrlHostal->ReservaNCElegida(codigo2,huesp3);
-
+    
+    ctrlHostal->actualizarFS(2001,1,4,21,00);
     reservasNC = ctrlHostal->ObtenerReservasNC("El Pony Pisador","merry@mail.com");
     Huesped* huesp4 = ctrlUsuario->buscarHuesped("merry@mail.com");
     ctrlHostal->ReservaNCElegida(codigo2,huesp4);
 
+    ctrlHostal->actualizarFS(2001,1,4,21,00);
     reservasNC = ctrlHostal->ObtenerReservasNC("El Pony Pisador","pippin@mail.com");
     Huesped* huesp5 = ctrlUsuario->buscarHuesped("pippin@mail.com");
     ctrlHostal->ReservaNCElegida(codigo2,huesp5);
 
+    ctrlHostal->actualizarFS(2022,6,7,18,00);
     reservasNC = ctrlHostal->ObtenerReservasNC("Caverna Lujosa","seba@mail.com");
     Huesped* huesp6 = ctrlUsuario->buscarHuesped("seba@mail.com");
     ctrlHostal->ReservaNCElegida(codigo4,huesp6);
 
     //Finalizacion de estadias
     bool finalizoEst = false;
+    ctrlHostal->actualizarFS(2022,5,10,9,00);
     ctrlHostal->DatosHuesped("La posada del finger", "sofia@mail.com",finalizoEst);
+    ctrlHostal->actualizarFS(2001,1,5,2,00);
     ctrlHostal->DatosHuesped("El Pony Pisador", "frodo@mail.com",finalizoEst);
+    ctrlHostal->actualizarFS(2022,6,15,10,00);
     ctrlHostal->DatosHuesped("Caverna Lujosa", "seba@mail.com",finalizoEst);
     
     //calificar estadia
