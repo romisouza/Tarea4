@@ -251,7 +251,9 @@ void Hostal::CreateAddEstadia(DTFecha hs, int codigoRes,Huesped* huesp){
 void Hostal::buscarR(std::string email, DTFecha hs,bool &finalizoEst){
 	for(map<int,Reserva*>::iterator i= ColReservas.begin(); i != ColReservas.end(); i++){
 		Reserva* res = (*i).second;
-		res->validarHuesped(email, hs,finalizoEst);
+		if (res->validarHuesped(email, hs)){
+			finalizoEst = true;
+		}
 	}
 }
 

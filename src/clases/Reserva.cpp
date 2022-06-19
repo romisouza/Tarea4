@@ -123,8 +123,8 @@ void Reserva::hallarEstadia(string mailHuesp,string respuesta){
     for(auto it=est.begin();it != est.end();++it){
         string mailActual = (*it)->getHuesp()->getEmail();
         if (mailActual == mailHuesp)
-            (*it)->getCal()->setComentarioEmp(respuesta);
-    }
+           (*it)->getCal()->setComentarioEmp(respuesta);
+        }
 }
 
 

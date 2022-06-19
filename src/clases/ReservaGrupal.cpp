@@ -50,8 +50,9 @@ bool ReservaGrupal::validarHuespedRegistrado(std::string email){
 return resultado;
 }
 
-void ReservaGrupal::validarHuesped(string email, DTFecha hs,bool &finalizoEst){
+bool ReservaGrupal::validarHuesped(string email, DTFecha hs){
     bool encontre = false;
+    bool res = false;
     for(set<Huesped*>::iterator i= huespedes.begin(); i != huespedes.end(); i++){
         if(email == (*i)->getEmail()){
             list<Estadia*> est = getEstadia();
@@ -67,14 +68,15 @@ void ReservaGrupal::validarHuesped(string email, DTFecha hs,bool &finalizoEst){
             if(hay){
                 DTFecha checkoutEst = estEncontrada->getCheckOut();
                 DTFecha comparar;
-                bool Ter = comparar.compararFecha(checkoutEst, hs);//true  si a<= b
+                bool Ter = hs.compararFecha(checkoutEst, hs);//true  si a<= b
                     if (!Ter){
                         estEncontrada->setCheckOut(hs);
-                        finalizoEst = true;
+                        res = true;
                     }
             }
         }
     }
+    return res;
 }
 
 ReservaGrupal::~ReservaGrupal(){

@@ -201,6 +201,7 @@ void cargarDatosPrueba(){
     ctrlHostal->DatosHuesped("El Pony Pisador", "frodo@mail.com",finalizoEst);
     ctrlHostal->actualizarFS(2022,6,15,10,00);
     ctrlHostal->DatosHuesped("Caverna Lujosa", "seba@mail.com",finalizoEst);
+    ctrlHostal->actualizarFS(2022,6,15,10,00);
     
     //calificar estadia
    DTIdEstadia estadia;
@@ -217,7 +218,7 @@ void cargarDatosPrueba(){
     comentario = "Un poco caro para lo que ofrecen.El famoso gimnasio era una caminadora (que hacía tremendo ruido) y 2 pesas, la piscina parecía el lago del Parque Rodó y el desayuno eran 2 tostadas con mermelada. Internet se pasaba cayendo. No vuelvo";
     ctrlHostal->ConfirmarCalificacion(comentario, 3);
 
-    ctrlHostal->actualizarFS(2001,1,1,3,00);
+    ctrlHostal->actualizarFS(2001,1,5,3,00);
     ctrlHostal->SeleccionarHostal("El Pony Pisador");
     est = ctrlHostal->ListaEstadiasFinalizadas("frodo@mail.com");
     for (list<DTIdEstadia>::iterator i = est.begin(); i != est.end(); i++){
@@ -655,7 +656,7 @@ void finalizarEstadia(){
     ctrlHostal->DatosHuesped(nombreHostal,email,finalizoEst);
     if (!finalizoEst){
     	cout << "NO HAY ESTADIAS PARA FINALIZAR."<<endl;
-    }else
+    } else
     	cout << "¡ESTADIA FINALIZADA CON EXITO!"<<endl;
     cout << endl;
 }

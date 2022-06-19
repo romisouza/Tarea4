@@ -10,7 +10,7 @@ Estadia::Estadia(DTFecha CheckIn,DTFecha CheckOut,Huesped* Huespp,Reserva* Ress)
     checkOut=CheckOut;
     huesp=Huespp;
     res=Ress;
-    Estadia* est;
+    Calificacion* cal;
 }
 
 DTFecha Estadia:: getCheckIn(){
@@ -51,8 +51,8 @@ void Estadia::setReserva(Reserva* res){
     this->res=res;
 }
 
-void Estadia::setCalificacion(Calificacion* cal){
-    this->cal=cal;
+void Estadia::setCalificacion(Calificacion* calif){
+    this->cal=calif;
 }
 
 Estadia* Estadia::getEstadia(){

@@ -188,6 +188,11 @@ int ControladorHostal::confirmarAltaReserva(){
 	map<int,Reserva*> colRes = huespRecordado->getColReservasHuesp();
 	colRes.insert({codigo,res});
 	huespRecordado->setColReservasHuesp(colRes);
+	for (auto it=acompaniantesIngresados.begin();it!=acompaniantesIngresados.end();++it){
+		map<int,Reserva*> reservas = (*it)->getColReservasHuesp();
+		reservas.insert({codigo,res});
+		(*it)->setColReservasHuesp(colRes);
+	}
 	habRecordada->asociarResAHab(res);
 	acompaniantesIngresados.clear();
 	huespRecordado = NULL;
