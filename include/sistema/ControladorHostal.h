@@ -32,8 +32,8 @@ class ControladorHostal:public IHostal {
 		Empleado* empleadoIngresado; 
 		//para alta de habitacion
 		int numero; 
-    	float precioNoche;
-    	int capacidad;
+    		float precioNoche;
+    		int capacidad;
 		//Para realizar reserva
 		set<Huesped*> acompaniantesIngresados;
 		Huesped* huespRecordado;
@@ -50,6 +50,7 @@ class ControladorHostal:public IHostal {
 		//consulta de estadia
 		std::string hostalRecordado;
 		DataEstadia* estadiaRecordada;
+		bool existe; //mostrarcalif
 		//baja de reserva
 		Reserva* reservaIngresada;
 		//Notificaciones
@@ -97,6 +98,7 @@ class ControladorHostal:public IHostal {
 		list<DTIdEstadia> ObtenerDTIdEstadia(std::string);//consulta estadia (SeleccionarHostal)
 		DataEstadia* ObtenerinfoEstadia(DTIdEstadia);//consulta estadia  (SeleccionarEstadia)
 		DTCalificacion MostrarCalificacion();//consulta estadia
+		bool ExisteCalif();
 		DTReserva* MostrarInfoReserva(std::string, int codigoRes);//consulta estadia
 		void LiberarMemoria(); //consulta estadia		
 		void ingresarReserva(Reserva*);//nueva, recuerda una reserva
