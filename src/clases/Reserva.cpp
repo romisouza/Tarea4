@@ -133,7 +133,7 @@ set<Calificacion*> Reserva::eliminarComentarios(){
     if(est.begin()!=est.end()){
         for(auto iter=est.begin();iter!=est.end();++iter){
             Calificacion* cal=(*iter)->getCal();
-           coment.emplace(cal);
+            coment.emplace(cal);
        }
     }
     return coment;

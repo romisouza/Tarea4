@@ -489,7 +489,8 @@ void ControladorHostal::ConfirmarEliminarReserva(){
 	ControladorUsuario* cu = ControladorUsuario::getInstance();
 	Huesped* aux=reservaIngresada->getHues();
 	cu->eliminarReserva(aux->getEmail(),reservaIngresada->getCodigo());
-
+	reservaIngresada=NULL;
+	hostalIngresado=NULL;
 }
 
 void ControladorHostal::CancelarBajaReserva(){
