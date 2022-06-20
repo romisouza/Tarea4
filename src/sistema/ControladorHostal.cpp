@@ -437,8 +437,8 @@ DTCalificacion ControladorHostal::MostrarCalificacion(){
 			string email = (*i)->getHuesp()->getEmail();
 			string mail = estadia->getHuesped();
 			if ((*i)->getCal() != NULL) {
-				existe = true;
 				if (email.compare(mail) == 0){
+					existe = true;
 					cal= (*i)->getCal()->getDTCalificacion();
 				}
 			}
