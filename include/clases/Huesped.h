@@ -24,7 +24,6 @@ class Huesped: public Usuario {
 		void setEsFinger(bool finger);
 		list<DTIdEstadia> BuscarEstadias(std::string email, DTFecha hrs);//cambie el nombre
 		Estadia* BuscarEstadias2(DTIdEstadia);//nueva, calificr estadia
-		DTHuesped getDTHuesped();
 		void EliminarResHsp(int);//Baja de reserva, nueva
 };
 

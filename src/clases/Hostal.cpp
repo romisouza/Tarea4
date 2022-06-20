@@ -15,11 +15,11 @@ Hostal::Hostal(std::string nom,std::string direc,std::string tel,int prom) {
 	map<std::string,Empleado*> ColEmpleadosHost;
 }
 
-Hostal :: ~Hostal(){
+Hostal :: ~Hostal() {
 	ColReservas.clear();
 	ColHabitaciones.clear();
-	ColCal.clear();
 	ColEmpleadosHost.clear();
+	ColCal.clear();
 }
 
 map<std::string,Empleado*> Hostal::getColEmpleados(){
@@ -68,9 +68,6 @@ map<int, Habitacion*> Hostal::getColHabitaciones(){
 
 list<Calificacion*> Hostal::getColCal(){
 	return ColCal;
-}
-
-set<DTCal> Hostal::obtenerHostal(){
 }
 
 list<DTReserva*> Hostal::BuscarReservas(){
@@ -236,10 +233,6 @@ list<DTCalificacion> Hostal::obtenerCalificaciones(){
 	}
 	return aux;
 }
-
-//int Hostal::getPromCal(){}
-
-bool Hostal::TrabajaEnHostal(){}
 
 void Hostal::ingresoAlHostal(int codigoRes){
 	Reserva* res=ColReservas.find(codigoRes)->second; //duda si es bool, que avise si el int es correcto, sino es al pedo esta funcion

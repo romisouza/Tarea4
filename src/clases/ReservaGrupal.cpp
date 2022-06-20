@@ -51,7 +51,6 @@ return resultado;
 }
 
 bool ReservaGrupal::validarHuesped(string email, DTFecha hs){
-    bool encontre = false;
     bool res = false;
     for(set<Huesped*>::iterator i= huespedes.begin(); i != huespedes.end(); i++){
         if(email == (*i)->getEmail()){

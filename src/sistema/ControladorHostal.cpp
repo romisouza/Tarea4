@@ -437,7 +437,11 @@ DTCalificacion ControladorHostal::MostrarCalificacion(){
 			string email = (*i)->getHuesp()->getEmail();
 			string mail = estadia->getHuesped();
 			if ((*i)->getCal() != NULL) {
+<<<<<<< Updated upstream
 				if (email.compare(mail) == 0){
+=======
+				if (email.compare(mail) == 0){	
+>>>>>>> Stashed changes
 					existe = true;
 					cal= (*i)->getCal()->getDTCalificacion();
 				}

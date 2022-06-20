@@ -52,10 +52,6 @@ Estadia* Huesped::BuscarEstadias2(DTIdEstadia est){
 	return (*it);
 }
 
-DTHuesped Huesped::getDTHuesped(){
-
-}
-
 void Huesped::EliminarResHsp(int codRes){
 	if(ColReservasHuesp.empty()){
 		ColReservasHuesp.erase(codRes);

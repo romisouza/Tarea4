@@ -53,9 +53,6 @@ list<DTCal> Empleado::obtenerComentarios(){ //ADE PROBAR Q FUNCIONE BIEN
 	return lista;
 }
 
-DataEmpleado Empleado::getDataEmpleado(){
-}
-
 bool Empleado::TrabajaEnHostal(){//cambio respecto a dcd
 	return hostalAsociado==NULL;
 }

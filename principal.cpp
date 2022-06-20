@@ -682,6 +682,7 @@ void calificarEstadia(){
     string mailHsp;
     getline(cin >> ws, mailHsp);
     list<DTIdEstadia> lista=ctrlHostal->ListaEstadiasFinalizadas(mailHsp);
+    cout << "ADEEEEEEEEEEEEEE" << lista.size() << endl;
     if(lista.empty()){
         throw std::invalid_argument("No existen estadias para calificar.");
     }

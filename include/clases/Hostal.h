@@ -59,7 +59,6 @@ class Hostal{
 		void setTelefono(std::string);
 		void setPromedio(int);
 		void setColCal(list<Calificacion*>);
-		set<DTCal> obtenerHostal();
 		list<DTReserva*> BuscarReservas();
 		void EliminarRes(Reserva*);
 		void AgregarComentarios(std::string,int,DTFecha,Estadia*, list<IObserver*>);//cambie el nombre
@@ -75,8 +74,6 @@ class Hostal{
     	Reserva* reservar(DTFecha,int, DTFecha, DTFecha, Huesped*,bool,int,set<Huesped*>);
 		list<DTReservaComp*> ObtenerReservas();
 		list<DTCalificacion> obtenerCalificaciones();
-		//int getPromCal();
-		bool TrabajaEnHostal();
 		void ingresoAlHostal(int);
 		void CreateAddEstadia(DTFecha, int,Huesped*);
 		void buscarR(std::string,DTFecha,bool&);
