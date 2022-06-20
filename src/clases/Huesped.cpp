@@ -54,14 +54,6 @@ Estadia* Huesped::BuscarEstadias2(DTIdEstadia est){
 
 void Huesped::EliminarResHsp(int codRes){
 	if(!ColReservasHuesp.empty()){
-		
-	/*	auto it=ColReservasHuesp.begin();
-		while (it!=ColReservasHuesp.end() && it->second->getCodigo()!=codRes){
-			++it;
-		}*/
-		Reserva *res = ColReservasHuesp.find(codRes)->second;
 		ColReservasHuesp.erase(codRes);
-		res->~Reserva();
-
 	}	
 }

@@ -1111,7 +1111,6 @@ void bajaReserva(){
     cout << "Ingrese 1 para confirmar la baja o 0 para cancelar "<<endl;
     std::string confirmo;
     cin >>confirmo;
-    
     if (confirmo != "1" && confirmo != "0")
         throw std::invalid_argument("El dato ingresado no es correcto."); 
     else {

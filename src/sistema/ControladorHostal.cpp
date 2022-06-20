@@ -487,6 +487,7 @@ void ControladorHostal::SeleccionarReserva(int codigoRes){
 	else{
 		Reserva* res=hostalIngresado->getColReservas().find(codigoRes)->second;
 		ingresarReserva(res);
+		//delete res;
 	}
 }
 
