@@ -183,16 +183,22 @@ list<std::string> ControladorHostal::obtenerHuespedesRegistrados(){//ADE - VERIF
 
 void ControladorHostal::seleccionarHuesped(std::string emailHuesp){
 	ControladorUsuario *ctrl = ControladorUsuario::getInstance();
-	if (ctrl->getColHuespedes().find(emailHuesp) == ctrl->getColHuespedes().end()){
+	map<std::string,Huesped*> huespedes = ctrl->getColHuespedes();
+	if (huespedes.find(emailHuesp) == huespedes.end()){
 		throw std::invalid_argument("No existe un huesped con el mail ingresado.");
 	} else
-		huespRecordado = ctrl->getColHuespedes().find(emailHuesp)->second;
+		huespRecordado = huespedes.find(emailHuesp)->second;
 }
 
 void ControladorHostal::seleccionarAcompaniante(std::string emailHuesp){// va a ir loopeada en el main, con algo tipo "ingrese el mail de cada huesped q forme parte de la reserva, para finalizar presione 0"
 	ControladorUsuario *ctrl = ControladorUsuario::getInstance();
-	Huesped *huesp = ctrl->getColHuespedes().find(emailHuesp)->second;
-	acompaniantesIngresados.insert(huesp);
+	map<std::string,Huesped*> huespedes = ctrl->getColHuespedes();
+	if (huespedes.find(emailHuesp) == huespedes.end()){
+		throw std::invalid_argument("No existe un huesped con el mail ingresado.");
+	} else {
+		Huesped *huesp = huespedes.find(emailHuesp)->second;
+		acompaniantesIngresados.insert(huesp);
+	}
 }
 
 int ControladorHostal::confirmarAltaReserva(){
