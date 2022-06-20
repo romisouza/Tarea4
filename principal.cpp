@@ -935,8 +935,9 @@ void consultaReserva(){
         }
         it++;
     }
-    /*nombres.clear();
-    it=reservas.begin();
+    nombres.clear();
+    reservas.clear();
+    /*it=reservas.begin();
     while(it!=reservas.end()){
         delete (*it);
         it++;
