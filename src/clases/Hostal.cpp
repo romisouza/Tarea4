@@ -72,12 +72,15 @@ list<Calificacion*> Hostal::getColCal(){
 
 list<DTReserva*> Hostal::BuscarReservas(){
 	list<DTReserva*> auxRes;
+	DTReserva* aux;
 	for(auto it=ColReservas.begin();it!=ColReservas.end();it++){
-		DTReserva* aux=(*it).second->getDTReserva();
+		aux=(*it).second->getDTReserva();
 		auxRes.push_back(aux);
+	
 	}
 	return auxRes;
 }
+
 void Hostal::setColCal(list<Calificacion*> cal){
 	this->ColCal=cal;
 }

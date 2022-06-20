@@ -935,6 +935,13 @@ void consultaReserva(){
         }
         it++;
     }
+    nombres.clear();
+    it=reservas.begin();
+    while(it!=reservas.end()){
+        delete (*it);
+        it++;
+    }
+
     cout <<endl;
 }
 
@@ -1083,6 +1090,7 @@ void bajaReserva(){
     for (auto it=nombres.begin();it!=nombres.end();++it){
         cout << "  - " << (*it)<<endl;
     }
+    nombres.clear();
     string nombreHostal;
     cout << "Ingrese el nombre del hostal elegido: "<<endl;
     getline(cin >> ws, nombreHostal);
@@ -1092,6 +1100,10 @@ void bajaReserva(){
     for(auto it=Reservas.begin();it!=Reservas.end();it++){
         cout<< "  - Codigo de la reserva:"<< (*it)->getCodigo()<<endl;
     }
+    for(auto it=Reservas.begin();it!=Reservas.end();it++){
+        delete (*it);
+    }
+    Reservas.clear();
     int codRes;
     cout<< "Ingrese codigo de la reserva elegida:"<<endl;
     cin>> codRes;
@@ -1099,12 +1111,14 @@ void bajaReserva(){
     cout << "Ingrese 1 para confirmar la baja o 0 para cancelar "<<endl;
     std::string confirmo;
     cin >>confirmo;
+    
     if (confirmo != "1" && confirmo != "0")
         throw std::invalid_argument("El dato ingresado no es correcto."); 
     else {
         bool conf = (confirmo == "1");
         if(conf){
             ctrlHostal->ConfirmarEliminarReserva();
+            
             cout << "¡BAJA DE LA RESERVA REALIZADA CON EXITO!"<<endl;
             cout <<endl;
         }
@@ -1138,7 +1152,7 @@ void modificarFechaSistema(){
 void SuscribirseaNotificaciones(){
     IHostal *ctrlHostal = fabrica->obtenerControladorHostal();
     list<DTEmpleado> Emp=ctrlHostal->ObtenerEmpleados();
-    cout<< "Los email de los empleados son: "<<endl;
+    /*cout<< "Los email de los empleados son: "<<endl;
     for (auto it=Emp.begin();it!=Emp.end();it++){
         cout<< "  - "<< (*it).getEmail()<<endl;
     }
@@ -1146,7 +1160,7 @@ void SuscribirseaNotificaciones(){
     cout<< "Ingrese el email del empleado elegido:"<<endl;
     getline(cin >> ws, email);
     ctrlHostal->SuscribirEmpleado(email);
-     cout<< "¡SE REALIZO LA SUSCRIPCION CON EXITO!"<<endl;
+     cout<< "¡SE REALIZO LA SUSCRIPCION CON EXITO!"<<endl;*/
 }
 
 void ConsultaDeNotificaciones(){
@@ -1165,6 +1179,11 @@ void ConsultaDeNotificaciones(){
             }
             ++it;   
         }
+        /*while (it!=Emp.end()){
+            delete (*it);
+            ++it;   
+        }
+        Emp.clear();*/
         string email;
         cout<< "Ingrese el email del empleado elegido:"<<endl;
         getline(cin >> ws, email);
