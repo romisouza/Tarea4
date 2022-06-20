@@ -870,7 +870,7 @@ void consultaHostal(){
             cout<< "  - Puntaje:"<< (*it).getPuntaje()<<endl;
             cout<< "  - Comentario de huesped:"<< (*it).getComentarioHuesp()<<endl;
             if((*it).getComentarioHuesp()!=""){//arreglar esto
-                cout<< "  - Comentario de huesped:"<< (*it).getComentarioEmp()<<endl;
+                cout<< "  - Comentario de empleado:"<< (*it).getComentarioEmp()<<endl;
             } 
             tam++;
             ++it;              
