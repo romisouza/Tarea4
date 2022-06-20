@@ -112,7 +112,7 @@ void Hostal::EliminarRes(Reserva* res){
 	else{
 		setPromedio(0);
 	}
-		setColCal(ColCalNueva);/**/
+		setColCal(ColCalNueva);
 }
 
 void Hostal::AgregarComentarios(std::string comentario, int puntaje, DTFecha hrs, Estadia* est, list<IObserver*> obs){
