@@ -1,6 +1,5 @@
 #ifndef RESERVAGRUPAL
 #define RESERVAGRUPAL
-
 #include <string>
 #include <iostream>
 #include "Reserva.h"
@@ -23,7 +22,6 @@ class ReservaGrupal:public Reserva{
         virtual DTReserva* getDTReserva();
         virtual DTReservaComp* getDTReservaComp();
         virtual bool validarHuespedRegistrado(string);
-        /*virtual void agregarAcompañante(Huesped*);*/
         virtual bool validarHuesped(string,DTFecha);
         virtual ~ReservaGrupal();
 };

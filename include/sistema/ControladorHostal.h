@@ -26,7 +26,7 @@ using namespace std;
 class ControladorHostal:public IHostal {
 	private: 
 		static ControladorHostal* instancia;
-		map<std::string,Hostal*> ColHostales; // clave nombre
+		map<std::string,Hostal*> ColHostales;
 		//para asignar empleado a hostal
 		Hostal* hostalIngresado;
 		Empleado* empleadoIngresado; 

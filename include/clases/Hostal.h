@@ -15,8 +15,6 @@
 #include "../../include/datatypes/DTCalificacion.h"
 #include "../../include/sistema/IObserver.h"
 #include "Reserva.h"
-//#include "ReservaGrupal.h"
-//#include "ReservaIndividual.h"
 #include "Empleado.h"
 #include "Calificacion.h"
 
@@ -38,8 +36,8 @@ class Hostal{
 		std::string direccion;
 		std::string telefono;
 		int promedio;
-		map<int,Reserva*> ColReservas; // clave codigo
-		map<int, Habitacion*> ColHabitaciones; //clave numero 
+		map<int,Reserva*> ColReservas;
+		map<int, Habitacion*> ColHabitaciones;
 		list<Calificacion*> ColCal;
 		map<std::string,Empleado*> ColEmpleadosHost;
 	public:

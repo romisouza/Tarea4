@@ -22,9 +22,9 @@ class Huesped: public Usuario {
 		void setColReservasHuesp(map<int,Reserva*>);
 		bool getEsFinger();
 		void setEsFinger(bool finger);
-		list<DTIdEstadia> BuscarEstadias(std::string email, DTFecha hrs);//cambie el nombre
-		Estadia* BuscarEstadias2(DTIdEstadia);//nueva, calificr estadia
-		void EliminarResHsp(int);//Baja de reserva, nueva
+		list<DTIdEstadia> BuscarEstadias(std::string email, DTFecha hrs);
+		Estadia* BuscarEstadias2(DTIdEstadia);
+		void EliminarResHsp(int);
 };
 
 #endif

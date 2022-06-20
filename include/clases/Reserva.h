@@ -42,7 +42,7 @@ class Reserva{
         virtual DTReserva* getDTReserva()=0;
         virtual DTReservaComp* getDTReservaComp()=0;
         DataEstadia* BuscarRes(Reserva*,DTIdEstadia,std::string);
-        void BuscarEstadia(string, DTFecha, list<DTIdEstadia> &);//cambie el nombre
+        void BuscarEstadia(string, DTFecha, list<DTIdEstadia> &);
         list<DTIdEstadia> accederaEstadias(Reserva*);
         void hallarEstadia(string,string);
         virtual bool validarHuespedRegistrado(string)=0;
