@@ -7,7 +7,7 @@ DTEmpleado::DTEmpleado(std::string nom,std::string mail,CargoEmpleado* car){
 }
 
 DTEmpleado::~DTEmpleado(){
-    delete cargo;
+   // delete cargo;
 }
 
 std::string DTEmpleado::getNombre(){
