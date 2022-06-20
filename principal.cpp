@@ -749,8 +749,9 @@ void consultaUsuario(){
     set<string> Usuarios = ctrlUsuario->ObtenerUsuarios();
     cout << "Los usuarios registrados en el sistema son: "<<endl;
     for (set<string>::iterator i = Usuarios.begin(); i != Usuarios.end(); i++){
-        cout << *i <<endl;
+        cout << *i << "\n" <<endl;
     }
+    Usuarios.clear();
     cout <<"Si desea consultar la informacion de un huesped ingrese 0, si quiere la de un empleado ingrese 1: "<<endl;
     std::string User;
     cin >>User;
@@ -771,6 +772,7 @@ void consultaUsuario(){
                 cout << "  - Es finger" << endl;
             else    
                 cout << "  - No es finger" <<endl;
+            delete Huesped;
         }
         else {
             cout << "Ingrese el email correspondiente al empleado cuya informacion quiere consultar: "<<endl;
@@ -794,6 +796,7 @@ void consultaUsuario(){
                 break;
             }
             cout << "  - El empleado trabaja en el Hostal: " << Empleado->getHostal() << endl;  
+            delete Empleado;
         }
         cout <<endl;
     }
@@ -942,6 +945,7 @@ void consultaEstadia(){
     for (set<string>::iterator i = Hostales.begin(); i != Hostales.end(); i++){
         cout << "  - " <<*i  <<endl;
     }
+    Hostales.clear();
     cout << "Seleccione uno de esos hostales ingresando su nombre: "<<endl;
     std::string nombreHostal;
     getline(cin >> ws, nombreHostal);
@@ -974,6 +978,7 @@ void consultaEstadia(){
             else 
                 existe = false;
         }
+        IdEstadia.clear();
         if (!existe) 
             throw std::invalid_argument("Datos ingresados incorrectos."); 
         else {
@@ -985,17 +990,31 @@ void consultaEstadia(){
             int horaIn = EstSeleccionada->getCheckIn().getHora();
             int minutoIn = EstSeleccionada->getCheckIn().getMinutos();
             cout << "  - Fecha de ingreso: " << diaIn <<"/"<<mesIn<<"/"<<anioIn<<"-"<<horaIn<<":"<<minutoIn<<endl;
-            int diaOut = EstSeleccionada->getCheckOut().getDia();
-            int mesOut = EstSeleccionada->getCheckOut().getMes();
-            int anioOut = EstSeleccionada->getCheckOut().getAnio();
-            int horaOut = EstSeleccionada->getCheckOut().getHora();
-            int minutoOut = EstSeleccionada->getCheckOut().getMinutos();
-            cout << "  - Fecha de salida: " << diaOut <<"/"<<mesOut<<"/"<<anioOut<<"-"<<horaOut<<":"<<minutoOut<<endl;
+            list<DTIdEstadia> estFinalizadas = ctrlHostal->ListaEstadiasFinalizadas(emailHuesp);
+            bool estaFinalizada=false;
+            for (auto it = estFinalizadas.begin(); it != estFinalizadas.end(); it++){
+                std::string email = (*it).getEmail();
+                int cod = (*it).getCodigo();
+                if (email.compare(emailHuesp)== 0 && Codigo == cod) 
+                    estaFinalizada = true;
+            } 
+            estFinalizadas.clear();
+            if (!estaFinalizada)
+                cout << "  - La estadia no ha finalizado"<<endl;
+            else {
+                int diaOut = EstSeleccionada->getCheckOut().getDia();
+                int mesOut = EstSeleccionada->getCheckOut().getMes();
+                int anioOut = EstSeleccionada->getCheckOut().getAnio();
+                int horaOut = EstSeleccionada->getCheckOut().getHora();
+                int minutoOut = EstSeleccionada->getCheckOut().getMinutos();
+                cout << "  - Fecha de salida: " << diaOut <<"/"<<mesOut<<"/"<<anioOut<<"-"<<horaOut<<":"<<minutoOut<<endl;
+            }
             cout << "  - Huesped asociado: " << EstSeleccionada->getHuesped() <<endl;
             cout << "  - Hostal asociado: " << EstSeleccionada->getHostal() <<endl;
             cout << "  - Habitacion asociada: " << EstSeleccionada->getHabitacion() <<endl;
             cout << "  - Codigo de la reserva asociada: "<< EstSeleccionada->getCod()<<endl;
             cout << " Si desea ver la calificacion de la estadía y la respuesta del empleado ingrese 1, sino ingrese 0."<<endl;
+            delete EstSeleccionada;
             std::string verCalif;
             cin >>verCalif;
             if (verCalif != "1" && verCalif != "0")
@@ -1005,7 +1024,7 @@ void consultaEstadia(){
                 if (VerCalificacion) {
                     DTCalificacion cal = ctrlHostal->MostrarCalificacion();
                     if (!ctrlHostal->ExisteCalif())
-                        cout << "La estadía no tiene calificaciones."<<endl;
+                        cout << "La estadía no ha sido calificada."<<endl;
                     else {
                         cout << "  - Calificacion: " <<cal.getPuntaje()<<endl;
                         cout << "  - Comentario del huesped: "<<cal.getComentarioHuesp()<<endl;
@@ -1023,7 +1042,7 @@ void consultaEstadia(){
                     if (VerInfoReserva) {
                         DTReserva* res = ctrlHostal->MostrarInfoReserva(nombreHostal, Codigo);
                         cout << "__Informacion de la reserva__"<<endl;
-                        cout << "  - Codigo de la reserva: " <<res->getCodigo()<<endl;
+                        cout << "  - Codigo de la reserva" <<res->getCodigo()<<endl;
                         int diaIn = res->getCheckIn().getDia();
                         int mesIn = res->getCheckIn().getMes();
                         int anioIn = res->getCheckIn().getAnio();
@@ -1045,7 +1064,7 @@ void consultaEstadia(){
                             case 2: cout << "  - La reserva está cancelada"<<endl;
                             break;
                         }
-                        
+                        delete res;
                     }
                     cout <<endl;
                 }
