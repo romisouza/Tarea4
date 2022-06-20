@@ -872,7 +872,7 @@ void consultaHostal(){
         while(tam<= comentarios.size()){
             cout<< "  - Puntaje:"<< (*it).getPuntaje()<<endl;
             cout<< "  - Comentario de huesped:"<< (*it).getComentarioHuesp()<<endl;
-            if((*it).getComentarioHuesp()!=""){//arreglar esto
+            if((*it).getComentarioEmp()!=""){//arreglar esto
                 cout<< "  - Comentario de empleado:"<< (*it).getComentarioEmp()<<endl;
             } 
             tam++;
