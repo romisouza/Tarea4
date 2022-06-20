@@ -935,12 +935,12 @@ void consultaReserva(){
         }
         it++;
     }
-    nombres.clear();
+    /*nombres.clear();
     it=reservas.begin();
     while(it!=reservas.end()){
         delete (*it);
         it++;
-    }
+    }*/
 
     cout <<endl;
 }
