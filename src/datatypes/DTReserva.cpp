@@ -6,7 +6,10 @@ DTReserva::DTReserva(int cod, DTFecha ent, DTFecha sal, EstadoReserva est){
     checkOut = sal;
     estado = est;
 }
-DTReserva::~DTReserva(){}
+DTReserva::~DTReserva(){
+    checkIn.~DTFecha();
+    checkOut.~DTFecha();
+}
 
 int DTReserva::getCodigo(){
     return codigo;

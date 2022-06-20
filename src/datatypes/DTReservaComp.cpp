@@ -34,5 +34,7 @@ int DTReservaComp::getNumHab(){
 }
 
 DTReservaComp::~DTReservaComp(){
+    checkIn.~DTFecha();
+    checkOut.~DTFecha();
     delete huesp;
 }
