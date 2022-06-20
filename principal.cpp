@@ -698,8 +698,10 @@ void calificarEstadia(){
     }
     ctrlHostal->SeleccionarEstadia((*it));
     int Puntaje;
-    cout<< "Ingrese puntaje de la calificacion:"<<endl;
+    cout<< "Ingrese puntaje de la calificacion (entero del 1 al 5):"<<endl;
     cin>> Puntaje;
+    if (Puntaje > 5)
+        throw std::invalid_argument("El puntaje debe ser entre 1 y 5.");
     string comentario;
     cout<< "Ingrese comentario de la calificacion:"<<endl;
     getline(cin >> ws, comentario);
