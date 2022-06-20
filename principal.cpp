@@ -399,7 +399,6 @@ void asignarEmpleadoAHostal(){
     if(empleadosRegistrados.empty())
         throw std::invalid_argument("No hay empleados registrados en el sistema sin cargo asignado."); 
     cout << "Los empleados registrados en el sistema sin cargo son:" << endl;
-    cout << "Los empleados registrados en el sistema sin cargo son:" << endl;
     int k = 1;
     for (auto it=empleadosRegistrados.begin();it!=empleadosRegistrados.end();++it){
         cout <<"Empleado "<<k<<":"<<endl;
@@ -442,7 +441,7 @@ void asignarEmpleadoAHostal(){
         default: throw std::invalid_argument("El numero ingresado no es correcto.");
     }    
     ctrlHostal->SeleccionarEmpleado(cargo1,mailEmp);
-    cout << "Ingrese 1 para confirmar la asignacion o 0 para cancelarla: ";
+    cout << "Ingrese 1 para confirmar la asignacion o 0 para cancelarla: "<<endl;
     std::string confirmo;
     cin >>confirmo;
     if (confirmo != "1" && confirmo != "0")
@@ -609,14 +608,9 @@ void registrarEstadia(){
     cout << "Ingrese el nombre del hostal elegido: "<<endl;
     getline(cin >> ws, nombreHostal);
     std::string email;
-    cout << "Huespedes regitrados en el sistema: "<<endl;
-    list<string> huespedes = ctrlUsuario->obtenerHuespedes();
-    for (list<string>::iterator i = huespedes.begin(); i != huespedes.end();i++){
-        cout << "  - " << (*i)<<endl;
-    }
-    cout << "Ingrese el email del huesped: "<< endl; //PARA MI HABRIA QUE MOSTRAR ANTES A LOS HUESPEDES
+    cout << "Ingrese el email del huesped: "<< endl; 
     cin >> email;
-    list<int> reservasNC = ctrlHostal->ObtenerReservasNC(nombreHostal, email); //deevolver solo el codigo
+    list<int> reservasNC = ctrlHostal->ObtenerReservasNC(nombreHostal, email); 
     if(reservasNC.empty()){
         throw std::invalid_argument("No existen reservas aptas para registrar la estadia.");
     }
@@ -645,12 +639,7 @@ void finalizarEstadia(){
     cout << "Ingrese el nombre del hostal elegido: "<<endl;
     getline(cin >> ws, nombreHostal);
     std::string email;
-    cout << "Huespedes regitrados en el sistema: "<<endl;
-    list<string> huespedes = ctrlUsuario->obtenerHuespedes();
-    for (list<string>::iterator i = huespedes.begin(); i != huespedes.end();i++){
-        cout << "  - " << (*i)<<endl;
-    }
-    cout << "Ingrese el email del huesped: "<< endl; //HABRIA QUE MOSTRAR A LOS HUESPEDES
+    cout << "Ingrese el email del huesped: "<< endl; 
     getline(cin >> ws, email);
     bool finalizoEst = false;
     ctrlHostal->DatosHuesped(nombreHostal,email,finalizoEst);
@@ -673,16 +662,10 @@ void calificarEstadia(){
     cout << "Ingrese el nombre del hostal elegido: "<<endl;
     getline(cin >> ws, nombreHostal);
     ctrlHostal->SeleccionarHostal(nombreHostal);
-    cout << "Huespedes regitrados en el sistema: "<<endl;
-    list<string> huespedes = ctrlUsuario->obtenerHuespedes();
-    for (list<string>::iterator i = huespedes.begin(); i != huespedes.end();i++){
-        cout << "  - " << (*i)<<endl;
-    }
-    cout << "Ingrese el mail del huesped: "<<endl; //HABRIA QUE MOSTRAR LOS HUESPEDES
+    cout << "Ingrese el mail del huesped: "<<endl;
     string mailHsp;
     getline(cin >> ws, mailHsp);
     list<DTIdEstadia> lista=ctrlHostal->ListaEstadiasFinalizadas(mailHsp);
-    cout << "ADEEEEEEEEEEEEEE" << lista.size() << endl;
     if(lista.empty()){
         throw std::invalid_argument("No existen estadias para calificar.");
     }
@@ -735,7 +718,7 @@ void comentarCalificacion(){
     for (auto it = empleados.begin(); it != empleados.end(); it++){
         cout <<"  - "<< *it <<endl;
     }
-    cout << "Ingrese el mail de un empleado: "; 
+    cout << "Ingrese el mail de un empleado: "<<endl; 
     string mailEmp;
     getline(cin >> ws, mailEmp);
     bool esta = ctrlUsuario->existeEmp(mailEmp);
@@ -766,7 +749,7 @@ void consultaUsuario(){
     set<string> Usuarios = ctrlUsuario->ObtenerUsuarios();
     cout << "Los usuarios registrados en el sistema son: "<<endl;
     for (set<string>::iterator i = Usuarios.begin(); i != Usuarios.end(); i++){
-        cout << *i << "\n" <<endl;
+        cout << *i <<endl;
     }
     cout <<"Si desea consultar la informacion de un huesped ingrese 0, si quiere la de un empleado ingrese 1: "<<endl;
     std::string User;
@@ -957,7 +940,7 @@ void consultaEstadia(){
     set<string> Hostales = ctrlHostal->ObtenerNombreHostales();
     cout << "Los hostales registrados en el sistema son: "<<endl;
     for (set<string>::iterator i = Hostales.begin(); i != Hostales.end(); i++){
-        cout << "  - " <<*i << "\n" <<endl;
+        cout << "  - " <<*i  <<endl;
     }
     cout << "Seleccione uno de esos hostales ingresando su nombre: "<<endl;
     std::string nombreHostal;
@@ -1040,7 +1023,7 @@ void consultaEstadia(){
                     if (VerInfoReserva) {
                         DTReserva* res = ctrlHostal->MostrarInfoReserva(nombreHostal, Codigo);
                         cout << "__Informacion de la reserva__"<<endl;
-                        cout << "  - Codigo de la reserva" <<res->getCodigo()<<endl;
+                        cout << "  - Codigo de la reserva: " <<res->getCodigo()<<endl;
                         int diaIn = res->getCheckIn().getDia();
                         int mesIn = res->getCheckIn().getMes();
                         int anioIn = res->getCheckIn().getAnio();
