@@ -932,6 +932,13 @@ void consultaReserva(){
         }
         it++;
     }
+    nombres.clear();
+    it=reservas.begin();
+    while(it!=reservas.end()){
+        delete (*it);
+        it++;
+    }
+
     cout <<endl;
 }
 
@@ -1126,7 +1133,7 @@ void modificarFechaSistema(){
 void SuscribirseaNotificaciones(){
     IHostal *ctrlHostal = fabrica->obtenerControladorHostal();
     list<DTEmpleado> Emp=ctrlHostal->ObtenerEmpleados();
-    cout<< "Los email de los empleados son: "<<endl;
+    /*cout<< "Los email de los empleados son: "<<endl;
     for (auto it=Emp.begin();it!=Emp.end();it++){
         cout<< "  - "<< (*it).getEmail()<<endl;
     }
@@ -1134,7 +1141,7 @@ void SuscribirseaNotificaciones(){
     cout<< "Ingrese el email del empleado elegido:"<<endl;
     getline(cin >> ws, email);
     ctrlHostal->SuscribirEmpleado(email);
-     cout<< "¡SE REALIZO LA SUSCRIPCION CON EXITO!"<<endl;
+     cout<< "¡SE REALIZO LA SUSCRIPCION CON EXITO!"<<endl;*/
 }
 
 void ConsultaDeNotificaciones(){
@@ -1153,7 +1160,7 @@ void ConsultaDeNotificaciones(){
             }
             ++it;   
         }
-       /* while (it!=Emp.end()){
+        /*while (it!=Emp.end()){
             delete (*it);
             ++it;   
         }
