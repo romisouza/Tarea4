@@ -1096,6 +1096,9 @@ void bajaReserva(){
     getline(cin >> ws, nombreHostal);
     ctrlHostal->SeleccionarHostal(nombreHostal);
     list<DTReserva*> Reservas= ctrlHostal->ObtenerReservas(nombreHostal);
+    if(Reservas.empty()){
+        throw std::invalid_argument("No hay reservas para cancelar");
+    }
     cout<< "Las reservas son:"<<endl;
     for(auto it=Reservas.begin();it!=Reservas.end();it++){
         cout<< "  - Codigo de la reserva:"<< (*it)->getCodigo()<<endl;
