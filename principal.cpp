@@ -894,6 +894,9 @@ void consultaReserva(){
     list<DTReservaComp*> reservas = ctrlHostal->ObtenerReservasComp(nombreHostal);
     cout<< "_Informacion de las reservas_"<<endl;
     auto it=reservas.begin();
+    if(it==reservas.end())
+        throw std::invalid_argument("No hay reservas registradas en ese Hostal.");
+    else{
     while(it!=reservas.end()){
         DTReservaCompInd* ind = dynamic_cast<DTReservaCompInd*>((*it));
         if(ind!=NULL){
@@ -943,7 +946,8 @@ void consultaReserva(){
         it++;
     }*/
 
-    cout <<endl;
+    cout <<endl; 
+    }
 }
 
 void consultaEstadia(){
