@@ -305,7 +305,7 @@ void ControladorHostal::ReservaNCElegida(int codigoRes,Huesped* huesp){
 	map<int, Reserva*> res =hostalIngresado->getColReservas(); //asumo que hostal esta bien?
 	SingletonFechaHora *FH = SingletonFechaHora::getInstance();
 	if (FH->FechaHoraSistema().compararFecha(FH->FechaHoraSistema(),(res.find(codigoRes))->second->getCheckIn())==true){
-		throw std::invalid_argument("La estadia aun no comenzó.");
+		throw std::invalid_argument("La reserva aun no comenzó.");
 	} else {
 	if (res.find(codigoRes) == res.end()|| (FH->FechaHoraSistema()).compararFecha(FH->FechaHoraSistema(),(res.find(codigoRes))->second->getCheckOut())!=1 ) {
 		throw std::invalid_argument("Ocurrió un error con los datos ingresados."); 

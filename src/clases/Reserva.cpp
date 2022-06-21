@@ -144,10 +144,4 @@ Reserva ::~Reserva() {
     delete hab;
     delete hues;
     est.clear();
-    
-    //auto it=est.begin();
-    //est.clear();
-   // delete hab;
-   // delete hues;
-   //delete est;
 }

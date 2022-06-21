@@ -872,7 +872,7 @@ void consultaHostal(){
         while(tam<= comentarios.size()){
             cout<< "  - Puntaje:"<< (*it).getPuntaje()<<endl;
             cout<< "  - Comentario de huesped:"<< (*it).getComentarioHuesp()<<endl;
-            if((*it).getComentarioHuesp()!=""){//arreglar esto
+            if((*it).getComentarioEmp()!=""){//arreglar esto
                 cout<< "  - Comentario de empleado:"<< (*it).getComentarioEmp()<<endl;
             } 
             tam++;
@@ -894,6 +894,9 @@ void consultaReserva(){
     list<DTReservaComp*> reservas = ctrlHostal->ObtenerReservasComp(nombreHostal);
     cout<< "_Informacion de las reservas_"<<endl;
     auto it=reservas.begin();
+    if(it==reservas.end())
+        throw std::invalid_argument("No hay reservas registradas en ese Hostal.");
+    else{
     while(it!=reservas.end()){
         DTReservaCompInd* ind = dynamic_cast<DTReservaCompInd*>((*it));
         if(ind!=NULL){
@@ -935,14 +938,16 @@ void consultaReserva(){
         }
         it++;
     }
-    /*nombres.clear();
-    it=reservas.begin();
+    nombres.clear();
+    reservas.clear();
+    /*it=reservas.begin();
     while(it!=reservas.end()){
         delete (*it);
         it++;
     }*/
 
-    cout <<endl;
+    cout <<endl; 
+    }
 }
 
 void consultaEstadia(){
