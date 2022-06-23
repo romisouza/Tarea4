@@ -1,0 +1,53 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/braianmendizabal/Documents/GitHub/Tarea4'
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c principal.cpp -o principal.o
+ 
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/datatypes/DataEmpleado.cpp -o src/datatypes/DataEmpleado.o
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/datatypes/DataEstadia.cpp -o src/datatypes/DataEstadia.o
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/datatypes/DataHostalComp.cpp -o src/datatypes/DataHostalComp.o
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/datatypes/DTCal.cpp -o src/datatypes/DTCal.o
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/datatypes/DTCalificacion.cpp -o src/datatypes/DTCalificacion.o
+ 
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/datatypes/DTEmpleado.cpp -o src/datatypes/DTEmpleado.o
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/datatypes/DTEstadia.cpp -o src/datatypes/DTEstadia.o
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/datatypes/DTFecha.cpp -o src/datatypes/DTFecha.o
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/datatypes/DTHabitacion.cpp -o src/datatypes/DTHabitacion.o
+ 
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/datatypes/DTHostal.cpp -o src/datatypes/DTHostal.o
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/datatypes/DTHostalProm.cpp -o src/datatypes/DTHostalProm.o
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/datatypes/DTHuesped.cpp -o src/datatypes/DTHuesped.o
+ 
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/datatypes/DTIdEstadia.cpp -o src/datatypes/DTIdEstadia.o
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/datatypes/DTReserva.cpp -o src/datatypes/DTReserva.o
+ 
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/datatypes/DTReservaComp.cpp -o src/datatypes/DTReservaComp.o
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/datatypes/DTReservaCompInd.cpp -o src/datatypes/DTReservaCompInd.o
+ 
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/datatypes/DTReservaCompGrup.cpp -o src/datatypes/DTReservaCompGrup.o
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/datatypes/DTReservaIndividual.cpp -o src/datatypes/DTReservaIndividual.o
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/datatypes/DTReservaGrupal.cpp -o src/datatypes/DTReservaGrupal.o
+ 
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/clases/Calificacion.cpp -o src/clases/Calificacion.o
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/clases/Empleado.cpp -o src/clases/Empleado.o
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/clases/Estadia.cpp -o src/clases/Estadia.o
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/clases/Habitacion.cpp -o src/clases/Habitacion.o
+ 
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/clases/Hostal.cpp -o src/clases/Hostal.o
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/clases/Huesped.cpp -o src/clases/Huesped.o
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/clases/Reserva.cpp -o src/clases/Reserva.o
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/clases/ReservaGrupal.cpp -o src/clases/ReservaGrupal.o
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/clases/ReservaIndividual.cpp -o src/clases/ReservaIndividual.o
+ 
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/clases/Usuario.cpp -o src/clases/Usuario.o
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/sistema/ControladorHostal.cpp -o src/sistema/ControladorHostal.o
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/sistema/ControladorUsuario.cpp -o src/sistema/ControladorUsuario.o
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/sistema/IHostal.cpp -o src/sistema/IHostal.o
+ 
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/sistema/SingletonFechaHora.cpp -o src/sistema/SingletonFechaHora.o
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/sistema/IObserver.cpp -o src/sistema/IObserver.o
+ 
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/sistema/Fabrica.cpp -o src/sistema/Fabrica.o
+g++ -Wall -fPIC -pthread -Iinclude/clases -Iinclude/datatypes -Iinclude/sistema -g -c src/sistema/IUsuario.cpp -o src/sistema/IUsuario.o
+g++   principal.o src/datatypes/DataEmpleado.o src/datatypes/DataEstadia.o src/datatypes/DataHostalComp.o src/datatypes/DTCal.o src/datatypes/DTCalificacion.o src/datatypes/DTEmpleado.o src/datatypes/DTEstadia.o src/datatypes/DTFecha.o src/datatypes/DTHabitacion.o src/datatypes/DTHostal.o src/datatypes/DTHostalProm.o src/datatypes/DTHuesped.o src/datatypes/DTIdEstadia.o src/datatypes/DTReserva.o src/datatypes/DTReservaComp.o src/datatypes/DTReservaCompInd.o src/datatypes/DTReservaCompGrup.o src/datatypes/DTReservaIndividual.o src/datatypes/DTReservaGrupal.o src/clases/Calificacion.o src/clases/Empleado.o src/clases/Estadia.o src/clases/Habitacion.o src/clases/Hostal.o src/clases/Huesped.o src/clases/Reserva.o src/clases/ReservaGrupal.o src/clases/ReservaIndividual.o src/clases/Usuario.o src/sistema/ControladorHostal.o src/sistema/ControladorUsuario.o src/sistema/IHostal.o src/sistema/SingletonFechaHora.o src/sistema/IObserver.o src/sistema/Fabrica.o src/sistema/IUsuario.o   -o principal
+make: Leaving directory `/Users/braianmendizabal/Documents/GitHub/Tarea4'
+ 

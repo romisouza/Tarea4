@@ -1,0 +1,527 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 3.81
+# Copyright (C) 2006  Free Software Foundation, Inc.
+# This is free software; see the source for copying conditions.
+# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
+
+# This program built for i386-apple-darwin11.3.0
+ 
+
+# Make data base, printed on Thu Jun 23 00:48:31 2022
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# makefile (from `Makefile', line 7)
+DT_CPP = src/datatypes
+# environment
+VSCODE_LOG_NATIVE = false
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# automatic
+@F = $(notdir $@)
+# makefile
+CURDIR := /Users/braianmendizabal/Documents/GitHub/Tarea4
+# makefile
+SHELL = /bin/sh
+# environment
+VSCODE_NLS_CONFIG = {"locale":"es-419","availableLanguages":{},"_languagePackSupport":true}
+# environment
+_ = /usr/bin/make
+# makefile (from `Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# makefile (from `Makefile', line 16)
+DT_O = $(DT_NOMBRES:%=$(DT_CPP)/%.o)
+# makefile (from `Makefile', line 6)
+Clases_H = include/clases
+# environment
+ 
+VSCODE_VERBOSE_LOGGING = true
+# environment
+__CFBundleIdentifier = com.microsoft.VSCode
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/09/q5bkmt612d5f4q6l0w0t86_c0000gn/T/vscode-ipc-da67dc34-2ee2-49e9-8e24-f65ef7bf96d8.sock
+# makefile (from `Makefile', line 19)
+SISTEMA_O = $(SISTEMA_NOMBRES:%=$(Sistema_CPP)/%.o)
+# environment
+VSCODE_CWD = /
+# environment
+PATH = /Library/Frameworks/Python.framework/Versions/3.10/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Library/Frameworks/Python.framework/Versions/3.10/bin
+# makefile (from `Makefile', line 5)
+Clases_CPP = src/clases
+# environment
+VSCODE_LOG_STACK = false
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# default
+.FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
+# environment
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.oMbGzIHrLZ/Listeners
+# automatic
+%F = $(notdir $%)
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+PWD = /Users/braianmendizabal/Documents/GitHub/Tarea4
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /Users/braianmendizabal
+# default
+MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
+# environment
+VSCODE_CODE_CACHE_PATH = /Users/braianmendizabal/Library/Application Support/Code/CachedData/4af164ea3a06f701fe3e89a2bcbb421d2026b68f
+# environment
+LOGNAME = braianmendizabal
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# makefile (from `Makefile', line 12)
+CLASES_NOMBRES = Calificacion Empleado Estadia Habitacion Hostal Huesped Reserva ReservaGrupal ReservaIndividual Usuario
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+XPC_FLAGS = 0x0
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+SHLVL = 1
+# environment
+LOCAL_GIT_DIRECTORY = /Applications/GitHub Desktop.app/Contents/Resources/app/git
+# makefile (from `Makefile', line 23)
+CC = g++
+# default
+MAKE_VERSION := 3.81
+# environment
+USER = braianmendizabal
+# makefile
+.DEFAULT_GOAL := all
+# makefile (from `Makefile', line 26)
+CCFLAGS = -Wall -fPIC -pthread -I$(Clases_H) -I$(DT_H) -I$(Sistema_H) -g
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# default
+MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
+# default
+.VARIABLES := 
+# environment
+TMPDIR = /var/folders/09/q5bkmt612d5f4q6l0w0t86_c0000gn/T/
+# automatic
+*F = $(notdir $*)
+# environment
+VSCODE_IPC_HOOK = /Users/braianmendizabal/Library/Application Support/Code/1.68.0-main.sock
+# makefile
+MAKEFLAGS = Rrqp
+# environment
+MFLAGS = -Rrqp
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.15894778.15894784
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# automatic
++F = $(notdir $+)
+# makefile (from `Makefile', line 10)
+Sistema_H = include/sistema
+# environment
+__CF_USER_TEXT_ENCODING = 0x1F5:0x0:0x56
+# environment
+COMMAND_MODE = unix2003
+# default
+MAKEFILES := 
+# makefile (from `Makefile', line 15)
+DT_NOMBRES = DataEmpleado DataEstadia DataHostalComp DTCal DTCalificacion DTEmpleado DTEstadia DTFecha DTHabitacion DTHostal DTHostalProm DTHuesped DTIdEstadia DTReserva  DTReservaComp DTReservaCompInd DTReservaCompGrup DTReservaIndividual DTReservaGrupal
+# automatic
+<F = $(notdir $<)
+# environment
+LC_ALL = C
+# makefile (from `Makefile', line 13)
+CLASES_O = $(CLASES_NOMBRES:%=$(Clases_CPP)/%.o)
+# makefile (from `Makefile', line 8)
+DT_H = include/datatypes
+# makefile (from `Makefile', line 18)
+SISTEMA_NOMBRES = ControladorHostal ControladorUsuario IHostal SingletonFechaHora IObserver Fabrica IUsuario 
+# automatic
+^F = $(notdir $^)
+# default
+SUFFIXES := 
+# makefile (from `Makefile', line 9)
+Sistema_CPP = src/sistema
+# default
+.INCLUDE_DIRS = /usr/local/include
+# environment
+MAKELEVEL := 0
+# environment
+LANG = C
+# environment
+VSCODE_PID = 13726
+# variable set hash-table stats:
+# Load=77/1024=8%, Rehash=0, Collisions=1/126=1%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 16777221, inode 16005170): 13 files, no impossibilities.
+
+# 13 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+src/clases/%.o: src/clases/%.cpp include/clases/%.h
+#  commands to execute (from `Makefile', line 33):
+	$(CC) $(CCFLAGS) -c $< -o $@
+	
+
+src/datatypes/%.o: src/datatypes/%.cpp include/datatypes/%.h
+#  commands to execute (from `Makefile', line 36):
+	$(CC) $(CCFLAGS) -c $< -o $@
+	
+
+src/sistema/%.o: src/sistema/%.cpp include/sistema/%.h
+#  commands to execute (from `Makefile', line 39):
+	$(CC) $(CCFLAGS) -c $< -o $@
+	
+
+# 3 implicit rules, 0 (0.0%) terminal.
+
+# Files
+
+# Not a target:
+src/datatypes/DTFecha.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+ 
+
+# Not a target:
+src/clases/Reserva.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/sistema/SingletonFechaHora.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+all: principal
+#  Phony target (prerequisite of .PHONY).
+#  Command-line target.
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/7=0%
+
+.PHONY: all clean
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/datatypes/DTHostalProm.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/datatypes/DTReservaGrupal.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+principal: principal.o src/datatypes/DataEmpleado.o src/datatypes/DataEstadia.o src/datatypes/DataHostalComp.o src/datatypes/DTCal.o src/datatypes/DTCalificacion.o src/datatypes/DTEmpleado.o src/datatypes/DTEstadia.o src/datatypes/DTFecha.o src/datatypes/DTHabitacion.o src/datatypes/DTHostal.o src/datatypes/DTHostalProm.o src/datatypes/DTHuesped.o src/datatypes/DTIdEstadia.o src/datatypes/DTReserva.o src/datatypes/DTReservaComp.o src/datatypes/DTReservaCompInd.o src/datatypes/DTReservaCompGrup.o src/datatypes/DTReservaIndividual.o src/datatypes/DTReservaGrupal.o src/clases/Calificacion.o src/clases/Empleado.o src/clases/Estadia.o src/clases/Habitacion.o src/clases/Hostal.o src/clases/Huesped.o src/clases/Reserva.o src/clases/ReservaGrupal.o src/clases/ReservaIndividual.o src/clases/Usuario.o src/sistema/ControladorHostal.o src/sistema/ControladorUsuario.o src/sistema/IHostal.o src/sistema/SingletonFechaHora.o src/sistema/IObserver.o src/sistema/Fabrica.o src/sistema/IUsuario.o
+#  Implicit rule search has been done.
+#  Last modified 2022-06-21 10:58:26
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/7=0%
+
+principal.o: principal.cpp
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: `'
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := principal.o
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := principal.cpp
+# automatic
+# | := 
+# automatic
+# < := principal.cpp
+# automatic
+# ^ := principal.cpp
+# automatic
+# ? := principal.cpp
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/17=6%
+#  commands to execute (from `Makefile', line 30):
+	$(CC) $(CCFLAGS) -c $< -o $@
+	
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-17 20:21:34
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+src/clases/ReservaGrupal.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/datatypes/DTIdEstadia.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/sistema/IHostal.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/sistema/IUsuario.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/datatypes/DTReservaCompInd.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/datatypes/DTCalificacion.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/datatypes/DTHabitacion.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/clases/Calificacion.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/clases/Usuario.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/sistema/IObserver.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/clases/Habitacion.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/sistema/Fabrica.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/datatypes/DTCal.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/datatypes/DTReservaIndividual.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/datatypes/DTEmpleado.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 43):
+	@rm -f principal.o $(CLASES_O) $(DT_O) $(SISTEMA_O)
+	
+
+ 
+# Not a target:
+src/datatypes/DTReservaCompGrup.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/datatypes/DTHuesped.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/datatypes/DTReservaComp.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/datatypes/DTHostal.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/datatypes/DataHostalComp.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/datatypes/DTEstadia.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+principal.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-21 10:58:26
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+src/clases/Huesped.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/clases/Hostal.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/clases/ReservaIndividual.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/clases/Empleado.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/sistema/ControladorHostal.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/datatypes/DTReserva.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/datatypes/DataEmpleado.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/sistema/ControladorUsuario.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/clases/Estadia.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/datatypes/DataEstadia.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# files hash-table stats:
+# Load=45/1024=4%, Rehash=0, Collisions=0/100=0%
+# VPATH Search Paths
+
+# No `vpath' search paths.
+
+# No general (`VPATH' variable) search path.
+
+# # of strings in strcache: 1
+# # of strcache buffers: 1
+# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
+# strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
+
+# Finished Make data base on Thu Jun 23 00:48:31 2022
+
+ 
